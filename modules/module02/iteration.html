@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Loops &amp; Iteration</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../lib/reveal/css/theme/inst326.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal/css/print/pdf.css' : '../../lib/reveal/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lib/reveal/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Loops &amp; Iteration</h1>
+  <p class="subtitle">Programming Repeated Steps</p>
+</section>
+
+<section id="loops" class="slide level1">
+<h1>Loops</h1>
+<div class="columns">
+<div class="column left">
+<p>Python programs are made up of a series of <strong>statements</strong> that execute in order.</p>
+<p><strong>Loops</strong> allow you to repeat a set of statements while a particular <strong>expression</strong> evaluates to <strong>True</strong>.</p>
+</div><div class="column">
+<p><img src="images/loop.jpg"></p>
+</div>
+</div>
+</section>
+<section id="why-loops" class="slide level1">
+<h1>Why Loops?</h1>
+<div class="left">
+<p>Imagine you want to print all the positive integers less than 10. You wouldn’t really want to do this:</p>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">print</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="bu">print</span>(<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="bu">print</span>(<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="bu">print</span>(<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="bu">print</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="bu">print</span>(<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="bu">print</span>(<span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="bu">print</span>(<span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="bu">print</span>(<span class="dv">9</span>)</a></code></pre></div>
+</section>
+<section id="while-loops" class="slide level1">
+<h1>While Loops</h1>
+<div class="left">
+<p>Instead you could use a <strong>while loop</strong> with a <strong>variable</strong> counter. This is very useful if you want to print all the positive integers less than 1 million…</p>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1">i <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">1000000</span>:</a>
+<a class="sourceLine" id="cb2-3" title="3">    i <span class="op">+=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="bu">print</span>(i)</a></code></pre></div>
+</section>
+<section id="section" class="slide level1">
+<h1></h1>
+<div class="left">
+<h3 id="iterate-v.">iterate, v.</h3>
+<ol type="1">
+<li><em>transitive.</em> To do (something) over again; to perform (an action) a second time, or reproduce (an effect); to repeat; to renew. Now rare.</li>
+<li>To say, mention, or assert again or repeatedly; to repeat.</li>
+<li>To make double or twofold; to duplicate. Obsolete. rare.</li>
+<li><em>intransitive. Mathematics.</em> To employ iteration; to make repeated use of a formula by substituting in it each time the result of the previous application.</li>
+</ol>
+</div>
+</section>
+<section id="for-loops" class="slide level1">
+<h1>For Loops</h1>
+<div class="left">
+<p>The <strong>for loop</strong> lets you to <strong>iterate</strong> through a series of values. We’ll be learning more about <strong>lists</strong> in Module 3.</p>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python lineNumbers"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="cf">for</span> day <span class="kw">in</span> [<span class="st">&quot;Sun&quot;</span>, <span class="st">&quot;Mon&quot;</span>, <span class="st">&quot;Tue&quot;</span>, <span class="st">&quot;Wed&quot;</span>, <span class="st">&quot;Thu&quot;</span>, </a>
+<a class="sourceLine" id="cb3-2" title="2">            <span class="st">&quot;Fri&quot;</span>, <span class="st">&quot;Sat&quot;</span>]:</a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="bu">print</span>(day)</a></code></pre></div>
+</section>
+<section id="loops-in-loops" class="slide level1">
+<h1>Loops In Loops</h1>
+<p>Imagine you want to print all possible combinations of two lists of numbers.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1">list1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">21</span>, <span class="dv">42</span>, <span class="dv">86</span>]</a>
+<a class="sourceLine" id="cb4-2" title="2">list2 <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">98</span>, <span class="dv">13</span>, <span class="dv">45</span>]</a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="cf">for</span> i <span class="kw">in</span> list1:</a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="cf">for</span> j <span class="kw">in</span> list2:</a>
+<a class="sourceLine" id="cb4-6" title="6">        <span class="bu">print</span>(i, j)</a></code></pre></div>
+</section>
+<section id="iteration-and-functions" class="slide level1">
+<h1>Iteration and Functions</h1>
+<p>It’s often useful to combine loops with functions. For example: convert a list of temperatures from Fahrenheit to Celsius:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">def</span> celsius(f):</a>
+<a class="sourceLine" id="cb5-2" title="2">    <span class="cf">return</span> (f <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">9</span>)</a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4">farenheit <span class="op">=</span> [<span class="dv">32</span>, <span class="dv">81</span>, <span class="dv">95</span>, <span class="dv">21</span>]</a>
+<a class="sourceLine" id="cb5-5" title="5"></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="cf">for</span> f <span class="kw">in</span> farenheit:</a>
+<a class="sourceLine" id="cb5-7" title="7">    <span class="bu">print</span>(f, celsius(f)</a></code></pre></div>
+</section>
+<section id="section-1" class="slide level1">
+<h1></h1>
+<div class="left">
+<p><strong>less_than_prev</strong> takes a list <strong>l</strong> and returns the first element of <strong>l</strong> that is less than the list element before it.</p>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python numberList"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">def</span> less_than_prev(l):</a>
+<a class="sourceLine" id="cb6-2" title="2">    last <span class="op">=</span> <span class="va">None</span></a>
+<a class="sourceLine" id="cb6-3" title="3">    found <span class="op">=</span> <span class="va">None</span></a>
+<a class="sourceLine" id="cb6-4" title="4">    <span class="cf">for</span> n <span class="kw">in</span> l:</a>
+<a class="sourceLine" id="cb6-5" title="5">        <span class="cf">if</span> last <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> n <span class="op">&lt;</span> last:</a>
+<a class="sourceLine" id="cb6-6" title="6">            found <span class="op">=</span> n</a>
+<a class="sourceLine" id="cb6-7" title="7">            <span class="cf">break</span></a>
+<a class="sourceLine" id="cb6-8" title="8">        last <span class="op">=</span> n</a>
+<a class="sourceLine" id="cb6-9" title="9">    <span class="cf">return</span> found</a>
+<a class="sourceLine" id="cb6-10" title="10"></a>
+<a class="sourceLine" id="cb6-11" title="11">less_than_prev([<span class="dv">8</span>, <span class="dv">21</span>, <span class="dv">42</span>, <span class="dv">29</span>, <span class="dv">85</span>, <span class="dv">51</span>, <span class="dv">432</span>])</a></code></pre></div>
+<div class="fragment">
+<p>29</p>
+</div>
+</section>
+<section id="continue" class="slide level1">
+<h1>Continue</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="../../lib/reveal/lib/js/head.min.js"></script>
+  <script src="../../lib/reveal/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lib/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lib/reveal/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lib/reveal/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
