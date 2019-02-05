@@ -113,7 +113,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="why-loops" class="slide level1">
 <h1>Why Loops?</h1>
 <div class="left">
-<p>Imagine you want to print all the positive integers less than 10. You wouldn’t really want to do this:</p>
+<p>Imagine that you want to print all the positive integers less than 10. You wouldn’t really want to do this:</p>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">print</span>(<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="bu">print</span>(<span class="dv">2</span>)</a>
@@ -158,7 +158,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="loops-in-loops" class="slide level1">
 <h1>Loops In Loops</h1>
+<div class="left">
 <p>Imagine you want to print all possible combinations of two lists of numbers.</p>
+</div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1">list1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">21</span>, <span class="dv">42</span>, <span class="dv">86</span>]</a>
 <a class="sourceLine" id="cb4-2" title="2">list2 <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">98</span>, <span class="dv">13</span>, <span class="dv">45</span>]</a>
 <a class="sourceLine" id="cb4-3" title="3"></a>
@@ -168,37 +170,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="iteration-and-functions" class="slide level1">
 <h1>Iteration and Functions</h1>
-<p>It’s often useful to combine loops with functions. For example: convert a list of temperatures from Fahrenheit to Celsius:</p>
+<div class="left">
+<p>It’s often useful to combine <strong>loops</strong> with <strong>functions</strong>. For example: convert a list of temperatures from Fahrenheit to Celsius:</p>
+</div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">def</span> celsius(f):</a>
 <a class="sourceLine" id="cb5-2" title="2">    <span class="cf">return</span> (f <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">9</span>)</a>
 <a class="sourceLine" id="cb5-3" title="3"></a>
-<a class="sourceLine" id="cb5-4" title="4">farenheit <span class="op">=</span> [<span class="dv">32</span>, <span class="dv">81</span>, <span class="dv">95</span>, <span class="dv">21</span>]</a>
+<a class="sourceLine" id="cb5-4" title="4">temps_f <span class="op">=</span> [<span class="dv">32</span>, <span class="dv">81</span>, <span class="dv">95</span>, <span class="dv">21</span>]</a>
 <a class="sourceLine" id="cb5-5" title="5"></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="cf">for</span> f <span class="kw">in</span> farenheit:</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="cf">for</span> f <span class="kw">in</span> temps_f:</a>
 <a class="sourceLine" id="cb5-7" title="7">    <span class="bu">print</span>(f, celsius(f)</a></code></pre></div>
 </section>
-<section id="section-1" class="slide level1">
-<h1></h1>
+<section id="break" class="slide level1">
+<h1>Break</h1>
 <div class="left">
-<p><strong>less_than_prev</strong> takes a list <strong>l</strong> and returns the first element of <strong>l</strong> that is less than the list element before it.</p>
+<p>The <strong>break</strong> keyword is used to break out of a loop. It can be useful in situations where the work inside a loop can stop prematurely, or because the loop is infinite.</p>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python numberList"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">def</span> less_than_prev(l):</a>
-<a class="sourceLine" id="cb6-2" title="2">    last <span class="op">=</span> <span class="va">None</span></a>
-<a class="sourceLine" id="cb6-3" title="3">    found <span class="op">=</span> <span class="va">None</span></a>
-<a class="sourceLine" id="cb6-4" title="4">    <span class="cf">for</span> n <span class="kw">in</span> l:</a>
-<a class="sourceLine" id="cb6-5" title="5">        <span class="cf">if</span> last <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> n <span class="op">&lt;</span> last:</a>
-<a class="sourceLine" id="cb6-6" title="6">            found <span class="op">=</span> n</a>
-<a class="sourceLine" id="cb6-7" title="7">            <span class="cf">break</span></a>
-<a class="sourceLine" id="cb6-8" title="8">        last <span class="op">=</span> n</a>
-<a class="sourceLine" id="cb6-9" title="9">    <span class="cf">return</span> found</a>
-<a class="sourceLine" id="cb6-10" title="10"></a>
-<a class="sourceLine" id="cb6-11" title="11">less_than_prev([<span class="dv">8</span>, <span class="dv">21</span>, <span class="dv">42</span>, <span class="dv">29</span>, <span class="dv">85</span>, <span class="dv">51</span>, <span class="dv">432</span>])</a></code></pre></div>
-<div class="fragment">
-<p>29</p>
-</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1">counter <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="cf">while</span> <span class="va">True</span>:</a>
+<a class="sourceLine" id="cb6-3" title="3">    <span class="bu">print</span>(counter)</a>
+<a class="sourceLine" id="cb6-4" title="4">    counter <span class="op">+=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-5" title="5">    <span class="cf">if</span> counter <span class="op">&gt;</span> <span class="dv">10</span>:</a>
+<a class="sourceLine" id="cb6-6" title="6">        <span class="cf">break</span></a></code></pre></div>
 </section>
-<section id="continue" class="slide level1">
-<h1>Continue</h1>
+<section id="review" class="slide level1">
+<h1>Review</h1>
+<div>
+<ul>
+<li class="fragment"><strong>while</strong> can be used to construct a loop that will continue as long as a particular <strong>condition</strong> evaluates to <strong>True</strong>.</li>
+<li class="fragment"><strong>for</strong> can be used to <strong>iterate</strong> through a set of values in a list. As will see it can be used to iterate through other things like files and rows in a database.</li>
+<li class="fragment"><strong>loops/iterators</strong> can contain <strong>loops/iterators</strong>.</li>
+<li class="fragment"><strong>functions</strong> and <strong>loops/iterators</strong> are super useful together.</li>
+</ul>
+</div>
 </section>
     </div>
   </div>

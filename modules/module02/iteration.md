@@ -32,7 +32,8 @@ Python programs are made up of a series of **statements** that execute in order.
 
 ::: left
 
-Imagine you want to print all the positive integers less than 10. You wouldn't really want to do this:
+Imagine that you want to print all the positive integers less than 10. You
+wouldn't really want to do this:
 
 :::
 
@@ -84,8 +85,10 @@ while i < 1000000:
 # For Loops
 
 ::: left
+
 The **for loop** lets you to **iterate** through a series of values. We'll be
 learning more about **lists** in Module 3.
+
 :::
 
 ``` {.python .lineNumbers}
@@ -96,7 +99,11 @@ for day in ["Sun", "Mon", "Tue", "Wed", "Thu",
 
 # Loops In Loops
 
+:::left
+
 Imagine you want to print all possible combinations of two lists of numbers.
+
+:::
 
 ``` {.python .numberLines}
 list1 = [1, 5, 9, 21, 42, 86]
@@ -109,44 +116,53 @@ for i in list1:
 
 # Iteration and Functions
 
+::: left
 
-It's often useful to combine loops with functions. For example: convert a
-list of temperatures from Fahrenheit to Celsius:
+It's often useful to combine **loops** with **functions**. For example: convert
+a list of temperatures from Fahrenheit to Celsius:
+
+:::
 
 ``` {.python .numberLines}
 def celsius(f):
     return (f - 32) * (5 / 9)
 
-farenheit = [32, 81, 95, 21]
+temps_f = [32, 81, 95, 21]
 
-for f in farenheit:
+for f in temps_f:
     print(f, celsius(f)
 ```
 
-#
+# Break
 
 ::: left
-**less_than_prev** takes a list **l** and returns the first element of **l** that is less than the list element before it.
+
+The **break** keyword is used to break out of a loop. It can be useful in
+situations where the work inside a loop can stop prematurely, or because the
+loop is infinite.
+
 :::
 
-``` {.python .numberList}
-def less_than_prev(l):
-    last = None
-    found = None
-    for n in l:
-        if last is not None and n < last:
-            found = n
-            break
-        last = n
-    return found
-
-less_than_prev([8, 21, 42, 29, 85, 51, 432])
+``` {.python .numberLines}
+counter = 0
+while True:
+    print(counter)
+    counter += 1
+    if counter > 10:
+        break
 ```
 
-::: fragment
-29
-:::
+# Review
 
-# Continue
+::: incremental
+
+* **while** can be used to construct a loop that will continue as long as a
+  particular **condition** evaluates to **True**.
+* **for** can be used to **iterate** through a set of values in a list. As will see it 
+  can be used to iterate through other things like files and rows in a database.
+* **loops/iterators** can contain **loops/iterators**.
+* **functions** and **loops/iterators** are super useful together.
+
+:::
 
 

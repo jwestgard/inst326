@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>INST 326</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../lib/reveal/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../lib/reveal/css/theme/inst326.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../../lib/reveal/css/print/pdf.css' : '../../../lib/reveal/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../../lib/reveal/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">INST 326</h1>
+  <p class="subtitle">Object Oriented Programing: Introduction</p>
+</section>
+
+<section id="section" class="slide level1">
+<h1></h1>
+<p><img width="60%" src="images/ischool.jpg"></p>
+<p>:::</p>
+<p>Go around the room introducing ourselves.</p>
+<p>:::</p>
+</section>
+<section id="syllabus" class="slide level1">
+<h1>Syllabus</h1>
+<p>You can find the syllabus on ELMS and also on <a href="https://edsu.github.io/inst326/syllabus/sp2019-105.pdf"><img src="images/github.jpg" style="vertical-align: middle; height: 1em"></a></p>
+</section>
+<section id="section-1" class="slide level1">
+<h1></h1>
+<p><a href="https://python.org"><img src="images/python.png"></a></p>
+</section>
+<section id="section-2" class="slide level1">
+<h1></h1>
+<p><a href="https://www.nytimes.com/2018/03/20/world/europe/cambridge-analytica-ceo-suspended.html"><img src="images/ethics.png" style="border: 3px solid #ccc"></a></p>
+</section>
+<section id="section-3" class="slide level1">
+<h1></h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<div>
+<ol type="1">
+<li class="fragment">Design, program, and debug Python programs.</li>
+<li class="fragment">Collect, process, and analyze data.</li>
+<li class="fragment">Test and assess code quality.</li>
+<li class="fragment">Understand how code expresses values &amp; ethics.</li>
+<li class="fragment">Write clear and effective documentation.</li>
+<li class="fragment">Gain competency with tools for managing code.</li>
+</ol>
+</div>
+</section>
+<section id="grades" class="slide level1">
+<h1>Grades</h1>
+<table>
+<tbody>
+<tr class="odd">
+<td>Exercises/Quizzes (10)</td>
+<td style="text-align: right;">20 points</td>
+</tr>
+<tr class="even">
+<td>Homework (5)</td>
+<td style="text-align: right;">25 points</td>
+</tr>
+<tr class="odd">
+<td>Midterms (2)</td>
+<td style="text-align: right;">20 points</td>
+</tr>
+<tr class="even">
+<td>Reflections (3)</td>
+<td style="text-align: right;">10 points</td>
+</tr>
+<tr class="odd">
+<td>Final Project</td>
+<td style="text-align: right;">15 points</td>
+</tr>
+<tr class="even">
+<td>Participation</td>
+<td style="text-align: right;">10 points</td>
+</tr>
+<tr class="odd">
+<td>TOTAL</td>
+<td style="text-align: right;">100 points</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="texts" class="slide level1">
+<h1>Texts</h1>
+<ul>
+<li>Charles R. Severance, <a href="http://py4e.com">Python for Everybody: Exploring Data Using Python 3</a>.</li>
+<li><a href="https://docs.python.org/3/tutorial/index.html">The Python Tutorial</a>, v3.7.2, Python Software Foundation.</li>
+<li><a href="https://www.cs.uct.ac.za/mit_notes/python/">Object-Oriented Programming in Python</a>, University of Cape Town.</li>
+</ul>
+</section>
+<section id="tools" class="slide level1">
+<h1>Tools</h1>
+<p>Next time we’ll install some things in class.</p>
+<ul>
+<li><a href="https://python.org/download">Python</a>: for programming.</li>
+<li><a href="https://code.visualstudio.com/">Code</a>: for editing, terminal, REPL.</li>
+<li><a href="https://git-scm.com/">Git</a>: for version control.</li>
+<li><a href="http://umd-cis.slack.com/">Slack</a>: for group chat.</li>
+</ul>
+</section>
+<section id="questions" class="slide level1">
+<h1>Questions?</h1>
+<p>10:30?</p>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../lib/reveal/lib/js/head.min.js"></script>
+  <script src="../../../lib/reveal/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../../lib/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../../lib/reveal/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../../lib/reveal/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
