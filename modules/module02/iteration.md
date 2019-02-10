@@ -130,7 +130,7 @@ def celsius(f):
 temps_f = [32, 81, 95, 21]
 
 for f in temps_f:
-    print(f, celsius(f)
+    print(f, celsius(f))
 ```
 
 # Break

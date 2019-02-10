@@ -21,8 +21,9 @@ What output do you see when you fix it? (1 point)
 
 ## Extra Credit (1 point)
 
-Can you write a program that will let you enter a word or phrase and tell you
-many characters long it is? When the user enters "quit" it should stop.
+Write a program that will let you enter a word or phrase and then tell you many
+characters long it is. The program should allow the user to keep entering words
+and phrases until they enter "quit".
 
 Here's what a sample run might look like:
 
