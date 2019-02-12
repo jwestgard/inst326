@@ -46,6 +46,8 @@ transition: slide
 
 ## Try it out (interactive mode)
 
+:::
+
 ``` {.python}
 >>> s = "To be or not to be."
 >>> type(s)
@@ -55,6 +57,8 @@ transition: slide
 >>> dir(s)
 ...
 ```
+
+:::
 
 ---
 
@@ -358,21 +362,19 @@ print(x)
 :::
 
 ---
-## "Modifying" dictionaries
+## Modifying dictionaries
 
 ::: incremental
 
 * The keys of a dictionary can be assigned to different values directly
 
-:::
-
 ::: fragment
+
 ``` {.python .numberLines}
 >>> phone_book['Bruce Banner'] = "555-555-9876"
 ```
-:::
 
-::: incremental
+:::
 
 * If the key does not exist, a new key/value pair will be added
 * Note that each key of a given dictionary must be unique
@@ -421,10 +423,12 @@ print(x)
 :::
 
 ::: fragment
+
 ``` {.python .numberLines}
 for name, number in phone_book.items():
     print(name, number)
 ```
+
 :::
 
 ---
