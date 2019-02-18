@@ -46,8 +46,6 @@ transition: slide
 
 ## Try it out (interactive mode)
 
-:::
-
 ``` {.python}
 >>> s = "To be or not to be."
 >>> type(s)
@@ -58,16 +56,9 @@ transition: slide
 ...
 ```
 
-:::
-
----
-
 # Strings
 
----
-
-## What are strings?
-
+# What are strings?
 
 ::: incremental
 
@@ -195,8 +186,6 @@ methods like *upper()* which you just saw.  Here are a few more, but try using
 
 :::
 
----
-
 # Lists
 
 ---
@@ -290,11 +279,13 @@ print(x)
 
 ---
 
-## Exercise!
+# Exercise!
 
 ---
 
 # Dictionaries
+
+<img width="70%" src="images/dictionary.jpg">
 
 ---
 
@@ -312,16 +303,16 @@ print(x)
 
 ## Creating dictionaries
 
-::: incremental
+Create a dictionary with dict() or with curly braces:
 
-* Create a dictionary with dict() or with curly braces (empty or not)
-  * my\_dictionary = dict()
-  * d = {}
-  * phone_book = {'Bruce Banner': '555-555-1234', 'Sue Storm': '555-555-5678'}
-* Notice how the keys and values are delimited by a colon
-* And how the key/value pairs are separated by commas
-
-:::
+``` {.python .numberLines}
+my_dictionary = dict()
+my_dictionary = {}
+phone_book = {
+    'Bruce Banner': '555-555-1234',
+    'Sue Storm': '555-555-5678'
+}
+```
 
 ---
 
@@ -336,32 +327,74 @@ print(x)
 ::: fragment
 
 ``` {.python .numberLines}
->>> phone_book['Bruce Banner']
-555-555-1234
+phone_book = {
+    'Bruce Banner': '555-555-1234',
+    'Sue Storm': '555-555-5678'
+}
+print(phone_book['Bruce Banner'])
 ```
 :::
 
-::: incremental
-
-* But the contents of the dictionary are **not** ordered
-* If you iterate over a dictionary using a for loop, you get the keys, but not in a particular order
-
+::: fragment
+**555-555-1234**
 :::
 
 ---
 
-## Accessing dictionaries
+Access the keys of a dictionary with the **keys()** method:
 
-::: incremental
+``` {.python .numberLines}
+phone_book = {
+    'Bruce Banner': '555-555-1234',
+    'Sue Storm': '555-555-5678'
+}
+for k in phone_book.keys():
+    print(k)
+```
 
-* You can access the keys of a dictionary with .keys()
-* You can access the values of a dictionary with .values()
-* Or, you can access all the key/value pairs with .items()
-* In this last case, the pairs come back as tuples
-
+::: fragment
+**Bruce Banner**  
+**Sue Storm**
 :::
 
 ---
+
+Access the values of a dictionary with the **values()** method:
+
+``` {.python .numberLines}
+phone_book = {
+    'Bruce Banner': '555-555-1234',
+    'Sue Storm': '555-555-5678'
+}
+for val in phone_book.values():
+    print(val)
+```
+
+::: fragment
+**555-555-1234**  
+**555-555-5678**
+:::
+
+---
+
+Access the key/value pairs with the **items()** method:
+
+``` {.python .numberLines}
+phone_book = {
+    'Bruce Banner': '555-555-1234',
+    'Sue Storm': '555-555-5678'
+}
+for key, val in phone_book.items():
+    print(key, val)
+```
+
+::: fragment
+**Bruce Banner 555-555-1234**  
+**Sue Storm 555-555-5678**
+:::
+
+---
+
 ## Modifying dictionaries
 
 ::: incremental
@@ -371,7 +404,7 @@ print(x)
 ::: fragment
 
 ``` {.python .numberLines}
->>> phone_book['Bruce Banner'] = "555-555-9876"
+phone_book['Bruce Banner'] = "555-555-9876"
 ```
 
 :::
@@ -382,6 +415,42 @@ print(x)
 :::
 
 ---
+
+## Deleting from a dictionary
+
+You can remove a key/value pair from a dictionary by using the **pop** method:
+
+``` {.python .numberLines}
+phone_book = {
+    'Bruce Banner': '555-555-1234',
+    'Sue Storm': '555-555-5678'
+}
+phone_book.pop('Bruce Banner')
+```
+
+---
+
+``` {.python .numberLines}
+energy = {
+  "Colorado": {
+    "solar": 16530.477,
+    "wind": 2942132.635
+  },
+  "New Jersey": {
+    "solar": 2437.768,
+    "wind": 19149.957
+  },
+  "Washington": {
+    "solar": 0.0,
+    "wind": 3538935.954
+  }
+}
+print(energy['Washington']['wind'])
+```
+
+::: fragment
+**3538935.954**
+:::
 
 # Tuples
 
@@ -418,7 +487,7 @@ print(x)
 
 * Similar to lists, the items in a tuple are accessed by index position
 * A common pattern is to assign the elements of tuples in a single line
-* For example, the .values() method of dictionaries returns key/value pairs as a tuple:
+* For example, the .items() method of dictionaries returns key/value pairs as a tuple:
 
 :::
 
