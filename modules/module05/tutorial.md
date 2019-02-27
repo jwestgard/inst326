@@ -22,8 +22,7 @@ The following pattern matches 'Sherlock' exactly.
 ``` {.python .numberLines}
 import re
 
-pattern = r'Sherlock'
-```
+pattern = r'Sherlock'```
 
 ## Applying the Pattern
 
@@ -34,6 +33,25 @@ In order to apply this expression you need to do two additional things:
 
 For this exercise download a copy of the [Adventures of Sherlock Holmes](holmes.txt). Save the file in the folder with the python file you are using for this tutorial.
 
-Next, in your program
+Next, in your program you'll need to read the contents of the file into a variable in order to search it.
 
+``` {.python .numberLines}
+import re
 
+pattern = r'Sherlock'
+
+with open('holmes.txt') as handle:
+    text = handle.read() ```
+
+Now you can apply your pattern to the text. The re.search() function is good for many use-cases. Search() takes two arguments, the pattern and the text to search.
+
+``` {.python .numberLines}
+import re
+
+pattern = r'Sherlock'
+
+with open('holmes.txt') as handle:
+    text = handle.read() 
+
+hit = re.search(pattern, text)
+print(hit) ```
