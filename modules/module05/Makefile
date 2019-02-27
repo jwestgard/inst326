@@ -1,4 +1,4 @@
-all: readings.html index.html exercise.html
+all: readings.html index.html exercise.html tutorial.html
 
 index.html: slides.md
 	pandoc --to revealjs --standalone --output index.html slides.md
