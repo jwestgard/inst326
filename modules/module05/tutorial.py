@@ -5,8 +5,15 @@ import re
 with open('holmes.txt') as handle:
     text = handle.read()
 
-pattern = r'\w+? Sherlock.{5}'
+hero = r'Sherlock'
+villain = r'Moriarity'
 
-hits = re.finditer(pattern, text)
+hit = re.search(hero, text)
 
-for hit in hits: print(hit[0])
+#print(re.findall(r'(\d[,\d]+\d)', text))
+
+p = r'(\d[,\d]+\d)'
+
+total = sum([int(m.replace(',', '')) for m in re.findall(p, text)])
+
+print(total)
