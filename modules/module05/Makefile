@@ -10,4 +10,4 @@ exercise.html: exercise.md
 	pandoc --output exercise.html --standalone exercise.md
 
 tutorial.html: tutorial.md
-	pandoc --output tutorial.html --standalone tutuorial.md
+	pandoc --output tutorial.html --standalone tutorial.md
