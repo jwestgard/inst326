@@ -232,6 +232,24 @@ print(match.group())
 
 #
 
+**findall()**
+
+``` {.python .numberLines}
+import re
+
+s = "32 Penn-Lyle Road, Princeton Jct, 08550"
+
+for s in re.findall("\d+", s):
+    print(s)
+```
+
+::: fragment
+**32**  
+**08550**
+:::
+
+#
+
 <a href="cheatsheet.pdf"><img width="50%" style="border: thin solid gray;" src="images/cheatsheet.png"></a>
 
 #
@@ -246,7 +264,7 @@ Remember this [JSON dataset](aoc.json)? Let's imagine we wanted to find all the 
 
 ## Grouping
 
-``` {.python .lineNumbers}
+``` {.python .numberLines}
 import re
 import json
 

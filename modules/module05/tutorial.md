@@ -10,8 +10,7 @@ css: ../../css/page.css
 The re (regular expressions) module is part of the standard library, but must be imported to be available in your program.
 
 ``` {.python .numberLines}
-import re
-```
+import re```
 
 ### Pattern Declaration
 
@@ -22,8 +21,7 @@ The following pattern matches 'Sherlock' exactly.
 ``` {.python .numberLines}
 import re
 
-pattern = r'Sherlock'
-```
+pattern = r'Sherlock'```
 
 ### Applying the Pattern
 
@@ -42,8 +40,7 @@ import re
 pattern = r'Sherlock'
 
 with open('holmes.txt') as handle:
-    text = handle.read()
-```
+    text = handle.read() ```
 
 Now you can apply your pattern to the text. The re.search() function is good for many use-cases. Search() takes two arguments, the pattern and the text to search.
 
@@ -56,8 +53,7 @@ with open('holmes.txt') as handle:
     text = handle.read() 
 
 hit = re.search(pattern, text)
-print(hit)
-```
+print(hit) ```
 
 Search() is good for finding a match within a block of text, and the match object returns, in addition to the text of the match, its position in the source text (both beginning and ending by offset).  If you want to find multiple occurances of the match, it is often easier to use either findall() or finditer().
 

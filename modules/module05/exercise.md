@@ -5,7 +5,7 @@ css: ../../css/page.css
 
 ## Background
 
-Regular Expressions are particularly useful for processing large amounts of textual data to find patterns, for example to find email addresses, phone numbers, or social security numbers. In the archival profession, a common use-case for locatign personally-identifiable information is to redact it when making content available to researchers.
+Regular Expressions are particularly useful for processing large amounts of textual data to find patterns, for example to find email addresses, phone numbers, or social security numbers. In the archival profession, a common use-case for locating personally-identifiable information is to redact it when making content available to researchers.
 
 The [Enron Email Dataset](https://www.cs.cmu.edu/~./enron/) is a body of approximately 500,000 email messages from top executives in the [Enron Corporation](https://en.wikipedia.org/wiki/Enron), a Texas-based energy company which after going bankrupt in 2001 was revealed to have engaged in massive accounting fraud. The email dataset became evidence in the ensuing investigation, and subsequently was released into the public domain.
 

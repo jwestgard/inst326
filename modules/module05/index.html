@@ -241,29 +241,43 @@ picture-in-picture" allowfullscreen>
 </section>
 <section id="section-12" class="slide level1">
 <h1></h1>
-<p><a href="cheatsheet.pdf"><img width="50%" style="border: thin solid gray;" src="images/cheatsheet.png"></a></p>
+<p><strong>findall()</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="im">import</span> re</a>
+<a class="sourceLine" id="cb7-2" title="2"></a>
+<a class="sourceLine" id="cb7-3" title="3">s <span class="op">=</span> <span class="st">&quot;32 Penn-Lyle Road, Princeton Jct, 08550&quot;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="cf">for</span> s <span class="kw">in</span> re.findall(<span class="st">&quot;\d+&quot;</span>, s):</a>
+<a class="sourceLine" id="cb7-6" title="6">    <span class="bu">print</span>(s)</a></code></pre></div>
+<div class="fragment">
+<p><strong>32</strong><br />
+<strong>08550</strong></p>
+</div>
 </section>
 <section id="section-13" class="slide level1">
+<h1></h1>
+<p><a href="cheatsheet.pdf"><img width="50%" style="border: thin solid gray;" src="images/cheatsheet.png"></a></p>
+</section>
+<section id="section-14" class="slide level1">
 <h1></h1>
 <div class="left">
 <p>Remember this <a href="aoc.json">JSON dataset</a>? Let’s imagine we wanted to find all the words that follow “climate” in AOC’s tweets. How could we do that?</p>
 </div>
 </section>
-<section id="section-14" class="slide level1">
+<section id="section-15" class="slide level1">
 <h1></h1>
 <h2 id="grouping">Grouping</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python lineNumbers"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="im">import</span> re</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="im">import</span> json</a>
-<a class="sourceLine" id="cb7-3" title="3"></a>
-<a class="sourceLine" id="cb7-4" title="4">fh <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;aoc.json&#39;</span>)</a>
-<a class="sourceLine" id="cb7-5" title="5">tweets <span class="op">=</span> json.load(fh)</a>
-<a class="sourceLine" id="cb7-6" title="6"></a>
-<a class="sourceLine" id="cb7-7" title="7"><span class="cf">for</span> tweet <span class="kw">in</span> tweets:</a>
-<a class="sourceLine" id="cb7-8" title="8">    m <span class="op">=</span> re.search(<span class="st">&#39;climate (\w+)&#39;</span>, tweet[<span class="st">&#39;text&#39;</span>])</a>
-<a class="sourceLine" id="cb7-9" title="9">    <span class="cf">if</span> m:</a>
-<a class="sourceLine" id="cb7-10" title="10">        <span class="bu">print</span>(m.group(<span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1"><span class="im">import</span> re</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="im">import</span> json</a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4">fh <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;aoc.json&#39;</span>)</a>
+<a class="sourceLine" id="cb8-5" title="5">tweets <span class="op">=</span> json.load(fh)</a>
+<a class="sourceLine" id="cb8-6" title="6"></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="cf">for</span> tweet <span class="kw">in</span> tweets:</a>
+<a class="sourceLine" id="cb8-8" title="8">    m <span class="op">=</span> re.search(<span class="st">&#39;climate (\w+)&#39;</span>, tweet[<span class="st">&#39;text&#39;</span>])</a>
+<a class="sourceLine" id="cb8-9" title="9">    <span class="cf">if</span> m:</a>
+<a class="sourceLine" id="cb8-10" title="10">        <span class="bu">print</span>(m.group(<span class="dv">1</span>))</a></code></pre></div>
 </section>
-<section id="section-15" class="slide level1">
+<section id="section-16" class="slide level1">
 <h1></h1>
 <div class="left">
 <p>For the next class take a look at the <a href="exercise.html">exercise</a> that we’ll be working on together.</p>
