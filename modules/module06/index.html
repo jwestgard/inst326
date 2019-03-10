@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Object-Oriented Programming</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../lib/reveal/css/theme/inst326.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal/css/print/pdf.css' : '../../lib/reveal/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lib/reveal/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Object-Oriented Programming</h1>
+  <p class="subtitle">Combining Data and Behavior</p>
+</section>
+
+<section id="introduction" class="slide level1">
+<h1>Introduction</h1>
+</section>
+<section id="section" class="slide level1">
+<h1></h1>
+<p><a href="https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG"> <img src="images/assemblyline.jpg"> </a></p>
+<aside class="notes">
+<p>A good analogy for OOP is an assembly line, where many instances of a model of car are built. The individual cars may have different options, but share a common core set of features and means of operation.</p>
+</aside>
+</section>
+<section id="section-1" class="slide level1">
+<h1></h1>
+<h2 id="overview">Overview</h2>
+<ul>
+<li>Definitions</li>
+<li>Defining Classes</li>
+<li>Using Instances</li>
+<li>Inheritance</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>after some general intro to OOP</li>
+<li>we’ll talk about classes vs. instances and how to define a class</li>
+<li>we’ll look at attributes (data) and methods (behaviors)</li>
+<li>we’ll talk about how methods and attributes are accessed (dot notation), and how objects can interact with each other</li>
+<li>finally, we’ll look at how a hierarchy of classes (inheritance) can be used</li>
+</ul>
+</aside>
+</section>
+<section id="section-2" class="slide level1">
+<h1></h1>
+<h2 id="what-is-object-oriented-programming-oop">What is object-oriented programming (OOP)?</h2>
+<ul>
+<li>Nothing magical, just a different style</li>
+<li>Contrast with:
+<ul>
+<li>Procedural (like a recipe)</li>
+<li>Functional (more mathematical)</li>
+</ul></li>
+<li>OOP encapsulates data and behavior into objects</li>
+<li>Objects have interfaces that allow them to interact</li>
+</ul>
+</section>
+<section id="section-3" class="slide level1">
+<h1></h1>
+<h2 id="classes-vs.-instances">Classes vs. instances</h2>
+<ul>
+<li>Objects in OOP are members of classes</li>
+<li>Features shared by members are mapped in a class definition</li>
+<li>Individual instances have their own attributes and state</li>
+</ul>
+</section>
+<section id="section-4" class="slide level1">
+<h1></h1>
+<h2 id="you-have-already-been-using-objects">You have already been using objects</h2>
+<ul>
+<li>All data types (for example, string, list, dictionary) are objects</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="op">&gt;&gt;&gt;</span> s <span class="op">=</span> <span class="st">&#39;Hello World&#39;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="op">&gt;&gt;&gt;</span> <span class="bu">type</span>(s)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="op">&lt;</span><span class="kw">class</span> <span class="st">&#39;str&#39;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="op">&gt;&gt;&gt;</span> l <span class="op">=</span> <span class="bu">list</span>()</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="op">&gt;&gt;&gt;</span> <span class="bu">type</span>(l)</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="op">&lt;</span><span class="kw">class</span> <span class="st">&#39;list&#39;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="op">&gt;&gt;&gt;</span> <span class="bu">dir</span>(l)</a>
+<a class="sourceLine" id="cb1-8" title="8">[<span class="st">&#39;__add__&#39;</span>, <span class="st">&#39;__class__&#39;</span>, ...]</a></code></pre></div>
+</section>
+<section id="section-5" class="slide level1">
+<h1></h1>
+<h2 id="in-fact-in-python-almost-everything-is-an-object">In fact, in Python almost everything is an object</h2>
+<ul>
+<li>Objects have shared behaviors defined by their classes</li>
+<li>At the same time, individual instances have different content</li>
+<li>Much of the complexity is “hidden” inside the objects</li>
+</ul>
+</section>
+<section id="section-6" class="slide level1">
+<h1></h1>
+<h2 id="defining-your-own-class">Defining your own class</h2>
+<ul>
+<li>Define a class with the “class” keyword</li>
+<li>Define methods inside the class with indented “def” blocks</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">class</span> Pet():</a>
+<a class="sourceLine" id="cb2-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</a>
+<a class="sourceLine" id="cb2-3" title="3">        <span class="va">self</span>.name <span class="op">=</span> name</a></code></pre></div>
+</section>
+<section id="section-7" class="slide level1">
+<h1></h1>
+<h2 id="initializers">Initializers</h2>
+<ul>
+<li>The __init__() method is an initializer</li>
+<li>The double underscore (dunderscore) indicates that __init__ has a special purpose</li>
+<li>It is called automatically when a new instance is created</li>
+<li>Often __init__() is used to set up attributes (here to give each pet a name)</li>
+</ul>
+</section>
+<section id="section-8" class="slide level1">
+<h1></h1>
+<h2 id="attributes-and-methods">Attributes and methods</h2>
+<ul>
+<li>Attributes are properties specific to the instance</li>
+<li>Methods are like functions defining behaviors specific to the members of a class</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">class</span> Pet():</a>
+<a class="sourceLine" id="cb3-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</a>
+<a class="sourceLine" id="cb3-3" title="3">        <span class="va">self</span>.name <span class="op">=</span> name</a>
+<a class="sourceLine" id="cb3-4" title="4">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb3-5" title="5">        <span class="bu">print</span>(<span class="st">&#39;Nom nom nom&#39;</span>)</a></code></pre></div>
+</section>
+<section id="section-9" class="slide level1">
+<h1></h1>
+<h2 id="interacting-with-an-object">Interacting with an object</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">class</span> Pet():</a>
+<a class="sourceLine" id="cb4-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</a>
+<a class="sourceLine" id="cb4-3" title="3">        <span class="va">self</span>.name <span class="op">=</span> name</a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="kw">def</span> eat(<span class="va">self</span>, food):</a>
+<a class="sourceLine" id="cb4-5" title="5">        <span class="bu">print</span>(<span class="ss">f&#39;Nom nom. </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> likes </span><span class="sc">{</span>food<span class="sc">}</span><span class="ss">.&#39;</span>)</a>
+<a class="sourceLine" id="cb4-6" title="6"></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="op">&gt;&gt;&gt;</span> mypet <span class="op">=</span> Pet(<span class="st">&#39;Spot&#39;</span>)</a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="op">&gt;&gt;&gt;</span> mypet.eat(<span class="st">&#39;dogfood&#39;</span>)</a>
+<a class="sourceLine" id="cb4-9" title="9">Nom nom. Spot likes dogfood.</a></code></pre></div>
+<aside class="notes">
+<ul>
+<li>The ‘self’ is a special variable that refers to the instance</li>
+<li>The name self is just a convention</li>
+<li>Being the first parameter is what grants it a special function</li>
+</ul>
+</aside>
+</section>
+<section id="section-10" class="slide level1">
+<h1></h1>
+<h2 id="dot-notation">Dot notation</h2>
+<ul>
+<li>Notice in the previous example how eat() was called</li>
+<li>Notice as well how the attribute “.name” was accessed</li>
+<li>This is called dot notation
+<ul>
+<li>used to access attributes of the <em>instance</em></li>
+<li>used to apply methods to the <em>instance</em></li>
+<li>“self” in the class definition means particular to the <em>instance</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-11" class="slide level1">
+<h1></h1>
+<h2 id="in-summary">In summary</h2>
+<aside class="notes">
+<p>This probably seems like a lot, but once you get the hang of it basic OOP can seem natural and intuitive.</p>
+</aside>
+<ul>
+<li>Combining Data and Behavior</li>
+<li>Defining Classes</li>
+<li>Attributes and Methods</li>
+<li>Interacting with Instances</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../../lib/reveal/lib/js/head.min.js"></script>
+  <script src="../../lib/reveal/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lib/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lib/reveal/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lib/reveal/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
