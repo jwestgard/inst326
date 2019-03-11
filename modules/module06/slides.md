@@ -91,9 +91,13 @@ What are some actions you can perform?
 
 ## Classes vs. instances
 
+::: incremental
+
 - Objects in OOP are members of *classes*
 - Features shared by members are mapped in a class definition
 - Individual *instances* have their own attributes and state
+
+:::
 
 #
 
@@ -112,15 +116,17 @@ What are some actions you can perform?
 ['__add__', '__class__', ...]
 ```
 
-# 
-
 #
 
 ## In fact, in Python almost everything is an object
 
+::: incremental
+
 - Objects have shared behaviors defined by their classes
 - At the same time, individual instances have different content
 - Much of the complexity is "hidden" inside the objects
+
+:::
 
 #
 
@@ -139,10 +145,14 @@ class Pet():
 
 ## Initializers
 
+::: incremental
+
 - The \_\_init\_\_() method is an initializer
 - The double underscore (dunderscore) indicates that \_\_init\_\_ has a special purpose
 - It is called automatically when a new instance is created
 - Often \_\_init\_\_() is used to set up attributes (here to give each pet a name)
+
+:::
 
 #
 
@@ -187,12 +197,16 @@ Nom nom. Spot likes dogfood.
 
 ## Dot notation
 
+::: incremental
+
 - Notice in the previous example how eat() was called
 - Notice as well how the attribute ".name" was accessed
 - This is called dot notation
     - used to access attributes of the *instance*
     - used to apply methods to the *instance*
     - "self" in the class definition means particular to the *instance*
+
+:::
 
 #
 

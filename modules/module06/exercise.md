@@ -9,7 +9,7 @@ In the previous module recall that we used a sample of the [Enron Email Dataset]
 
 ## Task: Email Message Class
 
-1. The task is to create a class called Email() that can be used to analyze the  [provided sample of the dataset](enron-sample.zip).
+1. The task is to create a class called Email() that can be used to analyze the  [provided sample of the dataset](../module05/enron-sample.zip).
 2. Each instance of your class will represent a single email message, and should have the following attributes:
     - sender: the email address in the "From:" line;
     - recipients: a list of all email addresses in the "To:" line;
