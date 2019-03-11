@@ -99,24 +99,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <p class="subtitle">Combining Data and Behavior</p>
 </section>
 
-<section id="introduction" class="slide level1">
-<h1>Introduction</h1>
-</section>
 <section id="section" class="slide level1">
 <h1></h1>
-<p><a href="https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG"> <img src="images/assemblyline.jpg"> </a></p>
+<p><a href="https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG"> <img style="width: 80%" src="images/assemblyline.jpg"> </a></p>
 <aside class="notes">
 <p>A good analogy for OOP is an assembly line, where many instances of a model of car are built. The individual cars may have different options, but share a common core set of features and means of operation.</p>
 </aside>
 </section>
 <section id="section-1" class="slide level1">
 <h1></h1>
+<p>What are some common properties of cars?</p>
+<div>
+<ul>
+<li class="fragment">color</li>
+<li class="fragment">wheels</li>
+<li class="fragment">seats</li>
+<li class="fragment">steering wheel</li>
+<li class="fragment">engine</li>
+<li class="fragment">doors</li>
+<li class="fragment">accelerator</li>
+<li class="fragment">brake</li>
+</ul>
+</div>
+</section>
+<section id="section-2" class="slide level1">
+<h1></h1>
+<p>What are some actions you can perform?</p>
+<div>
+<ul>
+<li class="fragment">open door</li>
+<li class="fragment">start engine</li>
+<li class="fragment">turn left/right</li>
+<li class="fragment">accelerate</li>
+<li class="fragment">stop</li>
+<li class="fragment">turn off engine</li>
+<li class="fragment">turn on cruise control</li>
+</ul>
+</div>
+</section>
+<section id="section-3" class="slide level1">
+<h1></h1>
 <h2 id="overview">Overview</h2>
 <ul>
 <li>Definitions</li>
 <li>Defining Classes</li>
 <li>Using Instances</li>
-<li>Inheritance</li>
 </ul>
 <aside class="notes">
 <ul>
@@ -128,30 +155,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </aside>
 </section>
-<section id="section-2" class="slide level1">
+<section id="section-4" class="slide level1">
 <h1></h1>
-<h2 id="what-is-object-oriented-programming-oop">What is object-oriented programming (OOP)?</h2>
+<h2 id="what-is-oop">What is OOP?</h2>
+<div>
 <ul>
-<li>Nothing magical, just a different style</li>
-<li>Contrast with:
-<ul>
-<li>Procedural (like a recipe)</li>
-<li>Functional (more mathematical)</li>
-</ul></li>
-<li>OOP encapsulates data and behavior into objects</li>
-<li>Objects have interfaces that allow them to interact</li>
+<li class="fragment">Nothing magical, just a different style</li>
+<li class="fragment">Procedural (like a recipe)</li>
+<li class="fragment">Functional (more mathematical)</li>
+<li class="fragment">Many languages like Python combine these styles.</li>
+<li class="fragment">OOP <em>encapsulates</em> data and behavior into <em>objects</em></li>
+<li class="fragment">Objects have interfaces that allow them to interact</li>
+<li class="fragment">OOP tries to map programming to how we think about the world.</li>
 </ul>
+</div>
 </section>
-<section id="section-3" class="slide level1">
+<section id="section-5" class="slide level1">
 <h1></h1>
 <h2 id="classes-vs.-instances">Classes vs. instances</h2>
 <ul>
-<li>Objects in OOP are members of classes</li>
+<li>Objects in OOP are members of <em>classes</em></li>
 <li>Features shared by members are mapped in a class definition</li>
-<li>Individual instances have their own attributes and state</li>
+<li>Individual <em>instances</em> have their own attributes and state</li>
 </ul>
 </section>
-<section id="section-4" class="slide level1">
+<section id="section-6" class="slide level1">
 <h1></h1>
 <h2 id="you-have-already-been-using-objects">You have already been using objects</h2>
 <ul>
@@ -166,7 +194,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1-7" title="7"><span class="op">&gt;&gt;&gt;</span> <span class="bu">dir</span>(l)</a>
 <a class="sourceLine" id="cb1-8" title="8">[<span class="st">&#39;__add__&#39;</span>, <span class="st">&#39;__class__&#39;</span>, ...]</a></code></pre></div>
 </section>
-<section id="section-5" class="slide level1">
+<section id="section-7" class="slide level1">
+<h1></h1>
+</section>
+<section id="section-8" class="slide level1">
 <h1></h1>
 <h2 id="in-fact-in-python-almost-everything-is-an-object">In fact, in Python almost everything is an object</h2>
 <ul>
@@ -175,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Much of the complexity is “hidden” inside the objects</li>
 </ul>
 </section>
-<section id="section-6" class="slide level1">
+<section id="section-9" class="slide level1">
 <h1></h1>
 <h2 id="defining-your-own-class">Defining your own class</h2>
 <ul>
@@ -186,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb2-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</a>
 <a class="sourceLine" id="cb2-3" title="3">        <span class="va">self</span>.name <span class="op">=</span> name</a></code></pre></div>
 </section>
-<section id="section-7" class="slide level1">
+<section id="section-10" class="slide level1">
 <h1></h1>
 <h2 id="initializers">Initializers</h2>
 <ul>
@@ -196,7 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Often __init__() is used to set up attributes (here to give each pet a name)</li>
 </ul>
 </section>
-<section id="section-8" class="slide level1">
+<section id="section-11" class="slide level1">
 <h1></h1>
 <h2 id="attributes-and-methods">Attributes and methods</h2>
 <ul>
@@ -209,7 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb3-4" title="4">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
 <a class="sourceLine" id="cb3-5" title="5">        <span class="bu">print</span>(<span class="st">&#39;Nom nom nom&#39;</span>)</a></code></pre></div>
 </section>
-<section id="section-9" class="slide level1">
+<section id="section-12" class="slide level1">
 <h1></h1>
 <h2 id="interacting-with-an-object">Interacting with an object</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">class</span> Pet():</a>
@@ -229,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </aside>
 </section>
-<section id="section-10" class="slide level1">
+<section id="section-13" class="slide level1">
 <h1></h1>
 <h2 id="dot-notation">Dot notation</h2>
 <ul>
@@ -243,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </section>
-<section id="section-11" class="slide level1">
+<section id="section-14" class="slide level1">
 <h1></h1>
 <h2 id="in-summary">In summary</h2>
 <aside class="notes">
@@ -254,6 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Defining Classes</li>
 <li>Attributes and Methods</li>
 <li>Interacting with Instances</li>
+<li><a href="exercise.html">Exercise</a></li>
 </ul>
 </section>
     </div>
