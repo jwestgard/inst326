@@ -8,13 +8,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
-  <style type="text/css">
+  <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <style type="text/css">
+  <style>
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
@@ -173,11 +173,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="section-5" class="slide level1">
 <h1></h1>
 <h2 id="classes-vs.-instances">Classes vs. instances</h2>
+<div>
 <ul>
-<li>Objects in OOP are members of <em>classes</em></li>
-<li>Features shared by members are mapped in a class definition</li>
-<li>Individual <em>instances</em> have their own attributes and state</li>
+<li class="fragment">Objects in OOP are members of <em>classes</em></li>
+<li class="fragment">Features shared by members are mapped in a class definition</li>
+<li class="fragment">Individual <em>instances</em> have their own attributes and state</li>
 </ul>
+</div>
 </section>
 <section id="section-6" class="slide level1">
 <h1></h1>
@@ -196,17 +198,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="section-7" class="slide level1">
 <h1></h1>
+<h2 id="in-fact-in-python-almost-everything-is-an-object">In fact, in Python almost everything is an object</h2>
+<div>
+<ul>
+<li class="fragment">Objects have shared behaviors defined by their classes</li>
+<li class="fragment">At the same time, individual instances have different content</li>
+<li class="fragment">Much of the complexity is “hidden” inside the objects</li>
+</ul>
+</div>
 </section>
 <section id="section-8" class="slide level1">
-<h1></h1>
-<h2 id="in-fact-in-python-almost-everything-is-an-object">In fact, in Python almost everything is an object</h2>
-<ul>
-<li>Objects have shared behaviors defined by their classes</li>
-<li>At the same time, individual instances have different content</li>
-<li>Much of the complexity is “hidden” inside the objects</li>
-</ul>
-</section>
-<section id="section-9" class="slide level1">
 <h1></h1>
 <h2 id="defining-your-own-class">Defining your own class</h2>
 <ul>
@@ -217,17 +218,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb2-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</a>
 <a class="sourceLine" id="cb2-3" title="3">        <span class="va">self</span>.name <span class="op">=</span> name</a></code></pre></div>
 </section>
-<section id="section-10" class="slide level1">
+<section id="section-9" class="slide level1">
 <h1></h1>
 <h2 id="initializers">Initializers</h2>
+<div>
 <ul>
-<li>The __init__() method is an initializer</li>
-<li>The double underscore (dunderscore) indicates that __init__ has a special purpose</li>
-<li>It is called automatically when a new instance is created</li>
-<li>Often __init__() is used to set up attributes (here to give each pet a name)</li>
+<li class="fragment">The __init__() method is an initializer</li>
+<li class="fragment">The double underscore (dunderscore) indicates that __init__ has a special purpose</li>
+<li class="fragment">It is called automatically when a new instance is created</li>
+<li class="fragment">Often __init__() is used to set up attributes (here to give each pet a name)</li>
 </ul>
+</div>
 </section>
-<section id="section-11" class="slide level1">
+<section id="section-10" class="slide level1">
 <h1></h1>
 <h2 id="attributes-and-methods">Attributes and methods</h2>
 <ul>
@@ -240,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb3-4" title="4">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
 <a class="sourceLine" id="cb3-5" title="5">        <span class="bu">print</span>(<span class="st">&#39;Nom nom nom&#39;</span>)</a></code></pre></div>
 </section>
-<section id="section-12" class="slide level1">
+<section id="section-11" class="slide level1">
 <h1></h1>
 <h2 id="interacting-with-an-object">Interacting with an object</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">class</span> Pet():</a>
@@ -260,21 +263,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </aside>
 </section>
-<section id="section-13" class="slide level1">
+<section id="section-12" class="slide level1">
 <h1></h1>
 <h2 id="dot-notation">Dot notation</h2>
+<div>
 <ul>
-<li>Notice in the previous example how eat() was called</li>
-<li>Notice as well how the attribute “.name” was accessed</li>
-<li>This is called dot notation
+<li class="fragment">Notice in the previous example how eat() was called</li>
+<li class="fragment">Notice as well how the attribute “.name” was accessed</li>
+<li class="fragment">This is called dot notation
 <ul>
-<li>used to access attributes of the <em>instance</em></li>
-<li>used to apply methods to the <em>instance</em></li>
-<li>“self” in the class definition means particular to the <em>instance</em></li>
+<li class="fragment">used to access attributes of the <em>instance</em></li>
+<li class="fragment">used to apply methods to the <em>instance</em></li>
+<li class="fragment">“self” in the class definition means particular to the <em>instance</em></li>
 </ul></li>
 </ul>
+</div>
 </section>
-<section id="section-14" class="slide level1">
+<section id="section-13" class="slide level1">
 <h1></h1>
 <h2 id="in-summary">In summary</h2>
 <aside class="notes">
