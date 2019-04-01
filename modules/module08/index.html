@@ -357,10 +357,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="section-21" class="slide level1">
 <h1></h1>
 <h2 id="delete">Delete</h2>
+<div class="left">
 <ul>
 <li>Now, let’s look at deleting data</li>
 <li>This works much as you would expect</li>
 </ul>
+</div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" title="1">dq <span class="op">=</span> <span class="st">&#39;&#39;&#39;DELETE FROM books </span></a>
 <a class="sourceLine" id="cb11-2" title="2"><span class="st">        WHERE author=&quot;Isaac Asimov&quot;&#39;&#39;&#39;</span></a>
 <a class="sourceLine" id="cb11-3" title="3">cursor.execute(dq)</a></code></pre></div>
@@ -401,11 +403,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The first task is to create a program that can read the data in the attached file and load it into a database.</p>
 </div>
 </section>
+<section id="normalizing-and-joining-data" class="slide level1">
+<h1>Normalizing and Joining Data</h1>
+</section>
 <section id="section-25" class="slide level1">
+<h1></h1>
+<h2 id="why-normalize">Why Normalize?</h2>
+</section>
+<section id="section-26" class="slide level1">
+<h1></h1>
+<h2 id="identifiers-keys">Identifiers (Keys)</h2>
+</section>
+<section id="section-27" class="slide level1">
+<h1></h1>
+<h2 id="using-keys-to-create-joins">Using Keys to Create Joins</h2>
+</section>
+<section id="section-28" class="slide level1">
+<h1></h1>
+<h2 id="creating-normalized-data">Creating Normalized Data</h2>
+</section>
+<section id="section-29" class="slide level1">
+<h1></h1>
+<h2 id="querying-normalized-data">Querying Normalized Data</h2>
+</section>
+<section id="section-30" class="slide level1">
+<h1></h1>
+<h2 id="deleting-normalizaed-data">Deleting Normalizaed Data</h2>
+</section>
+<section id="section-31" class="slide level1">
 <h1></h1>
 <h2 id="exercise-2-normalization-in-action">Exercise 2: Normalization in action</h2>
 <div class="left">
-<p>Second, note that there are multiple titles in the attached file by a single author. In order to normalize this data, the author names should be moved into their own table and related to the book data through a relationship.</p>
+<p>Consider again the bibliographic database, note that there are multiple titles in the attached file written by a single author. In order to normalize this data, the author names should be moved into their own table and related to the book data through a relationship.</p>
 <p>How can the authors data be related to the book titles? Can you create a program that will manage the normalization process at load time?</p>
 </div>
 </section>

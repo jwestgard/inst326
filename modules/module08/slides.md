@@ -306,8 +306,12 @@ print(cursor.fetchall())
 
 ## Delete
 
+::: left
+
 - Now, let's look at deleting data
 - This works much as you would expect
+
+:::
 
 ~~~~ {.python .numberLines}
 dq = '''DELETE FROM books 
@@ -357,13 +361,39 @@ The first task is to create a program that can read the data in the attached fil
 
 :::
 
+# Normalizing and Joining Data
+
+# 
+
+## Why Normalize?
+
+# 
+
+## Identifiers (Keys)
+
+# 
+
+## Using Keys to Create Joins
+
+# 
+
+## Creating Normalized Data
+
+# 
+
+## Querying Normalized Data
+
+# 
+
+## Deleting Normalizaed Data
+
 #
 
 ## Exercise 2: Normalization in action
 
 ::: left
 
-Second, note that there are multiple titles in the attached file by a single author. In order to normalize this data, the author names should be moved into their own table and related to the book data through a relationship. 
+Consider again the bibliographic database, note that there are multiple titles in the attached file written by a single author. In order to normalize this data, the author names should be moved into their own table and related to the book data through a relationship. 
 
 How can the authors data be related to the book titles? Can you create a program that will manage the normalization process at load time?
 
