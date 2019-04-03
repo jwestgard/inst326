@@ -8,13 +8,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
-  <style>
+  <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <style>
+  <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
@@ -437,7 +437,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 id="using-keys-to-create-joins">Using Keys to Create Joins</h2>
 <div>
 <ul>
-<li class="fragment">Rows can also reference rows in other tables – this referential row is called a foreign key</li>
+<li class="fragment">Rows can also reference rows in other tables – this cross-reference is called a foreign key</li>
 <li class="fragment">For example, the row “Hamlet” in the plays table might reference “William Shakespeare” in the authors table</li>
 </ul>
 </div>
@@ -453,6 +453,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="fragment">In addition to mapping out relationships, you need to create code to analyze the data and write it to the correct locations</li>
 </ul>
 </div>
+</section>
+<section id="section-29" class="slide level1">
+<h1></h1>
 <h2 id="creating-normalized-data-continued">Creating Normalized Data (continued)</h2>
 <div>
 <ul>
@@ -467,7 +470,254 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </section>
-<section id="section-29" class="slide level1">
+<section id="section-30" class="slide level1">
+<h1></h1>
+<h2 id="flat-data">Flat Data</h2>
+<table>
+<tr>
+<th>
+title
+</th>
+<th>
+author
+</th>
+<th>
+year
+</th>
+</tr>
+<tr>
+<td>
+Things Fall Apart
+</td>
+<td>
+Chinua Achebe
+</td>
+<td>
+1958
+</td>
+</tr>
+<tr>
+<td>
+Chimera
+</td>
+<td>
+John Barth
+</td>
+<td>
+1972
+</td>
+</tr>
+<tr>
+<td>
+The Sot-Weed Factor
+</td>
+<td>
+John Barth
+</td>
+<td>
+1960
+</td>
+</tr>
+<tr>
+<td>
+Under the Volcano
+</td>
+<td>
+Malcolm Lowery
+</td>
+<td>
+1947
+</td>
+</tr>
+</table>
+</section>
+<section id="section-31" class="slide level1">
+<h1></h1>
+<h2 id="add-primary-keys">Add Primary Keys</h2>
+<table>
+<tr>
+<th>
+id
+</th>
+<th>
+title
+</th>
+<th>
+author
+</th>
+<th>
+year
+</th>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+Things Fall Apart
+</td>
+<td>
+Chinua Achebe
+</td>
+<td>
+1958
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+Chimera
+</td>
+<td>
+John Barth
+</td>
+<td>
+1972
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+The Sot-Weed Factor
+</td>
+<td>
+John Barth
+</td>
+<td>
+1960
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+Under the Volcano
+</td>
+<td>
+Malcolm Lowry
+</td>
+<td>
+1947
+</td>
+</tr>
+</table>
+</section>
+<section id="section-32" class="slide level1">
+<h1></h1>
+<h2 id="move-authors-to-own-table">Move Authors to Own Table</h2>
+<table>
+<tr>
+<th>
+id
+</th>
+<th>
+title
+</th>
+<th>
+author_id
+</th>
+<th>
+year
+</th>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+Things Fall Apart
+</td>
+<td>
+1
+</td>
+<td>
+1958
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+Chimera
+</td>
+<td>
+2
+</td>
+<td>
+1972
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+The Sot-Weed Factor
+</td>
+<td>
+2
+</td>
+<td>
+1960
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+Under the Volcano
+</td>
+<td>
+3
+</td>
+<td>
+1947
+</td>
+</tr>
+</table>
+<table>
+<tr>
+<th>
+id
+</th>
+<th>
+name
+</th>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+Chinua Achebe
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+John Barth
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+Malcolm Lowry
+</td>
+</tr>
+</table>
+</section>
+<section id="section-33" class="slide level1">
 <h1></h1>
 <h2 id="selecting-normalized-data">Selecting Normalized Data</h2>
 <div>
@@ -475,13 +725,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="fragment">To lookup normalized data, you can use SQL’s JOIN syntax</li>
 <li class="fragment">You specify the fields to match on (linking foreign key to primary key)</li>
 </ul>
-</div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" title="1">jq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT authors.name, books.title, books.year</span></a>
 <a class="sourceLine" id="cb13-2" title="2"><span class="st">        FROM books JOIN authors </span></a>
 <a class="sourceLine" id="cb13-3" title="3"><span class="st">        ON books.author_id=authors.id&#39;&#39;&#39;</span></a>
 <a class="sourceLine" id="cb13-4" title="4">books <span class="op">=</span> cursor.execute(join_query, <span class="bu">filter</span>).fetchall()</a></code></pre></div>
+</div>
 </section>
-<section id="section-30" class="slide level1">
+<section id="section-34" class="slide level1">
 <h1></h1>
 <h2 id="deleting-normalized-data">Deleting Normalized Data</h2>
 <div>
@@ -492,7 +742,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="fragment">There is a danger that orphaned rows will clutter the database</li>
 </ul>
 </div>
-<h2 id="deleting-normalized-data-continue">Deleting Normalized Data (continue)</h2>
+</section>
+<section id="section-35" class="slide level1">
+<h1></h1>
+<h2 id="deleting-normalized-data-continued">Deleting Normalized Data (continued)</h2>
 <div>
 <ul>
 <li class="fragment">In order to control the creation of bad data, SQL allows you to specify constraints in your database schema</li>
@@ -501,7 +754,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </section>
-<section id="section-31" class="slide level1">
+<section id="section-36" class="slide level1">
 <h1></h1>
 <h2 id="exercise-2-normalization-in-action">Exercise 2: Normalization in action</h2>
 <div class="left">

@@ -395,7 +395,7 @@ The first task is to create a program that can read the data in the attached fil
 
 ::: incremental
 
-- Rows can also reference rows in other tables -- this referential row is called a foreign key 
+- Rows can also reference rows in other tables -- this cross-reference is called a foreign key 
 - For example, the row "Hamlet" in the plays table might reference "William Shakespeare" in the authors table
 
 :::
@@ -413,6 +413,8 @@ The first task is to create a program that can read the data in the attached fil
 
 :::
 
+#
+
 ## Creating Normalized Data (continued)
 
 ::: incremental
@@ -428,6 +430,133 @@ The first task is to create a program that can read the data in the attached fil
 
 # 
 
+## Flat Data
+
+<table>
+<tr>
+    <th>title</th>
+    <th>author</th>
+    <th>year</th>
+</tr>
+<tr>
+    <td>Things Fall Apart</td>
+    <td>Chinua Achebe</td>
+    <td>1958</td>
+</tr>
+<tr>
+    <td>Chimera</td>
+    <td>John Barth</td>
+    <td>1972</td>
+</tr>
+<tr>
+    <td>The Sot-Weed Factor</td>
+    <td>John Barth</td>
+    <td>1960</td>
+</tr>
+<tr>
+    <td>Under the Volcano</td>
+    <td>Malcolm Lowery</td>
+    <td>1947</td>
+</tr>
+</table>
+
+# 
+
+## Add Primary Keys
+
+<table>
+<tr>
+    <th>id</th>
+    <th>title</th>
+    <th>author</th>
+    <th>year</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>Things Fall Apart</td>
+    <td>Chinua Achebe</td>
+    <td>1958</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>Chimera</td>
+    <td>John Barth</td>
+    <td>1972</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>The Sot-Weed Factor</td>
+    <td>John Barth</td>
+    <td>1960</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>Under the Volcano</td>
+    <td>Malcolm Lowry</td>
+    <td>1947</td>
+</tr>
+</table>
+
+# 
+
+## Move Authors to Own Table
+
+<table>
+<tr>
+    <th>id</th>
+    <th>title</th>
+    <th>author_id</th>
+    <th>year</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>Things Fall Apart</td>
+    <td>1</td>
+    <td>1958</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>Chimera</td>
+    <td>2</td>
+    <td>1972</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>The Sot-Weed Factor</td>
+    <td>2</td>
+    <td>1960</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>Under the Volcano</td>
+    <td>3</td>
+    <td>1947</td>
+</tr>
+</table>
+
+
+<table>
+<tr>
+    <th>id</th>
+    <th>name</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>Chinua Achebe</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>John Barth</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>Malcolm Lowry</td>
+</tr>
+</table>
+
+
+# 
+
 ## Selecting Normalized Data
 
 ::: incremental
@@ -435,14 +564,14 @@ The first task is to create a program that can read the data in the attached fil
 - To lookup normalized data, you can use SQL's JOIN syntax
 - You specify the fields to match on (linking foreign key to primary key)
 
-:::
-
 ~~~~ {.python .numberLines}
 jq = '''SELECT authors.name, books.title, books.year
         FROM books JOIN authors 
         ON books.author_id=authors.id'''
 books = cursor.execute(join_query, filter).fetchall()
 ~~~~
+
+:::
 
 #
 
@@ -457,7 +586,9 @@ books = cursor.execute(join_query, filter).fetchall()
 
 :::
 
-## Deleting Normalized Data (continue)
+#
+
+## Deleting Normalized Data (continued)
 
 ::: incremental
 
