@@ -8,13 +8,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
-  <style type="text/css">
+  <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <style type="text/css">
+  <style>
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="fragment">runs locally and stores data in files</li>
 <li class="fragment">no separate database server required</li>
 <li class="fragment">already installed on your system (as part of Python)</li>
-<li class="fragment">project website: <a href="https://www.sqlite.org/index.html">https://www.sqlite.org</a></li>
+<li class="fragment">project website: <a href="https://sqlite.org/mostdeployed.html">https://www.sqlite.org</a></li>
 </ul>
 </div>
 </section>
@@ -409,26 +409,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="section-25" class="slide level1">
 <h1></h1>
 <h2 id="why-normalize">Why Normalize?</h2>
+<div>
+<ul>
+<li class="fragment">There are many reasons related to optimization</li>
+<li class="fragment">But the simplest way to think about it is this:
+<ol type="1">
+<li class="fragment">Consider that one author can write many books</li>
+<li class="fragment">Conversely one book can have many authors</li>
+<li class="fragment">To model such relationships effectively, author data should be stored apart from book data</li>
+</ol></li>
+</ul>
+</div>
 </section>
 <section id="section-26" class="slide level1">
 <h1></h1>
 <h2 id="identifiers-keys">Identifiers (Keys)</h2>
+<div>
+<ul>
+<li class="fragment">The first requirement for modeling relationships between tables is to have unambiguous identifiers</li>
+<li class="fragment">These identifiers, called keys, allow data to be looked up</li>
+<li class="fragment">The unique id for a particular row in a table is called a primary key</li>
+</ul>
+</div>
 </section>
 <section id="section-27" class="slide level1">
 <h1></h1>
 <h2 id="using-keys-to-create-joins">Using Keys to Create Joins</h2>
+<div>
+<ul>
+<li class="fragment">Rows can also reference rows in other tables – this referential row is called a foreign key</li>
+<li class="fragment">For example, the row “Hamlet” in the plays table might reference “William Shakespeare” in the authors table</li>
+</ul>
+</div>
 </section>
 <section id="section-28" class="slide level1">
 <h1></h1>
 <h2 id="creating-normalized-data">Creating Normalized Data</h2>
+<div>
+<ul>
+<li class="fragment">When designing a database, before doing any coding tables and their relationships should be mapped out</li>
+<li class="fragment">The diagram created during this mapping process is called an ERD</li>
+<li class="fragment">This stands for Entity-Relationship Diagram</li>
+<li class="fragment">In addition to mapping out relationships, you need to create code to analyze the data and write it to the correct locations</li>
+</ul>
+</div>
+<h2 id="creating-normalized-data-continued">Creating Normalized Data (continued)</h2>
+<div>
+<ul>
+<li class="fragment">For example, in working with our list of books and authors, you might:
+<ol type="1">
+<li class="fragment">Store the authors names in a separate table</li>
+<li class="fragment">As you read the data file, lookup the author</li>
+<li class="fragment">If the author is present already, get the id</li>
+<li class="fragment">If the author is not present, add the author and get the id</li>
+<li class="fragment">Add the book to the books table, referencing the author’s id</li>
+</ol></li>
+</ul>
+</div>
 </section>
 <section id="section-29" class="slide level1">
 <h1></h1>
-<h2 id="querying-normalized-data">Querying Normalized Data</h2>
+<h2 id="selecting-normalized-data">Selecting Normalized Data</h2>
+<div>
+<ul>
+<li class="fragment">To lookup normalized data, you can use SQL’s JOIN syntax</li>
+<li class="fragment">You specify the fields to match on (linking foreign key to primary key)</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" title="1">jq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT authors.name, books.title, books.year</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="st">        FROM books JOIN authors </span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="st">        ON books.author_id=authors.id&#39;&#39;&#39;</span></a>
+<a class="sourceLine" id="cb13-4" title="4">books <span class="op">=</span> cursor.execute(join_query, <span class="bu">filter</span>).fetchall()</a></code></pre></div>
 </section>
 <section id="section-30" class="slide level1">
 <h1></h1>
-<h2 id="deleting-normalizaed-data">Deleting Normalizaed Data</h2>
+<h2 id="deleting-normalized-data">Deleting Normalized Data</h2>
+<div>
+<ul>
+<li class="fragment">Normalizing data introduces some additional complications</li>
+<li class="fragment">Consider our authors and books examples</li>
+<li class="fragment">If you remove a row from the authors table, what happens to the author’s books?</li>
+<li class="fragment">There is a danger that orphaned rows will clutter the database</li>
+</ul>
+</div>
+<h2 id="deleting-normalized-data-continue">Deleting Normalized Data (continue)</h2>
+<div>
+<ul>
+<li class="fragment">In order to control the creation of bad data, SQL allows you to specify constraints in your database schema</li>
+<li class="fragment">Among the constraints is one called CASCADE DELETE</li>
+<li class="fragment">In essence, by specifying this constraint, you would force SQLite to remove books that were written by a deleted author when removing the author</li>
+</ul>
+</div>
 </section>
 <section id="section-31" class="slide level1">
 <h1></h1>

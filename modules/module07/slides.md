@@ -12,7 +12,7 @@ transition: slide
 
 ::: notes
 
-Click through to Definition 2: To take or receive (property, esp. real property, or a right, privilege, rank, or title) as the heir of the former possessor (usually an ancestor), at his decease; to get, or come into possession of, by legal descent or succession.
+Click through to Definition 2b:  To derive (a quality or character, physical or mental) from one's progenitors by natural descent; to derive or possess by transmission from parents or ancestry.
 
 :::
 
