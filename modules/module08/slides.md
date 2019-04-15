@@ -37,7 +37,7 @@ For our work with databases, we'll be using three tools:
 - runs locally and stores data in files
 - no separate database server required
 - already installed on your system (as part of Python)
-- project website: [https://www.sqlite.org](https://www.sqlite.org/index.html)
+- project website: [https://www.sqlite.org](https://sqlite.org/mostdeployed.html)
 
 :::
 
@@ -367,25 +367,236 @@ The first task is to create a program that can read the data in the attached fil
 
 ## Why Normalize?
 
+::: incremental
+
+- There are many reasons related to optimization
+- But the simplest way to think about it is this:
+    1. Consider that one author can write many books
+    2. Conversely one book can have many authors
+    3. To model such relationships effectively, author data should be stored apart from book data
+
+:::
+
 # 
 
 ## Identifiers (Keys)
+
+::: incremental
+
+- The first requirement for modeling relationships between tables is to have unambiguous identifiers
+- These identifiers, called keys, allow data to be looked up
+- The unique id for a particular row in a table is called a primary key
+
+:::
 
 # 
 
 ## Using Keys to Create Joins
 
+::: incremental
+
+- Rows can also reference rows in other tables -- this cross-reference is called a foreign key 
+- For example, the row "Hamlet" in the plays table might reference "William Shakespeare" in the authors table
+
+:::
+
 # 
 
 ## Creating Normalized Data
 
+::: incremental
+
+- When designing a database, before doing any coding tables and their relationships should be mapped out
+- The diagram created during this mapping process is called an ERD
+- This stands for Entity-Relationship Diagram
+- In addition to mapping out relationships, you need to create code to analyze the data and write it to the correct locations
+
+:::
+
+#
+
+## Creating Normalized Data (continued)
+
+::: incremental
+
+- For example, in working with our list of books and authors, you might:
+    1. Store the authors names in a separate table
+    2. As you read the data file, lookup the author
+    3. If the author is present already, get the id
+    4. If the author is not present, add the author and get the id
+    5. Add the book to the books table, referencing the author's id
+
+:::
+
 # 
 
-## Querying Normalized Data
+## Flat Data
+
+<table>
+<tr>
+    <th>title</th>
+    <th>author</th>
+    <th>year</th>
+</tr>
+<tr>
+    <td>Things Fall Apart</td>
+    <td>Chinua Achebe</td>
+    <td>1958</td>
+</tr>
+<tr>
+    <td>Chimera</td>
+    <td>John Barth</td>
+    <td>1972</td>
+</tr>
+<tr>
+    <td>The Sot-Weed Factor</td>
+    <td>John Barth</td>
+    <td>1960</td>
+</tr>
+<tr>
+    <td>Under the Volcano</td>
+    <td>Malcolm Lowery</td>
+    <td>1947</td>
+</tr>
+</table>
 
 # 
 
-## Deleting Normalizaed Data
+## Add Primary Keys
+
+<table>
+<tr>
+    <th>id</th>
+    <th>title</th>
+    <th>author</th>
+    <th>year</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>Things Fall Apart</td>
+    <td>Chinua Achebe</td>
+    <td>1958</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>Chimera</td>
+    <td>John Barth</td>
+    <td>1972</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>The Sot-Weed Factor</td>
+    <td>John Barth</td>
+    <td>1960</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>Under the Volcano</td>
+    <td>Malcolm Lowry</td>
+    <td>1947</td>
+</tr>
+</table>
+
+# 
+
+## Move Authors to Own Table
+
+<table>
+<tr>
+    <th>id</th>
+    <th>title</th>
+    <th>author_id</th>
+    <th>year</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>Things Fall Apart</td>
+    <td>1</td>
+    <td>1958</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>Chimera</td>
+    <td>2</td>
+    <td>1972</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>The Sot-Weed Factor</td>
+    <td>2</td>
+    <td>1960</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>Under the Volcano</td>
+    <td>3</td>
+    <td>1947</td>
+</tr>
+</table>
+
+
+<table>
+<tr>
+    <th>id</th>
+    <th>name</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>Chinua Achebe</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>John Barth</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>Malcolm Lowry</td>
+</tr>
+</table>
+
+
+# 
+
+## Selecting Normalized Data
+
+::: incremental
+
+- To lookup normalized data, you can use SQL's JOIN syntax
+- You specify the fields to match on (linking foreign key to primary key)
+
+~~~~ {.python .numberLines}
+jq = '''SELECT authors.name, books.title, books.year
+        FROM books JOIN authors 
+        ON books.author_id=authors.id'''
+books = cursor.execute(join_query, filter).fetchall()
+~~~~
+
+:::
+
+#
+
+## Deleting Normalized Data
+
+::: incremental
+
+- Normalizing data introduces some additional complications
+- Consider our authors and books examples
+- If you remove a row from the authors table, what happens to the author's books?
+- There is a danger that orphaned rows will clutter the database
+
+:::
+
+#
+
+## Deleting Normalized Data (continued)
+
+::: incremental
+
+- In order to control the creation of bad data, SQL allows you to specify constraints in your database schema
+- Among the constraints is one called CASCADE DELETE
+- In essence, by specifying this constraint, you would force SQLite to remove books that were written by a deleted author when removing the author
+
+:::
 
 #
 
