@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Modules and Testing</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../lib/reveal/css/theme/inst326.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lib/reveal/css/print/pdf.css' : '../../lib/reveal/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lib/reveal/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Modules and Testing</h1>
+</section>
+
+<section id="overview" class="slide level2">
+<h2>Overview</h2>
+<div class="columns">
+<div class="column">
+<p><strong>Structuring Python Programs</strong></p>
+<div>
+<ul>
+<li class="fragment">Imports</li>
+<li class="fragment">Modules</li>
+<li class="fragment">Packages</li>
+</ul>
+</div>
+</div><div class="column">
+<p><strong>Testing Python <br> Programs</strong></p>
+<div>
+<ul>
+<li class="fragment">Why test?</li>
+<li class="fragment">Building Tests with Assert</li>
+<li class="fragment">Testing Packages</li>
+</ul>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Today’s lecture will have two parts. In order to understand testing, we first have to talk about Python’s module and import system.</p>
+</aside>
+</section>
+<section id="structuring-python-programs" class="slide level2">
+<h2>Structuring Python Programs</h2>
+<div class="left">
+<p>The Python import system can be used for:</p>
+</div>
+<div>
+<ol type="1">
+<li class="fragment">Standard Library Modules
+<ul>
+<li class="fragment"><em>Examples: sys, os, re, json, csv</em></li>
+</ul></li>
+<li class="fragment">Installed Modules
+<ul>
+<li class="fragment"><em>Examples: pandas, requests, lxml</em></li>
+</ul></li>
+<li class="fragment">Your Own Modules
+<ul>
+<li class="fragment"><em>Python files you create in the same directory</em></li>
+</ul></li>
+</ol>
+</div>
+<aside class="notes">
+<p>As you’ll recall, one principle of good program design is to avoid repeated code. Python facilitates code reuse through its import system.</p>
+<p>To reuse code from another file, you can <em>import</em> all or part of the file into your program. Officially, files of python code are called <em>modules</em>.</p>
+<p>As we have seen already, Python comes with “batteries included” meaning there is a wide variety of useful modules in the standard library that can be imported. Other modules (for example requests) need to be installed with a package manager such as pip.</p>
+<p>But how do you reuse code that you have written? The answer is that you can import that code in much the same way. In fact, any python file in the same directory can be imported by name (minus the .py extension). Importing files from other places is a bit more complicated.</p>
+</aside>
+</section>
+<section id="import-examples" class="slide level2">
+<h2>Import Examples</h2>
+<div class="left">
+<p>Import an entire module from the standard library:</p>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> random</a>
+<a class="sourceLine" id="cb1-2" title="2">x <span class="op">=</span> random.randint(<span class="dv">1</span>,<span class="dv">100</span>)       </a></code></pre></div>
+<div class="fragment">
+<p>Note the namespacing: “random.randint()”</p>
+</div>
+</section>
+<section id="import-examples-1" class="slide level2">
+<h2>Import Examples</h2>
+<div class="left">
+<p>Import one part of a module without namespacing:</p>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="im">from</span> random <span class="im">import</span> randint</a>
+<a class="sourceLine" id="cb2-2" title="2">x <span class="op">=</span> randint(<span class="dv">1</span>,<span class="dv">100</span>)  </a></code></pre></div>
+<div class="fragment">
+<p>The randint() function is now in top-level scope.</p>
+</div>
+<aside class="notes">
+<p>Be careful you don’t unintentionally override a builtin function or class! There is no built-in randint function, but consider what might happen if you imported a function called print() this way.</p>
+</aside>
+</section>
+<section id="import-examples-2" class="slide level2">
+<h2>Import Examples</h2>
+<div class="left">
+<p>Import a function or class under a different name</p>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="im">from</span> random <span class="im">import</span> randint <span class="im">as</span> rand</a>
+<a class="sourceLine" id="cb3-2" title="2">x <span class="op">=</span> rand(<span class="dv">1</span>,<span class="dv">100</span>)</a></code></pre></div>
+<div class="fragment">
+<p>“rand” becomes an alias for random.randint()</p>
+</div>
+</section>
+<section id="import-examples-3" class="slide level2">
+<h2>Import Examples</h2>
+<div class="left">
+<p>Modules outside the standard library must be installed:</p>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> pandas</a>
+<a class="sourceLine" id="cb4-2" title="2">Traceback (most recent call last):</a>
+<a class="sourceLine" id="cb4-3" title="3">  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-4" title="4">ModuleNotFoundError: No module named <span class="st">&#39;pandas&#39;</span></a></code></pre></div>
+<div class="fragment">
+<p>Unless it is installed on your system, pandas is not available.</p>
+</div>
+</section>
+<section id="import-examples-4" class="slide level2">
+<h2>Import Examples</h2>
+<div class="left">
+<p>You can use pip/pip3 (Python Package Manager) to install non-standard modules.</p>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1">$ pip3 install pandas</a>
+<a class="sourceLine" id="cb5-2" title="2">Collecting pandas</a>
+<a class="sourceLine" id="cb5-3" title="3">... lots of lines ...</a>
+<a class="sourceLine" id="cb5-4" title="4">Installing collected packages: ...</a>
+<a class="sourceLine" id="cb5-5" title="5">Successfully installed ... pandas<span class="dv">-0</span>.<span class="fl">23.4</span> ...</a></code></pre></div>
+<div class="fragment">
+<p>Anyone who wants to run your code must similarly install pandas. This is known as a <em>dependency</em>.</p>
+</div>
+<aside class="notes">
+<p>Python has tools for managing dependencies and making them easier for end-users to install. Such tools are outside the scope of this course.</p>
+</aside>
+</section>
+<section id="importing-your-own-modules" class="slide level2">
+<h2>Importing Your Own Modules</h2>
+<div>
+<ul>
+<li class="fragment">Imports are not just for other people’s code</li>
+<li class="fragment">As programs become complex, single-file programming gets impractical</li>
+<li class="fragment">To facilitate reuse and make code easier to understand, divide large programs into modules</li>
+<li class="fragment">Modules are just different .py files stored together</li>
+</ul>
+</div>
+</section>
+<section id="importing-your-own-modules-1" class="slide level2">
+<h2>Importing Your Own Modules</h2>
+<div class="left">
+<p>Imagine you have a module called petshop.py that depends on pets.py, which includes two classes (Cat and Dog).</p>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> pets</a>
+<a class="sourceLine" id="cb6-2" title="2">c <span class="op">=</span> pets.Cat(<span class="st">&#39;Fluffy&#39;</span>)</a>
+<a class="sourceLine" id="cb6-3" title="3">d <span class="op">=</span> pets.Dog(<span class="st">&#39;Spot&#39;</span>)</a></code></pre></div>
+</section>
+<section id="pythons-search-path" class="slide level2">
+<h2>Python’s Search Path</h2>
+<div class="left">
+<p>During imports, Python searches the following:</p>
+</div>
+<div>
+<ol type="1">
+<li class="fragment">Home directory (where main script is located)</li>
+<li class="fragment">PYTHONPATH (environment variable)</li>
+<li class="fragment">Standard library (located inside your copy of Python)</li>
+<li class="fragment">Locations in a .pth file (a text file listing one directory per line)</li>
+</ol>
+</div>
+</section>
+<section id="python-packages" class="slide level2">
+<h2>Python Packages</h2>
+<div>
+<ul>
+<li class="fragment">Modules can be grouped</li>
+<li class="fragment">A group of modules in a directory is called a <em>package</em></li>
+<li class="fragment">To be recognized as a package, you must include a file named __init__.py</li>
+<li class="fragment">To run a package, use the -m flag at runtime</li>
+</ul>
+</div>
+</section>
+<section id="init-files" class="slide level2">
+<h2>Init Files</h2>
+<div>
+<ul>
+<li class="fragment">This allows Python to recognize the directory as a package</li>
+<li class="fragment">It can contain code but is not required to</li>
+<li class="fragment">Because it is run at load time, it is used for initialization tasks</li>
+</ul>
+</div>
+</section>
+<section id="testing" class="slide level2">
+<h2>Testing</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="../../lib/reveal/lib/js/head.min.js"></script>
+  <script src="../../lib/reveal/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lib/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lib/reveal/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lib/reveal/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
