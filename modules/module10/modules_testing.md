@@ -39,6 +39,8 @@ transition: slide
 Today's lecture will have two parts. In order to understand testing, we first have to talk about Python's module and import system.
 :::
 
+# Modules
+
 ## Structuring Python Programs
 
 ::: left
@@ -189,6 +191,11 @@ c = pets.Cat('Fluffy')
 d = pets.Dog('Spot')
 ```
 
+::: fragment
+By importing "pets", the classes in pets.py become available in petshop.py.
+:::
+
+
 ## Python’s Search Path
 
 ::: left
@@ -221,6 +228,146 @@ During imports, Python searches the following:
 * Because it is run at load time, it is used for initialization tasks
 :::
 
-## Testing
+# Testing
+
+## Many Ways to Test
+
+::: incremental
+* Using shell tools
+* Build your own tests using assert statements, try/except
+* In "if name equals main"
+* Using an external library: 
+    1. [unittest](https://docs.python.org/3.7/library/unittest.html)
+    1. [pytest](https://pytest.org)
+:::
+
+## Using Assert
+
+::: incremental
+* Assert is a means of declaring expected state
+* Primary use case is for debugging
+* Declares an expectation, and raises "AssertionError" if expectation is False
+* Assert is designed to catch errors that would otherwise be missed
+* There is no need to test for things that would raise an exception anyway
+:::
+
+## Using Assert
+
+::: left
+
+Imagine a function designed to draw a triangle. You can create an assert statement to check that the interior angles add up to 180°:
+
+:::
+
+``` {.python .numberLines}
+assert sum(angles) == 180, 'angles must total 180'
+```
+
+::: fragment
+assert len(angles) == 3, 'must have 3 angles'
+:::
+
+::: notes
+Can you think of other assertions that could be made here?
+:::
+
+## Examples (assert)
+
+``` {.python .numberLines}
+
+def mysum(a, b):
+    return a + b
+
+assert mysum(2,2) == 4
+assert mysum(2,3) == 6  
+```
+
+::: fragment
+The second (incorrect) assertion raises an error
+:::
+
+
+## Using "If Name Equals Main"
+
+::: incremental
+* For modules to be imported, the main block can be used for tests
+* Works only for modules not designed to be run by themselves
+* Put tests in the "name equals main" block
+* These tests will be ignored when the module is imported
+* But they can conveniently be activated by running the module directly
+:::
+
+
+## Examples (Name Equals Main)
+
+::: left
+
+Imagine a function designed to evaluate whether or not a number is prime.
+
+:::
+
+``` {.python .numberLines}
+def is_prime(x):
+    # body of function here ...
+
+if __name__ == "__main__":
+    assert is_prime(2) == True
+    assert is_prime(7) == True
+    assert is_prime(4) == False 
+
+```
+
+::: notes
+
+When you want to use this function, you import the entire module or just the one function from the module.
+
+When you want to test your function, you run the modules directly, which causes the code in the if name equals main block to be executed.
+
+:::
+
+
+## Testing with pytest
+
+::: incremental
+* Works similarly to the use of asserts in if name equals main
+* Works with modules intended for import as well as those intended to be run directly
+* Define testing functions in the module named according to one of these patterns: 'test\_\*.py' or  '\*\_test.py'
+:::
+
+
+## Testing with pytest (continued)
+
+::: incremental
+* Will execute all such functions when run against a module or package
+* Prints a detailed report of the results to the console
+* Has advanced features, including integration with unittest
+:::
+
+
+## Examples (pytest)
+
+``` {.python .numberLines}
+def is_prime(x):
+	if x == 2:
+		return True
+	else:
+		for i in range(2,n):
+			if x%i == 0:
+				return False
+		return True
+
+def test_is_prime():
+	assert is_prime(2) == True
+	assert is_prime(7) == True
+	assert is_prime(4) == False
+```
+
+::: notes
+
+The function checks all integers between two and the number being evaluated, returning False as soon as the number divides evenly. Once all numbers have been checked, it returns True.
+
+A second function named according to a pytest pattern checks two cases that are prime and one that is not. Good tests seek out "edge cases" to test.
+
+:::
 
 
