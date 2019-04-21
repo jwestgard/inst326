@@ -5,13 +5,15 @@ theme: inst326
 transition: slide
 ---
 
+#
+
 ## Overview
 
 ::: columns
 
 :::: column
 
-**Structuring Python Programs**
+**Structuring Python <br /> Programs**
 
 :::: incremental
 * Imports
@@ -23,7 +25,7 @@ transition: slide
 
 :::: column
 
-**Testing Python <br> Programs**
+**Testing Python <br /> Programs**
 
 :::: incremental
 * Why test?
@@ -40,6 +42,12 @@ Today's lecture will have two parts. In order to understand testing, we first ha
 :::
 
 # Modules
+
+::: notes
+Before we can look at testing code, we need to understand something more about how large python programs are organized.
+:::
+
+#
 
 ## Structuring Python Programs
 
@@ -70,6 +78,8 @@ But how do you reuse code that you have written?  The answer is that you can imp
 
 :::
 
+#
+
 ## Import Examples
 
 ::: left
@@ -84,15 +94,15 @@ x = random.randint(1,100)
 ```
 
 ::: fragment
-Note the namespacing: "random.randint()"
+Note the namespacing, "random.randint()"
 :::
+
+#
 
 ## Import Examples 
 
 ::: left
-
 Import one part of a module without namespacing:
-
 :::
 
 ``` {.python .numberLines}
@@ -108,12 +118,12 @@ The randint() function is now in top-level scope.
 Be careful you don't unintentionally override a builtin function or class! There is no built-in randint function, but consider what might happen if you imported a function called print() this way.
 ::: 
 
+#
+
 ## Import Examples
 
 ::: left
-
-Import a function or class under a different name
-
+Import a function or class under a different name:
 :::
 
 ``` {.python .numberLines}
@@ -125,12 +135,12 @@ x = rand(1,100)
 "rand" becomes an alias for random.randint()
 :::
 
+#
+
 ## Import Examples
 
 ::: left
-
 Modules outside the standard library must be installed:
-
 :::
 
 ``` {.python .numberLines}
@@ -144,12 +154,12 @@ ModuleNotFoundError: No module named 'pandas'
 Unless it is installed on your system, pandas is not available.
 :::
 
+#
+
 ## Import Examples
 
 ::: left
-
-You can use pip/pip3 (Python Package Manager) to install non-standard modules.
-
+You can use pip/pip3 (Python Package Manager) to install non-standard modules:
 :::
 
 ``` {.python .numberLines}
@@ -168,6 +178,8 @@ Anyone who wants to run your code must similarly install pandas. This is known a
 Python has tools for managing dependencies and making them easier for end-users to install. Such tools are outside the scope of this course.
 :::
 
+#
+
 ## Importing Your Own Modules
 
 ::: incremental
@@ -177,12 +189,12 @@ Python has tools for managing dependencies and making them easier for end-users 
 * Modules are just different .py files stored together
 :::
 
+#
+
 ## Importing Your Own Modules
 
 ::: left
-
 Imagine you have a module called petshop.py that depends on pets.py, which includes two classes (Cat and Dog).
-
 :::
 
 ``` {.python .numberLines}
@@ -195,13 +207,12 @@ d = pets.Dog('Spot')
 By importing "pets", the classes in pets.py become available in petshop.py.
 :::
 
+#
 
 ## Python’s Search Path
 
 ::: left
-
 During imports, Python searches the following:
-
 :::
 
 ::: incremental
@@ -210,6 +221,8 @@ During imports, Python searches the following:
 1. Standard library (located inside your copy of Python)
 1. Locations in a .pth file (a text file listing one directory per line)
 :::
+
+#
 
 ## Python Packages
 
@@ -220,15 +233,66 @@ During imports, Python searches the following:
 * To run a package, use the -m flag at runtime
 :::
 
+#
+
 ## Init Files
 
 ::: incremental
-* This allows Python to recognize the directory as a package
+* \_\_init\_\_.py allows Python to recognize the directory as a package
 * It can contain code but is not required to
-* Because it is run at load time, it is used for initialization tasks
+* Because it is run at load time, it is commonly used for initialization tasks
 :::
 
 # Testing
+
+# 
+
+<a href="https://en.wikipedia.org/wiki/Grace_Hopper" target="new"><img width="40%" src="images/Grace_Murray_Hopper,_in_her_office_in_Washington_DC,_1978,_©Lynn_Gilbert.jpg"></a>
+
+::: notes
+Admiral Grace Hopper was an early computer scientist, a primary author of the COBOL language, and creator of programming language conformance standards for the US Navy (later maintained by NIST). She was an early proponent of the development of human-readable computer languages.
+
+Image attribution and source: By Lynn Gilbert, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=57587522
+:::
+
+# 
+
+<a href="https://americanhistory.si.edu/collections/search/object/nmah_334663" target="new"><img width="80%" src="images/NMAH-92-13131.jpg" alt="Image of computer log book with moth taped inside"></a>
+
+::: notes
+In 1947 engineers working on Grace Hopper's team at Harvard taped this 'bug' into their log book.  The term "bugs" for faults in complex machines or systems had been in use for a while, and the operators who recorded this were clearly amused by the discovery, thinking it notable that they had found an actual bug.
+
+Orignal at Smithsonian, National Museum of American History, catalog number 1994.0191.1.
+:::
+
+# 
+
+## What is Testing?
+
+::: incremental
+* Not the same as debugging
+* There are many styles of testing (acceptance testing, load testing, penetration testing)
+* The style described here is "unit" testing
+* Unit testing means writing tests for discrete, small "units" of code (often individual functions or methods)
+:::
+
+# 
+
+## Why Test?
+
+::: incremental
+* Bugs can be costly (testing helps catch them early)
+* Testing can save time on debugging 
+* But testing itself also takes a lot of time
+* Testing is a form of risk management
+* Test-driven development (TDD)
+:::
+
+::: notes
+Test-driven development says that the tests should be written first, and the program developed against the tests. Start with failing tests, and program is done when the tests all pass.
+:::
+
+#
 
 ## Many Ways to Test
 
@@ -241,22 +305,24 @@ During imports, Python searches the following:
     1. [pytest](https://pytest.org)
 :::
 
+#
+
 ## Using Assert
 
 ::: incremental
-* Assert is a means of declaring expected state
+* Assert statements are a means of declaring expected state
 * Primary use case is for debugging
 * Declares an expectation, and raises "AssertionError" if expectation is False
 * Assert is designed to catch errors that would otherwise be missed
 * There is no need to test for things that would raise an exception anyway
 :::
 
+#
+
 ## Using Assert
 
 ::: left
-
-Imagine a function designed to draw a triangle. You can create an assert statement to check that the interior angles add up to 180°:
-
+Imagine a function designed to draw a triangle. You might create an assert statement to check that the interior angles add up to 180°:
 :::
 
 ``` {.python .numberLines}
@@ -271,10 +337,11 @@ assert len(angles) == 3, 'must have 3 angles'
 Can you think of other assertions that could be made here?
 :::
 
+#
+
 ## Examples (assert)
 
 ``` {.python .numberLines}
-
 def mysum(a, b):
     return a + b
 
@@ -286,6 +353,7 @@ assert mysum(2,3) == 6
 The second (incorrect) assertion raises an error
 :::
 
+#
 
 ## Using "If Name Equals Main"
 
@@ -297,13 +365,12 @@ The second (incorrect) assertion raises an error
 * But they can conveniently be activated by running the module directly
 :::
 
+#
 
 ## Examples (Name Equals Main)
 
 ::: left
-
-Imagine a function designed to evaluate whether or not a number is prime.
-
+Imagine a function designed to evaluate whether or not a number is prime:
 :::
 
 ``` {.python .numberLines}
@@ -318,13 +385,12 @@ if __name__ == "__main__":
 ```
 
 ::: notes
-
 When you want to use this function, you import the entire module or just the one function from the module.
 
 When you want to test your function, you run the modules directly, which causes the code in the if name equals main block to be executed.
-
 :::
 
+#
 
 ## Testing with pytest
 
@@ -334,6 +400,7 @@ When you want to test your function, you run the modules directly, which causes 
 * Define testing functions in the module named according to one of these patterns: 'test\_\*.py' or  '\*\_test.py'
 :::
 
+#
 
 ## Testing with pytest (continued)
 
@@ -343,6 +410,7 @@ When you want to test your function, you run the modules directly, which causes 
 * Has advanced features, including integration with unittest
 :::
 
+#
 
 ## Examples (pytest)
 
@@ -363,11 +431,7 @@ def test_is_prime():
 ```
 
 ::: notes
-
 The function checks all integers between two and the number being evaluated, returning False as soon as the number divides evenly. Once all numbers have been checked, it returns True.
 
 A second function named according to a pytest pattern checks two cases that are prime and one that is not. Good tests seek out "edge cases" to test.
-
 :::
-
-
