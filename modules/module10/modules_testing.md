@@ -435,3 +435,20 @@ The function checks all integers between two and the number being evaluated, ret
 
 A second function named according to a pytest pattern checks two cases that are prime and one that is not. Good tests seek out "edge cases" to test.
 :::
+
+# 
+
+## Examples (pytest)
+
+``` {.python .numberLines}
+$ pytest check_prime.py
+======== test session starts ========
+platform darwin -- Python 3.7.0, pytest-3.8.2, 
+    py-1.7.0, pluggy-0.7.1
+rootdir: /Users/westgard/Desktop, inifile:
+collected 1 item                                                                         
+
+check_prime.py .   [100%]
+
+======== 1 passed in 0.03 seconds ========
+```
