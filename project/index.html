@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>INST326 Final Project</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../css/page.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">INST326 Final Project</h1>
+</section>
+
+<section class="slide level3">
+
+<p>In the last month of class we will work on a project (either on your own, or in groups of up to three) in which you will brainstorm, plan, document and complete a Python program that performs some useful and non-trivial task. You may choose to create a program that relates to topics or materials covered in INST326, or another one of your classes, or you may choose to do something entirely new.</p>
+</section>
+<section id="ideas" class="slide level3">
+<h3>Ideas</h3>
+<p>A large part of our work this semester has been focused on writing programs that work with data in various formats (JSON, CSV), in databases (sqlite) and on the web (APIs), while using object-oriented programming techniques to model data and behavior. Just as we did in the ProPublica exercise you may want to think about how you can load, query and analyze data from various publicly available sources. Here are two resources that may help you generate some ideas for what you can do in your project.</p>
+<ul>
+<li><p><a href="https://tinyletter.com/data-is-plural">Data is Plural</a> is a weekly email newsletter from <a href="https://twitter.com/jsvine">Jeremy Singer-Vine</a> on the subject of publicly available useful/interesting datasets. IN each episode Jeremy describes a handful of datasets, including information about who created it, how much data it contains, what format it is in, how the data is useful, and where to find it. They can be CSV files, spreadsheets, images, maps, and downloadable databases of all kinds. Browse the <a href="https://tinyletter.com/data-is-plural/archive">archive</a> of past newsletters or take a look at the <a href="https://docs.google.com/spreadsheets/u/1/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit">spreadsheet</a> he has created for all the datasets he has covered. See if you can find a dataaset that might be interesting to use in your project.</p></li>
+<li><p><a href="https://github.com/toddmotto/public-apis#readme">Public APIs</a> is a list of publicly available web APIs curated on GitHub by <a href="https://twitter.com/toddmotto">Todd Motto</a>. The APIs are listed by category (music, news, games, books, sports, weather, animals, etc) and indicates whether you need to authenticate, whether it uses a secure connection, and a link to the documentation. You could use what we learned about using the requests module to obtain data from one of the APIs, or even create a “mashup” of two or more.</p></li>
+</ul>
+</section>
+<section id="deliverables" class="slide level3">
+<h3>Deliverables</h3>
+<p>The purpose/goals of your project application are entirely up to you, but in order to fulfill the requirements of the assignment, you should do the following:</p>
+<ul>
+<li>Create a repository on GitHub where your code and documentation can live and be available to others.</li>
+<li>Create a README file that documents what the program does, and how it should be used.</li>
+<li>Create one or more Python files that make up your application.</li>
+<li>Create unit tests for developing your code and verifying that it works.</li>
+</ul>
+</section>
+<section id="evaluation" class="slide level3">
+<h3>Evaluation</h3>
+<p>The final project is worth 15 points (15% of your final grade). You will be graded on the following:</p>
+<ul>
+<li>Concept/Idea (5 pts): interestingness, novelty, utility, audacity, conciseness.</li>
+<li>Execution (5 pts): ability to run the program &amp; tests, use of modules, classes, and code style.</li>
+<li>Presentation (5 pts): clarity of documentation, oral presentation, slides, etc.</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
