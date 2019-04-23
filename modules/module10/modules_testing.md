@@ -216,7 +216,7 @@ During imports, Python searches the following:
 :::
 
 ::: incremental
-1. Home directory (where main script is located)
+1. Directory where your program is located
 1. PYTHONPATH (environment variable)
 1. Standard library (located inside your copy of Python)
 1. Locations in a .pth file (a text file listing one directory per line)
