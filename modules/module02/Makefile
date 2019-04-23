@@ -1,4 +1,4 @@
-all: functions.html iteration.html readings.html exercise.html
+all: functions.html iteration.html readings.html exercise.html index.md
 
 functions.html: functions.md
 	pandoc --to revealjs --standalone --output functions.html functions.md
@@ -17,3 +17,6 @@ readings.html: readings.md
 
 exercise.html: exercise.md
 	pandoc --output exercise.html --standalone exercise.md
+
+index.html: index.md
+	pandoc --output index.html --standalone index.md
