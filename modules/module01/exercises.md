@@ -1,6 +1,6 @@
 ---
 title: Module 1 Exercises
-css: ../css/page.css
+css: ../../css/page.css
 ---
  
 ## Learning Outcomes
