@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Inheritence &amp; Composition</title>
+  <title>regex</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
-  <style>
+  <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <style>
+  <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
@@ -95,319 +95,193 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Inheritence &amp; Composition</h1>
-  <p class="subtitle">Patterns for Code Reuse</p>
+  <h1 class="title">regex</h1>
+  <p class="subtitle">Regular Expressions</p>
 </section>
 
 <section id="section" class="slide level1">
 <h1></h1>
-<p><a href="http://www.oed.com/view/Entry/95948"><img width="80%" src="images/definition.png"></a></p>
+<div class="left smaller">
+<p>…early nightmares of climate crisis…<br> …disagree on policy, but climate change is real…<br> …our planet from climate change, and ice…<br> …understand that climate change is an existential…<br> …know it well-paid climate deniers are invited…<br> …creeps in, allowing climate deniers to be…<br> …goal is to treat Climate Change like the…<br> …isn’t only about climate change - it’s…<br> …housing, jobs, and climate all without…<br> …delay real action on climate change, the more…<br> …they helped create: climate change, housing…<br></p>
+</div>
 <aside class="notes">
-<p>Click through to Definition 2b: To derive (a quality or character, physical or mental) from one’s progenitors by natural descent; to derive or possess by transmission from parents or ancestry.</p>
+<p>What patterns do you see in this text? These are snippets of AOC’s tweets that we looked at quickly last week.</p>
 </aside>
 </section>
 <section id="section-1" class="slide level1">
 <h1></h1>
-<p><a href="https://en.wikipedia.org/wiki/Darwin%27s_finches"><img width="80%" src="images/finches.png"></a></p>
+<div class="left smaller">
+<p>…early nightmares of <strong><em>climate crisis</em></strong>…<br> …disagree on policy, but <strong><em>climate change</em></strong> is real…<br> …our planet from <strong><em>climate change</em></strong>, and ice…<br> …understand that <strong><em>climate change</em></strong> is an existential…<br> …know it well-paid <strong><em>climate deniers</em></strong> are invited…<br> …creeps in, allowing <strong><em>climate deniers</em></strong> to be…<br> …goal is to treat <strong><em>Climate Change</em></strong> like the…<br> …isn’t only about <strong><em>climate change</em></strong> - it’s…<br> …housing, jobs, and <strong><em>climate all</em></strong> without…<br> …delay real action on <strong><em>climate change</em></strong>, the more…<br> …they helped create: <strong><em>climate change</em></strong>, housing…<br></p>
+</div>
 <aside class="notes">
-<p>Darwin’s Finches. Collected by Charles Darwin in the Galapagos Islands in the 1830s. Notice the similar characteristics that these birds have. This is because they inherited these traits from an ancestor from South America, the Tiaris obscurus or Dull-coloured grassquit.</p>
-<p>The idea of inheritence is a way of extending and customizing classes without having to copy and paste code.</p>
+<p>Yes, the word climate is in each snippet. Do you see any that are different? We’re going to look at how to extract these words near the end of class today.</p>
 </aside>
 </section>
 <section id="section-2" class="slide level1">
 <h1></h1>
-<p><img src="images/diagram.png"></p>
+<iframe width="80%" height="500" src="https://www.youtube.com/embed/kqUR3KtWbTk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
+picture-in-picture" allowfullscreen>
+</iframe>
 <aside class="notes">
-<p>Ok, but what do finches have to do with code? If you are writing a program that needs to model social media posts it may be useful for you to use inheritance to model what the different social media posts have in common in terms of their properties and methods (things you can do with them). Here is a UML diagram for this inheritance relation.</p>
+<p>Regular expressions are a tool that helps you find patterns in textual data. Text can mean many things from working with genetics or financial data, to scraping information from the web (which we will be looking at after Spring Break.</p>
 </aside>
 </section>
 <section id="section-3" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">class</span> Post():</a>
-<a class="sourceLine" id="cb1-2" title="2">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, creator):</a>
-<a class="sourceLine" id="cb1-3" title="3">    <span class="va">self</span>.creator <span class="op">=</span> creator</a>
-<a class="sourceLine" id="cb1-4" title="4"></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">class</span> Tweet(Post):</a>
-<a class="sourceLine" id="cb1-6" title="6">  <span class="kw">def</span> retweet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb1-7" title="7">    <span class="bu">print</span>(<span class="st">&quot;retweeted by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb1-8" title="8"></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="kw">class</span> Snap(Post):</a>
-<a class="sourceLine" id="cb1-10" title="10">  <span class="kw">def</span> expire(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb1-11" title="11">    <span class="bu">print</span>(<span class="st">&quot;expired snap by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb1-12" title="12"></a>
-<a class="sourceLine" id="cb1-13" title="13">snap <span class="op">=</span> Snap(<span class="st">&quot;edsu&quot;</span>)</a>
-<a class="sourceLine" id="cb1-14" title="14">snap.expire()</a></code></pre></div>
-<div class="fragment">
-<p><strong>expired snap by edsu</strong></p>
-</div>
+<p><a href="http://regex.info/book.html"><img width="40%" src="images/regex.jpg"></a></p>
 <aside class="notes">
-<p>There’s no new syntax required to do inheritance. But notice how the Tweet and Snap classes are defined on line 5 and 9? See what is now in the parentheses? That is declaring that each inherit from a base class Post.</p>
+<p>Regular Expressions operate much like their own computer language. Implementations of regular expressions exist in all major programming languages. Here is a popular book about them that is 544 pages long! We will obviously just be scratching the surface today.</p>
 </aside>
 </section>
 <section id="section-4" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">class</span> Post():</a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, creator):</a>
-<a class="sourceLine" id="cb2-3" title="3">    <span class="va">self</span>.creator <span class="op">=</span> creator</a>
-<a class="sourceLine" id="cb2-4" title="4"></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="kw">class</span> Tweet(Post):</a>
-<a class="sourceLine" id="cb2-6" title="6">  <span class="kw">def</span> retweet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb2-7" title="7">    <span class="bu">print</span>(<span class="st">&quot;retweeted by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb2-8" title="8"></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="kw">class</span> Snap(Post):</a>
-<a class="sourceLine" id="cb2-10" title="10">  <span class="kw">def</span> expire(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb2-11" title="11">    <span class="bu">print</span>(<span class="st">&quot;expired snap by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb2-12" title="12"></a>
-<a class="sourceLine" id="cb2-13" title="13">tweet <span class="op">=</span> Tweet(creator<span class="op">=</span><span class="st">&quot;edsu&quot;</span>)</a>
-<a class="sourceLine" id="cb2-14" title="14">tweet.retweet()</a></code></pre></div>
-<div class="fragment">
-<p><strong>retweeted by edsu</strong></p>
+<div class="columns">
+<div class="column">
+<p><a href="https://upload.wikimedia.org/wikipedia/commons/8/8e/Thompson-kleene-star.svg"><img src="images/star.png"></a></p>
+</div><div class="column">
+<p><a href="https://en.wikipedia.org/wiki/Stephen_Cole_Kleene"><img width="50%" src="images/kleene.jpg"></a></p>
 </div>
+</div>
+<aside class="notes">
+<p>The idea of regular expressions is almost as old as computing itself. They were created by mathematician Stephen Cole Kleene in 1951 with his idea of ‘regular languages’. They started to get used heavily in the 1960s as part of early text editors, as well as compilers for programming languages. You can still see them in VSCode today.</p>
+</aside>
 </section>
 <section id="section-5" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">class</span> Post():</a>
-<a class="sourceLine" id="cb3-2" title="2">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, creator):</a>
-<a class="sourceLine" id="cb3-3" title="3">    <span class="va">self</span>.creator <span class="op">=</span> creator</a>
-<a class="sourceLine" id="cb3-4" title="4"></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="kw">class</span> Tweet(Post):</a>
-<a class="sourceLine" id="cb3-6" title="6">  <span class="kw">def</span> retweet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb3-7" title="7">    <span class="bu">print</span>(<span class="st">&quot;retweeted by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb3-8" title="8"></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="kw">class</span> Snap(Post):</a>
-<a class="sourceLine" id="cb3-10" title="10">  <span class="kw">def</span> expire(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb3-11" title="11">    <span class="bu">print</span>(<span class="st">&quot;expired snap by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb3-12" title="12"></a>
-<a class="sourceLine" id="cb3-13" title="13">tweet <span class="op">=</span> Tweet(creator<span class="op">=</span><span class="st">&quot;edsu&quot;</span>)</a>
-<a class="sourceLine" id="cb3-14" title="14">tweet.expire()</a></code></pre></div>
-<div class="fragment">
-<p><strong>AttributeError: ‘Tweet’ object has no attribute ‘expire’</strong></p>
-</div>
+<h2 id="wdlohumd.edu">wdloh@umd.edu</h2>
+<p><br> <br></p>
+<pre><code>\A[a-z0-9!#$%&amp;&#39;*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;&#39;*+/=?^_`{|}~-]+)*@ (?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\z</code></pre>
+<aside class="notes">
+<p>This is an example of a very complicated regular expression that matches (most) email addresses.It’s hard to read right?</p>
+</aside>
 </section>
 <section id="section-6" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">class</span> Post():</a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, creator):</a>
-<a class="sourceLine" id="cb4-3" title="3">    <span class="va">self</span>.creator <span class="op">=</span> creator</a>
-<a class="sourceLine" id="cb4-4" title="4">  <span class="kw">def</span> delete(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb4-5" title="5">    <span class="bu">print</span>(<span class="st">&quot;post deleted by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="kw">class</span> Tweet(Post):</a>
-<a class="sourceLine" id="cb4-8" title="8">  <span class="kw">def</span> retweet(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb4-9" title="9">    <span class="bu">print</span>(<span class="st">&quot;retweeted by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb4-10" title="10"></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="kw">class</span> Snap(Post):</a>
-<a class="sourceLine" id="cb4-12" title="12">  <span class="kw">def</span> expire(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb4-13" title="13">    <span class="bu">print</span>(<span class="st">&quot;expired snap by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb4-14" title="14"></a>
-<a class="sourceLine" id="cb4-15" title="15">tweet <span class="op">=</span> Tweet(creator<span class="op">=</span><span class="st">&quot;edsu&quot;</span>)</a>
-<a class="sourceLine" id="cb4-16" title="16">tweet.delete()</a></code></pre></div>
-<div class="fragment">
-<p><strong>post deleted by edsu</strong></p>
+<div class="left">
+<blockquote>
+<p>Some people, when confronted with a problem, think “I know, I’ll use regular expressions.” Now they have two problems.</p>
+<p>– <a href="http://regex.info/blog/2006-09-15/247">Jamie Zawinski</a></p>
+</blockquote>
 </div>
 </section>
 <section id="section-7" class="slide level1">
 <h1></h1>
-<h2 id="overriding-methods">Overriding Methods</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">class</span> Post():</a>
-<a class="sourceLine" id="cb5-2" title="2">  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, creator):</a>
-<a class="sourceLine" id="cb5-3" title="3">    <span class="va">self</span>.creator <span class="op">=</span> creator</a>
-<a class="sourceLine" id="cb5-4" title="4">  <span class="kw">def</span> update(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb5-5" title="5">    <span class="bu">print</span>(<span class="st">&quot;post updated by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb5-6" title="6"></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="kw">class</span> Tweet(Post):</a>
-<a class="sourceLine" id="cb5-8" title="8">  <span class="kw">def</span> update(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb5-9" title="9">    <span class="bu">print</span>(<span class="st">&quot;you can never update tweets!&quot;</span>)</a>
-<a class="sourceLine" id="cb5-10" title="10"></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="kw">class</span> Snap(Post):</a>
-<a class="sourceLine" id="cb5-12" title="12">  <span class="kw">def</span> expire(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb5-13" title="13">    <span class="bu">print</span>(<span class="st">&quot;expired snap by &quot;</span> <span class="op">+</span> <span class="va">self</span>.creator)</a>
-<a class="sourceLine" id="cb5-14" title="14"></a>
-<a class="sourceLine" id="cb5-15" title="15">tweet <span class="op">=</span> Tweet(creator<span class="op">=</span><span class="st">&quot;edsu&quot;</span>)</a>
-<a class="sourceLine" id="cb5-16" title="16">tweet.update()</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="im">import</span> re</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3">s <span class="op">=</span> <span class="st">&quot;To be or not to be.&quot;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5">match <span class="op">=</span> re.search(<span class="st">&quot;Be&quot;</span>, s)</a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="cf">if</span> match:</a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="bu">print</span>(<span class="st">&quot;match!&quot;</span>)</a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb2-10" title="10">    <span class="bu">print</span>(<span class="st">&quot;no match :(&quot;</span>)</a></code></pre></div>
 <div class="fragment">
-<p><strong>you can never delete tweets!""</strong></p>
+<p><strong>no match :(</strong></p>
 </div>
-</section>
-<section id="exercise" class="slide level1">
-<h1>Exercise</h1>
-<div class="left">
-<p>Remember our <em>Email</em> class that we used for processing the Enron email? Let’s <em>extend</em> the one I’ve uploaded as <em>email.py</em> to Module 7 in ELMS and add a <em>method</em> that will return the <em>subject</em> of the email.</p>
-</div>
-</section>
-<section id="composition" class="slide level1">
-<h1>Composition</h1>
 </section>
 <section id="section-8" class="slide level1">
 <h1></h1>
-<p><a href="http://www.oed.com/view/Entry/37795"><img src="images/composition-def.png"></a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="im">import</span> re</a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3">s <span class="op">=</span> <span class="st">&quot;To be or not to be.&quot;</span></a>
+<a class="sourceLine" id="cb3-4" title="4"></a>
+<a class="sourceLine" id="cb3-5" title="5">match <span class="op">=</span> re.search(<span class="st">&quot;Be&quot;</span>, s, re.IGNORECASE)</a>
+<a class="sourceLine" id="cb3-6" title="6"></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="cf">if</span> match:</a>
+<a class="sourceLine" id="cb3-8" title="8">    <span class="bu">print</span>(<span class="st">&quot;match!&quot;</span>)</a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb3-10" title="10">    <span class="bu">print</span>(<span class="st">&quot;no match :(&quot;</span>)</a></code></pre></div>
+<div class="fragment">
+<p><strong>match!</strong></p>
+</div>
 </section>
 <section id="section-9" class="slide level1">
 <h1></h1>
-<div class="columns">
-<div class="column">
-<p><img src="images/pizza.jpg"></p>
-</div><div class="column">
-<p><br></p>
-<p><strong>Pizza</strong></p>
-<div>
-<ul>
-<li class="fragment">crust</li>
-<li class="fragment">toppings</li>
-<li class="fragment">cheese</li>
-<li class="fragment">sauce</li>
-</ul>
+<p><strong>\w</strong> word character</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="im">import</span> re</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3">s <span class="op">=</span> <span class="st">&quot;To be or not to be.&quot;</span></a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5">match <span class="op">=</span> re.search(<span class="st">&quot;\w\w\w&quot;</span>, s)</a>
+<a class="sourceLine" id="cb4-6" title="6"></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="bu">print</span>(match.group())</a></code></pre></div>
+<div class="fragment">
+<p><strong>not</strong></p>
 </div>
-</div>
-</div>
-<aside class="notes">
-<p>A pizza is composed of multiple things.</p>
-</aside>
 </section>
 <section id="section-10" class="slide level1">
 <h1></h1>
-<p><img src="images/composition.png"></p>
-<aside class="notes">
-<p>We can model the relationship between the Pizza class and the Topping objects of which it is composed. Notice the filled in diamond that indicates a composition relationship? Also notice the 0..7 that indicates there can be 0 to 7 toppings on a pizza.</p>
-</aside>
+<p><strong>\d</strong> digit/number</p>
+<p><strong>+</strong> one or more</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="im">import</span> re</a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3">s <span class="op">=</span> <span class="st">&quot;32 Penn-Lyle Road, Princeton Jct, 08550&quot;</span></a>
+<a class="sourceLine" id="cb5-4" title="4"></a>
+<a class="sourceLine" id="cb5-5" title="5">match <span class="op">=</span> re.search(<span class="st">&quot;\d+&quot;</span>, s)</a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="bu">print</span>(match.group())</a></code></pre></div>
+<div class="fragment">
+<p><strong>32</strong></p>
+</div>
 </section>
 <section id="section-11" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">class</span> Topping():</a>
+<p><strong>$</strong> end of string</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> re</a>
 <a class="sourceLine" id="cb6-2" title="2"></a>
-<a class="sourceLine" id="cb6-3" title="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, num_pieces):</a>
-<a class="sourceLine" id="cb6-4" title="4">        <span class="va">self</span>.name <span class="op">=</span> name</a>
-<a class="sourceLine" id="cb6-5" title="5">        <span class="va">self</span>.num_pieces <span class="op">=</span> num_pieces</a>
+<a class="sourceLine" id="cb6-3" title="3">s <span class="op">=</span> <span class="st">&quot;32 Penn-Lyle Road, Princeton Jct, 08550&quot;</span></a>
+<a class="sourceLine" id="cb6-4" title="4"></a>
+<a class="sourceLine" id="cb6-5" title="5">match <span class="op">=</span> re.search(<span class="st">&quot;\d+$&quot;</span>, s)</a>
 <a class="sourceLine" id="cb6-6" title="6"></a>
-<a class="sourceLine" id="cb6-7" title="7">topping <span class="op">=</span> Topping(<span class="st">&quot;pepperoni&quot;</span>, <span class="dv">25</span>)</a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="bu">print</span>(topping)</a></code></pre></div>
+<a class="sourceLine" id="cb6-7" title="7"><span class="bu">print</span>(match.group())</a></code></pre></div>
 <div class="fragment">
-<p><strong>&lt;<strong>main</strong>.Topping object at 0x10c6374e0&gt;</strong></p>
+<p><strong>08550</strong></p>
 </div>
-<aside class="notes">
-<p>First lets create a Topping class that has a name, and a number of pieces.</p>
-</aside>
 </section>
 <section id="section-12" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">class</span> Pizza():</a>
+<p><strong>findall()</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="im">import</span> re</a>
 <a class="sourceLine" id="cb7-2" title="2"></a>
-<a class="sourceLine" id="cb7-3" title="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb7-4" title="4">        <span class="va">self</span>.toppings <span class="op">=</span> []</a>
-<a class="sourceLine" id="cb7-5" title="5"></a>
-<a class="sourceLine" id="cb7-6" title="6">    <span class="kw">def</span> add_topping(<span class="va">self</span>, topping):</a>
-<a class="sourceLine" id="cb7-7" title="7">        <span class="va">self</span>.toppings.append(topping)</a>
-<a class="sourceLine" id="cb7-8" title="8"></a>
-<a class="sourceLine" id="cb7-9" title="9">pizza <span class="op">=</span> Pizza()</a>
-<a class="sourceLine" id="cb7-10" title="10"><span class="bu">print</span>(pizza)</a></code></pre></div>
+<a class="sourceLine" id="cb7-3" title="3">s <span class="op">=</span> <span class="st">&quot;32 Penn-Lyle Road, Princeton Jct, 08550&quot;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="cf">for</span> s <span class="kw">in</span> re.findall(<span class="st">&quot;\d+&quot;</span>, s):</a>
+<a class="sourceLine" id="cb7-6" title="6">    <span class="bu">print</span>(s)</a></code></pre></div>
 <div class="fragment">
-<p><strong>&lt;<strong>main</strong>.Pizza object at 0x10c6374e0&gt;</strong></p>
+<p><strong>32</strong><br />
+<strong>08550</strong></p>
 </div>
-<aside class="notes">
-<p>Next lets create a Pizza class that initializes a list of toppings in the constuctor and has a method for adding toppings.</p>
-</aside>
 </section>
 <section id="section-13" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">class</span> Pizza():</a>
-<a class="sourceLine" id="cb8-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb8-3" title="3">        <span class="va">self</span>.toppings <span class="op">=</span> []</a>
-<a class="sourceLine" id="cb8-4" title="4">    <span class="kw">def</span> add_topping(<span class="va">self</span>, topping):</a>
-<a class="sourceLine" id="cb8-5" title="5">        <span class="va">self</span>.toppings.append(topping)</a>
-<a class="sourceLine" id="cb8-6" title="6"></a>
-<a class="sourceLine" id="cb8-7" title="7"><span class="kw">class</span> Topping():</a>
-<a class="sourceLine" id="cb8-8" title="8">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, num_pieces):</a>
-<a class="sourceLine" id="cb8-9" title="9">        <span class="va">self</span>.name <span class="op">=</span> name</a>
-<a class="sourceLine" id="cb8-10" title="10">        <span class="va">self</span>.num_pieces <span class="op">=</span> num_pieces</a>
-<a class="sourceLine" id="cb8-11" title="11"></a>
-<a class="sourceLine" id="cb8-12" title="12">pizza <span class="op">=</span> Pizza()</a>
-<a class="sourceLine" id="cb8-13" title="13">pizza.add_topping(Topping(<span class="st">&quot;pepperoni&quot;</span>, <span class="dv">18</span>))</a>
-<a class="sourceLine" id="cb8-14" title="14">pizza.add_topping(Topping(<span class="st">&quot;mushrooms&quot;</span>, <span class="dv">12</span>))</a>
-<a class="sourceLine" id="cb8-15" title="15">pizza.add_topping(Topping(<span class="st">&quot;green peppers&quot;</span>, <span class="dv">15</span>))</a>
-<a class="sourceLine" id="cb8-16" title="16"><span class="bu">print</span>(pizza.toppings)</a></code></pre></div>
-<div class="fragment">
-<div style="font-size: 18pt;">
-<p>[&lt;<strong>main</strong>.Topping object at 0x10c9ae748&gt;, &lt;<strong>main</strong>.Topping object at 0x10c9aea58&gt;, &lt;<strong>main</strong>.Topping object at 0x10c9aea90&gt;]</p>
-</div>
-</div>
-<aside class="notes">
-<p>Here’s what they look like when we put them together.</p>
-</aside>
+<p><a href="cheatsheet.pdf"><img width="50%" style="border: thin solid gray;" src="images/cheatsheet.png"></a></p>
 </section>
 <section id="section-14" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python smaller numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">class</span> Topping():</a>
-<a class="sourceLine" id="cb9-2" title="2"></a>
-<a class="sourceLine" id="cb9-3" title="3">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, num_pieces):</a>
-<a class="sourceLine" id="cb9-4" title="4">        <span class="va">self</span>.name <span class="op">=</span> name</a>
-<a class="sourceLine" id="cb9-5" title="5">        <span class="va">self</span>.num_pieces <span class="op">=</span> num_pieces</a>
-<a class="sourceLine" id="cb9-6" title="6"></a>
-<a class="sourceLine" id="cb9-7" title="7">    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb9-8" title="8">        <span class="cf">return</span> <span class="st">&quot;</span><span class="sc">{}</span><span class="st"> pieces of </span><span class="sc">{}</span><span class="st">&quot;</span>.<span class="bu">format</span>(<span class="va">self</span>.num_pieces, <span class="va">self</span>.name))</a>
-<a class="sourceLine" id="cb9-9" title="9"></a>
-<a class="sourceLine" id="cb9-10" title="10">pizza <span class="op">=</span> Pizza()</a>
-<a class="sourceLine" id="cb9-11" title="11">pizza.add_topping(Topping(<span class="st">&quot;pepperoni&quot;</span>, <span class="dv">18</span>))</a>
-<a class="sourceLine" id="cb9-12" title="12">pizza.add_topping(Topping(<span class="st">&quot;mushrooms&quot;</span>, <span class="dv">12</span>))</a>
-<a class="sourceLine" id="cb9-13" title="13">pizza.add_topping(Topping(<span class="st">&quot;green peppers&quot;</span>, <span class="dv">15</span>))</a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="bu">print</span>(pizza.toppings)</a></code></pre></div>
-<div class="fragment">
-<div style="font-size: 18pt;">
-<p>[18 pieces of pepperoni, 12 pieces of mushrooms, 15 pieces of green peppers]</p>
+<div class="left">
+<p>Remember this <a href="aoc.json">JSON dataset</a>? Let’s imagine we wanted to find all the words that follow “climate” in AOC’s tweets. How could we do that?</p>
 </div>
-</div>
-<aside class="notes">
-<p>Every class you create can have a __repr__ method, short for representation, which can define how to print out instances of the class as strings. Which can be handy for debugging.</p>
-</aside>
 </section>
 <section id="section-15" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">class</span> Pizza():</a>
-<a class="sourceLine" id="cb10-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb10-3" title="3">        <span class="va">self</span>.toppings <span class="op">=</span> []</a>
-<a class="sourceLine" id="cb10-4" title="4"></a>
-<a class="sourceLine" id="cb10-5" title="5">    <span class="kw">def</span> add_topping(<span class="va">self</span>, topping):</a>
-<a class="sourceLine" id="cb10-6" title="6">        <span class="va">self</span>.toppings.append(topping)</a>
-<a class="sourceLine" id="cb10-7" title="7"></a>
-<a class="sourceLine" id="cb10-8" title="8">    <span class="kw">def</span> num_pieces(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb10-9" title="9">        count <span class="op">=</span> <span class="dv">0</span></a>
-<a class="sourceLine" id="cb10-10" title="10">        <span class="cf">for</span> topping <span class="kw">in</span> <span class="va">self</span>.toppings:</a>
-<a class="sourceLine" id="cb10-11" title="11">            count <span class="op">+=</span> topping.num_pieces</a>
-<a class="sourceLine" id="cb10-12" title="12">        <span class="cf">return</span> count</a>
-<a class="sourceLine" id="cb10-13" title="13"></a>
-<a class="sourceLine" id="cb10-14" title="14">pizza <span class="op">=</span> Pizza()</a>
-<a class="sourceLine" id="cb10-15" title="15">pizza.add_topping(Topping(<span class="st">&quot;pepperoni&quot;</span>, <span class="dv">18</span>))</a>
-<a class="sourceLine" id="cb10-16" title="16">pizza.add_topping(Topping(<span class="st">&quot;mushrooms&quot;</span>, <span class="dv">12</span>))</a>
-<a class="sourceLine" id="cb10-17" title="17">pizza.add_topping(Topping(<span class="st">&quot;green peppers&quot;</span>, <span class="dv">15</span>))</a>
-<a class="sourceLine" id="cb10-18" title="18"><span class="bu">print</span>(pizza.num_toppings())</a></code></pre></div>
-<div class="fragment">
-<p><strong>45</strong></p>
-</div>
-<aside class="notes">
-<p>Here we added a method to Pizza named num_pieces which returns the total number of pizza topping pieces on the pizza!</p>
-</aside>
-</section>
-<section id="oop-patterns" class="slide level1">
-<h1>OOP Patterns</h1>
-<div class="columns">
-<div class="column">
-<div class="left">
-<p>Class <em>composition</em> is a much more useful Object Oriented Programming <em>pattern</em> than <em>inheritance</em>.</p>
-<p>Inheritance should be used sparingly because elaborate inheritance hierarchies can be difficult to maintain over time as requirements change.</p>
-</div>
-</div><div class="column">
-<p><a href="https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612/"><img width="70%" src="images/design-patterns.jpg"></a></p>
-</div>
-</div>
+<h2 id="grouping">Grouping</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1"><span class="im">import</span> re</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="im">import</span> json</a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4">fh <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;aoc.json&#39;</span>)</a>
+<a class="sourceLine" id="cb8-5" title="5">tweets <span class="op">=</span> json.load(fh)</a>
+<a class="sourceLine" id="cb8-6" title="6"></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="cf">for</span> tweet <span class="kw">in</span> tweets:</a>
+<a class="sourceLine" id="cb8-8" title="8">    m <span class="op">=</span> re.search(<span class="st">&#39;climate (\w+)&#39;</span>, tweet[<span class="st">&#39;text&#39;</span>])</a>
+<a class="sourceLine" id="cb8-9" title="9">    <span class="cf">if</span> m:</a>
+<a class="sourceLine" id="cb8-10" title="10">        <span class="bu">print</span>(m.group(<span class="dv">1</span>))</a></code></pre></div>
 </section>
 <section id="section-16" class="slide level1">
 <h1></h1>
-<p><a href="https://en.wikipedia.org/wiki/The_Timeless_Way_of_Building"><img width="50%"  src="images/timeless.jpg"></a></p>
-</section>
-<section id="exercise-1" class="slide level1">
-<h1>Exercise</h1>
 <div class="left">
-<p>Download the <code>pizza.py</code> file from Module 7 and modify <code>Pizza.add_topping</code> to ensure that no more than 7 toppings are added.</p>
-<p>If someone adds more than 7 toppings it should print <em>“Sorry that is too many toppings!”</em>.</p>
+<p>For the next class take a look at the <a href="exercise.html">exercise</a> that we’ll be working on together.</p>
+<p><a href="https://www.nytimes.com/2019/02/22/business/enron-ceo-skilling-scandal.html"><img style="border: thin solid gray; padding: 5px;" src="images/enron.png"></a></p>
 </div>
 </section>
     </div>
