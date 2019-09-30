@@ -1,228 +1,289 @@
 ---
-title: Object-Oriented Programming
-subtitle: Combining Data and Behavior
+title: regex
+subtitle: Regular Expressions
 revealjs-url: ../../lib/reveal
 theme: inst326
 transition: slide
----
+--- 
 
-#
+# 
 
-<a href="https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG">
-  <img style="width: 80%" src="images/assemblyline.jpg">
-</a>
+::: {.left .smaller}
+...early nightmares of climate crisis...<br>
+...disagree on policy, but climate change is real...<br>
+...our planet from climate change, and ice...<br>
+...understand that climate change is an existential...<br>
+...know it well-paid climate deniers are invited...<br>
+...creeps in, allowing climate deniers to be...<br>
+...goal is to treat Climate Change like the...<br>
+...isn’t only about climate change - it’s...<br>
+...housing, jobs, and climate all without...<br>
+...delay real action on climate change, the more...<br>
+...they helped create: climate change, housing...<br>
+:::
 
 ::: notes
 
-A good analogy for OOP is an assembly line, where many instances of a model of
-car are built. The individual cars may have different options, but share a
-common core set of features and means of operation.
+What patterns do you see in this text? These are snippets of AOC's tweets that
+we looked at quickly last week.
 
 :::
 
 # 
 
-What are some common properties of cars?
-
-::: incremental
-
-* color
-* wheels
-* seats
-* steering wheel
-* engine
-* doors
-* accelerator
-* brake
-
+::: {.left .smaller}
+...early nightmares of ***climate crisis***...<br>
+...disagree on policy, but ***climate change*** is real...<br>
+...our planet from ***climate change***, and ice...<br>
+...understand that ***climate change*** is an existential...<br>
+...know it well-paid ***climate deniers*** are invited...<br>
+...creeps in, allowing ***climate deniers*** to be...<br>
+...goal is to treat ***Climate Change*** like the...<br>
+...isn’t only about ***climate change*** - it’s...<br>
+...housing, jobs, and ***climate all*** without...<br>
+...delay real action on ***climate change***, the more...<br>
+...they helped create: ***climate change***, housing...<br>
 :::
-
-#
-
-What are some actions you can perform?
-
-::: incremental
-
-* open door
-* start engine
-* turn left/right
-* accelerate
-* stop
-* turn off engine
-* turn on cruise control
-
-:::
-
-#
-
-## Overview
-
-- Definitions
-- Defining Classes
-- Using Instances
 
 ::: notes
 
-- after some general intro to OOP
-- we'll talk about classes vs. instances and how to define a class
-- we'll look at attributes (data) and methods (behaviors)
-- we'll talk about how methods and attributes are accessed (dot notation), and how objects can interact with each other
-- finally, we'll look at how a hierarchy of classes (inheritance) can be used
-
-:::
-
-#
-
-## What is OOP?
-
-::: incremental
-
-- Nothing magical, just a different style
-- Procedural (like a recipe)
-- Functional (more mathematical)
-- Many languages like Python combine these styles.
-- OOP *encapsulates* data and behavior into *objects*
-- Objects have interfaces that allow them to interact
-- OOP tries to map programming to how we think about the world.
+Yes, the word climate is in each snippet. Do you see any that are different?
+We're going to look at how to extract these words near the end of class today.
 
 :::
 
 # 
 
-## Classes vs. instances
+<iframe width="80%" height="500" src="https://www.youtube.com/embed/kqUR3KtWbTk"
+frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
+picture-in-picture" allowfullscreen></iframe>
 
-::: incremental
+::: notes
 
-- Objects in OOP are members of *classes*
-- Features shared by members are mapped in a class definition
-- Individual *instances* have their own attributes and state
-
-:::
-
-#
-
-## You have already been using objects
-
-- All data types (for example, string, list, dictionary) are objects
-
-``` {.python .numberLines}
->>> s = 'Hello World'
->>> type(s)
-<class 'str'>
->>> l = list()
->>> type(l)
-<class 'list'>
->>> dir(l)
-['__add__', '__class__', ...]
-```
-
-#
-
-## In fact, in Python almost everything is an object
-
-::: incremental
-
-- Objects have shared behaviors defined by their classes
-- At the same time, individual instances have different content
-- Much of the complexity is "hidden" inside the objects
+Regular expressions are a tool that helps you find patterns in textual data.
+Text can mean many things from working with genetics or financial data, to 
+scraping information from the web (which we will be looking at after Spring
+Break. 
 
 :::
 
 #
 
-## Defining your own class
+<a href="http://regex.info/book.html"><img width="40%" src="images/regex.jpg"></a>
 
-- Define a class with the "class" keyword
-- Define methods inside the class with indented "def" blocks
+::: notes
 
-``` {.python .numberLines}
-class Pet():
-    def __init__(self, name):
-        self.name = name
-```
-
-#
-
-## Initializers
-
-::: incremental
-
-- The \_\_init\_\_() method is an initializer
-- The double underscore (dunderscore) indicates that \_\_init\_\_ has a special purpose
-- It is called automatically when a new instance is created
-- Often \_\_init\_\_() is used to set up attributes (here to give each pet a name)
+Regular Expressions operate much like their own computer language.
+Implementations of regular expressions exist in all major programming languages. Here is a
+popular book about them that is 544 pages long! We will obviously just be 
+scratching the surface today.
 
 :::
 
 #
 
-## Attributes and methods
+::: columns
 
-- Attributes are properties specific to the instance
-- Methods are like functions defining behaviors specific to the members of a class
+:::: column
 
-``` {.python .numberLines}
-class Pet():
-    def __init__(self, name):
-        self.name = name
-    def eat(self):
-        print('Nom nom nom')
-```
+<a href="https://upload.wikimedia.org/wikipedia/commons/8/8e/Thompson-kleene-star.svg"><img src="images/star.png"></a>
+
+::::
+
+:::: column 
+
+<a href="https://en.wikipedia.org/wiki/Stephen_Cole_Kleene"><img width="50%" src="images/kleene.jpg"></a>
+
+::::
+
+:::
+
+::: notes
+
+The idea of regular expressions is almost as old as computing itself. They were
+created by mathematician Stephen Cole Kleene in 1951 with his idea of 'regular
+languages'. They started to get used heavily in the 1960s as part of early text
+editors, as well as compilers for programming languages. You can still see them in
+VSCode today.
+
+:::
 
 #
 
-## Interacting with an object
+## wdloh@umd.edu
 
-``` {.python .numberLines .smaller}
-class Pet():
-    def __init__(self, name):
-        self.name = name
-    def eat(self, food):
-        print(f'Nom nom. {self.name} likes {food}.')
+<br>
+<br>
 
->>> mypet = Pet('Spot')
->>> mypet.eat('dogfood')
-Nom nom. Spot likes dogfood.
+``` 
+\A[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@ (?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\z
 ```
 
 ::: notes
 
-- The 'self' is a special variable that refers to the instance
-- The name self is just a convention
-- Being the first parameter is what grants it a special function
+This is an example of a very complicated regular expression that matches (most) email addresses.It's hard to read right?
+
+:::
+
+# 
+
+::: left
+
+> Some people, when confronted with a problem, think 
+> "I know, I'll use regular expressions." Now they have two problems.
+>
+> -- [Jamie Zawinski](http://regex.info/blog/2006-09-15/247)
 
 :::
 
 #
 
-## Dot notation
+``` {.python .numberLines}
+import re
 
-::: incremental
+s = "To be or not to be."
 
-- Notice in the previous example how eat() was called
-- Notice as well how the attribute ".name" was accessed
-- This is called dot notation
-    - used to access attributes of the *instance*
-    - used to apply methods to the *instance*
-    - "self" in the class definition means particular to the *instance*
+match = re.search("Be", s)
+
+if match:
+    print("match!")
+else:
+    print("no match :(")
+```
+
+::: fragment
+**no match :(**
+:::
+
+#
+
+``` {.python .numberLines}
+import re
+
+s = "To be or not to be."
+
+match = re.search("Be", s, re.IGNORECASE)
+
+if match:
+    print("match!")
+else:
+    print("no match :(")
+```
+
+::: fragment
+**match!**
+:::
+
+#
+
+**\\w** word character
+
+``` {.python .numberLines}
+import re
+
+s = "To be or not to be."
+
+match = re.search("\w\w\w", s)
+
+print(match.group())
+```
+
+::: fragment
+**not**
+:::
+
+#
+
+**\\d** digit/number
+
+**+** one or more
+
+``` {.python .numberLines}
+import re
+
+s = "32 Penn-Lyle Road, Princeton Jct, 08550"
+
+match = re.search("\d+", s)
+
+print(match.group())
+```
+
+::: fragment
+**32**
+:::
+
+#
+
+**$** end of string
+
+``` {.python .numberLines}
+import re
+
+s = "32 Penn-Lyle Road, Princeton Jct, 08550"
+
+match = re.search("\d+$", s)
+
+print(match.group())
+```
+
+::: fragment
+**08550**
+:::
+
+#
+
+**findall()**
+
+``` {.python .numberLines}
+import re
+
+s = "32 Penn-Lyle Road, Princeton Jct, 08550"
+
+for s in re.findall("\d+", s):
+    print(s)
+```
+
+::: fragment
+**32**  
+**08550**
+:::
+
+#
+
+<a href="cheatsheet.pdf"><img width="50%" style="border: thin solid gray;" src="images/cheatsheet.png"></a>
+
+#
+
+::: left
+
+Remember this [JSON dataset](aoc.json)? Let's imagine we wanted to find all the words that follow "climate" in AOC's tweets. How could we do that?
 
 :::
 
 #
 
-## In summary 
+## Grouping
 
-::: notes
+``` {.python .numberLines}
+import re
+import json
 
-This probably seems like a lot, but once you get the hang of it basic OOP can seem natural and intuitive.
+fh = open('aoc.json')
+tweets = json.load(fh)
+
+for tweet in tweets:
+    m = re.search('climate (\w+)', tweet['text'])
+    if m:
+        print(m.group(1))
+```
+
+#
+
+::: left
+
+For the next class take a look at the [exercise](exercise.html) that we'll be working on together.
+
+<a href="https://www.nytimes.com/2019/02/22/business/enron-ceo-skilling-scandal.html"><img style="border: thin solid gray; padding: 5px;" src="images/enron.png"></a>
 
 :::
-
-- Combining Data and Behavior
-- Defining Classes
-- Attributes and Methods
-- Interacting with Instances
-- [Exercise](exercise.html)
-
-
 

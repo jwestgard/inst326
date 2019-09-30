@@ -1,9 +1,11 @@
 ---
-title: "Module 2 Exercise"
+title: "Module 2 Lab Exercise"
 css: ../../css/page.css
 ---
 
-What error message do you get when you run this program (1 point)
+## Question 1 (1 point)
+
+What error message do you get when you run this program (hint: there are at least two problems)
 
 ``` {.python .numberLines}
 def get_energy(mass):
@@ -17,9 +19,10 @@ while weights:
     print(kg, "kg is equal to ", joules, "joules")
 ```
 
-What output do you see when you fix it? (1 point)
+What output do you see when you fix it? In your own words describe what you did to fix this problem in the text box in ELMS.
 
-## Extra Credit (1 point)
+
+## Question 2 (1 point)
 
 Write a program that will let you enter a word or phrase and then tell you many
 characters long it is. The program should allow the user to keep entering words
@@ -27,7 +30,7 @@ and phrases until they enter "quit".
 
 Here's what a sample run might look like:
 
-```
+``` {.python .numberLines}
 Enter a word/phrase: python
 That is 6 characters long
 
@@ -37,3 +40,15 @@ That is 20 characters long
 Enter a word/phrase: quit
 Bye!
 ```
+
+Save your program in a text file and upload it to ELMS.
+
+## Challenge
+
+An additional task for those who complete the above questions and want to challenge themselves:
+
+Write a function called is_prime() that takes an integer as an input parameter and returns True if the integer is a prime number, False if it is not. 
+
+Hint: a prime number is defined as a number greater than 1 that is evenly divisible by only itself and one.  
+
+Use your function inside a loop to find the 1000th prime number in the series of all primes.
