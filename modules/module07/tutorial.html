@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Module 5 Tutorial</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../css/page.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Module 5 Tutorial</h1>
+</header>
+<h2 id="regular-expressions-a-step-by-step-tutorial">Regular Expressions: A Step-by-Step Tutorial</h2>
+<h3 id="module-import">Module import</h3>
+<p>The re (regular expressions) module is part of the standard library, but must be imported to be available in your program.</p>
+<p><code>{.python .numberLines} import re</code></p>
+<h3 id="pattern-declaration">Pattern Declaration</h3>
+<p>Regular expression patterns are declared as strings. Python has a special type of string (an r-string) that has been designed for use in regexes. The advantage of r-strings is that you do not have to escape all the characters that would otherwise need to be escaped in a regular string.</p>
+<p>The following pattern matches ‘Sherlock’ exactly.</p>
+<p>``` {.python .numberLines} import re</p>
+<p>pattern = r’Sherlock’```</p>
+<h3 id="applying-the-pattern">Applying the Pattern</h3>
+<p>In order to apply this expression you need to do two additional things:</p>
+<ol type="1">
+<li>locate some text to search</li>
+<li>choose a function with which to apply the pattern</li>
+</ol>
+<p>For this exercise download a copy of the <a href="holmes.txt">Adventures of Sherlock Holmes</a>. Save the file in the folder with the python file you are using for this tutorial.</p>
+<p>Next, in your program you’ll need to read the contents of the file into a variable in order to search it.</p>
+<p>``` {.python .numberLines} import re</p>
+<p>pattern = r’Sherlock’</p>
+<p>with open(‘holmes.txt’) as handle: text = handle.read() ```</p>
+<p>Now you can apply your pattern to the text. The re.search() function is good for many use-cases. Search() takes two arguments, the pattern and the text to search.</p>
+<p>``` {.python .numberLines} import re</p>
+<p>pattern = r’Sherlock’</p>
+<p>with open(‘holmes.txt’) as handle: text = handle.read()</p>
+<p>hit = re.search(pattern, text) print(hit) ```</p>
+<p>Search() is good for finding a match within a block of text, and the match object returns, in addition to the text of the match, its position in the source text (both beginning and ending by offset). If you want to find multiple occurances of the match, it is often easier to use either findall() or finditer().</p>
+<h4 id="re.findall">re.findall()</h4>
+<p>The syntax of findall() is the same as search() but this function returns the text of <em>all matches</em> as a list. This is useful for counting matches. Can you use this to count the number of occurances of “Sherlock Holmes” in our sample text?</p>
+<h4 id="re.finditer">re.finditer()</h4>
+<p>Finditer() is particularly useful if you need to find all matches of a pattern, and also need to perform some processing on the matches. It returns an iterable set of match objects which you can process one-by-one. Can you use re.finditer() to find all numbers in our source text, convert them to integers, and calculate their sum?</p>
+</body>
+</html>

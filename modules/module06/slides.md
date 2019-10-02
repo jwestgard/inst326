@@ -1,98 +1,212 @@
 ---
-title: regex
-subtitle: Regular Expressions
+title: Inheritence & Composition
+subtitle: Patterns for Code Reuse
 revealjs-url: ../../lib/reveal
 theme: inst326
 transition: slide
---- 
+---
 
-# 
+#
 
-::: {.left .smaller}
-...early nightmares of climate crisis...<br>
-...disagree on policy, but climate change is real...<br>
-...our planet from climate change, and ice...<br>
-...understand that climate change is an existential...<br>
-...know it well-paid climate deniers are invited...<br>
-...creeps in, allowing climate deniers to be...<br>
-...goal is to treat Climate Change like the...<br>
-...isn’t only about climate change - it’s...<br>
-...housing, jobs, and climate all without...<br>
-...delay real action on climate change, the more...<br>
-...they helped create: climate change, housing...<br>
-:::
+<a href="http://www.oed.com/view/Entry/95948"><img width="80%" src="images/definition.png"></a>
 
 ::: notes
 
-What patterns do you see in this text? These are snippets of AOC's tweets that
-we looked at quickly last week.
-
-:::
-
-# 
-
-::: {.left .smaller}
-...early nightmares of ***climate crisis***...<br>
-...disagree on policy, but ***climate change*** is real...<br>
-...our planet from ***climate change***, and ice...<br>
-...understand that ***climate change*** is an existential...<br>
-...know it well-paid ***climate deniers*** are invited...<br>
-...creeps in, allowing ***climate deniers*** to be...<br>
-...goal is to treat ***Climate Change*** like the...<br>
-...isn’t only about ***climate change*** - it’s...<br>
-...housing, jobs, and ***climate all*** without...<br>
-...delay real action on ***climate change***, the more...<br>
-...they helped create: ***climate change***, housing...<br>
-:::
-
-::: notes
-
-Yes, the word climate is in each snippet. Do you see any that are different?
-We're going to look at how to extract these words near the end of class today.
-
-:::
-
-# 
-
-<iframe width="80%" height="500" src="https://www.youtube.com/embed/kqUR3KtWbTk"
-frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
-picture-in-picture" allowfullscreen></iframe>
-
-::: notes
-
-Regular expressions are a tool that helps you find patterns in textual data.
-Text can mean many things from working with genetics or financial data, to 
-scraping information from the web (which we will be looking at after Spring
-Break. 
+Click through to Definition 2b:  To derive (a quality or character, physical or mental) from one's progenitors by natural descent; to derive or possess by transmission from parents or ancestry.
 
 :::
 
 #
 
-<a href="http://regex.info/book.html"><img width="40%" src="images/regex.jpg"></a>
+<a href="https://en.wikipedia.org/wiki/Darwin%27s_finches"><img width="80%" src="images/finches.png"></a>
 
 ::: notes
 
-Regular Expressions operate much like their own computer language.
-Implementations of regular expressions exist in all major programming languages. Here is a
-popular book about them that is 544 pages long! We will obviously just be 
-scratching the surface today.
+Darwin's Finches. Collected by Charles Darwin in the Galapagos Islands in the 1830s. Notice the similar characteristics that these birds have. This is because they inherited these traits from an ancestor from South America, the Tiaris obscurus or Dull-coloured grassquit.
+
+The idea of inheritence is a way of extending and customizing classes without having to copy and paste code.
+
+:::
+
+# 
+
+<img src="images/diagram.png">
+
+::: notes
+
+Ok, but what do finches have to do with code? If you are writing a program that needs to model social media posts it may be useful for you to use inheritance to model what the different social media posts have in common in terms of their properties and methods (things you can do with them). Here is a UML diagram for this inheritance relation.
+
+:::
+#
+
+``` {.python .numberLines .smaller}
+class Post():
+  def __init__(self, creator):
+    self.creator = creator
+
+class Tweet(Post):
+  def retweet(self):
+    print("retweeted by " + self.creator)
+
+class Snap(Post):
+  def expire(self):
+    print("expired snap by " + self.creator)
+
+snap = Snap("edsu")
+snap.expire()
+```
+
+::: fragment
+**expired snap by edsu**
+:::
+
+::: notes
+
+There's no new syntax required to do inheritance. But notice how the Tweet and Snap classes are defined on line 5 and 9? See what is now in the parentheses? That is declaring that each inherit from a base class Post.
 
 :::
 
 #
+
+
+``` {.python .numberLines .smaller}
+class Post():
+  def __init__(self, creator):
+    self.creator = creator
+
+class Tweet(Post):
+  def retweet(self):
+    print("retweeted by " + self.creator)
+
+class Snap(Post):
+  def expire(self):
+    print("expired snap by " + self.creator)
+
+tweet = Tweet(creator="edsu")
+tweet.retweet()
+```
+
+::: fragment
+**retweeted by edsu**
+:::
+
+# 
+
+``` {.python .numberLines .smaller}
+class Post():
+  def __init__(self, creator):
+    self.creator = creator
+
+class Tweet(Post):
+  def retweet(self):
+    print("retweeted by " + self.creator)
+
+class Snap(Post):
+  def expire(self):
+    print("expired snap by " + self.creator)
+
+tweet = Tweet(creator="edsu")
+tweet.expire()
+```
+
+::: fragment
+**AttributeError: 'Tweet' object has no attribute 'expire'**
+:::
+
+#
+
+``` {.python .numberLines .smaller}
+class Post():
+  def __init__(self, creator):
+    self.creator = creator
+  def delete(self):
+    print("post deleted by " + self.creator)
+
+class Tweet(Post):
+  def retweet(self):
+    print("retweeted by " + self.creator)
+
+class Snap(Post):
+  def expire(self):
+    print("expired snap by " + self.creator)
+
+tweet = Tweet(creator="edsu")
+tweet.delete()
+```
+
+::: fragment
+**post deleted by edsu**
+:::
+
+#
+
+## Overriding Methods
+
+``` {.python .numberLines .smaller}
+class Post():
+  def __init__(self, creator):
+    self.creator = creator
+  def update(self):
+    print("post updated by " + self.creator)
+
+class Tweet(Post):
+  def update(self):
+    print("you can never update tweets!")
+
+class Snap(Post):
+  def expire(self):
+    print("expired snap by " + self.creator)
+
+tweet = Tweet(creator="edsu")
+tweet.update()
+```
+
+::: fragment
+**you can never delete tweets!""**
+:::
+
+# Exercise
+
+::: left
+
+Remember our *Email* class that we used for processing the Enron email? Let's
+*extend* the one I've uploaded as *email.py* to Module 7 in ELMS and add a
+*method* that will return the *subject* of the email.
+
+:::
+
+# Composition
+
+# 
+
+<a href="http://www.oed.com/view/Entry/37795"><img src="images/composition-def.png"></a>
+
+
+#
+
 
 ::: columns
 
 :::: column
 
-<a href="https://upload.wikimedia.org/wikipedia/commons/8/8e/Thompson-kleene-star.svg"><img src="images/star.png"></a>
+<img src="images/pizza.jpg">
 
 ::::
 
-:::: column 
+:::: column
 
-<a href="https://en.wikipedia.org/wiki/Stephen_Cole_Kleene"><img width="50%" src="images/kleene.jpg"></a>
+<br>
+
+**Pizza**
+
+::::: incremental
+
+* crust
+* toppings
+* cheese
+* sauce
+
+:::::
 
 ::::
 
@@ -100,190 +214,204 @@ scratching the surface today.
 
 ::: notes
 
-The idea of regular expressions is almost as old as computing itself. They were
-created by mathematician Stephen Cole Kleene in 1951 with his idea of 'regular
-languages'. They started to get used heavily in the 1960s as part of early text
-editors, as well as compilers for programming languages. You can still see them in
-VSCode today.
-
-:::
-
-#
-
-## wdloh@umd.edu
-
-<br>
-<br>
-
-``` 
-\A[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@ (?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\z
-```
-
-::: notes
-
-This is an example of a very complicated regular expression that matches (most) email addresses.It's hard to read right?
+A pizza is composed of multiple things.
 
 :::
 
 # 
 
+<img src="images/composition.png">
+
+::: notes
+
+We can model the relationship between the Pizza class and the Topping objects of which it is composed. Notice the filled in diamond that indicates a composition relationship? Also notice the 0..7 that indicates there can be 0 to 7 toppings on a pizza.
+
+:::
+
+# 
+
+``` {.python .numberLines .smaller}
+class Topping():
+
+    def __init__(self, name, num_pieces):
+        self.name = name
+        self.num_pieces = num_pieces
+
+topping = Topping("pepperoni", 25)
+print(topping)
+```
+
+::: fragment
+**<__main__.Topping object at 0x10c6374e0>**
+:::
+
+::: notes
+
+First lets create a Topping class that has a name, and a number of pieces.
+
+:::
+
+# 
+
+``` {.python .numberLines .smaller}
+class Pizza():
+
+    def __init__(self):
+        self.toppings = []
+
+    def add_topping(self, topping):
+        self.toppings.append(topping)
+
+pizza = Pizza()
+print(pizza)
+```
+
+::: fragment
+**<__main__.Pizza object at 0x10c6374e0>**
+:::
+
+::: notes
+
+Next lets create a Pizza class that initializes a list of toppings in the constuctor and has a method for adding toppings.
+
+:::
+
+#
+
+``` {.python .numberLines .smaller}
+class Pizza():
+    def __init__(self):
+        self.toppings = []
+    def add_topping(self, topping):
+        self.toppings.append(topping)
+
+class Topping():
+    def __init__(self, name, num_pieces):
+        self.name = name
+        self.num_pieces = num_pieces
+
+pizza = Pizza()
+pizza.add_topping(Topping("pepperoni", 18))
+pizza.add_topping(Topping("mushrooms", 12))
+pizza.add_topping(Topping("green peppers", 15))
+print(pizza.toppings)
+```
+
+::: fragment
+<div style="font-size: 18pt;">
+[<__main__.Topping object at 0x10c9ae748>, <__main__.Topping object at 0x10c9aea58>, <__main__.Topping object at 0x10c9aea90>]
+</div>
+:::
+
+::: notes
+Here's what they look like when we put them together.
+:::
+
+#
+
+``` {.python .smaller .numberLines}
+class Topping():
+
+    def __init__(self, name, num_pieces):
+        self.name = name
+        self.num_pieces = num_pieces
+
+    def __repr__(self):
+        return "{} pieces of {}".format(self.num_pieces, self.name))
+
+pizza = Pizza()
+pizza.add_topping(Topping("pepperoni", 18))
+pizza.add_topping(Topping("mushrooms", 12))
+pizza.add_topping(Topping("green peppers", 15))
+print(pizza.toppings)
+```
+
+::: fragment
+<div style="font-size: 18pt;">
+[18 pieces of pepperoni, 12 pieces of mushrooms, 15 pieces of green peppers]
+</div>
+:::
+
+::: notes
+
+Every class you create can have a \_\_repr\_\_ method, short for representation, which can define how to print out instances of the class as strings. Which can be handy for debugging.
+
+:::
+
+# 
+
+``` {.python .numberLines .smaller}
+class Pizza():
+    def __init__(self):
+        self.toppings = []
+
+    def add_topping(self, topping):
+        self.toppings.append(topping)
+
+    def num_pieces(self):
+        count = 0
+        for topping in self.toppings:
+            count += topping.num_pieces
+        return count
+
+pizza = Pizza()
+pizza.add_topping(Topping("pepperoni", 18))
+pizza.add_topping(Topping("mushrooms", 12))
+pizza.add_topping(Topping("green peppers", 15))
+print(pizza.num_toppings())
+```
+
+::: fragment
+**45**
+:::
+
+::: notes
+
+Here we added a method to Pizza named num_pieces which returns the total number of pizza topping pieces on the pizza!
+
+:::
+
+# OOP Patterns
+
+::: columns
+
+:::: column
+
+::::: left
+
+Class *composition* is a much more useful Object Oriented Programming *pattern* than *inheritance*.
+
+Inheritance should be used sparingly because elaborate inheritance hierarchies can be difficult to maintain over time as requirements change.
+
+:::::
+
+::::
+
+:::: column
+
+<a href="https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612/"><img width="70%" src="images/design-patterns.jpg"></a>
+
+::::
+
+:::
+
+# 
+
+<a href="https://en.wikipedia.org/wiki/The_Timeless_Way_of_Building"><img width="50%"  src="images/timeless.jpg"></a>
+
+# Exercise
+
 ::: left
 
-> Some people, when confronted with a problem, think 
-> "I know, I'll use regular expressions." Now they have two problems.
->
-> -- [Jamie Zawinski](http://regex.info/blog/2006-09-15/247)
+Download the `pizza.py` file from Module 7 and modify `Pizza.add_topping` to ensure that no more than 7 toppings are added.
+
+If someone adds more than 7 toppings it should print *"Sorry that is too many toppings!"*.
 
 :::
 
-#
 
-``` {.python .numberLines}
-import re
 
-s = "To be or not to be."
 
-match = re.search("Be", s)
 
-if match:
-    print("match!")
-else:
-    print("no match :(")
-```
 
-::: fragment
-**no match :(**
-:::
-
-#
-
-``` {.python .numberLines}
-import re
-
-s = "To be or not to be."
-
-match = re.search("Be", s, re.IGNORECASE)
-
-if match:
-    print("match!")
-else:
-    print("no match :(")
-```
-
-::: fragment
-**match!**
-:::
-
-#
-
-**\\w** word character
-
-``` {.python .numberLines}
-import re
-
-s = "To be or not to be."
-
-match = re.search("\w\w\w", s)
-
-print(match.group())
-```
-
-::: fragment
-**not**
-:::
-
-#
-
-**\\d** digit/number
-
-**+** one or more
-
-``` {.python .numberLines}
-import re
-
-s = "32 Penn-Lyle Road, Princeton Jct, 08550"
-
-match = re.search("\d+", s)
-
-print(match.group())
-```
-
-::: fragment
-**32**
-:::
-
-#
-
-**$** end of string
-
-``` {.python .numberLines}
-import re
-
-s = "32 Penn-Lyle Road, Princeton Jct, 08550"
-
-match = re.search("\d+$", s)
-
-print(match.group())
-```
-
-::: fragment
-**08550**
-:::
-
-#
-
-**findall()**
-
-``` {.python .numberLines}
-import re
-
-s = "32 Penn-Lyle Road, Princeton Jct, 08550"
-
-for s in re.findall("\d+", s):
-    print(s)
-```
-
-::: fragment
-**32**  
-**08550**
-:::
-
-#
-
-<a href="cheatsheet.pdf"><img width="50%" style="border: thin solid gray;" src="images/cheatsheet.png"></a>
-
-#
-
-::: left
-
-Remember this [JSON dataset](aoc.json)? Let's imagine we wanted to find all the words that follow "climate" in AOC's tweets. How could we do that?
-
-:::
-
-#
-
-## Grouping
-
-``` {.python .numberLines}
-import re
-import json
-
-fh = open('aoc.json')
-tweets = json.load(fh)
-
-for tweet in tweets:
-    m = re.search('climate (\w+)', tweet['text'])
-    if m:
-        print(m.group(1))
-```
-
-#
-
-::: left
-
-For the next class take a look at the [exercise](exercise.html) that we'll be working on together.
-
-<a href="https://www.nytimes.com/2019/02/22/business/enron-ceo-skilling-scandal.html"><img style="border: thin solid gray; padding: 5px;" src="images/enron.png"></a>
-
-:::
-
+  

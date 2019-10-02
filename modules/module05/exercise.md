@@ -1,11 +1,11 @@
 ---
-title: "Module 6: Object-Oriented Programming Exercise"
+title: "Module 5 Exercise"
 css: ../../css/page.css
 ---
 
 ## Background
 
-In the previous module recall that we used a sample of the [Enron Email Dataset](https://www.cs.cmu.edu/~./enron/). We will use the same sample for this exercise, to see how a custom class can facilitate working with data.
+The [Enron Email Dataset](https://www.cs.cmu.edu/~./enron/) is a body of approximately 500,000 email messages from top executives in the [Enron Corporation](https://en.wikipedia.org/wiki/Enron), a Texas-based energy company which after going bankrupt in 2001 was revealed to have engaged in massive accounting fraud. The email dataset became evidence in the ensuing investigation, and subsequently was released into the public domain.
 
 ## Task: Email Message Class
 

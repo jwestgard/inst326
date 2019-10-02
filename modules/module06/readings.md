@@ -1,11 +1,10 @@
 ---
-title: "Module 5: Readings"
+title: Module 7 Readings
 css: ../../css/page.css
 ---
 
-## Regular Expressions
+Severance, Charles (2016). Chapter 14 in *Python for Everybody*.
 
+Python Foundation. [6. Modules](https://docs.python.org/3/tutorial/modules.html) in The Python Tutorial.
 
-Severance (2016). [Chapter 11: Regular Expressions](https://www.py4e.com/html3/11-regex).
-
-
+Donovan, Joan. (2019). [How Hate Groups’ Secret Sound System Works](https://www.theatlantic.com/ideas/archive/2019/03/extremists-understand-what-tech-platforms-have-built/585136/). *The Atlantic*.
