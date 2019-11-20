@@ -1,4 +1,4 @@
-all: info.html
+all: info.html index.html
 
 info.html: info.md
 	pandoc --output info.html --standalone info.md
