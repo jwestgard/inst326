@@ -1,6 +1,6 @@
 ---
-title: Object-Oriented Programming
-subtitle: Combining Data and Behavior
+title: "Object-Oriented Programming"
+subtitle: "Combining Data and Behavior"
 revealjs-url: ../../lib/reveal
 theme: inst326
 transition: slide
@@ -20,7 +20,7 @@ common core set of features and means of operation.
 
 :::
 
-# 
+#
 
 What are some common properties of cars?
 
@@ -87,7 +87,7 @@ What are some actions you can perform?
 
 :::
 
-# 
+#
 
 ## Classes vs. instances
 
@@ -210,7 +210,7 @@ Nom nom. Spot likes dogfood.
 
 #
 
-## In summary 
+## In summary
 
 ::: notes
 
@@ -223,6 +223,3 @@ This probably seems like a lot, but once you get the hang of it basic OOP can se
 - Attributes and Methods
 - Interacting with Instances
 - [Exercise](exercise.html)
-
-
-

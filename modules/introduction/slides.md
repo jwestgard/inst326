@@ -1,6 +1,6 @@
 ---
 title: "INST 326"
-subtitle: "Object Oriented Programing: Introduction to the Course"
+subtitle: "Object Oriented Programming: Introduction to the Course"
 revealjs-url: ../../lib/reveal
 theme: inst326
 transition: slide
@@ -8,33 +8,26 @@ transition: slide
 
 # Introductions
 
-<img width="60%" src="images/ischool.jpg">
+<a href="https://ischool.umd.edu">
+  <img width="60%" src="images/ischool.jpg" />
+</a>
 
-:::
-
-Go around the room introducing ourselves.
-
-:::
 
 # Syllabus
 
 The Syllabus and other course materials can be found on ELMS
 
+
 # What is Python and Why Was it Chosen?
 
-::: incremental
+- A Little History
+- High level
+- Rapid development
+- Multi-purpose
+- Batteries included
 
-* A Little History
-* High level
-* Rapid development
-* Multi-purpose
-* Batteries included
-
-:::
 
 # Learning Outcomes
-
-::: incremental
 
 1. Design, program, and debug Python programs.
 2. Collect, process, and analyze data.
@@ -43,11 +36,8 @@ The Syllabus and other course materials can be found on ELMS
 5. Write clear and effective documentation.
 6. Understand how code expresses values & ethics.
 
-:::
 
 # Teaching Methods
-
-::: incremental
 
 * Course is divided into 11 modules
 * Preparation assignments can be completed over the course of the week
@@ -55,7 +45,6 @@ The Syllabus and other course materials can be found on ELMS
 * Class 2 will be a combination of lecture and whiteboarding/practice
 * Class 3 will be a lab, with hands-on practice activities
 
-:::
 
 # Grades
 
@@ -71,16 +60,17 @@ The Syllabus and other course materials can be found on ELMS
 
 # Texts
 
-* Charles R. Severance, [Python for Everybody: Exploring Data Using Python 3](http://py4e.com). 
+* Charles R. Severance, [Python for Everybody: Exploring Data Using Python 3](http://py4e.com).
 * [The Python Tutorial](https://docs.python.org/3/tutorial/index.html), v3.7.2, Python Software Foundation.
-* [Object-Oriented Programming in Python](https://www.cs.uct.ac.za/mit_notes/python/), University of Cape Town. 
+* [Object-Oriented Programming in Python](https://www.cs.uct.ac.za/mit_notes/python/), University of Cape Town.
 
 # Tools
+
+We'll spend some time on installation later this week.
 
 * Laptop - Windows, Linux, or Mac
 * Python - [https://python.org/download](https://python.org/download)
 * An Editor (e.g. Atom, Sublime Text, Notepad++) or IDE (PyCharm, Visual Studio, Eclipse).
 
-We'll spend some time on installation next time.
 
 # Questions?

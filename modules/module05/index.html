@@ -7,75 +7,77 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../lib/reveal/css/reset.css">
   <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
   <style>
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <style>
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../lib/reveal/css/theme/inst326.css" id="theme">
   <!-- Printing and PDF exports -->
@@ -187,14 +189,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>All data types (for example, string, list, dictionary) are objects</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="op">&gt;&gt;&gt;</span> s <span class="op">=</span> <span class="st">&#39;Hello World&#39;</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="op">&gt;&gt;&gt;</span> <span class="bu">type</span>(s)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="op">&lt;</span><span class="kw">class</span> <span class="st">&#39;str&#39;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="op">&gt;&gt;&gt;</span> l <span class="op">=</span> <span class="bu">list</span>()</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="op">&gt;&gt;&gt;</span> <span class="bu">type</span>(l)</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="op">&lt;</span><span class="kw">class</span> <span class="st">&#39;list&#39;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="op">&gt;&gt;&gt;</span> <span class="bu">dir</span>(l)</a>
-<a class="sourceLine" id="cb1-8" title="8">[<span class="st">&#39;__add__&#39;</span>, <span class="st">&#39;__class__&#39;</span>, ...]</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;&gt;&gt;</span> s <span class="op">=</span> <span class="st">&#39;Hello World&#39;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">type</span>(s)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="op">&lt;</span><span class="kw">class</span> <span class="st">&#39;str&#39;</span><span class="op">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="op">&gt;&gt;&gt;</span> l <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">type</span>(l)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="op">&lt;</span><span class="kw">class</span> <span class="st">&#39;list&#39;</span><span class="op">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">dir</span>(l)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>[<span class="st">&#39;__add__&#39;</span>, <span class="st">&#39;__class__&#39;</span>, ...]</span></code></pre></div>
 </section>
 <section id="section-7" class="slide level1">
 <h1></h1>
@@ -214,9 +216,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Define a class with the “class” keyword</li>
 <li>Define methods inside the class with indented “def” blocks</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">class</span> Pet():</a>
-<a class="sourceLine" id="cb2-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</a>
-<a class="sourceLine" id="cb2-3" title="3">        <span class="va">self</span>.name <span class="op">=</span> name</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> Pet():</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span></code></pre></div>
 </section>
 <section id="section-9" class="slide level1">
 <h1></h1>
@@ -237,24 +239,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Attributes are properties specific to the instance</li>
 <li>Methods are like functions defining behaviors specific to the members of a class</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">class</span> Pet():</a>
-<a class="sourceLine" id="cb3-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</a>
-<a class="sourceLine" id="cb3-3" title="3">        <span class="va">self</span>.name <span class="op">=</span> name</a>
-<a class="sourceLine" id="cb3-4" title="4">    <span class="kw">def</span> eat(<span class="va">self</span>):</a>
-<a class="sourceLine" id="cb3-5" title="5">        <span class="bu">print</span>(<span class="st">&#39;Nom nom nom&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> Pet():</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb3-3"><a href="#cb3-3"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="kw">def</span> eat(<span class="va">self</span>):</span>
+<span id="cb3-5"><a href="#cb3-5"></a>        <span class="bu">print</span>(<span class="st">&#39;Nom nom nom&#39;</span>)</span></code></pre></div>
 </section>
 <section id="section-11" class="slide level1">
 <h1></h1>
 <h2 id="interacting-with-an-object">Interacting with an object</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">class</span> Pet():</a>
-<a class="sourceLine" id="cb4-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</a>
-<a class="sourceLine" id="cb4-3" title="3">        <span class="va">self</span>.name <span class="op">=</span> name</a>
-<a class="sourceLine" id="cb4-4" title="4">    <span class="kw">def</span> eat(<span class="va">self</span>, food):</a>
-<a class="sourceLine" id="cb4-5" title="5">        <span class="bu">print</span>(<span class="ss">f&#39;Nom nom. </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> likes </span><span class="sc">{</span>food<span class="sc">}</span><span class="ss">.&#39;</span>)</a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="op">&gt;&gt;&gt;</span> mypet <span class="op">=</span> Pet(<span class="st">&#39;Spot&#39;</span>)</a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="op">&gt;&gt;&gt;</span> mypet.eat(<span class="st">&#39;dogfood&#39;</span>)</a>
-<a class="sourceLine" id="cb4-9" title="9">Nom nom. Spot likes dogfood.</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">class</span> Pet():</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb4-3"><a href="#cb4-3"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="kw">def</span> eat(<span class="va">self</span>, food):</span>
+<span id="cb4-5"><a href="#cb4-5"></a>        <span class="bu">print</span>(<span class="ss">f&#39;Nom nom. </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> likes </span><span class="sc">{</span>food<span class="sc">}</span><span class="ss">.&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="op">&gt;&gt;&gt;</span> mypet <span class="op">=</span> Pet(<span class="st">&#39;Spot&#39;</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="op">&gt;&gt;&gt;</span> mypet.eat(<span class="st">&#39;dogfood&#39;</span>)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>Nom nom. Spot likes dogfood.</span></code></pre></div>
 <aside class="notes">
 <ul>
 <li>The ‘self’ is a special variable that refers to the instance</li>
@@ -296,7 +298,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 
-  <script src="../../lib/reveal/lib/js/head.min.js"></script>
   <script src="../../lib/reveal/js/reveal.js"></script>
 
   <script>

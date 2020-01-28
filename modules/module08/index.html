@@ -8,74 +8,43 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
   <link rel="stylesheet" href="../../lib/reveal/css/theme/inst326.css" id="theme">
   <!-- Printing and PDF exports -->
@@ -94,22 +63,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide">
+<section>
   <h1 class="title">Relational Databases</h1>
 </section>
 
 <section id="section" class="slide level1">
 <h1></h1>
 <p><a title="Daderot [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Cuneiform_tablet_with_bread_and_flour_distributions,_Ur_III_Period,_c._2100-2000_BC_-_Harvard_Semitic_Museum_-_Cambridge,_MA_-_DSC06146.jpg"><img width="450" alt="Cuneiform tablet with bread and flour distributions, Ur III Period, c. 2100-2000 BC - Harvard Semitic Museum - Cambridge, MA - DSC06146" src="images/cuneiform.jpg"></a></p>
-<aside class="notes">
+<p>::: notes</p>
 <p>This example of a cuneiform (wedge-shaped) writing tablet dates from the 3rd millennium BCE and records the distribution of bread and flour. It is shown here as an example of early record keeping. Writing systems developed first and foremost as a means of keeping track of legal agreements and business transactions, even before they were used for literary purposes.</p>
 <p>Image in public domain; original in Harvard Semitic Museum (Cambridge, MA).</p>
-</aside>
+<p>:::</p>
 </section>
 <section id="section-1" class="slide level1">
 <h1></h1>
 <h2 id="tools">Tools</h2>
-<p>For our work with databases, we’ll be using three tools:</p>
+<p>For our work with databases, we'll be using three tools:</p>
 <ul>
 <li><strong>SQLite</strong> (database)</li>
 <li><strong>sqlite3</strong> (Python module)</li>
@@ -119,42 +88,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="section-2" class="slide level1">
 <h1></h1>
 <h2 id="tools-sqlite">Tools: SQLite</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">lightweight relational database (RDBMS)</li>
-<li class="fragment">runs locally and stores data in files</li>
-<li class="fragment">no separate database server required</li>
-<li class="fragment">already installed on your system (as part of Python)</li>
-<li class="fragment">project website: <a href="https://sqlite.org/mostdeployed.html">https://www.sqlite.org</a></li>
+<li>lightweight relational database (RDBMS)</li>
+<li>runs locally and stores data in files</li>
+<li>no separate database server required</li>
+<li>already installed on your system (as part of Python)</li>
+<li>project website: <a href="https://sqlite.org/mostdeployed.html">https://www.sqlite.org</a></li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-3" class="slide level1">
 <h1></h1>
 <h2 id="tools-sqlite3">Tools: sqlite3</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">module in the standard library</li>
-<li class="fragment">facilitates interaction with the database by:
+<li>module in the standard library</li>
+<li>facilitates interaction with the database by:
 <ol type="1">
-<li class="fragment">managing connections</li>
-<li class="fragment">passing queries to the database system</li>
-<li class="fragment">making results of queries accessible to Python</li>
+<li>managing connections</li>
+<li>passing queries to the database system</li>
+<li>making results of queries accessible to Python</li>
 </ol></li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-4" class="slide level1">
 <h1></h1>
 <h2 id="tools-db-browser-for-sqlite">Tools: DB Browser for SQLite</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">graphical application (GUI)</li>
-<li class="fragment">allows you to view the contents of a SQLite database</li>
-<li class="fragment">an optional convenience for this course</li>
-<li class="fragment">downloadable from <a href="https://sqlitebrowser.org">https://sqlitebrowser.org</a></li>
+<li>graphical application (GUI)</li>
+<li>allows you to view the contents of a SQLite database</li>
+<li>an optional convenience for this course</li>
+<li>downloadable from <a href="https://sqlitebrowser.org" class="uri">https://sqlitebrowser.org</a></li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="databases" class="slide level1">
 <h1>Databases</h1>
@@ -162,27 +131,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="section-5" class="slide level1">
 <h1></h1>
 <p><a title="Washington, D.C. Jewal Mazique [i.e. Jewel] cataloging in the Library of Congress (1942)" href="https://www.loc.gov/pictures/item/2017828941/"><img width="600" alt="Image of a woman working with the card catalog in the Library of Congress, 1942" src="images/cardcatalog.jpg"></a></p>
-<aside class="notes">
-<p>This image of Jewell Mazique (https://en.wikipedia.org/wiki/Jewell_Mazique) working with the card catalog in the Library of Congress is included here to illustrate the more general meaning of the term ‘database’ as any large collection of structured information.</p>
-</aside>
+<p>::: notes</p>
+<p>This image of Jewell Mazique (https://en.wikipedia.org/wiki/Jewell_Mazique) working with the card catalog in the Library of Congress is included here to illustrate the more general meaning of the term 'database' as any large collection of structured information.</p>
+<p>:::</p>
 </section>
 <section id="section-6" class="slide level1">
 <h1></h1>
 <h2 id="the-relational-model">The Relational Model</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">Invented by E. F. Codd in the 1970s</li>
-<li class="fragment">Data stored in tables (relations)</li>
-<li class="fragment">Relations consist of rows (tuples)</li>
-<li class="fragment">Tuples have columns (attributes) that hold values</li>
-<li class="fragment">The term “database” now often connotes this type of relational database</li>
+<li>Invented by E. F. Codd in the 1970s</li>
+<li>Data stored in tables (relations)</li>
+<li>Relations consist of rows (tuples)</li>
+<li>Tuples have columns (attributes) that hold values</li>
+<li>The term &quot;database&quot; now often connotes this type of relational database</li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-7" class="slide level1">
 <h1></h1>
 <h2 id="other-db-systems">Other DB Systems</h2>
-<div class="left">
+<p>::: left</p>
 <p>Database design/theory is a much larger topic. In fact it is an entire course (INST 327)! Here are a just a few database systems you may encounter:</p>
 <ul>
 <li><strong>Relational</strong>:
@@ -190,50 +159,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>mySQL/MariaDB</li>
 <li>PostgreSQL</li>
 </ul></li>
-<li><strong>Non-relational</strong> (“NoSQL”):
+<li><strong>Non-relational</strong> (&quot;NoSQL&quot;):
 <ul>
 <li>Document: MongoDB (JSON), BaseX (XML)</li>
 <li>Graph: Neo4j, Fuseki</li>
 </ul></li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-8" class="slide level1">
 <h1></h1>
-<h2 id="normalization">‘Normalization’</h2>
-<div>
+<h2 id="normalization">'Normalization'</h2>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">Through a design process, data are “normalized”</li>
-<li class="fragment">Normalization means applying a set of rules (called “normal forms”) to increase efficiency and reduce redundancy</li>
-<li class="fragment">Many specifics of database design and normalization are outside the scope of this course</li>
+<li>Through a design process, data are &quot;normalized&quot;</li>
+<li>Normalization means applying a set of rules (called &quot;normal forms&quot;) to increase efficiency and reduce redundancy</li>
+<li>Many specifics of database design and normalization are outside the scope of this course</li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-9" class="slide level1">
 <h1></h1>
 <h2 id="sql">SQL</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">a standardized language is used to interact with a relational database</li>
-<li class="fragment">this is known as the Structured Query Language (SQL)</li>
-<li class="fragment">SQL has different flavors but generally works the same way across database systems</li>
+<li>a standardized language is used to interact with a relational database</li>
+<li>this is known as the Structured Query Language (SQL)</li>
+<li>SQL has different flavors but generally works the same way across database systems</li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-10" class="slide level1">
 <h1></h1>
 <h2 id="crud">CRUD</h2>
-<div class="left">
-<p>Basic database operations are called “CRUD”:</p>
-</div>
-<div>
+<p>::: left</p>
+<p>Basic database operations are called &quot;CRUD&quot;:</p>
+<p>:::</p>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">CREATE: add data to the database</li>
-<li class="fragment">READ: retrive data from one or more tables</li>
-<li class="fragment">UPDATE: make changes to the data</li>
-<li class="fragment">DELETE: remove rows from a table (potentially with a cascade effect)</li>
+<li>CREATE: add data to the database</li>
+<li>READ: retrive data from one or more tables</li>
+<li>UPDATE: make changes to the data</li>
+<li>DELETE: remove rows from a table (potentially with a cascade effect)</li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="using-a-database-with-python" class="slide level1">
 <h1>Using a Database with Python</h1>
@@ -241,22 +210,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="section-11" class="slide level1">
 <h1></h1>
 <h2 id="connecting-to-a-database-in-memory">Connecting to a database: in-memory</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># import the sqlite3 module</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> sqlite3</a>
-<a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co"># &#39;::memory::&#39; is special sqlite3 syntax</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="op">&gt;&gt;&gt;</span> conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">&#39;:memory:&#39;</span>)</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="op">&gt;&gt;&gt;</span> conn</a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="op">&lt;</span>sqlite3.Connection <span class="bu">object</span> at <span class="bn">0x10507b110</span><span class="op">&gt;</span></a></code></pre></div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># import the sqlite3 module</span>
+<span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> sqlite3
+
+<span class="co"># &#39;::memory::&#39; is special sqlite3 syntax</span>
+<span class="op">&gt;&gt;&gt;</span> conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">&#39;:memory:&#39;</span>)
+<span class="op">&gt;&gt;&gt;</span> conn
+<span class="op">&lt;</span>sqlite3.Connection <span class="bu">object</span> at <span class="bn">0x10507b110</span><span class="op">&gt;</span></code></pre></td></tr></table></div>
 </section>
 <section id="section-12" class="slide level1">
 <h1></h1>
 <h2 id="connecting-to-a-database-database-file">Connecting to a database: database file</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># connect to an in-memory database</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="op">&gt;&gt;&gt;</span> conn2 <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">&#39;test.sqlite&#39;</span>)</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="op">&gt;&gt;&gt;</span> conn2</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="op">&lt;</span>sqlite3.Connection <span class="bu">object</span> at <span class="bn">0x10507b030</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="co"># a file will appear in the working directory</span></a></code></pre></div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># connect to an in-memory database</span>
+<span class="op">&gt;&gt;&gt;</span> conn2 <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">&#39;test.sqlite&#39;</span>)
+<span class="op">&gt;&gt;&gt;</span> conn2
+<span class="op">&lt;</span>sqlite3.Connection <span class="bu">object</span> at <span class="bn">0x10507b030</span><span class="op">&gt;</span>
+<span class="co"># a file will appear in the working directory</span></code></pre></td></tr></table></div>
 </section>
 <section id="section-13" class="slide level1">
 <h1></h1>
@@ -266,33 +247,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>In addition, we need a cursor to manage state</li>
 <li>The cursor sends queries and contains results</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># imagine we are creating a bibliographic db</span></a>
-<a class="sourceLine" id="cb3-2" title="2">conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">&#39;biblio.sqlite&#39;</span>)</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co"># to query this db we must create a cursor</span></a>
-<a class="sourceLine" id="cb3-4" title="4">cursor <span class="op">=</span> conn.cursor()</a></code></pre></div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># imagine we are creating a bibliographic db</span>
+conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">&#39;biblio.sqlite&#39;</span>)
+<span class="co"># to query this db we must create a cursor</span>
+cursor <span class="op">=</span> conn.cursor()</code></pre></td></tr></table></div>
 </section>
 <section id="section-14" class="slide level1">
 <h1></h1>
 <h2 id="setting-up-the-database">Setting up the database</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># create a table to hold some data with CREATE</span></a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="co"># docstrings are commonly used for queries</span></a>
-<a class="sourceLine" id="cb4-3" title="3">cq <span class="op">=</span> <span class="st">&#39;&#39;&#39;CREATE TABLE books (</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="st">        title TEXT, author TEXT, date INTEGER</span></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="st">        )&#39;&#39;&#39;</span></a>
-<a class="sourceLine" id="cb4-6" title="6">cursor.execute(cq)</a></code></pre></div>
-<aside class="notes">
-<p>Docstrings are triple-quoted strings (with ’ or "), and allow internal line breaks. Line breaks, which are insignificant in SQL, are often used to format queries for readability.</p>
-</aside>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># create a table to hold some data with CREATE</span>
+<span class="co"># docstrings are commonly used for queries</span>
+cq <span class="op">=</span> <span class="st">&#39;&#39;&#39;CREATE TABLE books (</span>
+<span class="st">        title TEXT, author TEXT, date INTEGER</span>
+<span class="st">        )&#39;&#39;&#39;</span>
+cursor.execute(cq)</code></pre></td></tr></table></div>
+<p>::: notes</p>
+<p>Docstrings are triple-quoted strings (with ' or &quot;), and allow internal line breaks. Line breaks, which are insignificant in SQL, are often used to format queries for readability.</p>
+<p>:::</p>
 </section>
 <section id="section-15" class="slide level1">
 <h1></h1>
 <h2 id="create-entries">Create entries</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Next add a row to the table with INSERT</span></a>
-<a class="sourceLine" id="cb5-2" title="2">iq <span class="op">=</span> <span class="st">&#39;&#39;&#39;INSERT INTO books VALUES (</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="st">     &#39;2001: A Space Odyssey&#39;, </span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="st">     &#39;Arthur C. Clarke&#39;, &#39;1951&#39;</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="st">     )&#39;&#39;&#39;</span></a>
-<a class="sourceLine" id="cb5-6" title="6">cursor.execute(iq)</a></code></pre></div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># Next add a row to the table with INSERT</span>
+iq <span class="op">=</span> <span class="st">&#39;&#39;&#39;INSERT INTO books VALUES (</span>
+<span class="st">     &#39;2001: A Space Odyssey&#39;,</span>
+<span class="st">     &#39;Arthur C. Clarke&#39;, &#39;1951&#39;</span>
+<span class="st">     )&#39;&#39;&#39;</span>
+cursor.execute(iq)</code></pre></td></tr></table></div>
 </section>
 <section id="section-16" class="slide level1">
 <h1></h1>
@@ -301,71 +298,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>This works fine, but can be impractical at scale</li>
 <li>Larger numbers of records can be created with executemany()</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># First, create some data </span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="co"># (in real life you might read this from a file)</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="co"># Structure it as a list of tuples</span></a>
-<a class="sourceLine" id="cb6-4" title="4">data <span class="op">=</span> [(<span class="st">&quot;I, Robot&quot;</span>, <span class="st">&quot;Isaac Asimov&quot;</span>, <span class="dv">1950</span>),</a>
-<a class="sourceLine" id="cb6-5" title="5">        (<span class="st">&quot;The Martian&quot;</span>, <span class="st">&quot;Andy Weir&quot;</span>, <span class="dv">2012</span>),</a>
-<a class="sourceLine" id="cb6-6" title="6">        (<span class="st">&quot;The Left Hand Of Darkness&quot;</span>, </a>
-<a class="sourceLine" id="cb6-7" title="7">            <span class="st">&quot;Ursula K. Le Guin&quot;</span>,<span class="dv">1969</span>)]</a></code></pre></div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># First, create some data</span>
+<span class="co"># (in real life you might read this from a file)</span>
+<span class="co"># Structure it as a list of tuples</span>
+data <span class="op">=</span> [(<span class="st">&quot;I, Robot&quot;</span>, <span class="st">&quot;Isaac Asimov&quot;</span>, <span class="dv">1950</span>),
+        (<span class="st">&quot;The Martian&quot;</span>, <span class="st">&quot;Andy Weir&quot;</span>, <span class="dv">2012</span>),
+        (<span class="st">&quot;The Left Hand Of Darkness&quot;</span>,
+            <span class="st">&quot;Ursula K. Le Guin&quot;</span>,<span class="dv">1969</span>)]</code></pre></td></tr></table></div>
 </section>
 <section id="section-17" class="slide level1">
 <h1></h1>
 <h2 id="scaling-up-continued">Scaling up (continued)</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># Next, create a query with placeholders</span></a>
-<a class="sourceLine" id="cb7-2" title="2">imq <span class="op">=</span> <span class="st">&#39;&#39;&#39;INSERT INTO books VALUES (?,?,?)&#39;&#39;&#39;</span></a>
-<a class="sourceLine" id="cb7-3" title="3"></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="co"># Finally, pass query &amp; data to executemany()</span></a>
-<a class="sourceLine" id="cb7-5" title="5">cursor.executemany(imq, data)</a></code></pre></div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># Next, create a query with placeholders</span>
+imq <span class="op">=</span> <span class="st">&#39;&#39;&#39;INSERT INTO books VALUES (?,?,?)&#39;&#39;&#39;</span>
+
+<span class="co"># Finally, pass query &amp; data to executemany()</span>
+cursor.executemany(imq, data)</code></pre></td></tr></table></div>
 </section>
 <section id="section-18" class="slide level1">
 <h1></h1>
 <h2 id="read">Read</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># Next, to view the data, use a SELECT query</span></a>
-<a class="sourceLine" id="cb8-2" title="2">sq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT title FROM books&#39;&#39;&#39;</span></a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="co"># Execute the query as before, appending fetchall()</span></a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="co"># which assigns results to &#39;books&#39; variable</span></a>
-<a class="sourceLine" id="cb8-5" title="5">books <span class="op">=</span> cursor.execute(sq).fetchall()</a>
-<a class="sourceLine" id="cb8-6" title="6"><span class="bu">print</span>(books)</a>
-<a class="sourceLine" id="cb8-7" title="7">[(<span class="st">&#39;2001: A Space Odyssey&#39;</span>,), </a>
-<a class="sourceLine" id="cb8-8" title="8">    (<span class="st">&#39;I, Robot&#39;</span>,), </a>
-<a class="sourceLine" id="cb8-9" title="9">    (<span class="st">&#39;The Martian&#39;</span>,), </a>
-<a class="sourceLine" id="cb8-10" title="10">    (<span class="st">&#39;The Left Hand Of Darkness&#39;</span>,)]</a></code></pre></div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># Next, to view the data, use a SELECT query</span>
+sq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT title FROM books&#39;&#39;&#39;</span>
+<span class="co"># Execute the query as before, appending fetchall()</span>
+<span class="co"># which assigns results to &#39;books&#39; variable</span>
+books <span class="op">=</span> cursor.execute(sq).fetchall()
+<span class="bu">print</span>(books)
+[(<span class="st">&#39;2001: A Space Odyssey&#39;</span>,),
+    (<span class="st">&#39;I, Robot&#39;</span>,),
+    (<span class="st">&#39;The Martian&#39;</span>,),
+    (<span class="st">&#39;The Left Hand Of Darkness&#39;</span>,)]</code></pre></td></tr></table></div>
 </section>
 <section id="section-19" class="slide level1">
 <h1></h1>
 <h2 id="update">Update</h2>
 <ul>
 <li>Now, imagine we need to update some data.</li>
-<li><em>The Martian</em> was in fact published in 2011, so let’s make that correction.</li>
+<li><em>The Martian</em> was in fact published in 2011, so let's make that correction.</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" title="1">uq <span class="op">=</span> <span class="st">&#39;&#39;&#39;UPDATE books </span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="st">        SET year=2011 </span></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="st">        WHERE title=&quot;The Martian&quot;&#39;&#39;&#39;</span></a>
-<a class="sourceLine" id="cb9-4" title="4">cursor.execute(uq)</a></code></pre></div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python">uq <span class="op">=</span> <span class="st">&#39;&#39;&#39;UPDATE books</span>
+<span class="st">        SET year=2011</span>
+<span class="st">        WHERE title=&quot;The Martian&quot;&#39;&#39;&#39;</span>
+cursor.execute(uq)</code></pre></td></tr></table></div>
 </section>
 <section id="section-20" class="slide level1">
 <h1></h1>
 <h2 id="verify-update">Verify Update</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># now query just that row to verify</span></a>
-<a class="sourceLine" id="cb10-2" title="2">vq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT * FROM books </span></a>
-<a class="sourceLine" id="cb10-3" title="3"><span class="st">        WHERE title=&quot;The Martian&quot;&#39;&#39;&#39;</span></a>
-<a class="sourceLine" id="cb10-4" title="4">cursor.execute(vq)</a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="bu">print</span>(cursor.fetchall())</a>
-<a class="sourceLine" id="cb10-6" title="6">[(<span class="st">&#39;The Martian&#39;</span>, <span class="st">&#39;Andy Weir&#39;</span>, <span class="dv">2011</span>)]</a></code></pre></div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># now query just that row to verify</span>
+vq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT * FROM books</span>
+<span class="st">        WHERE title=&quot;The Martian&quot;&#39;&#39;&#39;</span>
+cursor.execute(vq)
+<span class="bu">print</span>(cursor.fetchall())
+[(<span class="st">&#39;The Martian&#39;</span>, <span class="st">&#39;Andy Weir&#39;</span>, <span class="dv">2011</span>)]</code></pre></td></tr></table></div>
 </section>
 <section id="section-21" class="slide level1">
 <h1></h1>
 <h2 id="delete">Delete</h2>
-<div class="left">
+<p>::: left</p>
 <ul>
-<li>Now, let’s look at deleting data</li>
+<li>Now, let's look at deleting data</li>
 <li>This works much as you would expect</li>
 </ul>
-</div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" title="1">dq <span class="op">=</span> <span class="st">&#39;&#39;&#39;DELETE FROM books </span></a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="st">        WHERE author=&quot;Isaac Asimov&quot;&#39;&#39;&#39;</span></a>
-<a class="sourceLine" id="cb11-3" title="3">cursor.execute(dq)</a></code></pre></div>
+<p>:::</p>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python">dq <span class="op">=</span> <span class="st">&#39;&#39;&#39;DELETE FROM books</span>
+<span class="st">        WHERE author=&quot;Isaac Asimov&quot;&#39;&#39;&#39;</span>
+cursor.execute(dq)</code></pre></td></tr></table></div>
 </section>
 <section id="section-22" class="slide level1">
 <h1></h1>
@@ -374,23 +406,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>So far, what we have done has occurred in-memory</li>
 <li>To persist, changes must be committed (saved)</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># Normally you do this after completing each change</span></a>
-<a class="sourceLine" id="cb12-2" title="2">conn.commit()</a>
-<a class="sourceLine" id="cb12-3" title="3"><span class="co"># With changes saved, the connection can be closed</span></a>
-<a class="sourceLine" id="cb12-4" title="4">conn.close()</a></code></pre></div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># Normally you do this after completing each change</span>
+conn.commit()
+<span class="co"># With changes saved, the connection can be closed</span>
+conn.close()</code></pre></td></tr></table></div>
 </section>
 <section id="section-23" class="slide level1">
 <h1></h1>
 <h2 id="summary">Summary</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">We have just covered a lot of ground</li>
-<li class="fragment">Connections, cursors, queries, CRUD</li>
-<li class="fragment">There is also a lot we have not touched</li>
-<li class="fragment">Next time we will look at normalization</li>
-<li class="fragment">Specifically: <em>primary keys</em>, <em>foreign keys</em>, and <em>joins</em></li>
+<li>We have just covered a lot of ground</li>
+<li>Connections, cursors, queries, CRUD</li>
+<li>There is also a lot we have not touched</li>
+<li>Next time we will look at normalization</li>
+<li>Specifically: <em>primary keys</em>, <em>foreign keys</em>, and <em>joins</em></li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="exercise" class="slide level1">
 <h1>Exercise</h1>
@@ -398,10 +434,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="section-24" class="slide level1">
 <h1></h1>
 <h2 id="exercise-1-load-a-large-dataset">Exercise 1: Load a large dataset</h2>
-<div class="left">
-<p>The data in this CSV file (<a href="books.csv">books.csv</a>) consists of a list of titles, authors, and dates of important works of fiction. The data are similar to the data used in the above examples.</p>
+<p>::: left</p>
+<p>The data in this CSV file (<a href="books.csv" class="uri">books.csv</a>) consists of a list of titles, authors, and dates of important works of fiction. The data are similar to the data used in the above examples.</p>
 <p>The first task is to create a program that can read the data in the attached file and load it into a database.</p>
-</div>
+<p>:::</p>
 </section>
 <section id="normalizing-and-joining-data" class="slide level1">
 <h1>Normalizing and Joining Data</h1>
@@ -409,125 +445,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="section-25" class="slide level1">
 <h1></h1>
 <h2 id="why-normalize">Why Normalize?</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">There are many reasons related to optimization</li>
-<li class="fragment">But the simplest way to think about it is this:
+<li>There are many reasons related to optimization</li>
+<li>But the simplest way to think about it is this:
 <ol type="1">
-<li class="fragment">Consider that one author can write many books</li>
-<li class="fragment">Conversely one book can have many authors</li>
-<li class="fragment">To model such relationships effectively, author data should be stored apart from book data</li>
+<li>Consider that one author can write many books</li>
+<li>Conversely one book can have many authors</li>
+<li>To model such relationships effectively, author data should be stored apart from book data</li>
 </ol></li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-26" class="slide level1">
 <h1></h1>
 <h2 id="identifiers-keys">Identifiers (Keys)</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">The first requirement for modeling relationships between tables is to have unambiguous identifiers</li>
-<li class="fragment">These identifiers, called keys, allow data to be looked up</li>
-<li class="fragment">The unique id for a particular row in a table is called a primary key</li>
+<li>The first requirement for modeling relationships between tables is to have unambiguous identifiers</li>
+<li>These identifiers, called keys, allow data to be looked up</li>
+<li>The unique id for a particular row in a table is called a primary key</li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-27" class="slide level1">
 <h1></h1>
 <h2 id="using-keys-to-create-joins">Using Keys to Create Joins</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">Rows can also reference rows in other tables – this cross-reference is called a foreign key</li>
-<li class="fragment">For example, the row “Hamlet” in the plays table might reference “William Shakespeare” in the authors table</li>
+<li>Rows can also reference rows in other tables -- this cross-reference is called a foreign key</li>
+<li>For example, the row &quot;Hamlet&quot; in the plays table might reference &quot;William Shakespeare&quot; in the authors table</li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-28" class="slide level1">
 <h1></h1>
 <h2 id="creating-normalized-data">Creating Normalized Data</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">When designing a database, before doing any coding tables and their relationships should be mapped out</li>
-<li class="fragment">The diagram created during this mapping process is called an ERD</li>
-<li class="fragment">This stands for Entity-Relationship Diagram</li>
-<li class="fragment">In addition to mapping out relationships, you need to create code to analyze the data and write it to the correct locations</li>
+<li>When designing a database, before doing any coding tables and their relationships should be mapped out</li>
+<li>The diagram created during this mapping process is called an ERD</li>
+<li>This stands for Entity-Relationship Diagram</li>
+<li>In addition to mapping out relationships, you need to create code to analyze the data and write it to the correct locations</li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-29" class="slide level1">
 <h1></h1>
 <h2 id="creating-normalized-data-continued">Creating Normalized Data (continued)</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">For example, in working with our list of books and authors, you might:
+<li>For example, in working with our list of books and authors, you might:
 <ol type="1">
-<li class="fragment">Store the authors names in a separate table</li>
-<li class="fragment">As you read the data file, lookup the author</li>
-<li class="fragment">If the author is present already, get the id</li>
-<li class="fragment">If the author is not present, add the author and get the id</li>
-<li class="fragment">Add the book to the books table, referencing the author’s id</li>
+<li>Store the authors names in a separate table</li>
+<li>As you read the data file, lookup the author</li>
+<li>If the author is present already, get the id</li>
+<li>If the author is not present, add the author and get the id</li>
+<li>Add the book to the books table, referencing the author's id</li>
 </ol></li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-30" class="slide level1">
 <h1></h1>
 <h2 id="flat-data">Flat Data</h2>
 <table>
 <tr>
-<th>
-title
-</th>
-<th>
-author
-</th>
-<th>
-year
-</th>
+<pre><code>&lt;th&gt;title&lt;/th&gt;
+&lt;th&gt;author&lt;/th&gt;
+&lt;th&gt;year&lt;/th&gt;</code></pre>
 </tr>
 <tr>
-<td>
-Things Fall Apart
-</td>
-<td>
-Chinua Achebe
-</td>
-<td>
-1958
-</td>
+<pre><code>&lt;td&gt;Things Fall Apart&lt;/td&gt;
+&lt;td&gt;Chinua Achebe&lt;/td&gt;
+&lt;td&gt;1958&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-Chimera
-</td>
-<td>
-John Barth
-</td>
-<td>
-1972
-</td>
+<pre><code>&lt;td&gt;Chimera&lt;/td&gt;
+&lt;td&gt;John Barth&lt;/td&gt;
+&lt;td&gt;1972&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-The Sot-Weed Factor
-</td>
-<td>
-John Barth
-</td>
-<td>
-1960
-</td>
+<pre><code>&lt;td&gt;The Sot-Weed Factor&lt;/td&gt;
+&lt;td&gt;John Barth&lt;/td&gt;
+&lt;td&gt;1960&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-Under the Volcano
-</td>
-<td>
-Malcolm Lowery
-</td>
-<td>
-1947
-</td>
+<pre><code>&lt;td&gt;Under the Volcano&lt;/td&gt;
+&lt;td&gt;Malcolm Lowery&lt;/td&gt;
+&lt;td&gt;1947&lt;/td&gt;</code></pre>
 </tr>
 </table>
 </section>
@@ -536,74 +542,34 @@ Malcolm Lowery
 <h2 id="add-primary-keys">Add Primary Keys</h2>
 <table>
 <tr>
-<th>
-id
-</th>
-<th>
-title
-</th>
-<th>
-author
-</th>
-<th>
-year
-</th>
+<pre><code>&lt;th&gt;id&lt;/th&gt;
+&lt;th&gt;title&lt;/th&gt;
+&lt;th&gt;author&lt;/th&gt;
+&lt;th&gt;year&lt;/th&gt;</code></pre>
 </tr>
 <tr>
-<td>
-1
-</td>
-<td>
-Things Fall Apart
-</td>
-<td>
-Chinua Achebe
-</td>
-<td>
-1958
-</td>
+<pre><code>&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Things Fall Apart&lt;/td&gt;
+&lt;td&gt;Chinua Achebe&lt;/td&gt;
+&lt;td&gt;1958&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-2
-</td>
-<td>
-Chimera
-</td>
-<td>
-John Barth
-</td>
-<td>
-1972
-</td>
+<pre><code>&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Chimera&lt;/td&gt;
+&lt;td&gt;John Barth&lt;/td&gt;
+&lt;td&gt;1972&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-3
-</td>
-<td>
-The Sot-Weed Factor
-</td>
-<td>
-John Barth
-</td>
-<td>
-1960
-</td>
+<pre><code>&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;The Sot-Weed Factor&lt;/td&gt;
+&lt;td&gt;John Barth&lt;/td&gt;
+&lt;td&gt;1960&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-4
-</td>
-<td>
-Under the Volcano
-</td>
-<td>
-Malcolm Lowry
-</td>
-<td>
-1947
-</td>
+<pre><code>&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Under the Volcano&lt;/td&gt;
+&lt;td&gt;Malcolm Lowry&lt;/td&gt;
+&lt;td&gt;1947&lt;/td&gt;</code></pre>
 </tr>
 </table>
 </section>
@@ -612,155 +578,103 @@ Malcolm Lowry
 <h2 id="move-authors-to-own-table">Move Authors to Own Table</h2>
 <table>
 <tr>
-<th>
-id
-</th>
-<th>
-title
-</th>
-<th>
-author_id
-</th>
-<th>
-year
-</th>
+<pre><code>&lt;th&gt;id&lt;/th&gt;
+&lt;th&gt;title&lt;/th&gt;
+&lt;th&gt;author_id&lt;/th&gt;
+&lt;th&gt;year&lt;/th&gt;</code></pre>
 </tr>
 <tr>
-<td>
-1
-</td>
-<td>
-Things Fall Apart
-</td>
-<td>
-1
-</td>
-<td>
-1958
-</td>
+<pre><code>&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Things Fall Apart&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1958&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-2
-</td>
-<td>
-Chimera
-</td>
-<td>
-2
-</td>
-<td>
-1972
-</td>
+<pre><code>&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Chimera&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;1972&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-3
-</td>
-<td>
-The Sot-Weed Factor
-</td>
-<td>
-2
-</td>
-<td>
-1960
-</td>
+<pre><code>&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;The Sot-Weed Factor&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;1960&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-4
-</td>
-<td>
-Under the Volcano
-</td>
-<td>
-3
-</td>
-<td>
-1947
-</td>
+<pre><code>&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Under the Volcano&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;1947&lt;/td&gt;</code></pre>
 </tr>
 </table>
 <table>
 <tr>
-<th>
-id
-</th>
-<th>
-name
-</th>
+<pre><code>&lt;th&gt;id&lt;/th&gt;
+&lt;th&gt;name&lt;/th&gt;</code></pre>
 </tr>
 <tr>
-<td>
-1
-</td>
-<td>
-Chinua Achebe
-</td>
+<pre><code>&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Chinua Achebe&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-2
-</td>
-<td>
-John Barth
-</td>
+<pre><code>&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;John Barth&lt;/td&gt;</code></pre>
 </tr>
 <tr>
-<td>
-3
-</td>
-<td>
-Malcolm Lowry
-</td>
+<pre><code>&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Malcolm Lowry&lt;/td&gt;</code></pre>
 </tr>
 </table>
 </section>
 <section id="section-33" class="slide level1">
 <h1></h1>
 <h2 id="selecting-normalized-data">Selecting Normalized Data</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">To lookup normalized data, you can use SQL’s JOIN syntax</li>
-<li class="fragment">You specify the fields to match on (linking foreign key to primary key)</li>
+<li>To lookup normalized data, you can use SQL's JOIN syntax</li>
+<li>You specify the fields to match on (linking foreign key to primary key)</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" title="1">jq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT authors.name, books.title, books.year</span></a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="st">        FROM books JOIN authors </span></a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="st">        ON books.author_id=authors.id&#39;&#39;&#39;</span></a>
-<a class="sourceLine" id="cb13-4" title="4">books <span class="op">=</span> cursor.execute(join_query, <span class="bu">filter</span>).fetchall()</a></code></pre></div>
-</div>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python">jq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT authors.name, books.title, books.year</span>
+<span class="st">        FROM books JOIN authors</span>
+<span class="st">        ON books.author_id=authors.id&#39;&#39;&#39;</span>
+books <span class="op">=</span> cursor.execute(join_query, <span class="bu">filter</span>).fetchall()</code></pre></td></tr></table></div>
+<p>:::</p>
 </section>
 <section id="section-34" class="slide level1">
 <h1></h1>
 <h2 id="deleting-normalized-data">Deleting Normalized Data</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">Normalizing data introduces some additional complications</li>
-<li class="fragment">Consider our authors and books examples</li>
-<li class="fragment">If you remove a row from the authors table, what happens to the author’s books?</li>
-<li class="fragment">There is a danger that orphaned rows will clutter the database</li>
+<li>Normalizing data introduces some additional complications</li>
+<li>Consider our authors and books examples</li>
+<li>If you remove a row from the authors table, what happens to the author's books?</li>
+<li>There is a danger that orphaned rows will clutter the database</li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-35" class="slide level1">
 <h1></h1>
 <h2 id="deleting-normalized-data-continued">Deleting Normalized Data (continued)</h2>
-<div>
+<p>::: incremental</p>
 <ul>
-<li class="fragment">In order to control the creation of bad data, SQL allows you to specify constraints in your database schema</li>
-<li class="fragment">Among the constraints is one called CASCADE DELETE</li>
-<li class="fragment">In essence, by specifying this constraint, you would force SQLite to remove books that were written by a deleted author when removing the author</li>
+<li>In order to control the creation of bad data, SQL allows you to specify constraints in your database schema</li>
+<li>Among the constraints is one called CASCADE DELETE</li>
+<li>In essence, by specifying this constraint, you would force SQLite to remove books that were written by a deleted author when removing the author</li>
 </ul>
-</div>
+<p>:::</p>
 </section>
 <section id="section-36" class="slide level1">
 <h1></h1>
 <h2 id="exercise-2-normalization-in-action">Exercise 2: Normalization in action</h2>
-<div class="left">
+<p>::: left</p>
 <p>Consider again the bibliographic database, note that there are multiple titles in the attached file written by a single author. In order to normalize this data, the author names should be moved into their own table and related to the book data through a relationship.</p>
 <p>How can the authors data be related to the book titles? Can you create a program that will manage the normalization process at load time?</p>
-</div>
+<p>:::</p>
 </section>
     </div>
   </div>
@@ -773,8 +687,6 @@ Malcolm Lowry
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
-        // Push each slide change to the browser history
-        history: true,
         // Transition style
         transition: 'slide', // none/fade/slide/convex/concave/zoom
 
@@ -782,7 +694,7 @@ Malcolm Lowry
         dependencies: [
           { src: '../../lib/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: '../../lib/reveal/plugin/zoom-js/zoom.js', async: true },
-          { src: '../../lib/reveal/plugin/notes/notes.js', async: true }
+              { src: '../../lib/reveal/plugin/notes/notes.js', async: true }
         ]
       });
     </script>
