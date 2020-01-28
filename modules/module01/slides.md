@@ -1,7 +1,7 @@
 ---
 title: Fundamentals
 subtitle: Variables, Expressions, Statements, Conditionals
-revealjs-url: ../../lib/reveal
+revealjs-url: ../../../lib/reveal
 theme: inst326
 transition: slide
 ---

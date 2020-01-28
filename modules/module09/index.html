@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Web Data</title>
+  <title>Modules and Testing</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
-  <style>
+  <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <style>
+  <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
@@ -95,258 +95,395 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Web Data</h1>
+  <h1 class="title">Modules and Testing</h1>
 </section>
 
 <section id="section" class="slide level1">
 <h1></h1>
-<p><a href="https://www.flickr.com/photos/inkdroid/15898721715/"><img width="80%" src="images/cloud.jpg"></a></p>
+<h2 id="overview">Overview</h2>
+<div class="columns">
+<div class="column">
+<p><strong>Structuring Python <br /> Programs</strong></p>
+<div>
+<ul>
+<li class="fragment">Imports</li>
+<li class="fragment">Modules</li>
+<li class="fragment">Packages</li>
+</ul>
+</div>
+</div><div class="column">
+<p><strong>Testing Python <br /> Programs</strong></p>
+<div>
+<ul>
+<li class="fragment">Why test?</li>
+<li class="fragment">Building Tests with Assert</li>
+<li class="fragment">Testing Packages</li>
+</ul>
+</div>
+</div>
+</div>
 <aside class="notes">
-<p>What does the metaphor of the cloud mean?</p>
+<p>Today’s lecture will have two parts. In order to understand testing, we first have to talk about Python’s module and import system.</p>
+</aside>
+</section>
+<section id="modules" class="slide level1">
+<h1>Modules</h1>
+<aside class="notes">
+<p>Before we can look at testing code, we need to understand something more about how large python programs are organized.</p>
 </aside>
 </section>
 <section id="section-1" class="slide level1">
 <h1></h1>
-<p><a href="http://as2914.net/#/galaxy/ipv4?cx=-39&cy=-70&cz=10475&lx=0.0324&ly=-0.0390&lz=0.0019&lw=0.9987&ml=1000&s=1.75&l=1&v=2016-09-03"><img src="images/internet.png"></a></p>
+<h2 id="structuring-python-programs">Structuring Python Programs</h2>
+<div class="left">
+<p>The Python import system can be used for:</p>
+</div>
+<div>
+<ol type="1">
+<li class="fragment">Standard Library Modules
+<ul>
+<li class="fragment"><em>Examples: sys, os, re, json, csv</em></li>
+</ul></li>
+<li class="fragment">Installed Modules
+<ul>
+<li class="fragment"><em>Examples: pandas, requests, lxml</em></li>
+</ul></li>
+<li class="fragment">Your Own Modules
+<ul>
+<li class="fragment"><em>Python files you create in the same directory</em></li>
+</ul></li>
+</ol>
+</div>
 <aside class="notes">
-<p>The metaphor of the cloud comes from visualizations like this that show the many connections between computers on the Internet. This is a view of routers on the Internet. Each dot in this visualization is a computer on the Internet. The web is a layer over the Internet, where each of the dots is a web server.</p>
-<p>Optionally click on image and show how you can zoom in and search for UMD.</p>
+<p>As you’ll recall, one principle of good program design is to avoid repeated code. Python facilitates code reuse through its import system.</p>
+<p>To reuse code from another file, you can <em>import</em> all or part of the file into your program. Officially, files of python code are called <em>modules</em>.</p>
+<p>As we have seen already, Python comes with “batteries included” meaning there is a wide variety of useful modules in the standard library that can be imported. Other modules (for example requests) need to be installed with a package manager such as pip.</p>
+<p>But how do you reuse code that you have written? The answer is that you can import that code in much the same way. In fact, any python file in the same directory can be imported by name (minus the .py extension). Importing files from other places is a bit more complicated.</p>
 </aside>
 </section>
 <section id="section-2" class="slide level1">
 <h1></h1>
-<p>There is no cloud. It’s just someone else’s computer.</p>
+<h2 id="import-examples">Import Examples</h2>
+<div class="left">
+<p>Import an entire module from the standard library:</p>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> random</a>
+<a class="sourceLine" id="cb1-2" title="2">x <span class="op">=</span> random.randint(<span class="dv">1</span>,<span class="dv">100</span>)       </a></code></pre></div>
+<div class="fragment">
+<p>Note the namespacing, “random.randint()”</p>
+</div>
 </section>
 <section id="section-3" class="slide level1">
 <h1></h1>
-<div class="columns">
-<div class="column">
-<p><a href="https://artsandculture.google.com/exhibit/mapping-knowledge/QQ_clnh7"><img height="175" src="images/otlet.jpg"></a></p>
-</div><div class="column">
-<p><a href="https://en.wikipedia.org/wiki/The_Mother_of_All_Demos"><img height="175" src="images/moad.png"></a></p>
-</div><div class="column">
-<p><a href="https://en.wikipedia.org/wiki/World_Wide_Web"><img height="175" src="images/berners-lee.jpg"></a></p>
+<h2 id="import-examples-1">Import Examples</h2>
+<div class="left">
+<p>Import one part of a module without namespacing:</p>
 </div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="im">from</span> random <span class="im">import</span> randint</a>
+<a class="sourceLine" id="cb2-2" title="2">x <span class="op">=</span> randint(<span class="dv">1</span>,<span class="dv">100</span>)  </a></code></pre></div>
+<div class="fragment">
+<p>The randint() function is now in top-level scope.</p>
 </div>
 <aside class="notes">
-<ul>
-<li>Mundaneum: started by Paul Otlet in 1895. A index of millions of cards about newspapers</li>
-<li>Mother of All Demos: Doug Engelbart in 1968 at Stanford, demonstrating graphics, hypertext, mouse, networking.</li>
-<li>Tim Berners-Lee: created the web at CERN in 1989.</li>
-</ul>
+<p>Be careful you don’t unintentionally override a builtin function or class! There is no built-in randint function, but consider what might happen if you imported a function called print() this way.</p>
 </aside>
 </section>
 <section id="section-4" class="slide level1">
 <h1></h1>
-<h3 id="the-webs-primary-innovations">The Web’s Primary Innovations</h3>
-<div>
-<ul>
-<li class="fragment"><strong>HTTP</strong>: Hypertext Transfer Protocol</li>
-<li class="fragment"><strong>URL</strong>: Uniform Resource Locator</li>
-<li class="fragment"><strong>HTML</strong>: Hypertext Markup Language</li>
-<li class="fragment"><strong>Open Standards</strong>: non-proprietary, IETF, W3C</li>
-<li class="fragment"><strong>Browser</strong>: Lynx, Mosaic, Netscape, IE, Chrome, Firefox, Safari</li>
-</ul>
+<h2 id="import-examples-2">Import Examples</h2>
+<div class="left">
+<p>Import a function or class under a different name:</p>
 </div>
-<aside class="notes">
-<p>This week we will be using these things from Python.</p>
-</aside>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="im">from</span> random <span class="im">import</span> randint <span class="im">as</span> rand</a>
+<a class="sourceLine" id="cb3-2" title="2">x <span class="op">=</span> rand(<span class="dv">1</span>,<span class="dv">100</span>)</a></code></pre></div>
+<div class="fragment">
+<p>“rand” becomes an alias for random.randint()</p>
+</div>
 </section>
 <section id="section-5" class="slide level1">
 <h1></h1>
-<p><a href="https://en.wikipedia.org/wiki/Client%E2%80%93server_model"><img src="images/client-server.png"></a></p>
-<aside class="notes">
-<p>The web follows a basic client/server model, where clients (web browsers running on various kinds of devices) fetch data (HTML, CSS, images, etc) from web servers using URLs and HTTP. This picture is over-simplified because you often fetch data concurrently from multiple web servers when rendering a web page.</p>
-</aside>
+<h2 id="import-examples-3">Import Examples</h2>
+<div class="left">
+<p>Modules outside the standard library must be installed:</p>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> pandas</a>
+<a class="sourceLine" id="cb4-2" title="2">Traceback (most recent call last):</a>
+<a class="sourceLine" id="cb4-3" title="3">  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-4" title="4">ModuleNotFoundError: No module named <span class="st">&#39;pandas&#39;</span></a></code></pre></div>
+<div class="fragment">
+<p>Unless it is installed on your system, pandas is not available.</p>
+</div>
 </section>
 <section id="section-6" class="slide level1">
 <h1></h1>
-<p><img width="80%" src="images/devtools.png"></p>
-<aside class="notes">
-<p>Have you ever wondered how a web browser works? Take a quick look at the developer tools in your browser. See how you can view the HTML, and all the network connections that go on when you view a web page? This week we will be learning about how to do some of those calls from Python.</p>
-</aside>
-</section>
-<section id="web-apis" class="slide level1">
-<h1>Web APIs</h1>
+<h2 id="import-examples-4">Import Examples</h2>
+<div class="left">
+<p>You can use pip/pip3 (Python Package Manager) to install non-standard modules:</p>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1">$ pip3 install pandas</a>
+<a class="sourceLine" id="cb5-2" title="2">Collecting pandas</a>
+<a class="sourceLine" id="cb5-3" title="3">... lots of lines ...</a>
+<a class="sourceLine" id="cb5-4" title="4">Installing collected packages: ...</a>
+<a class="sourceLine" id="cb5-5" title="5">Successfully installed ... pandas<span class="dv">-0</span>.<span class="fl">23.4</span> ...</a></code></pre></div>
 <div class="fragment">
-<p>Application Programming Interface</p>
+<p>Anyone who wants to run your code must similarly install pandas. This is known as a <em>dependency</em>.</p>
 </div>
 <aside class="notes">
-<p>Today we are going to focus on something called APIs. Does anyone know what API stands for? APIs allow you to use HTTP to get data (usually JSON) from the web.</p>
+<p>Python has tools for managing dependencies and making them easier for end-users to install. Such tools are outside the scope of this course.</p>
 </aside>
 </section>
 <section id="section-7" class="slide level1">
 <h1></h1>
-<p><img width="80%" src="images/apis.png"></p>
-<aside class="notes">
-<p>With the expansion of mobile computing, and “smart” phones in the early 2000s there was an increasing need to make data available to apps that ran on the phone. These are examples of web platforms that you can install apps for on your phone.</p>
-</aside>
+<h2 id="importing-your-own-modules">Importing Your Own Modules</h2>
+<div>
+<ul>
+<li class="fragment">Imports are not just for other people’s code</li>
+<li class="fragment">As programs become complex, single-file programming gets impractical</li>
+<li class="fragment">To facilitate reuse and make code easier to understand, divide large programs into modules</li>
+<li class="fragment">Modules are just different .py files stored together</li>
+</ul>
+</div>
 </section>
 <section id="section-8" class="slide level1">
 <h1></h1>
+<h2 id="importing-your-own-modules-1">Importing Your Own Modules</h2>
 <div class="left">
-<p>Remember how you can <em>create</em>, <em>read</em>, <em>update</em> and <em>delete</em> data in a database? Well you can do the same things with web APIs using HTTP <em>methods</em>:</p>
+<p>Imagine you have a module called petshop.py that depends on pets.py, which includes two classes (Cat and Dog).</p>
 </div>
-<ul>
-<li><strong>HTTP GET</strong>: read</li>
-<li><strong>HTTP POST</strong>: create</li>
-<li><strong>HTTP PUT</strong>: update</li>
-<li><strong>HTTP DELETE</strong>: delete</li>
-</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> pets</a>
+<a class="sourceLine" id="cb6-2" title="2">c <span class="op">=</span> pets.Cat(<span class="st">&#39;Fluffy&#39;</span>)</a>
+<a class="sourceLine" id="cb6-3" title="3">d <span class="op">=</span> pets.Dog(<span class="st">&#39;Spot&#39;</span>)</a></code></pre></div>
 <div class="fragment">
-<p>We’re only going to be focused on GET.</p>
+<p>By importing “pets”, the classes in pets.py become available in petshop.py.</p>
 </div>
 </section>
 <section id="section-9" class="slide level1">
 <h1></h1>
-<p><a href="http://docs.python-requests.org/"><img width="40%" src="images/requests.png"></a></p>
-<aside class="notes">
-<p>To use Web APIs we need to use HTTP. Python has some built in modules to make it easy to work with HTTP. There is also the Python Requests extension which you can install which makes it even easier. That’s what we will be using in class</p>
-</aside>
-</section>
-<section id="section-10" class="slide level1">
-<h1></h1>
-<h2 id="pip3-install-requests">pip3 install requests</h2>
+<h2 id="pythons-search-path">Python’s Search Path</h2>
 <div class="left">
-<p>Run the command above in your terminal to install the requests module.</p>
-<p><em>pip</em> is the python packaging utility for installing <em>open source</em> software distributed through the <a href="https://pypi.python.org">Python Package Index</a>.</p>
-</div>
-<aside class="notes">
-<p>You will need to install the requests module first before you can use it, since it is a third party extension to Python that is distributed through the Python Package Index.</p>
-</aside>
-</section>
-<section id="section-11" class="slide level1">
-<h1></h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3">resp <span class="op">=</span> requests.get(<span class="st">&#39;https://umd.edu&#39;</span>)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="bu">print</span>(resp)</a></code></pre></div>
-<div class="fragment">
-<p>&lt;Response [200]&gt;</p>
+<p>During imports, Python searches the following:</p>
 </div>
 <div>
 <ol type="1">
-<li class="fragment">create Python HTTP request object for a GET</li>
-<li class="fragment">send HTTP request to webserver at umd.edu</li>
-<li class="fragment">receive the response from umd.edu</li>
-<li class="fragment">create and return a Python HTTP Response object</li>
+<li class="fragment">The directory where your program is located</li>
+<li class="fragment">PYTHONPATH (environment variable)</li>
+<li class="fragment">Standard library (located inside your copy of Python)</li>
+<li class="fragment">Locations in a .pth file (a text file listing one directory per line)</li>
 </ol>
 </div>
 </section>
+<section id="section-10" class="slide level1">
+<h1></h1>
+<h2 id="python-packages">Python Packages</h2>
+<div>
+<ul>
+<li class="fragment">Modules can be grouped</li>
+<li class="fragment">A group of modules in a directory is called a <em>package</em></li>
+<li class="fragment">To be recognized as a package, you must include a file named __init__.py</li>
+<li class="fragment">To run a package, use the -m flag at runtime</li>
+</ul>
+</div>
+</section>
+<section id="section-11" class="slide level1">
+<h1></h1>
+<h2 id="init-files">Init Files</h2>
+<div>
+<ul>
+<li class="fragment">__init__.py allows Python to recognize the directory as a package</li>
+<li class="fragment">It can contain code but is not required to</li>
+<li class="fragment">Because it is run at load time, it is commonly used for initialization tasks</li>
+</ul>
+</div>
+</section>
+<section id="testing" class="slide level1">
+<h1>Testing</h1>
+</section>
 <section id="section-12" class="slide level1">
 <h1></h1>
-<div class="left">
-<p>We can use the Response object to print out the text of the response that was sent back. In this case we see HTML.</p>
-</div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3">resp <span class="op">=</span> requests.get(<span class="st">&#39;https://umd.edu&#39;</span>)</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="bu">print</span>(resp.text)</a></code></pre></div>
+<p><a href="https://en.wikipedia.org/wiki/Grace_Hopper" target="new"><img width="40%" src="images/Grace_Murray_Hopper,_in_her_office_in_Washington_DC,_1978,_©Lynn_Gilbert.jpg"></a></p>
+<aside class="notes">
+<p>Admiral Grace Hopper was an early computer scientist, a primary author of the COBOL language, and creator of programming language conformance standards for the US Navy (later maintained by NIST). She was an early proponent of the development of human-readable computer languages.</p>
+<p>Image attribution and source: By Lynn Gilbert, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=57587522</p>
+</aside>
 </section>
 <section id="section-13" class="slide level1">
 <h1></h1>
-<p><a href="https://www.propublica.org/datastore/api/propublica-congress-api"><img src="images/propublica.png"></a></p>
+<p><a href="https://americanhistory.si.edu/collections/search/object/nmah_334663" target="new"><img width="80%" src="images/NMAH-92-13131.jpg" alt="Image of computer log book with moth taped inside"></a></p>
+<aside class="notes">
+<p>In 1947 engineers working on Grace Hopper’s team at Harvard taped this ‘bug’ into their log book. The term “bugs” for faults in complex machines or systems had been in use for a while, and the operators who recorded this were clearly amused by the discovery, thinking it notable that they had found an actual bug.</p>
+<p>Orignal at Smithsonian, National Museum of American History, catalog number 1994.0191.1.</p>
+</aside>
 </section>
 <section id="section-14" class="slide level1">
 <h1></h1>
-<div class="left">
-<p>Now lets GET JSON data for the current members of the House of Representatives using the <a href="https://www.propublica.org/datastore/api/propublica-congress-api">ProPublica Congress API</a>. Notice that we need a key? You can get your own if you want or you can use the one I’ve put on ELMS.</p>
+<h2 id="what-is-testing">What is Testing?</h2>
+<div>
+<ul>
+<li class="fragment">Not the same as debugging</li>
+<li class="fragment">There are many styles of testing (acceptance testing, load testing, penetration testing)</li>
+<li class="fragment">The style described here is “unit” testing</li>
+<li class="fragment">Unit testing means writing tests for discrete, small “units” of code (often individual functions or methods)</li>
+</ul>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3">headers <span class="op">=</span> {<span class="st">&quot;X-API-KEY&quot;</span>: <span class="st">&quot;INSERT_VALID_KEY_HERE&quot;</span>}</a>
-<a class="sourceLine" id="cb3-4" title="4">url <span class="op">=</span> <span class="st">&#39;https://api.propublica.org/congress/v1/116/house/members.json&#39;</span></a>
-<a class="sourceLine" id="cb3-5" title="5"></a>
-<a class="sourceLine" id="cb3-6" title="6">resp <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="bu">print</span>(resp.json())</a></code></pre></div>
 </section>
 <section id="section-15" class="slide level1">
 <h1></h1>
-<div class="left">
-<p>Let’s use Python’s <a href="https://docs.python.org/3.7/library/json.html">json</a> module that we’ve used in the past to pretty-print the data, so that it isn’t all on one line, and uses an indent of 2 spaces.</p>
+<h2 id="why-test">Why Test?</h2>
+<div>
+<ul>
+<li class="fragment">Bugs can be costly (testing helps catch them early)</li>
+<li class="fragment">Testing can save time on debugging</li>
+<li class="fragment">But testing itself also takes a lot of time</li>
+<li class="fragment">Testing is a form of risk management</li>
+<li class="fragment">Test-driven development (TDD)</li>
+</ul>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="im">import</span> json</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb4-3" title="3"></a>
-<a class="sourceLine" id="cb4-4" title="4">headers <span class="op">=</span> {<span class="st">&quot;X-API-KEY&quot;</span>: <span class="st">&quot;INSERT_VALID_KEY_HERE&quot;</span>}</a>
-<a class="sourceLine" id="cb4-5" title="5">url <span class="op">=</span> <span class="st">&#39;https://api.propublica.org/congress/v1/116/house/members.json&#39;</span></a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7">members <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="bu">print</span>(json.dumps(members, indent<span class="op">=</span><span class="dv">2</span>))</a></code></pre></div>
+<aside class="notes">
+<p>Test-driven development says that the tests should be written first, and the program developed against the tests. Start with failing tests, and program is done when the tests all pass.</p>
+</aside>
 </section>
 <section id="section-16" class="slide level1">
 <h1></h1>
-<h2 id="api-documentation">API Documentation</h2>
-<div class="left">
-<p>So how did I know about the special URL for the current members of the House? Most APIs come with <em>documentation</em> that explains how to use the API, which often includes the URLs you can use when talking to the APi, and what kinds of data you can expect to get back.</p>
-<p>Let’s look a little more closely at the <a href="https://projects.propublica.org/api-docs/congress-api/">ProPublica API documentation</a>.</p>
+<h2 id="many-ways-to-test">Many Ways to Test</h2>
+<div>
+<ul>
+<li class="fragment">Using shell tools</li>
+<li class="fragment">Build your own tests using assert statements, try/except</li>
+<li class="fragment">In “if name equals main”</li>
+<li class="fragment">Using an external library:
+<ol type="1">
+<li class="fragment"><a href="https://docs.python.org/3.7/library/unittest.html">unittest</a></li>
+<li class="fragment"><a href="https://pytest.org">pytest</a></li>
+</ol></li>
+</ul>
 </div>
 </section>
 <section id="section-17" class="slide level1">
 <h1></h1>
-<div class="left">
-<p>Let’s use the <a href="https://projects.propublica.org/api-docs/congress-api/members/#get-current-members-by-statedistrict">Get Current Members by State/District</a> and the <a href="https://projects.propublica.org/api-docs/congress-api/bills/#get-recent-bills-by-a-specific-member">Get Recent Bills by a Specific Member</a> API calls together to print out the bills introduced by MD House members.</p>
+<h2 id="using-assert">Using Assert</h2>
+<div>
+<ul>
+<li class="fragment">Assert statements are a means of declaring expected state</li>
+<li class="fragment">Primary use case is for debugging</li>
+<li class="fragment">Declares an expectation, and raises “AssertionError” if expectation is False</li>
+<li class="fragment">Assert is designed to catch errors that would otherwise be missed</li>
+<li class="fragment">There is no need to test for things that would raise an exception anyway</li>
+</ul>
 </div>
-<p><a href="https://en.wikipedia.org/wiki/Maryland%27s_congressional_districts"><img height="400" src="images/md-districts.png"></a></p>
 </section>
 <section id="section-18" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="im">import</span> json</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb5-3" title="3"></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="kw">def</span> get(url):</a>
-<a class="sourceLine" id="cb5-5" title="5">    headers <span class="op">=</span> {<span class="st">&quot;X-API-KEY&quot;</span>: <span class="st">&quot;INSERT_KEY_HERE&quot;</span>}</a>
-<a class="sourceLine" id="cb5-6" title="6">    url <span class="op">=</span> <span class="st">&quot;https://api.propublica.org/congress/v1&quot;</span> <span class="op">+</span> url</a>
-<a class="sourceLine" id="cb5-7" title="7">    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</a>
-<a class="sourceLine" id="cb5-8" title="8">    <span class="cf">return</span> data[<span class="st">&#39;results&#39;</span>]</a>
-<a class="sourceLine" id="cb5-9" title="9"></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="cf">for</span> member <span class="kw">in</span> get(<span class="st">&quot;/members/house/md/current.json&quot;</span>):</a>
-<a class="sourceLine" id="cb5-11" title="11">    <span class="bu">print</span>(member[<span class="st">&#39;name&#39;</span>], member[<span class="st">&#39;id&#39;</span>])</a></code></pre></div>
+<h2 id="using-assert-1">Using Assert</h2>
+<div class="left">
+<p>Imagine a function designed to draw a triangle. You might create an assert statement to check that the interior angles add up to 180°:</p>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="cf">assert</span> <span class="bu">sum</span>(angles) <span class="op">==</span> <span class="dv">180</span>, <span class="st">&#39;angles must total 180&#39;</span></a></code></pre></div>
+<div class="fragment">
+<p>assert len(angles) == 3, ‘must have 3 angles’</p>
+</div>
 <aside class="notes">
-<p>Since we are going to be making multiple calls to the ProPublica API let’s create a little function that will do the HTTP request and get the data back as JSON so we don’t have to repeat this.</p>
+<p>Can you think of other assertions that could be made here?</p>
 </aside>
 </section>
 <section id="section-19" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> json</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb6-3" title="3"></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="kw">def</span> get(url):</a>
-<a class="sourceLine" id="cb6-5" title="5">    headers <span class="op">=</span> {<span class="st">&quot;X-API-KEY&quot;</span>: <span class="st">&quot;INSERT_KEY_HERE&quot;</span>}</a>
-<a class="sourceLine" id="cb6-6" title="6">    url <span class="op">=</span> <span class="st">&quot;https://api.propublica.org/congress/v1&quot;</span> <span class="op">+</span> url</a>
-<a class="sourceLine" id="cb6-7" title="7">    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</a>
-<a class="sourceLine" id="cb6-8" title="8">    <span class="cf">return</span> data[<span class="st">&#39;results&#39;</span>]</a>
-<a class="sourceLine" id="cb6-9" title="9"></a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="cf">for</span> member <span class="kw">in</span> get(<span class="st">&quot;/members/house/md/current.json&quot;</span>):</a>
-<a class="sourceLine" id="cb6-11" title="11">    <span class="bu">print</span>(member[<span class="st">&#39;name&#39;</span>])</a>
-<a class="sourceLine" id="cb6-12" title="12">    bill_data <span class="op">=</span> get(<span class="st">&#39;/members/&#39;</span> <span class="op">+</span> member[<span class="st">&#39;id&#39;</span>] <span class="op">+</span> <span class="st">&#39;/bills/introduced&#39;</span>)</a>
-<a class="sourceLine" id="cb6-13" title="13">    <span class="cf">for</span> bill <span class="kw">in</span> bill_data[<span class="dv">0</span>][<span class="st">&#39;bills&#39;</span>]:</a>
-<a class="sourceLine" id="cb6-14" title="14">        <span class="bu">print</span>(bill[<span class="st">&#39;title&#39;</span>])</a>
-<a class="sourceLine" id="cb6-15" title="15">        <span class="bu">print</span>(bill[<span class="st">&#39;congressdotgov_url&#39;</span>])</a>
-<a class="sourceLine" id="cb6-16" title="16">    <span class="bu">print</span>(<span class="st">&#39;&#39;</span>)</a></code></pre></div>
+<h2 id="examples-assert">Examples (assert)</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">def</span> mysum(a, b):</a>
+<a class="sourceLine" id="cb8-2" title="2">    <span class="cf">return</span> a <span class="op">+</span> b</a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="cf">assert</span> mysum(<span class="dv">2</span>,<span class="dv">2</span>) <span class="op">==</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="cf">assert</span> mysum(<span class="dv">2</span>,<span class="dv">3</span>) <span class="op">==</span> <span class="dv">6</span>  </a></code></pre></div>
+<div class="fragment">
+<p>The second (incorrect) assertion raises an error</p>
+</div>
 </section>
 <section id="section-20" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="im">import</span> json</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb7-3" title="3"></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="kw">def</span> get(url):</a>
-<a class="sourceLine" id="cb7-5" title="5">    headers <span class="op">=</span> {<span class="st">&quot;X-API-KEY&quot;</span>: <span class="st">&quot;INSERT_YOUR_KEY&quot;</span>}</a>
-<a class="sourceLine" id="cb7-6" title="6">    url <span class="op">=</span> <span class="st">&quot;https://api.propublica.org/congress/v1&quot;</span> <span class="op">+</span> url</a>
-<a class="sourceLine" id="cb7-7" title="7">    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</a>
-<a class="sourceLine" id="cb7-8" title="8">    <span class="cf">return</span> data[<span class="st">&#39;results&#39;</span>]</a>
-<a class="sourceLine" id="cb7-9" title="9"></a>
-<a class="sourceLine" id="cb7-10" title="10"><span class="cf">for</span> member <span class="kw">in</span> get(<span class="st">&quot;/members/house/md/current.json&quot;</span>):</a>
-<a class="sourceLine" id="cb7-11" title="11">    <span class="bu">print</span>(member[<span class="st">&#39;name&#39;</span>])</a>
-<a class="sourceLine" id="cb7-12" title="12">    bill_data <span class="op">=</span> get(<span class="st">&#39;/members/&#39;</span> <span class="op">+</span> member[<span class="st">&#39;id&#39;</span>] <span class="op">+</span> <span class="st">&#39;/bills/introduced&#39;</span>)</a>
-<a class="sourceLine" id="cb7-13" title="13">    <span class="cf">for</span> bill <span class="kw">in</span> bill_data[<span class="dv">0</span>][<span class="st">&#39;bills&#39;</span>]:</a>
-<a class="sourceLine" id="cb7-14" title="14">        <span class="cf">if</span> bill[<span class="st">&#39;congress&#39;</span>] <span class="op">==</span> <span class="st">&quot;116&quot;</span>:</a>
-<a class="sourceLine" id="cb7-15" title="15">            <span class="bu">print</span>(bill[<span class="st">&#39;title&#39;</span>])</a>
-<a class="sourceLine" id="cb7-16" title="16">            <span class="bu">print</span>(bill[<span class="st">&#39;congressdotgov_url&#39;</span>])</a>
-<a class="sourceLine" id="cb7-17" title="17">            <span class="bu">print</span>(<span class="st">&#39;&#39;</span>)</a></code></pre></div>
+<h2 id="using-if-name-equals-main">Using “If Name Equals Main”</h2>
+<div>
+<ul>
+<li class="fragment">For modules to be imported, the main block can be used for tests</li>
+<li class="fragment">Works only for modules not designed to be run by themselves</li>
+<li class="fragment">Put tests in the “name equals main” block</li>
+<li class="fragment">These tests will be ignored when the module is imported</li>
+<li class="fragment">But they can conveniently be activated by running the module directly</li>
+</ul>
+</div>
+</section>
+<section id="section-21" class="slide level1">
+<h1></h1>
+<h2 id="examples-name-equals-main">Examples (Name Equals Main)</h2>
+<div class="left">
+<p>Imagine a function designed to evaluate whether or not a number is prime:</p>
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">def</span> is_prime(x):</a>
+<a class="sourceLine" id="cb9-2" title="2">    <span class="co"># body of function here ...</span></a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb9-5" title="5">    <span class="cf">assert</span> is_prime(<span class="dv">2</span>) <span class="op">==</span> <span class="va">True</span></a>
+<a class="sourceLine" id="cb9-6" title="6">    <span class="cf">assert</span> is_prime(<span class="dv">7</span>) <span class="op">==</span> <span class="va">True</span></a>
+<a class="sourceLine" id="cb9-7" title="7">    <span class="cf">assert</span> is_prime(<span class="dv">4</span>) <span class="op">==</span> <span class="va">False</span> </a></code></pre></div>
 <aside class="notes">
-<p>Limit output to bills introduced in the current (116th) congress.</p>
+<p>When you want to use this function, you import the entire module or just the one function from the module.</p>
+<p>When you want to test your function, you run the modules directly, which causes the code in the if name equals main block to be executed.</p>
 </aside>
+</section>
+<section id="section-22" class="slide level1">
+<h1></h1>
+<h2 id="testing-with-pytest">Testing with pytest</h2>
+<div>
+<ul>
+<li class="fragment">Works similarly to the use of asserts in if name equals main</li>
+<li class="fragment">Works with modules intended for import as well as those intended to be run directly</li>
+<li class="fragment">Define testing functions in the module named according to one of these patterns: ‘test_*.py’ or ‘*_test.py’</li>
+</ul>
+</div>
+</section>
+<section id="section-23" class="slide level1">
+<h1></h1>
+<h2 id="testing-with-pytest-continued">Testing with pytest (continued)</h2>
+<div>
+<ul>
+<li class="fragment">Will execute all such functions when run against a module or package</li>
+<li class="fragment">Prints a detailed report of the results to the console</li>
+<li class="fragment">Has advanced features, including integration with unittest</li>
+</ul>
+</div>
+</section>
+<section id="section-24" class="slide level1">
+<h1></h1>
+<h2 id="examples-pytest">Examples (pytest)</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">def</span> is_prime(x):</a>
+<a class="sourceLine" id="cb10-2" title="2">    <span class="cf">if</span> x <span class="op">==</span> <span class="dv">2</span>:</a>
+<a class="sourceLine" id="cb10-3" title="3">        <span class="cf">return</span> <span class="va">True</span></a>
+<a class="sourceLine" id="cb10-4" title="4">    <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb10-5" title="5">        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,n):</a>
+<a class="sourceLine" id="cb10-6" title="6">            <span class="cf">if</span> x<span class="op">%</span>i <span class="op">==</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb10-7" title="7">                <span class="cf">return</span> <span class="va">False</span></a>
+<a class="sourceLine" id="cb10-8" title="8">        <span class="cf">return</span> <span class="va">True</span></a>
+<a class="sourceLine" id="cb10-9" title="9"></a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="kw">def</span> test_is_prime():</a>
+<a class="sourceLine" id="cb10-11" title="11">    <span class="cf">assert</span> is_prime(<span class="dv">2</span>) <span class="op">==</span> <span class="va">True</span></a>
+<a class="sourceLine" id="cb10-12" title="12">    <span class="cf">assert</span> is_prime(<span class="dv">7</span>) <span class="op">==</span> <span class="va">True</span></a>
+<a class="sourceLine" id="cb10-13" title="13">    <span class="cf">assert</span> is_prime(<span class="dv">4</span>) <span class="op">==</span> <span class="va">False</span></a></code></pre></div>
+<aside class="notes">
+<p>The function checks all integers between two and the number being evaluated, returning False as soon as the number divides evenly. Once all numbers have been checked, it returns True.</p>
+<p>A second function named according to a pytest pattern checks two cases that are prime and one that is not. Good tests seek out “edge cases” to test.</p>
+</aside>
+</section>
+<section id="section-25" class="slide level1">
+<h1></h1>
+<h2 id="examples-pytest-1">Examples (pytest)</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" title="1">$ pytest check_prime.py</a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="op">========</span> test session starts <span class="op">========</span></a>
+<a class="sourceLine" id="cb11-3" title="3">platform darwin <span class="op">--</span> Python <span class="dv">3</span>.<span class="fl">7.0</span>, pytest<span class="dv">-3</span>.<span class="fl">8.2</span>, </a>
+<a class="sourceLine" id="cb11-4" title="4">    py<span class="dv">-1</span>.<span class="fl">7.0</span>, pluggy<span class="dv">-0</span>.<span class="fl">7.1</span></a>
+<a class="sourceLine" id="cb11-5" title="5">rootdir: <span class="op">/</span>Users<span class="op">/</span>westgard<span class="op">/</span>Desktop, inifile:</a>
+<a class="sourceLine" id="cb11-6" title="6">collected <span class="dv">1</span> item                                                                         </a>
+<a class="sourceLine" id="cb11-7" title="7"></a>
+<a class="sourceLine" id="cb11-8" title="8">check_prime.py .   [<span class="dv">100</span><span class="op">%</span>]</a>
+<a class="sourceLine" id="cb11-9" title="9"></a>
+<a class="sourceLine" id="cb11-10" title="10"><span class="op">========</span> <span class="dv">1</span> passed <span class="kw">in</span> <span class="fl">0.03</span> seconds <span class="op">========</span></a></code></pre></div>
 </section>
     </div>
   </div>

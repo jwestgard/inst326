@@ -1,190 +1,341 @@
-INST 326:Modules and Testing
-Joshua A. Westgard • 2018-10-08
-UMD College of Information Studies
+---
+title: Web Data
+revealjs-url: ../../lib/reveal
+theme: inst326
+transition: slide
+---
+
+# 
+
+<a href="https://www.flickr.com/photos/inkdroid/15898721715/"><img width="80%" src="images/cloud.jpg"></a>
+
+::: notes
+
+What does the metaphor of the cloud mean?
+
+:::
+
+#
+
+<a href="http://as2914.net/#/galaxy/ipv4?cx=-39&cy=-70&cz=10475&lx=0.0324&ly=-0.0390&lz=0.0019&lw=0.9987&ml=1000&s=1.75&l=1&v=2016-09-03"><img src="images/internet.png"></a>
+
+::: notes
+
+The metaphor of the cloud comes from visualizations like this that show the
+many connections between computers on the Internet. This is a view of routers
+on the Internet. Each dot in this visualization is a computer on the
+Internet. The web is a layer over the Internet, where each of the dots is a
+web server.
+
+Optionally click on image and show how you can zoom in and search for UMD.
+
+:::
+
+# 
+
+There is no cloud. It's just someone else's computer.
+
+# 
+
+::: columns
+
+:::: column
+
+<a href="https://artsandculture.google.com/exhibit/mapping-knowledge/QQ_clnh7"><img height="175" src="images/otlet.jpg"></a>
+
+::::
+
+:::: column
+
+<a href="https://en.wikipedia.org/wiki/The_Mother_of_All_Demos"><img height="175" src="images/moad.png"></a>
+
+::::
+
+:::: column
+
+<a href="https://en.wikipedia.org/wiki/World_Wide_Web"><img height="175" src="images/berners-lee.jpg"></a>
+
+::::
+
+:::
+
+::: notes
+
+* Mundaneum: started by Paul Otlet in 1895. A index of millions of cards about newspapers 
+* Mother of All Demos: Doug Engelbart in 1968 at Stanford, demonstrating graphics, hypertext, mouse, networking.
+* Tim Berners-Lee: created the web at CERN in 1989.
+
+:::
+
+#
+
+### The Web's Primary Innovations
+
+::: incremental
+
+* **HTTP**: Hypertext Transfer Protocol
+* **URL**: Uniform Resource Locator
+* **HTML**: Hypertext Markup Language
+* **Open Standards**: non-proprietary, IETF, W3C
+* **Browser**: Lynx, Mosaic, Netscape, IE, Chrome, Firefox, Safari
+
+:::
+
+::: notes
+
+This week we will be using these things from Python.
+
+:::
+
+#
+
+<a href="https://en.wikipedia.org/wiki/Client%E2%80%93server_model"><img src="images/client-server.png"></a>
+
+::: notes
+
+The web follows a basic client/server model, where clients (web browsers running on various kinds of devices) fetch data (HTML, CSS, images, etc) from web servers using URLs and HTTP. This picture is over-simplified because you often fetch data concurrently from multiple web servers when rendering a web page.
+
+:::
+
+# 
+
+<img width="80%" src="images/devtools.png">
+
+::: notes
+
+Have you ever wondered how a web browser works? Take a quick look at the developer tools in your browser. See how you can view the HTML, and all the network connections that go on when you view a web page? This week we will be learning about how to do some of those calls from Python.
+
+:::
+
+# Web APIs
+
+::: fragment
+Application Programming Interface
+:::
+
+::: notes
+
+Today we are going to focus on something called APIs. Does anyone know what API stands for? APIs allow you to use HTTP to get data (usually JSON) from the web.
+
+:::
+
+#
+
+<img width="80%" src="images/apis.png">
+
+::: notes
+
+With the expansion of mobile computing, and "smart" phones in the early 2000s there was an increasing need to make data available to apps that ran on the phone. These are examples of web platforms that you can install apps for on your phone.
+
+:::
+
+#
+
+::: left
+
+Remember how you can *create*, *read*, *update* and *delete* data in a database? Well you can do the same things with web APIs using HTTP *methods*:
+
+:::
+
+* **HTTP GET**: read
+* **HTTP POST**: create
+* **HTTP PUT**: update
+* **HTTP DELETE**: delete
+
+::: fragment
+We're only going to be focused on GET.
+:::
+
+# 
+
+<a href="http://docs.python-requests.org/"><img width="40%" src="images/requests.png"></a>
+
+::: notes
+
+To use Web APIs we need to use HTTP. Python has some built in modules to make it easy to work with HTTP. There is also the Python Requests extension which you can install which makes it even easier. That's what we will be using in class
+
+:::
+
+# 
+
+## pip3 install requests
+
+::: left
+
+Run the command above in your terminal to install the requests module.
+
+*pip* is the python packaging utility for installing *open source* software distributed through the [Python Package Index](https://pypi.python.org).
+
+:::
+
+::: notes
+
+You will need to install the requests module first before you can use it, since it is a third party extension to Python that is distributed through the Python Package Index.
+
+:::
+
+# 
+
+``` {.python .numberLines}
+import requests
+
+resp = requests.get('https://umd.edu')
+print(resp)
+```
+
+::: fragment
+<Response [200]>
+:::
+
+::: incremental
+1. create Python HTTP request object for a GET
+2. send HTTP request to webserver at umd.edu
+3. receive the response from umd.edu
+4. create and return a Python HTTP Response object
+:::
+
+#
+
+::: left
+
+We can use the Response object to print out the text of the response that was sent back. In this case we see HTML.
+
+:::
+
+``` {.python .numberLines}
+import requests
+
+resp = requests.get('https://umd.edu')
+print(resp.text)
+```
+
+#
+
+<a href="https://www.propublica.org/datastore/api/propublica-congress-api"><img src="images/propublica.png"></a>
+
+# 
+
+::: left
+Now lets GET JSON data for the current members of the House of Representatives using the [ProPublica Congress API](https://www.propublica.org/datastore/api/propublica-congress-api). Notice that we need a key? You can get your own if you want or you can use the one I've put on ELMS.
+:::
+
+``` {.python .numberLines .smaller}
+import requests
+
+headers = {"X-API-KEY": "INSERT_VALID_KEY_HERE"}
+url = 'https://api.propublica.org/congress/v1/116/house/members.json'
+
+resp = requests.get(url, headers=headers)
+print(resp.json())
+```
+
+#
+
+::: left
+Let's use Python's [json](https://docs.python.org/3.7/library/json.html) module that we've used in the past to pretty-print the data, so that it isn't all on one line, and uses an indent of 2 spaces.
+:::
 
 
-Overview
-Structuring Python Programs
-Imports
-Modules
-Packages
+``` {.python .numberLines .smaller}
+import json
+import requests
 
-Testing Python Programs
-Why test?
-Building Tests with Assert
-Testing Packages
+headers = {"X-API-KEY": "INSERT_VALID_KEY_HERE"}
+url = 'https://api.propublica.org/congress/v1/116/house/members.json'
 
-Structuring Python Programs
+members = requests.get(url, headers=headers).json()
+print(json.dumps(members, indent=2))
+```
 
-Import statements
-Standard Library Modules
-Random, sys, os, re, json, csv
-Installed Modules
-	Pandas, numpy, lxml
-Your Own Modules
-	Python files that you create in the same directory
+#
 
+## API Documentation
 
-Import Examples (standard library)
-# import entire module
-import random
-x = random.randint(1,100)		# randint() function is namespaced
+::: left
 
+So how did I know about the special URL for the current members of the House? Most APIs come with *documentation* that explains how to use the API, which often includes the URLs you can use when talking to the APi, and what kinds of data you can expect to get back.
 
-# import select pieces of a module into top level
-from random import randint
-x = randint(1,100)			# randint() is now in top-level scope
+Let's look a little more closely at the [ProPublica API documentation](https://projects.propublica.org/api-docs/congress-api/).
 
+:::
 
-# import module function under a different name
-from random import randint as rand
-x = rand(1,100)				# rand() is like an alias for random.randint()
+#
 
+::: left
 
-Import Examples (installed modules)
-# Modules outside of the standard library must be installed
-import pandas
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ModuleNotFoundError: No module named 'pandas'
+Let's use the [Get Current Members by State/District](https://projects.propublica.org/api-docs/congress-api/members/#get-current-members-by-statedistrict) and the [Get Recent Bills by a Specific Member](https://projects.propublica.org/api-docs/congress-api/bills/#get-recent-bills-by-a-specific-member) API calls together to print out the bills introduced by MD House members.
 
+:::
 
-# Install additional modules with pip/pip3 (Python Package Manager)
-$ pip3 install pandas
-Collecting pandas
-... lots of lines ...  # pip will locate and install dependencies
-  Installing collected packages: numpy, pytz, python-dateutil, pandas
-Successfully installed numpy-1.15.2 pandas-0.23.4 python-dateutil-2.7.3 pytz-2018.5
+<a href="https://en.wikipedia.org/wiki/Maryland%27s_congressional_districts"><img height="400" src="images/md-districts.png"></a>
 
+# 
 
-Importing Your Own Modules
-Imports are not just for other people’s code
-Python programs become complex, making single-file programming impractical
-Dividing code into modules (i.e. different files) facilitates code re-use
-Your modules can be imported when needed by the main (top-level) script
-Import the name of the file (but dropping the .py)
+``` {.python .numberLines .smaller}
+import json
+import requests
 
-Python’s Search Path
-Python searches for modules in the following locations:
-Home directory (where main script is located, current dir in interactive mode)
-PYTHONPATH (environment variable)
-Standard library directories (located in Python installation)
-.pth file directories
-text file listing additional directories to search, one per line
+def get(url):
+    headers = {"X-API-KEY": "INSERT_KEY_HERE"}
+    url = "https://api.propublica.org/congress/v1" + url
+    data = requests.get(url, headers=headers).json()
+    return data['results']
 
-Import Examples (your own modules)
-# Create your own module, in a file called mymodule.py
-def square(x):
-	return x ** 2
+for member in get("/members/house/md/current.json"):
+    print(member['name'], member['id'])
+```
 
-# In interactive mode, import the square function from this module>>> import mymodule
->>> help(mymodule)				# help screen shows one function
+::: notes
 
-# Call the function
->>> mymodule.square(10)
-100								# function returns the square of 10
+Since we are going to be making multiple calls to the ProPublica API let's create a little function that will do the HTTP request and get the data back as JSON so we don't have to repeat this.
 
-# Importing the function to global scope
->>> from mymodule import square	# function can be called directly
->>> square(2)
-4
+:::
 
-Python Packages
-Modules can be grouped
-A Python package is a group of modules in a directory
-In order for Python to recognize a directory as a package,you must include a file named __init__.py in the directory
-__init__.py can contain code but is not required to
-Code it does contain is run then the package is first loaded, so it is useful for initialization tasks
+# 
 
-Testing Python Programs
+``` {.python .numberLines .smaller}
+import json
+import requests
 
-Testing Overview
-There are many ways to test
-Using shell tools
-Build your own tests using assert statements, try/except
-Leverage the if name equals main program structure
-Use an external library: 
-unittest (https://docs.python.org/3.7/library/unittest.html)
-pytest (https://pytest.org)
+def get(url):
+    headers = {"X-API-KEY": "INSERT_KEY_HERE"}
+    url = "https://api.propublica.org/congress/v1" + url
+    data = requests.get(url, headers=headers).json()
+    return data['results']
 
-Assert
-Assert is a means of declaring expected state
-Primary use case is for debugging
-Declares an expectation, and raises “AssertionError” if expectation is False
-Assert is designed to catch errors that would otherwise be missed
-There is no need to test for things that would raise an exception anyway
+for member in get("/members/house/md/current.json"):
+    print(member['name'])
+    bill_data = get('/members/' + member['id'] + '/bills/introduced')
+    for bill in bill_data[0]['bills']:
+        print(bill['title'])
+        print(bill['congressdotgov_url'])
+    print('')
+```
 
-Testing Examples (assert)
-# imagine a function designed to draw a triangle
-# the function has three parameters representing the interior angles
+#
 
-def draw_triangle(angle1, angle2, angle3):
-	assert angle1 + angle2 + angle3 == 180, ‘angles must add up to 180°’
-	# draw side1
-	# turn angle1 degrees
-	# draw side2
-	# turn angle2 degrees
-	# etc.
+``` {.python .numberLines .smaller}
+import json
+import requests
 
-# another example, try it out
-def mysum(a, b):
-	return a + b
-assert mysum(2,2) == 4
-assert mysum(2,3) == 6  # incorrect assertion should raise error
+def get(url):
+    headers = {"X-API-KEY": "INSERT_YOUR_KEY"}
+    url = "https://api.propublica.org/congress/v1" + url
+    data = requests.get(url, headers=headers).json()
+    return data['results']
 
-Placing Tests in “If Name Equals Main”
-For modules to be imported, the main block can be used for tests
-This obviously works only for modules not designed to be run by themselves
-Put tests in the “if __name__ == ‘__main__’:” block
-These tests will be ignored when the module is imported
-But they can conveniently be activated by running the module directly
+for member in get("/members/house/md/current.json"):
+    print(member['name'])
+    bill_data = get('/members/' + member['id'] + '/bills/introduced')
+    for bill in bill_data[0]['bills']:
+        if bill['congress'] == "116":
+            print(bill['title'])
+            print(bill['congressdotgov_url'])
+            print('')
+```
 
-Testing Examples (if name equals main)
-# Create a new module with one function “is_prime” 
+::: notes
 
-def is_prime(x):
-	‘’’Return True if x is a prime number, else return False’’’
-	pass
+Limit output to bills introduced in the current (116th) congress.
 
-
-# add tests in the form of asserts to the if name equals main block
-
-if __name__ == “__main__”:
-	assert is_prime(2) == True
-	assert is_prime(7) == True
-	assert is_prime(4) == False
-
-pytest
-Works similarly to the use of asserts in if name equals main
-Works with modules intended for import as well as those intended to be run directly
-Allows you to define functions in the module named
-test_*.py
-*_test.py
-Will execute all such functions when run against a module or an entire package
-Returns detailed report of results to console
-Has many advanced features, including integration with unittest
-
-Testing Examples (pytest)
-# Think back to the is_prime() example
-
-def is_prime(x):
-	if x == 2:
-		return True
-	else:
-		for i in range(2,n):
-			if x%i == 0:
-				return False
-		return True
-
-# define tests as follows
-
-def test_is_prime():
-	assert is_prime(2) == True
-	assert is_prime(7) == True
-	assert is_prime(4) == False
-
-Practice Exercises
-Install pandas, numpy, or lxml using pip
-Write a script to import getMarylandTax() and pass it input values read from a CSV 
-Write tests for getMarylandTax() with assert statements
-Do some TDD with pytest: write a failing test, then code the solution
+:::
