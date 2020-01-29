@@ -4,16 +4,18 @@ subtitle: Text, CSV and JSON
 revealjs-url: ../../lib/reveal
 theme: inst326
 transition: slide
----
+--- 
 
 #
 
-<a href="https://www.smithsonianmag.com/history/the-worlds-most-famous-filing-cabinet-36568830/"><img src="images/cabinet.jpg"></a>
+<a href="https://www.smithsonianmag.com/history/the-worlds-most-famous-filing-cabinet-36568830/">
+  <img src="images/cabinet.jpg">
+</a>
 
 ::: notes
 
 The filing cabinet that government agents broke into to steal the medical
-records of Daniel Ellsberg, who was responsible for leaking the
+records of Daniel Ellsberg, who was responsible for leaking the 
 Pentagon Papers, which helped bring an end to the Vietnam War, and later
 the Nixon Presidency. The filing cabinet is in the Smithsonian American History
 Museum.
@@ -32,7 +34,7 @@ An example of a file.
 
 :::
 
-#
+# 
 
 <a href="https://patents.google.com/patent/US722709">
   <img style="width: 60%;" src="images/patent.png">
@@ -212,7 +214,7 @@ spreadsheet.writerow(['Hope', 20, 'Information Studies'])
 spreadsheet.close()
 ```
 
-#
+# 
 
 ::: left
 Unfortunately, not all data fits neatly into tables. What makes this
@@ -224,7 +226,7 @@ people = [
   {
     "name": "Val",
     "interests": ["astronomy", "hocky"]
-  },
+  }, 
   {
     "name": "Rick",
     "interests": ["karaoke"]
@@ -240,7 +242,7 @@ The interests can have one to many values.
 
 <img width="70%" src="images/apis.png">
 
-#
+# 
 
 ## Reading a JSON File
 
@@ -269,7 +271,7 @@ You can also use the [json.dump](https://docs.python.org/3.7/library/json.html#j
 import json
 
 people = [
-  {"name": "Val", "interests": ["astronomy", "hocky"]},
+  {"name": "Val", "interests": ["astronomy", "hocky"]}, 
   {"name": "Rick", "interests": ["karaoke"]}
 ]
 
@@ -277,7 +279,7 @@ fh = open('data.json', 'w')
 json.dump(people, fh)
 ```
 
-# In Summary
+# In Summary 
 
 ::: left
 We covered a lot of territory learning about input and output operations:
@@ -287,3 +289,4 @@ We covered a lot of territory learning about input and output operations:
 * read & write **Text** files
 * read & write **CSV** files
 * read & write **JSON** files
+

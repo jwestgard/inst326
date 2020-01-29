@@ -5,17 +5,20 @@ revealjs-url: ../../lib/reveal
 theme: inst326
 transition: slide
 ---
-## Connecting the Building Blocks
+
+## From atoms to molecules
 
 ::: incremental
-* We have already introduced some of the basic building blocks of data (integers, floats, Booleans, strings)
+
+* We have already introduced some of the basic building blocks of data (integers, floats, booleans, strings)
 * Python also supports combining bits of data into larger _data structures_
 * You can think of the building blocks as atoms and the structures as molecules
+
 :::
 
 ---
 
-## Strings revisited
+## Strings again?
 
 ::: incremental
 
@@ -30,7 +33,7 @@ transition: slide
 
 ::: incremental
 
-* Under the hood, all of these data types are objects
+* Under the hood, all of these data types are objects 
 * This means that they share some fundamental characteristics _and_
 * You can use some common commands to learn about them:
   * type(): _returns an object's class_
@@ -139,7 +142,7 @@ s = "To be or not to be"
 
 ``` {.python .numberLines}
 >>> x = 'hello'
->>> x = x.upper()  # reassigns x
+>>> x = x.upper()  # reassigns x 
 >>> print(x)
 ```
 
@@ -163,7 +166,7 @@ methods like *upper()* which you just saw.  Here are a few more, but try using
 
 ::: columns
 
-:::: column
+:::: column 
 
 * lower()
 * upper()
@@ -511,3 +514,4 @@ for name, number in phone_book.items():
 ---
 
 # Exercise!
+

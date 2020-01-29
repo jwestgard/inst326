@@ -1,8 +1,12 @@
 <h1 id="introductions">Introductions</h1>
-<p><a href="https://ischool.umd.edu"> <img width="60%" src="images/ischool.jpg" /> </a></p>
+<p><img width="60%" src="images/ischool.jpg"></p>
+<p>:::</p>
+<p>Go around the room introducing ourselves.</p>
+<p>:::</p>
 <h1 id="syllabus">Syllabus</h1>
 <p>The Syllabus and other course materials can be found on ELMS</p>
 <h1 id="what-is-python-and-why-was-it-chosen">What is Python and Why Was it Chosen?</h1>
+<p>::: incremental</p>
 <ul>
 <li>A Little History</li>
 <li>High level</li>
@@ -10,7 +14,9 @@
 <li>Multi-purpose</li>
 <li>Batteries included</li>
 </ul>
+<p>:::</p>
 <h1 id="learning-outcomes">Learning Outcomes</h1>
+<p>::: incremental</p>
 <ol style="list-style-type: decimal">
 <li>Design, program, and debug Python programs.</li>
 <li>Collect, process, and analyze data.</li>
@@ -19,7 +25,9 @@
 <li>Write clear and effective documentation.</li>
 <li>Understand how code expresses values &amp; ethics.</li>
 </ol>
+<p>:::</p>
 <h1 id="teaching-methods">Teaching Methods</h1>
+<p>::: incremental</p>
 <ul>
 <li>Course is divided into 11 modules</li>
 <li>Preparation assignments can be completed over the course of the week</li>
@@ -27,6 +35,7 @@
 <li>Class 2 will be a combination of lecture and whiteboarding/practice</li>
 <li>Class 3 will be a lab, with hands-on practice activities</li>
 </ul>
+<p>:::</p>
 <h1 id="grades">Grades</h1>
 <table>
 <tbody>
@@ -67,10 +76,10 @@
 <li><a href="https://www.cs.uct.ac.za/mit_notes/python/">Object-Oriented Programming in Python</a>, University of Cape Town.</li>
 </ul>
 <h1 id="tools">Tools</h1>
-<p>We'll spend some time on installation later this week.</p>
 <ul>
 <li>Laptop - Windows, Linux, or Mac</li>
 <li>Python - <a href="https://python.org/download" class="uri">https://python.org/download</a></li>
 <li>An Editor (e.g. Atom, Sublime Text, Notepad++) or IDE (PyCharm, Visual Studio, Eclipse).</li>
 </ul>
+<p>We'll spend some time on installation next time.</p>
 <h1 id="questions">Questions?</h1>

@@ -5,10 +5,10 @@ revealjs-url: ../../../lib/reveal
 theme: inst326
 transition: slide
 ---
-#
+
+# 
 
 ::: {.left}
-
 Python is an [imperative] programming language. Your programs are a series
 of **Statements** that are executed in order.
 
@@ -17,22 +17,20 @@ Each **Statement** can be made up of
 
 **Conditional Statements** change the execution
 of your program depending on the state of **Variables** and **Expressions**.
-
 :::
 
 ::: fragment
 
+---
 *This is a lot, so let's unpack it.*
 
 :::
 
 # What are Variables?
 
-::: {.left}
-
+<p class="left">
 Variables are *names* that can be attached to *data*. Each variable has a *type*:
-
-:::
+</p>
 
 ::: incremental
 
@@ -44,11 +42,11 @@ Variables are *names* that can be attached to *data*. Each variable has a *type*
 :::
 
 <p class="left fragment">
-We'll be talking about more complex types (e.g. *lists*, *dictionaries*, *sets*) and even how to create your own over the course of the semester.
+We'll be talking about more complex types (e.g. *lists*, *dictionaries*, *sets*) and 
+even how to create your own over the course of the semester.
 </p>
 
----
-## Working with Variables
+# Working with Variables
 
 There are two main actions we take with variables:
 
@@ -62,7 +60,7 @@ There are two main actions we take with variables:
 x = "Hello World"
 
 # evaluation
-print(x)
+print(x) 
 ~~~~
 
 ::: fragment
@@ -71,10 +69,10 @@ Notice the use of comments on lines 1 and 4?
 
 # What are Expressions?
 
-Expressions are pieces of Python that get *evaluated*, and are often
-created with *operators*:
+Expressions are pieces of Python that get *evaluated*, and are often 
+created with *operators*: 
 
-::: columns
+::: columns 
 
 :::: column
 
@@ -96,10 +94,10 @@ Remember order of operations: [PEMDAS](https://www.mathsisfun.com/operation-orde
 
 # Practice with Expressions
 
-#
+# 
 
 ~~~ {.python .numberLines}
-x = 2
+x = 2 
 x * x
 ~~~
 
@@ -107,12 +105,12 @@ x * x
 **4**
 :::
 
-#
+# 
 
 ~~~ {.python .numberLines}
 x = 2
 x ** 3
-~~~
+~~~ 
 
 ::: fragment
 **8**
@@ -121,7 +119,7 @@ x ** 3
 #
 
 ~~~ {.python .numberLines}
-x = 2
+x = 2 
 y = 3
 x == y
 ~~~
@@ -130,7 +128,7 @@ x == y
 **False**
 :::
 
-#
+# 
 
 ~~~ {.python .numberLines}
 x = 80
@@ -154,7 +152,7 @@ y - x + 4
 **5**
 :::
 
-#
+# 
 
 ~~~ {.python .numberLines}
 x = 2
@@ -165,7 +163,7 @@ x = 2
 **10**
 :::
 
-#
+# 
 
 Operators behave differently depending on the *type*:
 
@@ -256,7 +254,7 @@ programs, and [imperative] programming languages in general:
 * Statements
 * Variables
 * Types
-* Operators
+* Operators 
 * Expressions
 * Conditionals
 
