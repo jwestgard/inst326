@@ -1,19 +1,20 @@
 ---
-title: "Module 9: Web Data"
+title: "Module 10: Modules and Testing"
 css: ../../css/page.css
 ---
 
-In this exercise we will use the Python [requests] library to interact with the
-[ProPublica Congress API]. Web APIs are specialized websites that make data
-available for many purposes, often for use in mobile applications, and
-business-to-business data workflows. 
+1. Install pandas, numpy, or lxml using pip.
 
-1. Install the [requests] Python library with pip.
-1. Obtain the ProPublica Congress API key (from ELMS or register for your own)
-1. Write a program that uses the [Get Current Members by State/District](https://projects.propublica.org/api-docs/congress-api/members/#get-current-members-by-statedistrict) to get the members of the House of Representatives for the state of Maryland.
-1. For each representative use the [Get Recent Bills by a Specific Member](https://projects.propublica.org/api-docs/congress-api/bills/#get-recent-bills-by-a-specific-member) to get the bills they have introduced.
-1. List only the bills from the current Congress (116) that they have introduced. 
+2. Imagine that you have been tasked to create a module implementing some mathematical operations.
+    * In order to keep the assignment simple, let's practice by creating simple functions that add, subtract, multiply, and divide two integers.
+    * Create a module called "new_math.py"
+    * Create four functions in this module: add, subtract, multiply, and divide
+    * Each function should take two arguments that are assumed to be positive integers (a, b). 
+    * Each function should return the sum, difference, product, or quotient, respectively, of the two integers.
+    * Now write tests for each function, first using assert statements inside the name equals main block.
+    * next put your tests into their own functions named according to pytest's pattern. Run pytest to check your code and tests.  Make a failing test on purpose to ensure that your tests are working.
 
-[requests]: http://docs.python-requests.org/
-[ProPublica Congress API]: https://www.propublica.org/datastore/api/propublica-congress-api
 
+3. Write tests for a program you have written using assert statements.
+
+4. Do some test-driven development with pytest: write a failing test, then code the solution.

@@ -1,11 +1,11 @@
 ---
-title: Relational Databases
-subtitle: 
-revealjs-url: ../../lib/reveal
-theme: inst326
-transition: slide
+title: "Relational Databases"
+subtitle:
+revealjs-url: "../../lib/reveal"
+theme: "inst326"
+transition: "slide"
 ---
-# 
+#
 
 <a title="Daderot [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Cuneiform_tablet_with_bread_and_flour_distributions,_Ur_III_Period,_c._2100-2000_BC_-_Harvard_Semitic_Museum_-_Cambridge,_MA_-_DSC06146.jpg"><img width="450" alt="Cuneiform tablet with bread and flour distributions, Ur III Period, c. 2100-2000 BC - Harvard Semitic Museum - Cambridge, MA - DSC06146" src="images/cuneiform.jpg"></a>
 
@@ -80,7 +80,7 @@ This image of Jewell Mazique (https://en.wikipedia.org/wiki/Jewell_Mazique) work
 
 :::
 
-# 
+#
 
 ## The Relational Model
 
@@ -111,7 +111,7 @@ Database design/theory is a much larger topic. In fact it is an entire course (I
 
 :::
 
-# 
+#
 
 ## 'Normalization'
 
@@ -223,7 +223,7 @@ Docstrings are triple-quoted strings (with ' or "), and allow internal line brea
 ~~~~ {.python .numberLines}
 # Next add a row to the table with INSERT
 iq = '''INSERT INTO books VALUES (
-     '2001: A Space Odyssey', 
+     '2001: A Space Odyssey',
      'Arthur C. Clarke', '1951'
      )'''
 cursor.execute(iq)
@@ -237,12 +237,12 @@ cursor.execute(iq)
 - Larger numbers of records can be created with executemany()
 
 ~~~~ {.python .numberLines}
-# First, create some data 
+# First, create some data
 # (in real life you might read this from a file)
 # Structure it as a list of tuples
 data = [("I, Robot", "Isaac Asimov", 1950),
         ("The Martian", "Andy Weir", 2012),
-        ("The Left Hand Of Darkness", 
+        ("The Left Hand Of Darkness",
             "Ursula K. Le Guin",1969)]
 ~~~~
 
@@ -269,9 +269,9 @@ sq = '''SELECT title FROM books'''
 # which assigns results to 'books' variable
 books = cursor.execute(sq).fetchall()
 print(books)
-[('2001: A Space Odyssey',), 
-    ('I, Robot',), 
-    ('The Martian',), 
+[('2001: A Space Odyssey',),
+    ('I, Robot',),
+    ('The Martian',),
     ('The Left Hand Of Darkness',)]
 ~~~~
 
@@ -279,12 +279,12 @@ print(books)
 
 ## Update
 
-- Now, imagine we need to update some data. 
+- Now, imagine we need to update some data.
 - _The Martian_ was in fact published in 2011, so let's make that correction.
 
 ~~~~ {.python .numberLines}
-uq = '''UPDATE books 
-        SET year=2011 
+uq = '''UPDATE books
+        SET year=2011
         WHERE title="The Martian"'''
 cursor.execute(uq)
 ~~~~
@@ -295,14 +295,14 @@ cursor.execute(uq)
 
 ~~~~ {.python .numberLines}
 # now query just that row to verify
-vq = '''SELECT * FROM books 
+vq = '''SELECT * FROM books
         WHERE title="The Martian"'''
 cursor.execute(vq)
 print(cursor.fetchall())
 [('The Martian', 'Andy Weir', 2011)]
 ~~~~
 
-# 
+#
 
 ## Delete
 
@@ -314,12 +314,12 @@ print(cursor.fetchall())
 :::
 
 ~~~~ {.python .numberLines}
-dq = '''DELETE FROM books 
+dq = '''DELETE FROM books
         WHERE author="Isaac Asimov"'''
 cursor.execute(dq)
 ~~~~
 
-# 
+#
 
 ## Committing Changes
 
@@ -363,7 +363,7 @@ The first task is to create a program that can read the data in the attached fil
 
 # Normalizing and Joining Data
 
-# 
+#
 
 ## Why Normalize?
 
@@ -377,7 +377,7 @@ The first task is to create a program that can read the data in the attached fil
 
 :::
 
-# 
+#
 
 ## Identifiers (Keys)
 
@@ -389,18 +389,18 @@ The first task is to create a program that can read the data in the attached fil
 
 :::
 
-# 
+#
 
 ## Using Keys to Create Joins
 
 ::: incremental
 
-- Rows can also reference rows in other tables -- this cross-reference is called a foreign key 
+- Rows can also reference rows in other tables -- this cross-reference is called a foreign key
 - For example, the row "Hamlet" in the plays table might reference "William Shakespeare" in the authors table
 
 :::
 
-# 
+#
 
 ## Creating Normalized Data
 
@@ -428,7 +428,7 @@ The first task is to create a program that can read the data in the attached fil
 
 :::
 
-# 
+#
 
 ## Flat Data
 
@@ -460,7 +460,7 @@ The first task is to create a program that can read the data in the attached fil
 </tr>
 </table>
 
-# 
+#
 
 ## Add Primary Keys
 
@@ -497,7 +497,7 @@ The first task is to create a program that can read the data in the attached fil
 </tr>
 </table>
 
-# 
+#
 
 ## Move Authors to Own Table
 
@@ -555,7 +555,7 @@ The first task is to create a program that can read the data in the attached fil
 </table>
 
 
-# 
+#
 
 ## Selecting Normalized Data
 
@@ -566,7 +566,7 @@ The first task is to create a program that can read the data in the attached fil
 
 ~~~~ {.python .numberLines}
 jq = '''SELECT authors.name, books.title, books.year
-        FROM books JOIN authors 
+        FROM books JOIN authors
         ON books.author_id=authors.id'''
 books = cursor.execute(join_query, filter).fetchall()
 ~~~~
@@ -604,9 +604,8 @@ books = cursor.execute(join_query, filter).fetchall()
 
 ::: left
 
-Consider again the bibliographic database, note that there are multiple titles in the attached file written by a single author. In order to normalize this data, the author names should be moved into their own table and related to the book data through a relationship. 
+Consider again the bibliographic database, note that there are multiple titles in the attached file written by a single author. In order to normalize this data, the author names should be moved into their own table and related to the book data through a relationship.
 
 How can the authors data be related to the book titles? Can you create a program that will manage the normalization process at load time?
 
 :::
-
