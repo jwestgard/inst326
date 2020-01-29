@@ -1,4 +1,4 @@
 all: index.html
 
-index.html: index.md
-	pandoc --to revealjs --standalone --output index.html index.md
+index.html: README.md
+	pandoc --to revealjs --standalone --output index.html README.md

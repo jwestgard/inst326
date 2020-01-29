@@ -1,8 +1,5 @@
-all: sp2019-101.pdf sp2019-105.pdf
+all: current
 
-sp2019-101.pdf: sp2019-101.tex
-	pdflatex sp2019-101.tex > /dev/null
+current: sp2020-101.tex
+	pdflatex sp2020-101.tex > /dev/null
 	rm *.out *.log *.aux
-
-sp2019-105.pdf: sp2019-105.md
-	pandoc --pdf-engine=xelatex sp2019-105.md -o sp2019-105.pdf
