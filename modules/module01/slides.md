@@ -1,11 +1,6 @@
 ---
-<<<<<<< HEAD
 title: "Fundamentals"
 subtitle: "Variables, Expressions, Statements, Conditionals"
-=======
-title: Fundamentals
-subtitle: Variables, Expressions, Statements, Conditionals
->>>>>>> b251beb00e17c493aff15688858833369d24b5f5
 revealjs-url: ../../lib/reveal
 theme: inst326
 transition: slide
