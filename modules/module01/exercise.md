@@ -56,7 +56,7 @@ help(str)
 
 ## Challenges
 
-1. Write a program that takes a two-character string representing the day of the week (mo, tu, we, th, fr, sa, su) as input and uses a conditional to output "Happy <day of week>!":
+1. Write a program that takes a two-character string representing the day of the week (mo, tu, we, th, fr, sa, su) as input and uses a conditional to output "Happy [day of week]!":
 
 ```{.numberLines}
 enter day: mo
