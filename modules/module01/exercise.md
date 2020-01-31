@@ -22,7 +22,7 @@ print("Hello World")
 - Open a terminal (search for cmd on Windows, terminal on Mac)
 - execute your program as follows:
 
-```{.python .numberLines}
+```{.numberLines}
 $ python3 hello.py
 # NOTE: You must specify the *path* to your program file
 ```
@@ -31,7 +31,7 @@ $ python3 hello.py
 
 - Enter interactive mode by typing "python", "python3", or "python.exe" in the console.  You should see something like this:
 
-```{.python .numberLines}
+```{.numberLines}
 $ python3
 Python 3.7.0 (default, Jul 23 2018, 20:22:55) 
 [Clang 9.1.0 (clang-902.0.39.2)] on darwin
@@ -43,10 +43,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ```{.python .numberLines}
 s = "Open the pod bay doors, Hal"
+
 # check the type of the variable s
 type(s)
+
 # see a list of string methods
 dir(s)
+
 # see built-in help on string objects
 help(str) 
 ```
@@ -55,14 +58,14 @@ help(str)
 
 1. Write a program that takes a two-character string representing the day of the week (mo, tu, we, th, fr, sa, su) as input and uses a conditional to output "Happy <day of week>!":
 
-```{.python .numberLines}
+```{.numberLines}
 enter day: mo
 Happy Monday!
 ```
 
 2. Write a "banner printing" program that takes a string as input and outputs the string in uppercase, surrounded by a box made of stars. When run the output should look like this:
 
-```{.python .numberLines}
+```{.numberLines}
 Enter text for banner: It's full of stars
 **********************
 * IT'S FULL OF STARS *
