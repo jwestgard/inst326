@@ -1,6 +1,6 @@
 ---
 title: INST 326 Python Coding Style
-css: css/page.css
+css: ../css/page.css
 ---
 
 ## Course Stylesheet
