@@ -1,7 +1,4 @@
-all: info.html index.html
-
-info.html: info.md
-	pandoc --output info.html --standalone info.md
+all: index.html
 
 index.html: slides.md
 	pandoc --to revealjs --standalone --output index.html slides.md
