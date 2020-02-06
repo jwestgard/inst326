@@ -1,341 +1,611 @@
 ---
-title: Web Data
-revealjs-url: ../../lib/reveal
-theme: inst326
-transition: slide
+title: "Relational Databases"
+subtitle:
+revealjs-url: "../../lib/reveal"
+theme: "inst326"
+transition: "slide"
 ---
+#
 
-# 
-
-<a href="https://www.flickr.com/photos/inkdroid/15898721715/"><img width="80%" src="images/cloud.jpg"></a>
+<a title="Daderot [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Cuneiform_tablet_with_bread_and_flour_distributions,_Ur_III_Period,_c._2100-2000_BC_-_Harvard_Semitic_Museum_-_Cambridge,_MA_-_DSC06146.jpg"><img width="450" alt="Cuneiform tablet with bread and flour distributions, Ur III Period, c. 2100-2000 BC - Harvard Semitic Museum - Cambridge, MA - DSC06146" src="images/cuneiform.jpg"></a>
 
 ::: notes
 
-What does the metaphor of the cloud mean?
+This example of a cuneiform (wedge-shaped) writing tablet dates from the 3rd millennium BCE and records the distribution of bread and flour. It is shown here as an example of early record keeping. Writing systems developed first and foremost as a means of keeping track of legal agreements and business transactions, even before they were used for literary purposes.
+
+Image in public domain; original in Harvard Semitic Museum (Cambridge, MA).
 
 :::
 
 #
 
-<a href="http://as2914.net/#/galaxy/ipv4?cx=-39&cy=-70&cz=10475&lx=0.0324&ly=-0.0390&lz=0.0019&lw=0.9987&ml=1000&s=1.75&l=1&v=2016-09-03"><img src="images/internet.png"></a>
+## Tools
 
-::: notes
+For our work with databases, we'll be using three tools:
 
-The metaphor of the cloud comes from visualizations like this that show the
-many connections between computers on the Internet. This is a view of routers
-on the Internet. Each dot in this visualization is a computer on the
-Internet. The web is a layer over the Internet, where each of the dots is a
-web server.
-
-Optionally click on image and show how you can zoom in and search for UMD.
-
-:::
-
-# 
-
-There is no cloud. It's just someone else's computer.
-
-# 
-
-::: columns
-
-:::: column
-
-<a href="https://artsandculture.google.com/exhibit/mapping-knowledge/QQ_clnh7"><img height="175" src="images/otlet.jpg"></a>
-
-::::
-
-:::: column
-
-<a href="https://en.wikipedia.org/wiki/The_Mother_of_All_Demos"><img height="175" src="images/moad.png"></a>
-
-::::
-
-:::: column
-
-<a href="https://en.wikipedia.org/wiki/World_Wide_Web"><img height="175" src="images/berners-lee.jpg"></a>
-
-::::
-
-:::
-
-::: notes
-
-* Mundaneum: started by Paul Otlet in 1895. A index of millions of cards about newspapers 
-* Mother of All Demos: Doug Engelbart in 1968 at Stanford, demonstrating graphics, hypertext, mouse, networking.
-* Tim Berners-Lee: created the web at CERN in 1989.
-
-:::
+- **SQLite** (database)
+- **sqlite3** (Python module)
+- **DB Browser** (GUI application)
 
 #
 
-### The Web's Primary Innovations
+## Tools: SQLite
 
 ::: incremental
 
-* **HTTP**: Hypertext Transfer Protocol
-* **URL**: Uniform Resource Locator
-* **HTML**: Hypertext Markup Language
-* **Open Standards**: non-proprietary, IETF, W3C
-* **Browser**: Lynx, Mosaic, Netscape, IE, Chrome, Firefox, Safari
-
-:::
-
-::: notes
-
-This week we will be using these things from Python.
+- lightweight relational database (RDBMS)
+- runs locally and stores data in files
+- no separate database server required
+- already installed on your system (as part of Python)
+- project website: [https://www.sqlite.org](https://sqlite.org/mostdeployed.html)
 
 :::
 
 #
 
-<a href="https://en.wikipedia.org/wiki/Client%E2%80%93server_model"><img src="images/client-server.png"></a>
+## Tools: sqlite3
 
-::: notes
+::: incremental
 
-The web follows a basic client/server model, where clients (web browsers running on various kinds of devices) fetch data (HTML, CSS, images, etc) from web servers using URLs and HTTP. This picture is over-simplified because you often fetch data concurrently from multiple web servers when rendering a web page.
-
-:::
-
-# 
-
-<img width="80%" src="images/devtools.png">
-
-::: notes
-
-Have you ever wondered how a web browser works? Take a quick look at the developer tools in your browser. See how you can view the HTML, and all the network connections that go on when you view a web page? This week we will be learning about how to do some of those calls from Python.
-
-:::
-
-# Web APIs
-
-::: fragment
-Application Programming Interface
-:::
-
-::: notes
-
-Today we are going to focus on something called APIs. Does anyone know what API stands for? APIs allow you to use HTTP to get data (usually JSON) from the web.
+- module in the standard library
+- facilitates interaction with the database by:
+    1. managing connections
+    2. passing queries to the database system
+    3. making results of queries accessible to Python
 
 :::
 
 #
 
-<img width="80%" src="images/apis.png">
+## Tools: DB Browser for SQLite
+
+::: incremental
+
+- graphical application (GUI)
+- allows you to view the contents of a SQLite database
+- an optional convenience for this course
+- downloadable from [https://sqlitebrowser.org](https://sqlitebrowser.org)
+
+:::
+
+# Databases
+
+#
+
+<a title="Washington, D.C. Jewal Mazique [i.e. Jewel] cataloging in the Library of Congress (1942)" href="https://www.loc.gov/pictures/item/2017828941/"><img width="600" alt="Image of a woman working with the card catalog in the Library of Congress, 1942" src="images/cardcatalog.jpg"></a>
 
 ::: notes
 
-With the expansion of mobile computing, and "smart" phones in the early 2000s there was an increasing need to make data available to apps that ran on the phone. These are examples of web platforms that you can install apps for on your phone.
+This image of Jewell Mazique (https://en.wikipedia.org/wiki/Jewell_Mazique) working with the card catalog in the Library of Congress is included here to illustrate the more general meaning of the term 'database' as any large collection of structured information.
 
 :::
 
 #
+
+## The Relational Model
+
+::: incremental
+
+- Invented by E. F. Codd in the 1970s
+- Data stored in tables (relations)
+- Relations consist of rows (tuples)
+- Tuples have columns (attributes) that hold values
+- The term "database" now often connotes this type of relational database
+
+:::
+
+#
+
+## Other DB Systems
 
 ::: left
 
-Remember how you can *create*, *read*, *update* and *delete* data in a database? Well you can do the same things with web APIs using HTTP *methods*:
+Database design/theory is a much larger topic. In fact it is an entire course (INST 327)! Here are a just a few database systems you may encounter:
+
+- **Relational**:
+    - mySQL/MariaDB
+    - PostgreSQL
+- **Non-relational** ("NoSQL"):
+    - Document: MongoDB (JSON), BaseX (XML)
+    - Graph: Neo4j, Fuseki
 
 :::
 
-* **HTTP GET**: read
-* **HTTP POST**: create
-* **HTTP PUT**: update
-* **HTTP DELETE**: delete
+#
 
-::: fragment
-We're only going to be focused on GET.
-:::
+## 'Normalization'
 
-# 
+::: incremental
 
-<a href="http://docs.python-requests.org/"><img width="40%" src="images/requests.png"></a>
-
-::: notes
-
-To use Web APIs we need to use HTTP. Python has some built in modules to make it easy to work with HTTP. There is also the Python Requests extension which you can install which makes it even easier. That's what we will be using in class
+- Through a design process, data are "normalized"
+- Normalization means applying a set of rules (called "normal forms") to increase efficiency and reduce redundancy
+- Many specifics of database design and normalization are outside the scope of this course
 
 :::
 
-# 
+#
 
-## pip3 install requests
+## SQL
+
+::: incremental
+
+- a standardized language is used to interact with a relational database
+- this is known as the Structured Query Language (SQL)
+- SQL has different flavors but generally works the same way across database systems
+
+:::
+
+#
+
+## CRUD
 
 ::: left
 
-Run the command above in your terminal to install the requests module.
+Basic database operations are called "CRUD":
 
-*pip* is the python packaging utility for installing *open source* software distributed through the [Python Package Index](https://pypi.python.org).
-
-:::
-
-::: notes
-
-You will need to install the requests module first before you can use it, since it is a third party extension to Python that is distributed through the Python Package Index.
-
-:::
-
-# 
-
-``` {.python .numberLines}
-import requests
-
-resp = requests.get('https://umd.edu')
-print(resp)
-```
-
-::: fragment
-<Response [200]>
 :::
 
 ::: incremental
-1. create Python HTTP request object for a GET
-2. send HTTP request to webserver at umd.edu
-3. receive the response from umd.edu
-4. create and return a Python HTTP Response object
+
+- CREATE: add data to the database
+- READ: retrive data from one or more tables
+- UPDATE: make changes to the data
+- DELETE: remove rows from a table (potentially with a cascade effect)
+
 :::
+
+# Using a Database with Python
 
 #
 
-::: left
+## Connecting to a database: in-memory
 
-We can use the Response object to print out the text of the response that was sent back. In this case we see HTML.
+~~~~ {.python .numberLines}
+# import the sqlite3 module
+>>> import sqlite3
 
-:::
-
-``` {.python .numberLines}
-import requests
-
-resp = requests.get('https://umd.edu')
-print(resp.text)
-```
-
-#
-
-<a href="https://www.propublica.org/datastore/api/propublica-congress-api"><img src="images/propublica.png"></a>
-
-# 
-
-::: left
-Now lets GET JSON data for the current members of the House of Representatives using the [ProPublica Congress API](https://www.propublica.org/datastore/api/propublica-congress-api). Notice that we need a key? You can get your own if you want or you can use the one I've put on ELMS.
-:::
-
-``` {.python .numberLines .smaller}
-import requests
-
-headers = {"X-API-KEY": "INSERT_VALID_KEY_HERE"}
-url = 'https://api.propublica.org/congress/v1/116/house/members.json'
-
-resp = requests.get(url, headers=headers)
-print(resp.json())
-```
+# '::memory::' is special sqlite3 syntax
+>>> conn = sqlite3.connect(':memory:')
+>>> conn
+<sqlite3.Connection object at 0x10507b110>
+~~~~
 
 #
 
-::: left
-Let's use Python's [json](https://docs.python.org/3.7/library/json.html) module that we've used in the past to pretty-print the data, so that it isn't all on one line, and uses an indent of 2 spaces.
-:::
+## Connecting to a database: database file
 
-
-``` {.python .numberLines .smaller}
-import json
-import requests
-
-headers = {"X-API-KEY": "INSERT_VALID_KEY_HERE"}
-url = 'https://api.propublica.org/congress/v1/116/house/members.json'
-
-members = requests.get(url, headers=headers).json()
-print(json.dumps(members, indent=2))
-```
+~~~~ {.python .numberLines}
+# connect to an in-memory database
+>>> conn2 = sqlite3.connect('test.sqlite')
+>>> conn2
+<sqlite3.Connection object at 0x10507b030>
+# a file will appear in the working directory
+~~~~
 
 #
 
-## API Documentation
+## The connection object
 
-::: left
+- This object manages the database connection
+- In addition, we need a cursor to manage state
+- The cursor sends queries and contains results
 
-So how did I know about the special URL for the current members of the House? Most APIs come with *documentation* that explains how to use the API, which often includes the URLs you can use when talking to the APi, and what kinds of data you can expect to get back.
-
-Let's look a little more closely at the [ProPublica API documentation](https://projects.propublica.org/api-docs/congress-api/).
-
-:::
+~~~~ {.python .numberLines}
+# imagine we are creating a bibliographic db
+conn = sqlite3.connect('biblio.sqlite')
+# to query this db we must create a cursor
+cursor = conn.cursor()
+~~~~
 
 #
 
-::: left
+## Setting up the database
 
-Let's use the [Get Current Members by State/District](https://projects.propublica.org/api-docs/congress-api/members/#get-current-members-by-statedistrict) and the [Get Recent Bills by a Specific Member](https://projects.propublica.org/api-docs/congress-api/bills/#get-recent-bills-by-a-specific-member) API calls together to print out the bills introduced by MD House members.
-
-:::
-
-<a href="https://en.wikipedia.org/wiki/Maryland%27s_congressional_districts"><img height="400" src="images/md-districts.png"></a>
-
-# 
-
-``` {.python .numberLines .smaller}
-import json
-import requests
-
-def get(url):
-    headers = {"X-API-KEY": "INSERT_KEY_HERE"}
-    url = "https://api.propublica.org/congress/v1" + url
-    data = requests.get(url, headers=headers).json()
-    return data['results']
-
-for member in get("/members/house/md/current.json"):
-    print(member['name'], member['id'])
-```
+~~~~ {.python .numberLines}
+# create a table to hold some data with CREATE
+# docstrings are commonly used for queries
+cq = '''CREATE TABLE books (
+        title TEXT, author TEXT, date INTEGER
+        )'''
+cursor.execute(cq)
+~~~~
 
 ::: notes
 
-Since we are going to be making multiple calls to the ProPublica API let's create a little function that will do the HTTP request and get the data back as JSON so we don't have to repeat this.
+Docstrings are triple-quoted strings (with ' or "), and allow internal line breaks. Line breaks, which are insignificant in SQL, are often used to format queries for readability.
 
 :::
 
-# 
+#
 
-``` {.python .numberLines .smaller}
-import json
-import requests
+## Create entries
 
-def get(url):
-    headers = {"X-API-KEY": "INSERT_KEY_HERE"}
-    url = "https://api.propublica.org/congress/v1" + url
-    data = requests.get(url, headers=headers).json()
-    return data['results']
-
-for member in get("/members/house/md/current.json"):
-    print(member['name'])
-    bill_data = get('/members/' + member['id'] + '/bills/introduced')
-    for bill in bill_data[0]['bills']:
-        print(bill['title'])
-        print(bill['congressdotgov_url'])
-    print('')
-```
+~~~~ {.python .numberLines}
+# Next add a row to the table with INSERT
+iq = '''INSERT INTO books VALUES (
+     '2001: A Space Odyssey',
+     'Arthur C. Clarke', '1951'
+     )'''
+cursor.execute(iq)
+~~~~
 
 #
 
-``` {.python .numberLines .smaller}
-import json
-import requests
+## Scaling up
 
-def get(url):
-    headers = {"X-API-KEY": "INSERT_YOUR_KEY"}
-    url = "https://api.propublica.org/congress/v1" + url
-    data = requests.get(url, headers=headers).json()
-    return data['results']
+- This works fine, but can be impractical at scale
+- Larger numbers of records can be created with executemany()
 
-for member in get("/members/house/md/current.json"):
-    print(member['name'])
-    bill_data = get('/members/' + member['id'] + '/bills/introduced')
-    for bill in bill_data[0]['bills']:
-        if bill['congress'] == "116":
-            print(bill['title'])
-            print(bill['congressdotgov_url'])
-            print('')
-```
+~~~~ {.python .numberLines}
+# First, create some data
+# (in real life you might read this from a file)
+# Structure it as a list of tuples
+data = [("I, Robot", "Isaac Asimov", 1950),
+        ("The Martian", "Andy Weir", 2012),
+        ("The Left Hand Of Darkness",
+            "Ursula K. Le Guin",1969)]
+~~~~
 
-::: notes
+#
 
-Limit output to bills introduced in the current (116th) congress.
+## Scaling up (continued)
+
+~~~~ {.python .numberLines}
+# Next, create a query with placeholders
+imq = '''INSERT INTO books VALUES (?,?,?)'''
+
+# Finally, pass query & data to executemany()
+cursor.executemany(imq, data)
+~~~~
+
+#
+
+## Read
+
+~~~~ {.python .numberLines}
+# Next, to view the data, use a SELECT query
+sq = '''SELECT title FROM books'''
+# Execute the query as before, appending fetchall()
+# which assigns results to 'books' variable
+books = cursor.execute(sq).fetchall()
+print(books)
+[('2001: A Space Odyssey',),
+    ('I, Robot',),
+    ('The Martian',),
+    ('The Left Hand Of Darkness',)]
+~~~~
+
+#
+
+## Update
+
+- Now, imagine we need to update some data.
+- _The Martian_ was in fact published in 2011, so let's make that correction.
+
+~~~~ {.python .numberLines}
+uq = '''UPDATE books
+        SET year=2011
+        WHERE title="The Martian"'''
+cursor.execute(uq)
+~~~~
+
+#
+
+## Verify Update
+
+~~~~ {.python .numberLines}
+# now query just that row to verify
+vq = '''SELECT * FROM books
+        WHERE title="The Martian"'''
+cursor.execute(vq)
+print(cursor.fetchall())
+[('The Martian', 'Andy Weir', 2011)]
+~~~~
+
+#
+
+## Delete
+
+::: left
+
+- Now, let's look at deleting data
+- This works much as you would expect
+
+:::
+
+~~~~ {.python .numberLines}
+dq = '''DELETE FROM books
+        WHERE author="Isaac Asimov"'''
+cursor.execute(dq)
+~~~~
+
+#
+
+## Committing Changes
+
+- So far, what we have done has occurred in-memory
+- To persist, changes must be committed (saved)
+
+~~~~ {.python .numberLines}
+# Normally you do this after completing each change
+conn.commit()
+# With changes saved, the connection can be closed
+conn.close()
+~~~~
+
+#
+
+## Summary
+
+::: incremental
+
+- We have just covered a lot of ground
+- Connections, cursors, queries, CRUD
+- There is also a lot we have not touched
+- Next time we will look at normalization
+- Specifically: _primary keys_, _foreign keys_, and _joins_
+
+:::
+
+# Exercise
+
+#
+
+## Exercise 1: Load a large dataset
+
+::: left
+
+The data in this CSV file ([books.csv](books.csv)) consists of a list of titles, authors, and dates of important works of fiction. The data are similar to the data used in the above examples.
+
+The first task is to create a program that can read the data in the attached file and load it into a database.
+
+:::
+
+# Normalizing and Joining Data
+
+#
+
+## Why Normalize?
+
+::: incremental
+
+- There are many reasons related to optimization
+- But the simplest way to think about it is this:
+    1. Consider that one author can write many books
+    2. Conversely one book can have many authors
+    3. To model such relationships effectively, author data should be stored apart from book data
+
+:::
+
+#
+
+## Identifiers (Keys)
+
+::: incremental
+
+- The first requirement for modeling relationships between tables is to have unambiguous identifiers
+- These identifiers, called keys, allow data to be looked up
+- The unique id for a particular row in a table is called a primary key
+
+:::
+
+#
+
+## Using Keys to Create Joins
+
+::: incremental
+
+- Rows can also reference rows in other tables -- this cross-reference is called a foreign key
+- For example, the row "Hamlet" in the plays table might reference "William Shakespeare" in the authors table
+
+:::
+
+#
+
+## Creating Normalized Data
+
+::: incremental
+
+- When designing a database, before doing any coding tables and their relationships should be mapped out
+- The diagram created during this mapping process is called an ERD
+- This stands for Entity-Relationship Diagram
+- In addition to mapping out relationships, you need to create code to analyze the data and write it to the correct locations
+
+:::
+
+#
+
+## Creating Normalized Data (continued)
+
+::: incremental
+
+- For example, in working with our list of books and authors, you might:
+    1. Store the authors names in a separate table
+    2. As you read the data file, lookup the author
+    3. If the author is present already, get the id
+    4. If the author is not present, add the author and get the id
+    5. Add the book to the books table, referencing the author's id
+
+:::
+
+#
+
+## Flat Data
+
+<table>
+<tr>
+    <th>title</th>
+    <th>author</th>
+    <th>year</th>
+</tr>
+<tr>
+    <td>Things Fall Apart</td>
+    <td>Chinua Achebe</td>
+    <td>1958</td>
+</tr>
+<tr>
+    <td>Chimera</td>
+    <td>John Barth</td>
+    <td>1972</td>
+</tr>
+<tr>
+    <td>The Sot-Weed Factor</td>
+    <td>John Barth</td>
+    <td>1960</td>
+</tr>
+<tr>
+    <td>Under the Volcano</td>
+    <td>Malcolm Lowery</td>
+    <td>1947</td>
+</tr>
+</table>
+
+#
+
+## Add Primary Keys
+
+<table>
+<tr>
+    <th>id</th>
+    <th>title</th>
+    <th>author</th>
+    <th>year</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>Things Fall Apart</td>
+    <td>Chinua Achebe</td>
+    <td>1958</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>Chimera</td>
+    <td>John Barth</td>
+    <td>1972</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>The Sot-Weed Factor</td>
+    <td>John Barth</td>
+    <td>1960</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>Under the Volcano</td>
+    <td>Malcolm Lowry</td>
+    <td>1947</td>
+</tr>
+</table>
+
+#
+
+## Move Authors to Own Table
+
+<table>
+<tr>
+    <th>id</th>
+    <th>title</th>
+    <th>author_id</th>
+    <th>year</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>Things Fall Apart</td>
+    <td>1</td>
+    <td>1958</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>Chimera</td>
+    <td>2</td>
+    <td>1972</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>The Sot-Weed Factor</td>
+    <td>2</td>
+    <td>1960</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>Under the Volcano</td>
+    <td>3</td>
+    <td>1947</td>
+</tr>
+</table>
+
+
+<table>
+<tr>
+    <th>id</th>
+    <th>name</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>Chinua Achebe</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>John Barth</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>Malcolm Lowry</td>
+</tr>
+</table>
+
+
+#
+
+## Selecting Normalized Data
+
+::: incremental
+
+- To lookup normalized data, you can use SQL's JOIN syntax
+- You specify the fields to match on (linking foreign key to primary key)
+
+~~~~ {.python .numberLines}
+jq = '''SELECT authors.name, books.title, books.year
+        FROM books JOIN authors
+        ON books.author_id=authors.id'''
+books = cursor.execute(join_query, filter).fetchall()
+~~~~
+
+:::
+
+#
+
+## Deleting Normalized Data
+
+::: incremental
+
+- Normalizing data introduces some additional complications
+- Consider our authors and books examples
+- If you remove a row from the authors table, what happens to the author's books?
+- There is a danger that orphaned rows will clutter the database
+
+:::
+
+#
+
+## Deleting Normalized Data (continued)
+
+::: incremental
+
+- In order to control the creation of bad data, SQL allows you to specify constraints in your database schema
+- Among the constraints is one called CASCADE DELETE
+- In essence, by specifying this constraint, you would force SQLite to remove books that were written by a deleted author when removing the author
+
+:::
+
+#
+
+## Exercise 2: Normalization in action
+
+::: left
+
+Consider again the bibliographic database, note that there are multiple titles in the attached file written by a single author. In order to normalize this data, the author names should be moved into their own table and related to the book data through a relationship.
+
+How can the authors data be related to the book titles? Can you create a program that will manage the normalization process at load time?
 
 :::

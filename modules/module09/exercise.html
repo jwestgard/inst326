@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Module 9: Web Data</title>
+  <title>Module 8: Database Exercise</title>
   <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,15 +18,14 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Module 9: Web Data</h1>
+<h1 class="title">Module 8: Database Exercise</h1>
 </header>
-<p>In this exercise we will use the Python <a href="http://docs.python-requests.org/">requests</a> library to interact with the <a href="https://www.propublica.org/datastore/api/propublica-congress-api">ProPublica Congress API</a>. Web APIs are specialized websites that make data available for many purposes, often for use in mobile applications, and business-to-business data workflows.</p>
+<p>The data in this CSV file energy.csv (uploaded to ELMS in Files / Module 8) should look familiar to you, it’s the data that we were working with in module 4. Remember how we had to iterate through the file to determine the largest wind and solar producing state?</p>
+<p>This time the CSV has been cleaned up a bit by removing the total rows which we had to ignore the last time. We’re going to use it as a way of explore why SQL, databases and Python are useful tools to use together.</p>
 <ol type="1">
-<li>Install the <a href="http://docs.python-requests.org/">requests</a> Python library with pip.</li>
-<li>Obtain the ProPublica Congress API key (from ELMS or register for your own)</li>
-<li>Write a program that uses the <a href="https://projects.propublica.org/api-docs/congress-api/members/#get-current-members-by-statedistrict">Get Current Members by State/District</a> to get the members of the House of Representatives for the state of Maryland.</li>
-<li>For each representative use the <a href="https://projects.propublica.org/api-docs/congress-api/bills/#get-recent-bills-by-a-specific-member">Get Recent Bills by a Specific Member</a> to get the bills they have introduced.</li>
-<li>List only the bills from the current Congress (116) that they have introduced.</li>
+<li>create a program that can read in the CSV data and load it into a database</li>
+<li>query the database to see what the maximum solar and wind producers are</li>
+<li>determine the total solar and wind production in the US by year</li>
 </ol>
 </body>
 </html>

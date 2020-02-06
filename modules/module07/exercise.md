@@ -1,16 +1,23 @@
 ---
-title: "Module 5: Regular Expressions Exercise"
+title: "Module 7: Inheritance Exercise"
 css: ../../css/page.css
 ---
 
-## Background
+## Inheritance
 
-Regular Expressions are particularly useful for processing large amounts of textual data to find patterns, for example to find email addresses, phone numbers, or social security numbers. In the archival profession, a common use-case for locating personally-identifiable information is to redact it when making content available to researchers.
+Object Oriented Programming provides a way to *reuse* software. When you
+reuse *classes* you often need to adapt it in a particular way by adding or
+modifying behavior or data. One way of doing this is to create a new class
+that extends the existing one using the pattern of *inheritance*.
 
-The [Enron Email Dataset](https://www.cs.cmu.edu/~./enron/) is a body of approximately 500,000 email messages from top executives in the [Enron Corporation](https://en.wikipedia.org/wiki/Enron), a Texas-based energy company which after going bankrupt in 2001 was revealed to have engaged in massive accounting fraud. The email dataset became evidence in the ensuing investigation, and subsequently was released into the public domain.
+Imagine that you have been using the *Email* class found in the *enron.py* that
+has been uploaded to ELMS in Module 7. You would like the class to provide access to the
+*Subject* of the email. But you don't want to change the behavior of the Email
+class itself because other people are using it already. Write a new class called 
+*ExtendedEmail* that provides this additional method *get_subject()*.
 
-## Task: PII finder
+## Composition
 
-1. The task is to create a tool for locating personally identifiable information in the [provided sample of the dataset](enron-sample.zip).
-2. Create a function that takes a string to be searched as an argument, and that uses a regular expression to find patterns in the text matching the form of social security numbers (XXX-XX-XXXX). Your function should return a match object.
-3. Create a loop that scans a directory tree and calls your function on each file in the tree. If matches are returned, the loop should report the source and location of each match.
+When you model things using classes in Object Oriented Programming you often find yourself discovering your classes contain multiple types of things that can also be modeled as classes. When your objects contain other objects you use the pattern of *composition* to define your classes.
+
+Download *pizza.py* that has been uploaded to ELMS in Module 7. The Pizza class is being used by a restaurant that doesn't like to put more than 7 toppings on pizzas. Update the *add_topping()* method to print out a warning when a user tries to add more than 7 toppings.

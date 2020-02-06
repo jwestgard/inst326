@@ -1,19 +1,18 @@
 ---
-title: "Module 9: Web Data"
+title: "Module 8: Database Exercise"
 css: ../../css/page.css
 ---
 
-In this exercise we will use the Python [requests] library to interact with the
-[ProPublica Congress API]. Web APIs are specialized websites that make data
-available for many purposes, often for use in mobile applications, and
-business-to-business data workflows. 
+The data in this CSV file energy.csv (uploaded to ELMS in Files / Module 8)
+should look familiar to you, it's the data that we were working with in module
+4. Remember how we had to iterate through the file to determine the largest
+wind and solar producing state?
 
-1. Install the [requests] Python library with pip.
-1. Obtain the ProPublica Congress API key (from ELMS or register for your own)
-1. Write a program that uses the [Get Current Members by State/District](https://projects.propublica.org/api-docs/congress-api/members/#get-current-members-by-statedistrict) to get the members of the House of Representatives for the state of Maryland.
-1. For each representative use the [Get Recent Bills by a Specific Member](https://projects.propublica.org/api-docs/congress-api/bills/#get-recent-bills-by-a-specific-member) to get the bills they have introduced.
-1. List only the bills from the current Congress (116) that they have introduced. 
+This time the CSV has been cleaned up a bit by removing the total rows which we
+had to ignore the last time. We're going to use it as a way of explore why SQL,
+databases and Python are useful tools to use together.
 
-[requests]: http://docs.python-requests.org/
-[ProPublica Congress API]: https://www.propublica.org/datastore/api/propublica-congress-api
+1. create a program that can read in the CSV data and load it into a database
+2. query the database to see what the maximum solar and wind producers are
+3. determine the total solar and wind production in the US by year
 

@@ -3,48 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Modules and Testing</title>
+  <title>Data Analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../lib/reveal/css/reset.css">
   <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
   <link rel="stylesheet" href="../../lib/reveal/css/theme/inst326.css" id="theme">
   <!-- Printing and PDF exports -->
@@ -63,296 +33,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <div class="reveal">
     <div class="slides">
 
-<section>
-  <h1 class="title">Modules and Testing</h1>
+<section id="title-slide">
+  <h1 class="title">Data Analysis</h1>
 </section>
 
-<section id="section" class="slide level1">
-<h1></h1>
-<h2 id="overview">Overview</h2>
-<p>::: columns</p>
-<p>:::: column</p>
-<p><strong>Structuring Python <br /> Programs</strong></p>
-<p>:::: incremental * Imports * Modules * Packages ::::</p>
-<p>::::</p>
-<p>:::: column</p>
-<p><strong>Testing Python <br /> Programs</strong></p>
-<p>:::: incremental * Why test? * Building Tests with Assert * Testing Packages ::::</p>
-<p>::::</p>
-<p>:::</p>
-<p>::: notes Today's lecture will have two parts. In order to understand testing, we first have to talk about Python's module and import system. :::</p>
-</section>
-<section id="modules" class="slide level1">
-<h1>Modules</h1>
-<p>::: notes Before we can look at testing code, we need to understand something more about how large python programs are organized. :::</p>
-</section>
-<section id="section-1" class="slide level1">
-<h1></h1>
-<h2 id="structuring-python-programs">Structuring Python Programs</h2>
-<p>::: left</p>
-<p>The Python import system can be used for:</p>
-<p>:::</p>
-<p>::: incremental 1. Standard Library Modules * <em>Examples: sys, os, re, json, csv</em> 1. Installed Modules * <em>Examples: pandas, requests, lxml</em> 1. Your Own Modules * <em>Python files you create in the same directory</em> :::</p>
-<p>::: notes</p>
-<p>As you'll recall, one principle of good program design is to avoid repeated code. Python facilitates code reuse through its import system.</p>
-<p>To reuse code from another file, you can <em>import</em> all or part of the file into your program. Officially, files of python code are called <em>modules</em>.</p>
-<p>As we have seen already, Python comes with &quot;batteries included&quot; meaning there is a wide variety of useful modules in the standard library that can be imported. Other modules (for example requests) need to be installed with a package manager such as pip.</p>
-<p>But how do you reuse code that you have written? The answer is that you can import that code in much the same way. In fact, any python file in the same directory can be imported by name (minus the .py extension). Importing files from other places is a bit more complicated.</p>
-<p>:::</p>
-</section>
-<section id="section-2" class="slide level1">
-<h1></h1>
-<h2 id="import-examples">Import Examples</h2>
-<p>::: left</p>
-<p>Import an entire module from the standard library:</p>
-<p>:::</p>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="im">import</span> random
-x <span class="op">=</span> random.randint(<span class="dv">1</span>,<span class="dv">100</span>)       </code></pre></td></tr></table></div>
-<p>::: fragment Note the namespacing, &quot;random.randint()&quot; :::</p>
-</section>
-<section id="section-3" class="slide level1">
-<h1></h1>
-<h2 id="import-examples-1">Import Examples</h2>
-<p>::: left Import one part of a module without namespacing: :::</p>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="im">from</span> random <span class="im">import</span> randint
-x <span class="op">=</span> randint(<span class="dv">1</span>,<span class="dv">100</span>)  </code></pre></td></tr></table></div>
-<p>::: fragment The randint() function is now in top-level scope. :::</p>
-<p>::: notes Be careful you don't unintentionally override a builtin function or class! There is no built-in randint function, but consider what might happen if you imported a function called print() this way. :::</p>
-</section>
-<section id="section-4" class="slide level1">
-<h1></h1>
-<h2 id="import-examples-2">Import Examples</h2>
-<p>::: left Import a function or class under a different name: :::</p>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="im">from</span> random <span class="im">import</span> randint <span class="im">as</span> rand
-x <span class="op">=</span> rand(<span class="dv">1</span>,<span class="dv">100</span>)</code></pre></td></tr></table></div>
-<p>::: fragment &quot;rand&quot; becomes an alias for random.randint() :::</p>
-</section>
-<section id="section-5" class="slide level1">
-<h1></h1>
-<h2 id="import-examples-3">Import Examples</h2>
-<p>::: left Modules outside the standard library must be installed: :::</p>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-3
-4
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> pandas
-Traceback (most recent call last):
-  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span>
-ModuleNotFoundError: No module named <span class="st">&#39;pandas&#39;</span></code></pre></td></tr></table></div>
-<p>::: fragment Unless it is installed on your system, pandas is not available. :::</p>
-</section>
-<section id="section-6" class="slide level1">
-<h1></h1>
-<h2 id="import-examples-4">Import Examples</h2>
-<p>::: left You can use pip/pip3 (Python Package Manager) to install non-standard modules: :::</p>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-3
-4
-5
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python">$ pip3 install pandas
-Collecting pandas
-... lots of lines ...
-Installing collected packages: ...
-Successfully installed ... pandas<span class="dv">-0</span>.<span class="fl">23.4</span> ...</code></pre></td></tr></table></div>
-<p>::: fragment Anyone who wants to run your code must similarly install pandas. This is known as a <em>dependency</em>. :::</p>
-<p>::: notes Python has tools for managing dependencies and making them easier for end-users to install. Such tools are outside the scope of this course. :::</p>
-</section>
-<section id="section-7" class="slide level1">
-<h1></h1>
-<h2 id="importing-your-own-modules">Importing Your Own Modules</h2>
-<p>::: incremental * Imports are not just for other people’s code * As programs become complex, single-file programming gets impractical * To facilitate reuse and make code easier to understand, divide large programs into modules * Modules are just different .py files stored together :::</p>
-</section>
-<section id="section-8" class="slide level1">
-<h1></h1>
-<h2 id="importing-your-own-modules-1">Importing Your Own Modules</h2>
-<p>::: left Imagine you have a module called petshop.py that depends on pets.py, which includes two classes (Cat and Dog). :::</p>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-3
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="im">import</span> pets
-c <span class="op">=</span> pets.Cat(<span class="st">&#39;Fluffy&#39;</span>)
-d <span class="op">=</span> pets.Dog(<span class="st">&#39;Spot&#39;</span>)</code></pre></td></tr></table></div>
-<p>::: fragment By importing &quot;pets&quot;, the classes in pets.py become available in petshop.py. :::</p>
-</section>
-<section id="section-9" class="slide level1">
-<h1></h1>
-<h2 id="pythons-search-path">Python’s Search Path</h2>
-<p>::: left During imports, Python searches the following: :::</p>
-<p>::: incremental 1. Directory where your program is located 1. PYTHONPATH (environment variable) 1. Standard library (located inside your copy of Python) 1. Locations in a .pth file (a text file listing one directory per line) :::</p>
-</section>
-<section id="section-10" class="slide level1">
-<h1></h1>
-<h2 id="python-packages">Python Packages</h2>
-<p>::: incremental * Modules can be grouped * A group of modules in a directory is called a <em>package</em> * To be recognized as a package, you must include a file named __init__.py * To run a package, use the -m flag at runtime :::</p>
-</section>
-<section id="section-11" class="slide level1">
-<h1></h1>
-<h2 id="init-files">Init Files</h2>
-<p>::: incremental * __init__.py allows Python to recognize the directory as a package * It can contain code but is not required to * Because it is run at load time, it is commonly used for initialization tasks :::</p>
-</section>
-<section id="testing" class="slide level1">
-<h1>Testing</h1>
-</section>
-<section id="section-12" class="slide level1">
-<h1></h1>
-<p><a href="https://en.wikipedia.org/wiki/Grace_Hopper" target="new"><img width="40%" src="images/Grace_Murray_Hopper,_in_her_office_in_Washington_DC,_1978,_©Lynn_Gilbert.jpg"></a></p>
-<p>::: notes Admiral Grace Hopper was an early computer scientist, a primary author of the COBOL language, and creator of programming language conformance standards for the US Navy (later maintained by NIST). She was an early proponent of the development of human-readable computer languages.</p>
-<p>Image attribution and source: By Lynn Gilbert, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=57587522 :::</p>
-</section>
-<section id="section-13" class="slide level1">
-<h1></h1>
-<p><a href="https://americanhistory.si.edu/collections/search/object/nmah_334663" target="new"><img width="80%" src="images/NMAH-92-13131.jpg" alt="Image of computer log book with moth taped inside"></a></p>
-<p>::: notes In 1947 engineers working on Grace Hopper's team at Harvard taped this 'bug' into their log book. The term &quot;bugs&quot; for faults in complex machines or systems had been in use for a while, and the operators who recorded this were clearly amused by the discovery, thinking it notable that they had found an actual bug.</p>
-<p>Orignal at Smithsonian, National Museum of American History, catalog number 1994.0191.1. :::</p>
-</section>
-<section id="section-14" class="slide level1">
-<h1></h1>
-<h2 id="what-is-testing">What is Testing?</h2>
-<p>::: incremental * Not the same as debugging * There are many styles of testing (acceptance testing, load testing, penetration testing) * The style described here is &quot;unit&quot; testing * Unit testing means writing tests for discrete, small &quot;units&quot; of code (often individual functions or methods) :::</p>
-</section>
-<section id="section-15" class="slide level1">
-<h1></h1>
-<h2 id="why-test">Why Test?</h2>
-<p>::: incremental * Bugs can be costly (testing helps catch them early) * Testing can save time on debugging * But testing itself also takes a lot of time * Testing is a form of risk management * Test-driven development (TDD) :::</p>
-<p>::: notes Test-driven development says that the tests should be written first, and the program developed against the tests. Start with failing tests, and program is done when the tests all pass. :::</p>
-</section>
-<section id="section-16" class="slide level1">
-<h1></h1>
-<h2 id="many-ways-to-test">Many Ways to Test</h2>
-<p>::: incremental * Using shell tools * Build your own tests using assert statements, try/except * In &quot;if name equals main&quot; * Using an external library: 1. <a href="https://docs.python.org/3.7/library/unittest.html">unittest</a> 1. <a href="https://pytest.org">pytest</a> :::</p>
-</section>
-<section id="section-17" class="slide level1">
-<h1></h1>
-<h2 id="using-assert">Using Assert</h2>
-<p>::: incremental * Assert statements are a means of declaring expected state * Primary use case is for debugging * Declares an expectation, and raises &quot;AssertionError&quot; if expectation is False * Assert is designed to catch errors that would otherwise be missed * There is no need to test for things that would raise an exception anyway :::</p>
-</section>
-<section id="section-18" class="slide level1">
-<h1></h1>
-<h2 id="using-assert-1">Using Assert</h2>
-<p>::: left Imagine a function designed to draw a triangle. You might create an assert statement to check that the interior angles add up to 180°: :::</p>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="cf">assert</span> <span class="bu">sum</span>(angles) <span class="op">==</span> <span class="dv">180</span>, <span class="st">&#39;angles must total 180&#39;</span></code></pre></td></tr></table></div>
-<p>::: fragment assert len(angles) == 3, 'must have 3 angles' :::</p>
-<p>::: notes Can you think of other assertions that could be made here? :::</p>
-</section>
-<section id="section-19" class="slide level1">
-<h1></h1>
-<h2 id="examples-assert">Examples (assert)</h2>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-3
-4
-5
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="kw">def</span> mysum(a, b):
-    <span class="cf">return</span> a <span class="op">+</span> b
-
-<span class="cf">assert</span> mysum(<span class="dv">2</span>,<span class="dv">2</span>) <span class="op">==</span> <span class="dv">4</span>
-<span class="cf">assert</span> mysum(<span class="dv">2</span>,<span class="dv">3</span>) <span class="op">==</span> <span class="dv">6</span>  </code></pre></td></tr></table></div>
-<p>::: fragment The second (incorrect) assertion raises an error :::</p>
-</section>
-<section id="section-20" class="slide level1">
-<h1></h1>
-<h2 id="using-if-name-equals-main">Using &quot;If Name Equals Main&quot;</h2>
-<p>::: incremental * For modules to be imported, the main block can be used for tests * Works only for modules not designed to be run by themselves * Put tests in the &quot;name equals main&quot; block * These tests will be ignored when the module is imported * But they can conveniently be activated by running the module directly :::</p>
-</section>
-<section id="section-21" class="slide level1">
-<h1></h1>
-<h2 id="examples-name-equals-main">Examples (Name Equals Main)</h2>
-<p>::: left Imagine a function designed to evaluate whether or not a number is prime: :::</p>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="kw">def</span> is_prime(x):
-    <span class="co"># body of function here ...</span>
-
-<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:
-    <span class="cf">assert</span> is_prime(<span class="dv">2</span>) <span class="op">==</span> <span class="va">True</span>
-    <span class="cf">assert</span> is_prime(<span class="dv">7</span>) <span class="op">==</span> <span class="va">True</span>
-    <span class="cf">assert</span> is_prime(<span class="dv">4</span>) <span class="op">==</span> <span class="va">False</span> </code></pre></td></tr></table></div>
-<p>::: notes When you want to use this function, you import the entire module or just the one function from the module.</p>
-<p>When you want to test your function, you run the modules directly, which causes the code in the if name equals main block to be executed. :::</p>
-</section>
-<section id="section-22" class="slide level1">
-<h1></h1>
-<h2 id="testing-with-pytest">Testing with pytest</h2>
-<p>::: incremental * Works similarly to the use of asserts in if name equals main * Works with modules intended for import as well as those intended to be run directly * Define testing functions in the module named according to one of these patterns: 'test_*.py' or '*_test.py' :::</p>
-</section>
-<section id="section-23" class="slide level1">
-<h1></h1>
-<h2 id="testing-with-pytest-continued">Testing with pytest (continued)</h2>
-<p>::: incremental * Will execute all such functions when run against a module or package * Prints a detailed report of the results to the console * Has advanced features, including integration with unittest :::</p>
-</section>
-<section id="section-24" class="slide level1">
-<h1></h1>
-<h2 id="examples-pytest">Examples (pytest)</h2>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="kw">def</span> is_prime(x):
-    <span class="cf">if</span> x <span class="op">==</span> <span class="dv">2</span>:
-        <span class="cf">return</span> <span class="va">True</span>
-    <span class="cf">else</span>:
-        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,n):
-            <span class="cf">if</span> x<span class="op">%</span>i <span class="op">==</span> <span class="dv">0</span>:
-                <span class="cf">return</span> <span class="va">False</span>
-        <span class="cf">return</span> <span class="va">True</span>
-
-<span class="kw">def</span> test_is_prime():
-    <span class="cf">assert</span> is_prime(<span class="dv">2</span>) <span class="op">==</span> <span class="va">True</span>
-    <span class="cf">assert</span> is_prime(<span class="dv">7</span>) <span class="op">==</span> <span class="va">True</span>
-    <span class="cf">assert</span> is_prime(<span class="dv">4</span>) <span class="op">==</span> <span class="va">False</span></code></pre></td></tr></table></div>
-<p>::: notes The function checks all integers between two and the number being evaluated, returning False as soon as the number divides evenly. Once all numbers have been checked, it returns True.</p>
-<p>A second function named according to a pytest pattern checks two cases that are prime and one that is not. Good tests seek out &quot;edge cases&quot; to test. :::</p>
-</section>
-<section id="section-25" class="slide level1">
-<h1></h1>
-<h2 id="examples-pytest-1">Examples (pytest)</h2>
-<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="sourceCode"><pre><code class="sourceCode python">$ pytest check_prime.py
-<span class="op">========</span> test session starts <span class="op">========</span>
-platform darwin <span class="op">--</span> Python <span class="dv">3</span>.<span class="fl">7.0</span>, pytest<span class="dv">-3</span>.<span class="fl">8.2</span>, 
-    py<span class="dv">-1</span>.<span class="fl">7.0</span>, pluggy<span class="dv">-0</span>.<span class="fl">7.1</span>
-rootdir: <span class="op">/</span>Users<span class="op">/</span>westgard<span class="op">/</span>Desktop, inifile:
-collected <span class="dv">1</span> item                                                                         
-
-check_prime.py .   [<span class="dv">100</span><span class="op">%</span>]
-
-<span class="op">========</span> <span class="dv">1</span> passed <span class="kw">in</span> <span class="fl">0.03</span> seconds <span class="op">========</span></code></pre></td></tr></table></div>
-</section>
+<section><section id="section" class="title-slide slide level1"><h1></h1></section>
+<section id="overview" class="slide level2">
+<h2>Overview</h2>
+<p>Slides Forthcoming</p>
+</section></section>
     </div>
   </div>
 
-  <script src="../../lib/reveal/lib/js/head.min.js"></script>
   <script src="../../lib/reveal/js/reveal.js"></script>
 
   <script>
@@ -360,6 +52,8 @@ check_prime.py .   [<span class="dv">100</span><span class="op">%</span>]
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
         // Transition style
         transition: 'slide', // none/fade/slide/convex/concave/zoom
 
@@ -367,7 +61,7 @@ check_prime.py .   [<span class="dv">100</span><span class="op">%</span>]
         dependencies: [
           { src: '../../lib/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: '../../lib/reveal/plugin/zoom-js/zoom.js', async: true },
-              { src: '../../lib/reveal/plugin/notes/notes.js', async: true }
+          { src: '../../lib/reveal/plugin/notes/notes.js', async: true }
         ]
       });
     </script>

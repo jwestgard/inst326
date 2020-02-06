@@ -1,10 +1,9 @@
 ---
-title: Module 7 Readings
+title: "Module 6: Readings"
 css: ../../css/page.css
 ---
 
-Severance, Charles (2016). Chapter 14 in *Python for Everybody*.
+## Object-Oriented Programming
 
-Python Foundation. [6. Modules](https://docs.python.org/3/tutorial/modules.html) in The Python Tutorial.
-
-Donovan, Joan. (2019). [How Hate Groups’ Secret Sound System Works](https://www.theatlantic.com/ideas/archive/2019/03/extremists-understand-what-tech-platforms-have-built/585136/). *The Atlantic*.
+* _The Python Tutorial_ (2001-2019). [Part 9: Classes](https://docs.python.org/3/tutorial/classes.html).
+* Severance (2016). [Chapter 14: Objects](https://www.py4e.com/html3/14-objects).

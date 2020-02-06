@@ -3,79 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Web Data</title>
+  <title>Relational Databases</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../../lib/reveal/css/reveal.css">
-  <style>
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <style>
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
   <link rel="stylesheet" href="../../lib/reveal/css/theme/inst326.css" id="theme">
   <!-- Printing and PDF exports -->
@@ -94,259 +63,618 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Web Data</h1>
+<section>
+  <h1 class="title">Relational Databases</h1>
 </section>
 
 <section id="section" class="slide level1">
 <h1></h1>
-<p><a href="https://www.flickr.com/photos/inkdroid/15898721715/"><img width="80%" src="images/cloud.jpg"></a></p>
-<aside class="notes">
-<p>What does the metaphor of the cloud mean?</p>
-</aside>
+<p><a title="Daderot [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Cuneiform_tablet_with_bread_and_flour_distributions,_Ur_III_Period,_c._2100-2000_BC_-_Harvard_Semitic_Museum_-_Cambridge,_MA_-_DSC06146.jpg"><img width="450" alt="Cuneiform tablet with bread and flour distributions, Ur III Period, c. 2100-2000 BC - Harvard Semitic Museum - Cambridge, MA - DSC06146" src="images/cuneiform.jpg"></a></p>
+<p>::: notes</p>
+<p>This example of a cuneiform (wedge-shaped) writing tablet dates from the 3rd millennium BCE and records the distribution of bread and flour. It is shown here as an example of early record keeping. Writing systems developed first and foremost as a means of keeping track of legal agreements and business transactions, even before they were used for literary purposes.</p>
+<p>Image in public domain; original in Harvard Semitic Museum (Cambridge, MA).</p>
+<p>:::</p>
 </section>
 <section id="section-1" class="slide level1">
 <h1></h1>
-<p><a href="http://as2914.net/#/galaxy/ipv4?cx=-39&cy=-70&cz=10475&lx=0.0324&ly=-0.0390&lz=0.0019&lw=0.9987&ml=1000&s=1.75&l=1&v=2016-09-03"><img src="images/internet.png"></a></p>
-<aside class="notes">
-<p>The metaphor of the cloud comes from visualizations like this that show the many connections between computers on the Internet. This is a view of routers on the Internet. Each dot in this visualization is a computer on the Internet. The web is a layer over the Internet, where each of the dots is a web server.</p>
-<p>Optionally click on image and show how you can zoom in and search for UMD.</p>
-</aside>
+<h2 id="tools">Tools</h2>
+<p>For our work with databases, we'll be using three tools:</p>
+<ul>
+<li><strong>SQLite</strong> (database)</li>
+<li><strong>sqlite3</strong> (Python module)</li>
+<li><strong>DB Browser</strong> (GUI application)</li>
+</ul>
 </section>
 <section id="section-2" class="slide level1">
 <h1></h1>
-<p>There is no cloud. It’s just someone else’s computer.</p>
+<h2 id="tools-sqlite">Tools: SQLite</h2>
+<p>::: incremental</p>
+<ul>
+<li>lightweight relational database (RDBMS)</li>
+<li>runs locally and stores data in files</li>
+<li>no separate database server required</li>
+<li>already installed on your system (as part of Python)</li>
+<li>project website: <a href="https://sqlite.org/mostdeployed.html">https://www.sqlite.org</a></li>
+</ul>
+<p>:::</p>
 </section>
 <section id="section-3" class="slide level1">
 <h1></h1>
-<div class="columns">
-<div class="column">
-<p><a href="https://artsandculture.google.com/exhibit/mapping-knowledge/QQ_clnh7"><img height="175" src="images/otlet.jpg"></a></p>
-</div><div class="column">
-<p><a href="https://en.wikipedia.org/wiki/The_Mother_of_All_Demos"><img height="175" src="images/moad.png"></a></p>
-</div><div class="column">
-<p><a href="https://en.wikipedia.org/wiki/World_Wide_Web"><img height="175" src="images/berners-lee.jpg"></a></p>
-</div>
-</div>
-<aside class="notes">
+<h2 id="tools-sqlite3">Tools: sqlite3</h2>
+<p>::: incremental</p>
 <ul>
-<li>Mundaneum: started by Paul Otlet in 1895. A index of millions of cards about newspapers</li>
-<li>Mother of All Demos: Doug Engelbart in 1968 at Stanford, demonstrating graphics, hypertext, mouse, networking.</li>
-<li>Tim Berners-Lee: created the web at CERN in 1989.</li>
+<li>module in the standard library</li>
+<li>facilitates interaction with the database by:
+<ol type="1">
+<li>managing connections</li>
+<li>passing queries to the database system</li>
+<li>making results of queries accessible to Python</li>
+</ol></li>
 </ul>
-</aside>
+<p>:::</p>
 </section>
 <section id="section-4" class="slide level1">
 <h1></h1>
-<h3 id="the-webs-primary-innovations">The Web’s Primary Innovations</h3>
-<div>
+<h2 id="tools-db-browser-for-sqlite">Tools: DB Browser for SQLite</h2>
+<p>::: incremental</p>
 <ul>
-<li class="fragment"><strong>HTTP</strong>: Hypertext Transfer Protocol</li>
-<li class="fragment"><strong>URL</strong>: Uniform Resource Locator</li>
-<li class="fragment"><strong>HTML</strong>: Hypertext Markup Language</li>
-<li class="fragment"><strong>Open Standards</strong>: non-proprietary, IETF, W3C</li>
-<li class="fragment"><strong>Browser</strong>: Lynx, Mosaic, Netscape, IE, Chrome, Firefox, Safari</li>
+<li>graphical application (GUI)</li>
+<li>allows you to view the contents of a SQLite database</li>
+<li>an optional convenience for this course</li>
+<li>downloadable from <a href="https://sqlitebrowser.org" class="uri">https://sqlitebrowser.org</a></li>
 </ul>
-</div>
-<aside class="notes">
-<p>This week we will be using these things from Python.</p>
-</aside>
+<p>:::</p>
+</section>
+<section id="databases" class="slide level1">
+<h1>Databases</h1>
 </section>
 <section id="section-5" class="slide level1">
 <h1></h1>
-<p><a href="https://en.wikipedia.org/wiki/Client%E2%80%93server_model"><img src="images/client-server.png"></a></p>
-<aside class="notes">
-<p>The web follows a basic client/server model, where clients (web browsers running on various kinds of devices) fetch data (HTML, CSS, images, etc) from web servers using URLs and HTTP. This picture is over-simplified because you often fetch data concurrently from multiple web servers when rendering a web page.</p>
-</aside>
+<p><a title="Washington, D.C. Jewal Mazique [i.e. Jewel] cataloging in the Library of Congress (1942)" href="https://www.loc.gov/pictures/item/2017828941/"><img width="600" alt="Image of a woman working with the card catalog in the Library of Congress, 1942" src="images/cardcatalog.jpg"></a></p>
+<p>::: notes</p>
+<p>This image of Jewell Mazique (https://en.wikipedia.org/wiki/Jewell_Mazique) working with the card catalog in the Library of Congress is included here to illustrate the more general meaning of the term 'database' as any large collection of structured information.</p>
+<p>:::</p>
 </section>
 <section id="section-6" class="slide level1">
 <h1></h1>
-<p><img width="80%" src="images/devtools.png"></p>
-<aside class="notes">
-<p>Have you ever wondered how a web browser works? Take a quick look at the developer tools in your browser. See how you can view the HTML, and all the network connections that go on when you view a web page? This week we will be learning about how to do some of those calls from Python.</p>
-</aside>
-</section>
-<section id="web-apis" class="slide level1">
-<h1>Web APIs</h1>
-<div class="fragment">
-<p>Application Programming Interface</p>
-</div>
-<aside class="notes">
-<p>Today we are going to focus on something called APIs. Does anyone know what API stands for? APIs allow you to use HTTP to get data (usually JSON) from the web.</p>
-</aside>
+<h2 id="the-relational-model">The Relational Model</h2>
+<p>::: incremental</p>
+<ul>
+<li>Invented by E. F. Codd in the 1970s</li>
+<li>Data stored in tables (relations)</li>
+<li>Relations consist of rows (tuples)</li>
+<li>Tuples have columns (attributes) that hold values</li>
+<li>The term &quot;database&quot; now often connotes this type of relational database</li>
+</ul>
+<p>:::</p>
 </section>
 <section id="section-7" class="slide level1">
 <h1></h1>
-<p><img width="80%" src="images/apis.png"></p>
-<aside class="notes">
-<p>With the expansion of mobile computing, and “smart” phones in the early 2000s there was an increasing need to make data available to apps that ran on the phone. These are examples of web platforms that you can install apps for on your phone.</p>
-</aside>
+<h2 id="other-db-systems">Other DB Systems</h2>
+<p>::: left</p>
+<p>Database design/theory is a much larger topic. In fact it is an entire course (INST 327)! Here are a just a few database systems you may encounter:</p>
+<ul>
+<li><strong>Relational</strong>:
+<ul>
+<li>mySQL/MariaDB</li>
+<li>PostgreSQL</li>
+</ul></li>
+<li><strong>Non-relational</strong> (&quot;NoSQL&quot;):
+<ul>
+<li>Document: MongoDB (JSON), BaseX (XML)</li>
+<li>Graph: Neo4j, Fuseki</li>
+</ul></li>
+</ul>
+<p>:::</p>
 </section>
 <section id="section-8" class="slide level1">
 <h1></h1>
-<div class="left">
-<p>Remember how you can <em>create</em>, <em>read</em>, <em>update</em> and <em>delete</em> data in a database? Well you can do the same things with web APIs using HTTP <em>methods</em>:</p>
-</div>
+<h2 id="normalization">'Normalization'</h2>
+<p>::: incremental</p>
 <ul>
-<li><strong>HTTP GET</strong>: read</li>
-<li><strong>HTTP POST</strong>: create</li>
-<li><strong>HTTP PUT</strong>: update</li>
-<li><strong>HTTP DELETE</strong>: delete</li>
+<li>Through a design process, data are &quot;normalized&quot;</li>
+<li>Normalization means applying a set of rules (called &quot;normal forms&quot;) to increase efficiency and reduce redundancy</li>
+<li>Many specifics of database design and normalization are outside the scope of this course</li>
 </ul>
-<div class="fragment">
-<p>We’re only going to be focused on GET.</p>
-</div>
+<p>:::</p>
 </section>
 <section id="section-9" class="slide level1">
 <h1></h1>
-<p><a href="http://docs.python-requests.org/"><img width="40%" src="images/requests.png"></a></p>
-<aside class="notes">
-<p>To use Web APIs we need to use HTTP. Python has some built in modules to make it easy to work with HTTP. There is also the Python Requests extension which you can install which makes it even easier. That’s what we will be using in class</p>
-</aside>
+<h2 id="sql">SQL</h2>
+<p>::: incremental</p>
+<ul>
+<li>a standardized language is used to interact with a relational database</li>
+<li>this is known as the Structured Query Language (SQL)</li>
+<li>SQL has different flavors but generally works the same way across database systems</li>
+</ul>
+<p>:::</p>
 </section>
 <section id="section-10" class="slide level1">
 <h1></h1>
-<h2 id="pip3-install-requests">pip3 install requests</h2>
-<div class="left">
-<p>Run the command above in your terminal to install the requests module.</p>
-<p><em>pip</em> is the python packaging utility for installing <em>open source</em> software distributed through the <a href="https://pypi.python.org">Python Package Index</a>.</p>
-</div>
-<aside class="notes">
-<p>You will need to install the requests module first before you can use it, since it is a third party extension to Python that is distributed through the Python Package Index.</p>
-</aside>
+<h2 id="crud">CRUD</h2>
+<p>::: left</p>
+<p>Basic database operations are called &quot;CRUD&quot;:</p>
+<p>:::</p>
+<p>::: incremental</p>
+<ul>
+<li>CREATE: add data to the database</li>
+<li>READ: retrive data from one or more tables</li>
+<li>UPDATE: make changes to the data</li>
+<li>DELETE: remove rows from a table (potentially with a cascade effect)</li>
+</ul>
+<p>:::</p>
+</section>
+<section id="using-a-database-with-python" class="slide level1">
+<h1>Using a Database with Python</h1>
 </section>
 <section id="section-11" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3">resp <span class="op">=</span> requests.get(<span class="st">&#39;https://umd.edu&#39;</span>)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="bu">print</span>(resp)</a></code></pre></div>
-<div class="fragment">
-<p>&lt;Response [200]&gt;</p>
-</div>
-<div>
-<ol type="1">
-<li class="fragment">create Python HTTP request object for a GET</li>
-<li class="fragment">send HTTP request to webserver at umd.edu</li>
-<li class="fragment">receive the response from umd.edu</li>
-<li class="fragment">create and return a Python HTTP Response object</li>
-</ol>
-</div>
+<h2 id="connecting-to-a-database-in-memory">Connecting to a database: in-memory</h2>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># import the sqlite3 module</span>
+<span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> sqlite3
+
+<span class="co"># &#39;::memory::&#39; is special sqlite3 syntax</span>
+<span class="op">&gt;&gt;&gt;</span> conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">&#39;:memory:&#39;</span>)
+<span class="op">&gt;&gt;&gt;</span> conn
+<span class="op">&lt;</span>sqlite3.Connection <span class="bu">object</span> at <span class="bn">0x10507b110</span><span class="op">&gt;</span></code></pre></td></tr></table></div>
 </section>
 <section id="section-12" class="slide level1">
 <h1></h1>
-<div class="left">
-<p>We can use the Response object to print out the text of the response that was sent back. In this case we see HTML.</p>
-</div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3">resp <span class="op">=</span> requests.get(<span class="st">&#39;https://umd.edu&#39;</span>)</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="bu">print</span>(resp.text)</a></code></pre></div>
+<h2 id="connecting-to-a-database-database-file">Connecting to a database: database file</h2>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># connect to an in-memory database</span>
+<span class="op">&gt;&gt;&gt;</span> conn2 <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">&#39;test.sqlite&#39;</span>)
+<span class="op">&gt;&gt;&gt;</span> conn2
+<span class="op">&lt;</span>sqlite3.Connection <span class="bu">object</span> at <span class="bn">0x10507b030</span><span class="op">&gt;</span>
+<span class="co"># a file will appear in the working directory</span></code></pre></td></tr></table></div>
 </section>
 <section id="section-13" class="slide level1">
 <h1></h1>
-<p><a href="https://www.propublica.org/datastore/api/propublica-congress-api"><img src="images/propublica.png"></a></p>
+<h2 id="the-connection-object">The connection object</h2>
+<ul>
+<li>This object manages the database connection</li>
+<li>In addition, we need a cursor to manage state</li>
+<li>The cursor sends queries and contains results</li>
+</ul>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># imagine we are creating a bibliographic db</span>
+conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">&#39;biblio.sqlite&#39;</span>)
+<span class="co"># to query this db we must create a cursor</span>
+cursor <span class="op">=</span> conn.cursor()</code></pre></td></tr></table></div>
 </section>
 <section id="section-14" class="slide level1">
 <h1></h1>
-<div class="left">
-<p>Now lets GET JSON data for the current members of the House of Representatives using the <a href="https://www.propublica.org/datastore/api/propublica-congress-api">ProPublica Congress API</a>. Notice that we need a key? You can get your own if you want or you can use the one I’ve put on ELMS.</p>
-</div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3">headers <span class="op">=</span> {<span class="st">&quot;X-API-KEY&quot;</span>: <span class="st">&quot;INSERT_VALID_KEY_HERE&quot;</span>}</a>
-<a class="sourceLine" id="cb3-4" title="4">url <span class="op">=</span> <span class="st">&#39;https://api.propublica.org/congress/v1/116/house/members.json&#39;</span></a>
-<a class="sourceLine" id="cb3-5" title="5"></a>
-<a class="sourceLine" id="cb3-6" title="6">resp <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="bu">print</span>(resp.json())</a></code></pre></div>
+<h2 id="setting-up-the-database">Setting up the database</h2>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># create a table to hold some data with CREATE</span>
+<span class="co"># docstrings are commonly used for queries</span>
+cq <span class="op">=</span> <span class="st">&#39;&#39;&#39;CREATE TABLE books (</span>
+<span class="st">        title TEXT, author TEXT, date INTEGER</span>
+<span class="st">        )&#39;&#39;&#39;</span>
+cursor.execute(cq)</code></pre></td></tr></table></div>
+<p>::: notes</p>
+<p>Docstrings are triple-quoted strings (with ' or &quot;), and allow internal line breaks. Line breaks, which are insignificant in SQL, are often used to format queries for readability.</p>
+<p>:::</p>
 </section>
 <section id="section-15" class="slide level1">
 <h1></h1>
-<div class="left">
-<p>Let’s use Python’s <a href="https://docs.python.org/3.7/library/json.html">json</a> module that we’ve used in the past to pretty-print the data, so that it isn’t all on one line, and uses an indent of 2 spaces.</p>
-</div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="im">import</span> json</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb4-3" title="3"></a>
-<a class="sourceLine" id="cb4-4" title="4">headers <span class="op">=</span> {<span class="st">&quot;X-API-KEY&quot;</span>: <span class="st">&quot;INSERT_VALID_KEY_HERE&quot;</span>}</a>
-<a class="sourceLine" id="cb4-5" title="5">url <span class="op">=</span> <span class="st">&#39;https://api.propublica.org/congress/v1/116/house/members.json&#39;</span></a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7">members <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="bu">print</span>(json.dumps(members, indent<span class="op">=</span><span class="dv">2</span>))</a></code></pre></div>
+<h2 id="create-entries">Create entries</h2>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># Next add a row to the table with INSERT</span>
+iq <span class="op">=</span> <span class="st">&#39;&#39;&#39;INSERT INTO books VALUES (</span>
+<span class="st">     &#39;2001: A Space Odyssey&#39;,</span>
+<span class="st">     &#39;Arthur C. Clarke&#39;, &#39;1951&#39;</span>
+<span class="st">     )&#39;&#39;&#39;</span>
+cursor.execute(iq)</code></pre></td></tr></table></div>
 </section>
 <section id="section-16" class="slide level1">
 <h1></h1>
-<h2 id="api-documentation">API Documentation</h2>
-<div class="left">
-<p>So how did I know about the special URL for the current members of the House? Most APIs come with <em>documentation</em> that explains how to use the API, which often includes the URLs you can use when talking to the APi, and what kinds of data you can expect to get back.</p>
-<p>Let’s look a little more closely at the <a href="https://projects.propublica.org/api-docs/congress-api/">ProPublica API documentation</a>.</p>
-</div>
+<h2 id="scaling-up">Scaling up</h2>
+<ul>
+<li>This works fine, but can be impractical at scale</li>
+<li>Larger numbers of records can be created with executemany()</li>
+</ul>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># First, create some data</span>
+<span class="co"># (in real life you might read this from a file)</span>
+<span class="co"># Structure it as a list of tuples</span>
+data <span class="op">=</span> [(<span class="st">&quot;I, Robot&quot;</span>, <span class="st">&quot;Isaac Asimov&quot;</span>, <span class="dv">1950</span>),
+        (<span class="st">&quot;The Martian&quot;</span>, <span class="st">&quot;Andy Weir&quot;</span>, <span class="dv">2012</span>),
+        (<span class="st">&quot;The Left Hand Of Darkness&quot;</span>,
+            <span class="st">&quot;Ursula K. Le Guin&quot;</span>,<span class="dv">1969</span>)]</code></pre></td></tr></table></div>
 </section>
 <section id="section-17" class="slide level1">
 <h1></h1>
-<div class="left">
-<p>Let’s use the <a href="https://projects.propublica.org/api-docs/congress-api/members/#get-current-members-by-statedistrict">Get Current Members by State/District</a> and the <a href="https://projects.propublica.org/api-docs/congress-api/bills/#get-recent-bills-by-a-specific-member">Get Recent Bills by a Specific Member</a> API calls together to print out the bills introduced by MD House members.</p>
-</div>
-<p><a href="https://en.wikipedia.org/wiki/Maryland%27s_congressional_districts"><img height="400" src="images/md-districts.png"></a></p>
+<h2 id="scaling-up-continued">Scaling up (continued)</h2>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># Next, create a query with placeholders</span>
+imq <span class="op">=</span> <span class="st">&#39;&#39;&#39;INSERT INTO books VALUES (?,?,?)&#39;&#39;&#39;</span>
+
+<span class="co"># Finally, pass query &amp; data to executemany()</span>
+cursor.executemany(imq, data)</code></pre></td></tr></table></div>
 </section>
 <section id="section-18" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="im">import</span> json</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb5-3" title="3"></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="kw">def</span> get(url):</a>
-<a class="sourceLine" id="cb5-5" title="5">    headers <span class="op">=</span> {<span class="st">&quot;X-API-KEY&quot;</span>: <span class="st">&quot;INSERT_KEY_HERE&quot;</span>}</a>
-<a class="sourceLine" id="cb5-6" title="6">    url <span class="op">=</span> <span class="st">&quot;https://api.propublica.org/congress/v1&quot;</span> <span class="op">+</span> url</a>
-<a class="sourceLine" id="cb5-7" title="7">    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</a>
-<a class="sourceLine" id="cb5-8" title="8">    <span class="cf">return</span> data[<span class="st">&#39;results&#39;</span>]</a>
-<a class="sourceLine" id="cb5-9" title="9"></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="cf">for</span> member <span class="kw">in</span> get(<span class="st">&quot;/members/house/md/current.json&quot;</span>):</a>
-<a class="sourceLine" id="cb5-11" title="11">    <span class="bu">print</span>(member[<span class="st">&#39;name&#39;</span>], member[<span class="st">&#39;id&#39;</span>])</a></code></pre></div>
-<aside class="notes">
-<p>Since we are going to be making multiple calls to the ProPublica API let’s create a little function that will do the HTTP request and get the data back as JSON so we don’t have to repeat this.</p>
-</aside>
+<h2 id="read">Read</h2>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># Next, to view the data, use a SELECT query</span>
+sq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT title FROM books&#39;&#39;&#39;</span>
+<span class="co"># Execute the query as before, appending fetchall()</span>
+<span class="co"># which assigns results to &#39;books&#39; variable</span>
+books <span class="op">=</span> cursor.execute(sq).fetchall()
+<span class="bu">print</span>(books)
+[(<span class="st">&#39;2001: A Space Odyssey&#39;</span>,),
+    (<span class="st">&#39;I, Robot&#39;</span>,),
+    (<span class="st">&#39;The Martian&#39;</span>,),
+    (<span class="st">&#39;The Left Hand Of Darkness&#39;</span>,)]</code></pre></td></tr></table></div>
 </section>
 <section id="section-19" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> json</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb6-3" title="3"></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="kw">def</span> get(url):</a>
-<a class="sourceLine" id="cb6-5" title="5">    headers <span class="op">=</span> {<span class="st">&quot;X-API-KEY&quot;</span>: <span class="st">&quot;INSERT_KEY_HERE&quot;</span>}</a>
-<a class="sourceLine" id="cb6-6" title="6">    url <span class="op">=</span> <span class="st">&quot;https://api.propublica.org/congress/v1&quot;</span> <span class="op">+</span> url</a>
-<a class="sourceLine" id="cb6-7" title="7">    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</a>
-<a class="sourceLine" id="cb6-8" title="8">    <span class="cf">return</span> data[<span class="st">&#39;results&#39;</span>]</a>
-<a class="sourceLine" id="cb6-9" title="9"></a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="cf">for</span> member <span class="kw">in</span> get(<span class="st">&quot;/members/house/md/current.json&quot;</span>):</a>
-<a class="sourceLine" id="cb6-11" title="11">    <span class="bu">print</span>(member[<span class="st">&#39;name&#39;</span>])</a>
-<a class="sourceLine" id="cb6-12" title="12">    bill_data <span class="op">=</span> get(<span class="st">&#39;/members/&#39;</span> <span class="op">+</span> member[<span class="st">&#39;id&#39;</span>] <span class="op">+</span> <span class="st">&#39;/bills/introduced&#39;</span>)</a>
-<a class="sourceLine" id="cb6-13" title="13">    <span class="cf">for</span> bill <span class="kw">in</span> bill_data[<span class="dv">0</span>][<span class="st">&#39;bills&#39;</span>]:</a>
-<a class="sourceLine" id="cb6-14" title="14">        <span class="bu">print</span>(bill[<span class="st">&#39;title&#39;</span>])</a>
-<a class="sourceLine" id="cb6-15" title="15">        <span class="bu">print</span>(bill[<span class="st">&#39;congressdotgov_url&#39;</span>])</a>
-<a class="sourceLine" id="cb6-16" title="16">    <span class="bu">print</span>(<span class="st">&#39;&#39;</span>)</a></code></pre></div>
+<h2 id="update">Update</h2>
+<ul>
+<li>Now, imagine we need to update some data.</li>
+<li><em>The Martian</em> was in fact published in 2011, so let's make that correction.</li>
+</ul>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python">uq <span class="op">=</span> <span class="st">&#39;&#39;&#39;UPDATE books</span>
+<span class="st">        SET year=2011</span>
+<span class="st">        WHERE title=&quot;The Martian&quot;&#39;&#39;&#39;</span>
+cursor.execute(uq)</code></pre></td></tr></table></div>
 </section>
 <section id="section-20" class="slide level1">
 <h1></h1>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python numberLines smaller"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="im">import</span> json</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="im">import</span> requests</a>
-<a class="sourceLine" id="cb7-3" title="3"></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="kw">def</span> get(url):</a>
-<a class="sourceLine" id="cb7-5" title="5">    headers <span class="op">=</span> {<span class="st">&quot;X-API-KEY&quot;</span>: <span class="st">&quot;INSERT_YOUR_KEY&quot;</span>}</a>
-<a class="sourceLine" id="cb7-6" title="6">    url <span class="op">=</span> <span class="st">&quot;https://api.propublica.org/congress/v1&quot;</span> <span class="op">+</span> url</a>
-<a class="sourceLine" id="cb7-7" title="7">    data <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers).json()</a>
-<a class="sourceLine" id="cb7-8" title="8">    <span class="cf">return</span> data[<span class="st">&#39;results&#39;</span>]</a>
-<a class="sourceLine" id="cb7-9" title="9"></a>
-<a class="sourceLine" id="cb7-10" title="10"><span class="cf">for</span> member <span class="kw">in</span> get(<span class="st">&quot;/members/house/md/current.json&quot;</span>):</a>
-<a class="sourceLine" id="cb7-11" title="11">    <span class="bu">print</span>(member[<span class="st">&#39;name&#39;</span>])</a>
-<a class="sourceLine" id="cb7-12" title="12">    bill_data <span class="op">=</span> get(<span class="st">&#39;/members/&#39;</span> <span class="op">+</span> member[<span class="st">&#39;id&#39;</span>] <span class="op">+</span> <span class="st">&#39;/bills/introduced&#39;</span>)</a>
-<a class="sourceLine" id="cb7-13" title="13">    <span class="cf">for</span> bill <span class="kw">in</span> bill_data[<span class="dv">0</span>][<span class="st">&#39;bills&#39;</span>]:</a>
-<a class="sourceLine" id="cb7-14" title="14">        <span class="cf">if</span> bill[<span class="st">&#39;congress&#39;</span>] <span class="op">==</span> <span class="st">&quot;116&quot;</span>:</a>
-<a class="sourceLine" id="cb7-15" title="15">            <span class="bu">print</span>(bill[<span class="st">&#39;title&#39;</span>])</a>
-<a class="sourceLine" id="cb7-16" title="16">            <span class="bu">print</span>(bill[<span class="st">&#39;congressdotgov_url&#39;</span>])</a>
-<a class="sourceLine" id="cb7-17" title="17">            <span class="bu">print</span>(<span class="st">&#39;&#39;</span>)</a></code></pre></div>
-<aside class="notes">
-<p>Limit output to bills introduced in the current (116th) congress.</p>
-</aside>
+<h2 id="verify-update">Verify Update</h2>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># now query just that row to verify</span>
+vq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT * FROM books</span>
+<span class="st">        WHERE title=&quot;The Martian&quot;&#39;&#39;&#39;</span>
+cursor.execute(vq)
+<span class="bu">print</span>(cursor.fetchall())
+[(<span class="st">&#39;The Martian&#39;</span>, <span class="st">&#39;Andy Weir&#39;</span>, <span class="dv">2011</span>)]</code></pre></td></tr></table></div>
+</section>
+<section id="section-21" class="slide level1">
+<h1></h1>
+<h2 id="delete">Delete</h2>
+<p>::: left</p>
+<ul>
+<li>Now, let's look at deleting data</li>
+<li>This works much as you would expect</li>
+</ul>
+<p>:::</p>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python">dq <span class="op">=</span> <span class="st">&#39;&#39;&#39;DELETE FROM books</span>
+<span class="st">        WHERE author=&quot;Isaac Asimov&quot;&#39;&#39;&#39;</span>
+cursor.execute(dq)</code></pre></td></tr></table></div>
+</section>
+<section id="section-22" class="slide level1">
+<h1></h1>
+<h2 id="committing-changes">Committing Changes</h2>
+<ul>
+<li>So far, what we have done has occurred in-memory</li>
+<li>To persist, changes must be committed (saved)</li>
+</ul>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="co"># Normally you do this after completing each change</span>
+conn.commit()
+<span class="co"># With changes saved, the connection can be closed</span>
+conn.close()</code></pre></td></tr></table></div>
+</section>
+<section id="section-23" class="slide level1">
+<h1></h1>
+<h2 id="summary">Summary</h2>
+<p>::: incremental</p>
+<ul>
+<li>We have just covered a lot of ground</li>
+<li>Connections, cursors, queries, CRUD</li>
+<li>There is also a lot we have not touched</li>
+<li>Next time we will look at normalization</li>
+<li>Specifically: <em>primary keys</em>, <em>foreign keys</em>, and <em>joins</em></li>
+</ul>
+<p>:::</p>
+</section>
+<section id="exercise" class="slide level1">
+<h1>Exercise</h1>
+</section>
+<section id="section-24" class="slide level1">
+<h1></h1>
+<h2 id="exercise-1-load-a-large-dataset">Exercise 1: Load a large dataset</h2>
+<p>::: left</p>
+<p>The data in this CSV file (<a href="books.csv" class="uri">books.csv</a>) consists of a list of titles, authors, and dates of important works of fiction. The data are similar to the data used in the above examples.</p>
+<p>The first task is to create a program that can read the data in the attached file and load it into a database.</p>
+<p>:::</p>
+</section>
+<section id="normalizing-and-joining-data" class="slide level1">
+<h1>Normalizing and Joining Data</h1>
+</section>
+<section id="section-25" class="slide level1">
+<h1></h1>
+<h2 id="why-normalize">Why Normalize?</h2>
+<p>::: incremental</p>
+<ul>
+<li>There are many reasons related to optimization</li>
+<li>But the simplest way to think about it is this:
+<ol type="1">
+<li>Consider that one author can write many books</li>
+<li>Conversely one book can have many authors</li>
+<li>To model such relationships effectively, author data should be stored apart from book data</li>
+</ol></li>
+</ul>
+<p>:::</p>
+</section>
+<section id="section-26" class="slide level1">
+<h1></h1>
+<h2 id="identifiers-keys">Identifiers (Keys)</h2>
+<p>::: incremental</p>
+<ul>
+<li>The first requirement for modeling relationships between tables is to have unambiguous identifiers</li>
+<li>These identifiers, called keys, allow data to be looked up</li>
+<li>The unique id for a particular row in a table is called a primary key</li>
+</ul>
+<p>:::</p>
+</section>
+<section id="section-27" class="slide level1">
+<h1></h1>
+<h2 id="using-keys-to-create-joins">Using Keys to Create Joins</h2>
+<p>::: incremental</p>
+<ul>
+<li>Rows can also reference rows in other tables -- this cross-reference is called a foreign key</li>
+<li>For example, the row &quot;Hamlet&quot; in the plays table might reference &quot;William Shakespeare&quot; in the authors table</li>
+</ul>
+<p>:::</p>
+</section>
+<section id="section-28" class="slide level1">
+<h1></h1>
+<h2 id="creating-normalized-data">Creating Normalized Data</h2>
+<p>::: incremental</p>
+<ul>
+<li>When designing a database, before doing any coding tables and their relationships should be mapped out</li>
+<li>The diagram created during this mapping process is called an ERD</li>
+<li>This stands for Entity-Relationship Diagram</li>
+<li>In addition to mapping out relationships, you need to create code to analyze the data and write it to the correct locations</li>
+</ul>
+<p>:::</p>
+</section>
+<section id="section-29" class="slide level1">
+<h1></h1>
+<h2 id="creating-normalized-data-continued">Creating Normalized Data (continued)</h2>
+<p>::: incremental</p>
+<ul>
+<li>For example, in working with our list of books and authors, you might:
+<ol type="1">
+<li>Store the authors names in a separate table</li>
+<li>As you read the data file, lookup the author</li>
+<li>If the author is present already, get the id</li>
+<li>If the author is not present, add the author and get the id</li>
+<li>Add the book to the books table, referencing the author's id</li>
+</ol></li>
+</ul>
+<p>:::</p>
+</section>
+<section id="section-30" class="slide level1">
+<h1></h1>
+<h2 id="flat-data">Flat Data</h2>
+<table>
+<tr>
+<pre><code>&lt;th&gt;title&lt;/th&gt;
+&lt;th&gt;author&lt;/th&gt;
+&lt;th&gt;year&lt;/th&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;Things Fall Apart&lt;/td&gt;
+&lt;td&gt;Chinua Achebe&lt;/td&gt;
+&lt;td&gt;1958&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;Chimera&lt;/td&gt;
+&lt;td&gt;John Barth&lt;/td&gt;
+&lt;td&gt;1972&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;The Sot-Weed Factor&lt;/td&gt;
+&lt;td&gt;John Barth&lt;/td&gt;
+&lt;td&gt;1960&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;Under the Volcano&lt;/td&gt;
+&lt;td&gt;Malcolm Lowery&lt;/td&gt;
+&lt;td&gt;1947&lt;/td&gt;</code></pre>
+</tr>
+</table>
+</section>
+<section id="section-31" class="slide level1">
+<h1></h1>
+<h2 id="add-primary-keys">Add Primary Keys</h2>
+<table>
+<tr>
+<pre><code>&lt;th&gt;id&lt;/th&gt;
+&lt;th&gt;title&lt;/th&gt;
+&lt;th&gt;author&lt;/th&gt;
+&lt;th&gt;year&lt;/th&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Things Fall Apart&lt;/td&gt;
+&lt;td&gt;Chinua Achebe&lt;/td&gt;
+&lt;td&gt;1958&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Chimera&lt;/td&gt;
+&lt;td&gt;John Barth&lt;/td&gt;
+&lt;td&gt;1972&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;The Sot-Weed Factor&lt;/td&gt;
+&lt;td&gt;John Barth&lt;/td&gt;
+&lt;td&gt;1960&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Under the Volcano&lt;/td&gt;
+&lt;td&gt;Malcolm Lowry&lt;/td&gt;
+&lt;td&gt;1947&lt;/td&gt;</code></pre>
+</tr>
+</table>
+</section>
+<section id="section-32" class="slide level1">
+<h1></h1>
+<h2 id="move-authors-to-own-table">Move Authors to Own Table</h2>
+<table>
+<tr>
+<pre><code>&lt;th&gt;id&lt;/th&gt;
+&lt;th&gt;title&lt;/th&gt;
+&lt;th&gt;author_id&lt;/th&gt;
+&lt;th&gt;year&lt;/th&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Things Fall Apart&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1958&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Chimera&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;1972&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;The Sot-Weed Factor&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;1960&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Under the Volcano&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;1947&lt;/td&gt;</code></pre>
+</tr>
+</table>
+<table>
+<tr>
+<pre><code>&lt;th&gt;id&lt;/th&gt;
+&lt;th&gt;name&lt;/th&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Chinua Achebe&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;John Barth&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Malcolm Lowry&lt;/td&gt;</code></pre>
+</tr>
+</table>
+</section>
+<section id="section-33" class="slide level1">
+<h1></h1>
+<h2 id="selecting-normalized-data">Selecting Normalized Data</h2>
+<p>::: incremental</p>
+<ul>
+<li>To lookup normalized data, you can use SQL's JOIN syntax</li>
+<li>You specify the fields to match on (linking foreign key to primary key)</li>
+</ul>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python">jq <span class="op">=</span> <span class="st">&#39;&#39;&#39;SELECT authors.name, books.title, books.year</span>
+<span class="st">        FROM books JOIN authors</span>
+<span class="st">        ON books.author_id=authors.id&#39;&#39;&#39;</span>
+books <span class="op">=</span> cursor.execute(join_query, <span class="bu">filter</span>).fetchall()</code></pre></td></tr></table></div>
+<p>:::</p>
+</section>
+<section id="section-34" class="slide level1">
+<h1></h1>
+<h2 id="deleting-normalized-data">Deleting Normalized Data</h2>
+<p>::: incremental</p>
+<ul>
+<li>Normalizing data introduces some additional complications</li>
+<li>Consider our authors and books examples</li>
+<li>If you remove a row from the authors table, what happens to the author's books?</li>
+<li>There is a danger that orphaned rows will clutter the database</li>
+</ul>
+<p>:::</p>
+</section>
+<section id="section-35" class="slide level1">
+<h1></h1>
+<h2 id="deleting-normalized-data-continued">Deleting Normalized Data (continued)</h2>
+<p>::: incremental</p>
+<ul>
+<li>In order to control the creation of bad data, SQL allows you to specify constraints in your database schema</li>
+<li>Among the constraints is one called CASCADE DELETE</li>
+<li>In essence, by specifying this constraint, you would force SQLite to remove books that were written by a deleted author when removing the author</li>
+</ul>
+<p>:::</p>
+</section>
+<section id="section-36" class="slide level1">
+<h1></h1>
+<h2 id="exercise-2-normalization-in-action">Exercise 2: Normalization in action</h2>
+<p>::: left</p>
+<p>Consider again the bibliographic database, note that there are multiple titles in the attached file written by a single author. In order to normalize this data, the author names should be moved into their own table and related to the book data through a relationship.</p>
+<p>How can the authors data be related to the book titles? Can you create a program that will manage the normalization process at load time?</p>
+<p>:::</p>
 </section>
     </div>
   </div>
@@ -359,8 +687,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
-        // Push each slide change to the browser history
-        history: true,
         // Transition style
         transition: 'slide', // none/fade/slide/convex/concave/zoom
 
@@ -368,7 +694,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         dependencies: [
           { src: '../../lib/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: '../../lib/reveal/plugin/zoom-js/zoom.js', async: true },
-          { src: '../../lib/reveal/plugin/notes/notes.js', async: true }
+              { src: '../../lib/reveal/plugin/notes/notes.js', async: true }
         ]
       });
     </script>

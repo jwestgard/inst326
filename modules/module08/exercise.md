@@ -1,18 +1,20 @@
 ---
-title: "Module 8: Database Exercise"
+title: "Module 10: Modules and Testing"
 css: ../../css/page.css
 ---
 
-The data in this CSV file energy.csv (uploaded to ELMS in Files / Module 8)
-should look familiar to you, it's the data that we were working with in module
-4. Remember how we had to iterate through the file to determine the largest
-wind and solar producing state?
+1. Install pandas, numpy, or lxml using pip.
 
-This time the CSV has been cleaned up a bit by removing the total rows which we
-had to ignore the last time. We're going to use it as a way of explore why SQL,
-databases and Python are useful tools to use together.
+2. Imagine that you have been tasked to create a module implementing some mathematical operations.
+    * In order to keep the assignment simple, let's practice by creating simple functions that add, subtract, multiply, and divide two integers.
+    * Create a module called "new_math.py"
+    * Create four functions in this module: add, subtract, multiply, and divide
+    * Each function should take two arguments that are assumed to be positive integers (a, b). 
+    * Each function should return the sum, difference, product, or quotient, respectively, of the two integers.
+    * Now write tests for each function, first using assert statements inside the name equals main block.
+    * next put your tests into their own functions named according to pytest's pattern. Run pytest to check your code and tests.  Make a failing test on purpose to ensure that your tests are working.
 
-1. create a program that can read in the CSV data and load it into a database
-2. query the database to see what the maximum solar and wind producers are
-3. determine the total solar and wind production in the US by year
 
+3. Write tests for a program you have written using assert statements.
+
+4. Do some test-driven development with pytest: write a failing test, then code the solution.

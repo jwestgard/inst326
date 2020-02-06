@@ -1,6 +1,6 @@
 ---
-title: Inheritence & Composition
-subtitle: Patterns for Code Reuse
+title: "Object-Oriented Programming"
+subtitle: "Combining Data and Behavior"
 revealjs-url: ../../lib/reveal
 theme: inst326
 transition: slide
@@ -8,410 +8,218 @@ transition: slide
 
 #
 
-<a href="http://www.oed.com/view/Entry/95948"><img width="80%" src="images/definition.png"></a>
+<a href="https://commons.wikimedia.org/wiki/File:Geely_assembly_line_in_Beilun,_Ningbo.JPG">
+  <img style="width: 80%" src="images/assemblyline.jpg">
+</a>
 
 ::: notes
 
-Click through to Definition 2b:  To derive (a quality or character, physical or mental) from one's progenitors by natural descent; to derive or possess by transmission from parents or ancestry.
+A good analogy for OOP is an assembly line, where many instances of a model of
+car are built. The individual cars may have different options, but share a
+common core set of features and means of operation.
 
 :::
 
 #
 
-<a href="https://en.wikipedia.org/wiki/Darwin%27s_finches"><img width="80%" src="images/finches.png"></a>
+What are some common properties of cars?
 
-::: notes
+::: incremental
 
-Darwin's Finches. Collected by Charles Darwin in the Galapagos Islands in the 1830s. Notice the similar characteristics that these birds have. This is because they inherited these traits from an ancestor from South America, the Tiaris obscurus or Dull-coloured grassquit.
-
-The idea of inheritence is a way of extending and customizing classes without having to copy and paste code.
-
-:::
-
-# 
-
-<img src="images/diagram.png">
-
-::: notes
-
-Ok, but what do finches have to do with code? If you are writing a program that needs to model social media posts it may be useful for you to use inheritance to model what the different social media posts have in common in terms of their properties and methods (things you can do with them). Here is a UML diagram for this inheritance relation.
+* color
+* wheels
+* seats
+* steering wheel
+* engine
+* doors
+* accelerator
+* brake
 
 :::
+
 #
 
-``` {.python .numberLines .smaller}
-class Post():
-  def __init__(self, creator):
-    self.creator = creator
+What are some actions you can perform?
 
-class Tweet(Post):
-  def retweet(self):
-    print("retweeted by " + self.creator)
+::: incremental
 
-class Snap(Post):
-  def expire(self):
-    print("expired snap by " + self.creator)
+* open door
+* start engine
+* turn left/right
+* accelerate
+* stop
+* turn off engine
+* turn on cruise control
 
-snap = Snap("edsu")
-snap.expire()
+:::
+
+#
+
+## Overview
+
+- Definitions
+- Defining Classes
+- Using Instances
+
+::: notes
+
+- after some general intro to OOP
+- we'll talk about classes vs. instances and how to define a class
+- we'll look at attributes (data) and methods (behaviors)
+- we'll talk about how methods and attributes are accessed (dot notation), and how objects can interact with each other
+- finally, we'll look at how a hierarchy of classes (inheritance) can be used
+
+:::
+
+#
+
+## What is OOP?
+
+::: incremental
+
+- Nothing magical, just a different style
+- Procedural (like a recipe)
+- Functional (more mathematical)
+- Many languages like Python combine these styles.
+- OOP *encapsulates* data and behavior into *objects*
+- Objects have interfaces that allow them to interact
+- OOP tries to map programming to how we think about the world.
+
+:::
+
+#
+
+## Classes vs. instances
+
+::: incremental
+
+- Objects in OOP are members of *classes*
+- Features shared by members are mapped in a class definition
+- Individual *instances* have their own attributes and state
+
+:::
+
+#
+
+## You have already been using objects
+
+- All data types (for example, string, list, dictionary) are objects
+
+``` {.python .numberLines}
+>>> s = 'Hello World'
+>>> type(s)
+<class 'str'>
+>>> l = list()
+>>> type(l)
+<class 'list'>
+>>> dir(l)
+['__add__', '__class__', ...]
 ```
 
-::: fragment
-**expired snap by edsu**
-:::
+#
 
-::: notes
+## In fact, in Python almost everything is an object
 
-There's no new syntax required to do inheritance. But notice how the Tweet and Snap classes are defined on line 5 and 9? See what is now in the parentheses? That is declaring that each inherit from a base class Post.
+::: incremental
+
+- Objects have shared behaviors defined by their classes
+- At the same time, individual instances have different content
+- Much of the complexity is "hidden" inside the objects
 
 :::
 
 #
 
+## Defining your own class
 
-``` {.python .numberLines .smaller}
-class Post():
-  def __init__(self, creator):
-    self.creator = creator
+- Define a class with the "class" keyword
+- Define methods inside the class with indented "def" blocks
 
-class Tweet(Post):
-  def retweet(self):
-    print("retweeted by " + self.creator)
-
-class Snap(Post):
-  def expire(self):
-    print("expired snap by " + self.creator)
-
-tweet = Tweet(creator="edsu")
-tweet.retweet()
-```
-
-::: fragment
-**retweeted by edsu**
-:::
-
-# 
-
-``` {.python .numberLines .smaller}
-class Post():
-  def __init__(self, creator):
-    self.creator = creator
-
-class Tweet(Post):
-  def retweet(self):
-    print("retweeted by " + self.creator)
-
-class Snap(Post):
-  def expire(self):
-    print("expired snap by " + self.creator)
-
-tweet = Tweet(creator="edsu")
-tweet.expire()
-```
-
-::: fragment
-**AttributeError: 'Tweet' object has no attribute 'expire'**
-:::
-
-#
-
-``` {.python .numberLines .smaller}
-class Post():
-  def __init__(self, creator):
-    self.creator = creator
-  def delete(self):
-    print("post deleted by " + self.creator)
-
-class Tweet(Post):
-  def retweet(self):
-    print("retweeted by " + self.creator)
-
-class Snap(Post):
-  def expire(self):
-    print("expired snap by " + self.creator)
-
-tweet = Tweet(creator="edsu")
-tweet.delete()
-```
-
-::: fragment
-**post deleted by edsu**
-:::
-
-#
-
-## Overriding Methods
-
-``` {.python .numberLines .smaller}
-class Post():
-  def __init__(self, creator):
-    self.creator = creator
-  def update(self):
-    print("post updated by " + self.creator)
-
-class Tweet(Post):
-  def update(self):
-    print("you can never update tweets!")
-
-class Snap(Post):
-  def expire(self):
-    print("expired snap by " + self.creator)
-
-tweet = Tweet(creator="edsu")
-tweet.update()
-```
-
-::: fragment
-**you can never delete tweets!""**
-:::
-
-# Exercise
-
-::: left
-
-Remember our *Email* class that we used for processing the Enron email? Let's
-*extend* the one I've uploaded as *email.py* to Module 7 in ELMS and add a
-*method* that will return the *subject* of the email.
-
-:::
-
-# Composition
-
-# 
-
-<a href="http://www.oed.com/view/Entry/37795"><img src="images/composition-def.png"></a>
-
-
-#
-
-
-::: columns
-
-:::: column
-
-<img src="images/pizza.jpg">
-
-::::
-
-:::: column
-
-<br>
-
-**Pizza**
-
-::::: incremental
-
-* crust
-* toppings
-* cheese
-* sauce
-
-:::::
-
-::::
-
-:::
-
-::: notes
-
-A pizza is composed of multiple things.
-
-:::
-
-# 
-
-<img src="images/composition.png">
-
-::: notes
-
-We can model the relationship between the Pizza class and the Topping objects of which it is composed. Notice the filled in diamond that indicates a composition relationship? Also notice the 0..7 that indicates there can be 0 to 7 toppings on a pizza.
-
-:::
-
-# 
-
-``` {.python .numberLines .smaller}
-class Topping():
-
-    def __init__(self, name, num_pieces):
+``` {.python .numberLines}
+class Pet():
+    def __init__(self, name):
         self.name = name
-        self.num_pieces = num_pieces
-
-topping = Topping("pepperoni", 25)
-print(topping)
 ```
 
-::: fragment
-**<__main__.Topping object at 0x10c6374e0>**
-:::
+#
 
-::: notes
+## Initializers
 
-First lets create a Topping class that has a name, and a number of pieces.
+::: incremental
 
-:::
-
-# 
-
-``` {.python .numberLines .smaller}
-class Pizza():
-
-    def __init__(self):
-        self.toppings = []
-
-    def add_topping(self, topping):
-        self.toppings.append(topping)
-
-pizza = Pizza()
-print(pizza)
-```
-
-::: fragment
-**<__main__.Pizza object at 0x10c6374e0>**
-:::
-
-::: notes
-
-Next lets create a Pizza class that initializes a list of toppings in the constuctor and has a method for adding toppings.
+- The \_\_init\_\_() method is an initializer
+- The double underscore (dunderscore) indicates that \_\_init\_\_ has a special purpose
+- It is called automatically when a new instance is created
+- Often \_\_init\_\_() is used to set up attributes (here to give each pet a name)
 
 :::
 
 #
 
-``` {.python .numberLines .smaller}
-class Pizza():
-    def __init__(self):
-        self.toppings = []
-    def add_topping(self, topping):
-        self.toppings.append(topping)
+## Attributes and methods
 
-class Topping():
-    def __init__(self, name, num_pieces):
+- Attributes are properties specific to the instance
+- Methods are like functions defining behaviors specific to the members of a class
+
+``` {.python .numberLines}
+class Pet():
+    def __init__(self, name):
         self.name = name
-        self.num_pieces = num_pieces
-
-pizza = Pizza()
-pizza.add_topping(Topping("pepperoni", 18))
-pizza.add_topping(Topping("mushrooms", 12))
-pizza.add_topping(Topping("green peppers", 15))
-print(pizza.toppings)
+    def eat(self):
+        print('Nom nom nom')
 ```
 
-::: fragment
-<div style="font-size: 18pt;">
-[<__main__.Topping object at 0x10c9ae748>, <__main__.Topping object at 0x10c9aea58>, <__main__.Topping object at 0x10c9aea90>]
-</div>
-:::
+#
+
+## Interacting with an object
+
+``` {.python .numberLines .smaller}
+class Pet():
+    def __init__(self, name):
+        self.name = name
+    def eat(self, food):
+        print(f'Nom nom. {self.name} likes {food}.')
+
+>>> mypet = Pet('Spot')
+>>> mypet.eat('dogfood')
+Nom nom. Spot likes dogfood.
+```
 
 ::: notes
-Here's what they look like when we put them together.
+
+- The 'self' is a special variable that refers to the instance
+- The name self is just a convention
+- Being the first parameter is what grants it a special function
+
 :::
 
 #
 
-``` {.python .smaller .numberLines}
-class Topping():
+## Dot notation
 
-    def __init__(self, name, num_pieces):
-        self.name = name
-        self.num_pieces = num_pieces
+::: incremental
 
-    def __repr__(self):
-        return "{} pieces of {}".format(self.num_pieces, self.name))
+- Notice in the previous example how eat() was called
+- Notice as well how the attribute ".name" was accessed
+- This is called dot notation
+    - used to access attributes of the *instance*
+    - used to apply methods to the *instance*
+    - "self" in the class definition means particular to the *instance*
 
-pizza = Pizza()
-pizza.add_topping(Topping("pepperoni", 18))
-pizza.add_topping(Topping("mushrooms", 12))
-pizza.add_topping(Topping("green peppers", 15))
-print(pizza.toppings)
-```
-
-::: fragment
-<div style="font-size: 18pt;">
-[18 pieces of pepperoni, 12 pieces of mushrooms, 15 pieces of green peppers]
-</div>
 :::
+
+#
+
+## In summary
 
 ::: notes
 
-Every class you create can have a \_\_repr\_\_ method, short for representation, which can define how to print out instances of the class as strings. Which can be handy for debugging.
+This probably seems like a lot, but once you get the hang of it basic OOP can seem natural and intuitive.
 
 :::
 
-# 
-
-``` {.python .numberLines .smaller}
-class Pizza():
-    def __init__(self):
-        self.toppings = []
-
-    def add_topping(self, topping):
-        self.toppings.append(topping)
-
-    def num_pieces(self):
-        count = 0
-        for topping in self.toppings:
-            count += topping.num_pieces
-        return count
-
-pizza = Pizza()
-pizza.add_topping(Topping("pepperoni", 18))
-pizza.add_topping(Topping("mushrooms", 12))
-pizza.add_topping(Topping("green peppers", 15))
-print(pizza.num_toppings())
-```
-
-::: fragment
-**45**
-:::
-
-::: notes
-
-Here we added a method to Pizza named num_pieces which returns the total number of pizza topping pieces on the pizza!
-
-:::
-
-# OOP Patterns
-
-::: columns
-
-:::: column
-
-::::: left
-
-Class *composition* is a much more useful Object Oriented Programming *pattern* than *inheritance*.
-
-Inheritance should be used sparingly because elaborate inheritance hierarchies can be difficult to maintain over time as requirements change.
-
-:::::
-
-::::
-
-:::: column
-
-<a href="https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612/"><img width="70%" src="images/design-patterns.jpg"></a>
-
-::::
-
-:::
-
-# 
-
-<a href="https://en.wikipedia.org/wiki/The_Timeless_Way_of_Building"><img width="50%"  src="images/timeless.jpg"></a>
-
-# Exercise
-
-::: left
-
-Download the `pizza.py` file from Module 7 and modify `Pizza.add_topping` to ensure that no more than 7 toppings are added.
-
-If someone adds more than 7 toppings it should print *"Sorry that is too many toppings!"*.
-
-:::
-
-
-
-
-
-
-  
+- Combining Data and Behavior
+- Defining Classes
+- Attributes and Methods
+- Interacting with Instances
+- [Exercise](exercise.html)
