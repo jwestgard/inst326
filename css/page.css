@@ -6,4 +6,8 @@ body {
 python {
     margin: 10% 15% 10% 15%;
     font: 14pt Monaco;
-    }
+}
+
+nav {
+    text-align: center;
+}
