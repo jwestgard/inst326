@@ -9,9 +9,9 @@ The Module overview page has been moved to [/modules](modules)
 
 ## Welcome
 
-This website is an Open Educational Resource (OER) for my course on Python Programming offered through the [School of Information Studies](ischool.umd.edu) at the [University of Maryland College Park](umd.edu). It is still a work in progress as the course materials and activities are being migrated from a traditional learning management platform to this website.
+This website is an Open Educational Resource (OER) for my course on Python Programming offered through the [School of Information Studies](https://ischool.umd.edu) at the [University of Maryland College Park](https://umd.edu). It is still a work in progress as the course materials and activities are being migrated from a traditional learning management platform to this website.
 
-The course is divided into 11 modules covering various topics in programming with Python, designed for undergraduate students majoring in Information Science. The modules are organized into three main units:
+The course is divided into 11 [modules](modules) covering various topics in programming with Python, designed for undergraduate students majoring in Information Science. The modules are organized into three main units:
 
 1. Fundamentals
 2. Object-Oriented Programming
