@@ -3,32 +3,20 @@ title: INST 326 Object-Oriented Programming
 css: css/page.css
 ---
 
-## Preliminaries: Introduction to the Course and Installation
+::::: Alert
+The Module overview page has been moved to [/modules](modules)
+:::::
 
-- [Slides](modules/introduction)
+## Welcome
 
-## Part 1: Fundamentals
+This website is an Open Educational Resource (OER) for my course on Python Programming offered through the [School of Information Studies](ischool.umd.edu) at the [University of Maryland College Park](umd.edu). It is still a work in progress as the course materials and activities are being migrated from a traditional learning management platform to this website.
 
-- Module 1: Python Fundamentals
-    - [Slides](modules/module01)
-- Module 2: Functions and Iteration
-    - [Slides](modules/module02)
-- Module 3: Data Types
-    - [Slides](modules/module03)
-- Module 4: Serialization and File I/O  
-    - [Slides](modules/module04)
+The course is divided into 11 modules covering various topics in programming with Python, designed for undergraduate students majoring in Information Science. The modules are organized into three main units:
 
-## Part 2: Object-Oriented Programming in Python
+1. Fundamentals
+2. Object-Oriented Programming
+3. Working with Data
 
-- Module 5: OOP Fundamentals
-    - [Slides](modules/module05)
-- Module 6: Inheritance and OOP Patterns
-    - [Slides](modules/module06)
-- Module 7: Exceptions and Logging
+## Acknowledgements
 
-## Part 3: Python for Data Analysis
-
-- Module 8: Databases and SQL
-- Module 9: Testing
-- Module 10: Data on the Web
-- Module 11: Python for Data Analysis
+Thanks to [Ed Summers](https://github.com/edsu) and Aric Bills for sharing content and ideas from their own versions of this course. [Ed Summers](https://github.com/edsu) developed the original concept for the way the site is maintained and built using Make, Pandoc, and Github pages. The HTML pages are styled using a [Pandoc template by Tristano Ajmone](https://github.com/tajmone/pandoc-goodies).
