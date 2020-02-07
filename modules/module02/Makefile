@@ -1,4 +1,4 @@
-all: functions.html iteration.html readings.html exercise.html index.html
+all: functions.html iteration.html readings.html exercise.html index.html turtle.html
 
 functions.html: functions.md
 	pandoc --to revealjs --standalone --output functions.html functions.md
@@ -20,3 +20,9 @@ exercise.html: exercise.md
 
 index.html: index.md
 	pandoc --output index.html --standalone index.md
+
+turtle.html: turtle.md
+	pandoc -s turtle.md \
+	       -o turtle.html \
+	       --template=Github.html5 \
+	       -B ../../includes/navigation.html
