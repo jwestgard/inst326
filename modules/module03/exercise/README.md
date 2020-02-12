@@ -1,6 +1,7 @@
 ---
 title: "Module 3 Exercise"
 css: ../../../css/page.css
+permalink: index.html
 ---
 
 1. Write a program that will let you enter in a word or sentence in lower case 
