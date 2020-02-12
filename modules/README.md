@@ -9,16 +9,11 @@ css: ../css/page.css
 
 ## Part 1: Fundamentals
 
-- Module 1: Python Fundamentals
-    - [Slides](module01)
-- Module 2: Functions and Iteration
-    - [Slides](module02)
-- Module 3: Data Types
-    - [Slides](module03)
-- Module 4: Serialization and File I/O  
-    - [Slides](module04)
-- Module 5: Regular Expressions
-    - [Slides](module05)
+- [Module 1: Python Fundamentals](module01)
+- [Module 2: Functions and Iteration](module02)
+- [Module 3: Data Types](module03)
+- [Module 4: Serialization and File I/O](module04)
+- [Module 5: Regular Expressions](module05)
 
 ## Part 2: Object-Oriented Programming in Python
 

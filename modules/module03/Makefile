@@ -1,10 +1,16 @@
-all: slides.html slides.pptx readings.html exercise_dir
+all: index.html slides.html slides.pptx readings.html exercise_dir
 
 exercise_dir:
 	cd exercise && $(MAKE)
 
-readings.html: readings.md ../../includes/navigation.html
+index.html: README.md ../../includes/navigation.html
 	pandoc -s README.md \
+	       --template=Github.html5 \
+	       -B ../../includes/navigation.html \
+	       -o index.html
+
+readings.html: readings.md ../../includes/navigation.html
+	pandoc -s readings.md \
 	       --template=Github.html5 \
 	       -B ../../includes/navigation.html \
 	       -o readings.html

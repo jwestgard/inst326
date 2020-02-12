@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Module 2 Lab Exercise</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../../css/page.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Module 2 Lab Exercise</h1>
+</div>
+<h2 id="question-1-1-point">Question 1 (1 point)</h2>
+<p>What error message do you get when you run this program (hint: there are at least two problems)</p>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python"><span class="kw">def</span> get_energy(mass):
+    speed_of_light <span class="op">=</span> <span class="dv">300000000</span>
+    <span class="cf">return</span> mass <span class="op">*</span> speed_of_light <span class="op">**</span> <span class="dv">2</span>
+
+weights <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">100</span>, <span class="fl">.5</span>, <span class="fl">.75</span>]
+
+<span class="cf">while</span> weights:
+    joules <span class="op">=</span> get_energy(kg)
+    <span class="bu">print</span>(kg, <span class="st">&quot;kg is equal to &quot;</span>, joules, <span class="st">&quot;joules&quot;</span>)</code></pre></td></tr></table></div>
+<p>What output do you see when you fix it? In your own words describe what you did to fix this problem in the text box in ELMS.</p>
+<h2 id="question-2-1-point">Question 2 (1 point)</h2>
+<p>Write a program that will let you enter a word or phrase and then tell you many characters long it is. The program should allow the user to keep entering words and phrases until they enter &quot;quit&quot;.</p>
+<p>Here's what a sample run might look like:</p>
+<div class="sourceCode"><table class="sourceCode python numberLines"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="sourceCode"><pre><code class="sourceCode python">Enter a word<span class="op">/</span>phrase: python
+That <span class="kw">is</span> <span class="dv">6</span> characters <span class="bu">long</span>
+
+Enter a word<span class="op">/</span>phrase: holy coding, batman<span class="op">!</span>
+That <span class="kw">is</span> <span class="dv">20</span> characters <span class="bu">long</span>
+
+Enter a word<span class="op">/</span>phrase: quit
+Bye<span class="op">!</span></code></pre></td></tr></table></div>
+<p>Save your program in a text file and upload it to ELMS.</p>
+<h2 id="challenge">Challenge</h2>
+<p>An additional task for those who complete the above questions and want to challenge themselves:</p>
+<p>Write a function called is_prime() that takes an integer as an input parameter and returns True if the integer is a prime number, False if it is not.</p>
+<p>Hint: a prime number is defined as a number greater than 1 that is evenly divisible by only itself and one.</p>
+<p>Use your function inside a loop to find the 1000th prime number in the series of all primes.</p>
+</body>
+</html>
