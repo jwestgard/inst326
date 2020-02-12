@@ -1,6 +1,5 @@
 ---
 title: "Module 3 Exercise"
-css: ../../../css/page.css
 permalink: index.html
 ---
 
