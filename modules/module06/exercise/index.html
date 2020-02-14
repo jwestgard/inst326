@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Module 5 Exercise</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../css/page.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Module 5 Exercise</h1>
+</header>
+<h2 id="background">Background</h2>
+<p>The <a href="https://www.cs.cmu.edu/~./enron/">Enron Email Dataset</a> is a body of approximately 500,000 email messages from top executives in the <a href="https://en.wikipedia.org/wiki/Enron">Enron Corporation</a>, a Texas-based energy company which after going bankrupt in 2001 was revealed to have engaged in massive accounting fraud. The email dataset became evidence in the ensuing investigation, and subsequently was released into the public domain.</p>
+<h2 id="task-email-message-class">Task: Email Message Class</h2>
+<ol type="1">
+<li>The task is to create a class called Email() that can be used to analyze the <a href="../module05/enron-sample.zip">provided sample of the dataset</a>.</li>
+<li>Each instance of your class will represent a single email message, and should have the following attributes:
+<ul>
+<li>sender: the email address in the “From:” line;</li>
+<li>recipients: a list of all email addresses in the “To:” line;</li>
+<li>date: a datetime object derived from the string in the “Date:” line;</li>
+<li>text: the full text of the message</li>
+</ul></li>
+<li>Create a loop that scans a directory in the sample and creates Email objects from each message.</li>
+<li>Create another loop that writes the sender, date, and recipients data to a CSV file.</li>
+</ol>
+</body>
+</html>

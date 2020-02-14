@@ -1,7 +1,10 @@
-all: index.html slides.html slides.pptx readings.html exercise_dir
+all: index.html slides.html slides.pptx readings.html exercise_dir lab_dir
 
 exercise_dir:
 	cd exercise && $(MAKE)
+
+lab_dir:
+	cd lab && $(MAKE)
 
 index.html: README.md ../../includes/navigation.html
 	pandoc -s README.md \

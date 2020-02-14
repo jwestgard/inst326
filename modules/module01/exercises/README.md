@@ -1,10 +1,7 @@
 ---
 title: "Module 3 Exercise"
-permalink: index.html
-css:
+css: ../../../css/page.css
 ---
-
-## Practice Exercises
 
 1. Write a program that will let you enter in a word or sentence in lower case 
    and will print it out with the first letter capitalized. Hint, all 
@@ -15,15 +12,5 @@ css:
    **split** function together with what you know about **for loops** and
    **lists**.
 
-3. Download [energy.py](energy.py) and modify it to report the states with the    
-   largest wind and solar generation.
-
-## Friday Lab Activity
-
-The following activities are designed to give you some practice with basic 
-Python data structures, and to start thinking about combining individual 
-components into a larger program.
-
-1. Grouped-Frequency Word Counter: 
-
-2. Hangman Game:
+3. **Extra Credit**: Download [energy.py](energy.py) and modify it to
+   report the states with the largest wind and solar generation.
