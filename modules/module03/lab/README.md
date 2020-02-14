@@ -45,7 +45,7 @@ If the player gets five strikes before all letters are revealed, the player lose
 
 Your program should do the following:
 
-1. Include a function that take a word and list of letters guessed and returns a string that displays the letters guessed only, with hyphens in place of letters not guessed.  **HINT**: You can loop over the letters in a word an concatenate a new word from letters and hyphens depending on whether a given letter is present in a list of letters guessed.
+1. Include a function that take a word and list of letters guessed and returns a string that displays the letters guessed only, with hyphens in place of letters not guessed.  **HINT**: You can loop over the letters in a word and concatenate a new word from letters and hyphens depending on whether a given letter is present in a list of letters guessed.
 2. Display the letters guessed so far to the user.
 3. Be able to handle user input in either uppercase or lowercase.
 4. Allow the user to quit the game by typing "quit".
