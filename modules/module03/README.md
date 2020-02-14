@@ -1,5 +1,5 @@
 ---
-title: INST 326 Module 3 Overview
+title: INST 326 Module 3
 css: ../css/page.css
 ---
 
@@ -10,5 +10,6 @@ Module 3 is a review of the most important basic data structures in the Python l
 ## Links
 
 - [Slides](slides.html)
-- [Exercise](exercise)
 - [Readings](readings.html)
+- [Exercise](exercise)
+- [Lab Worksheet](lab)
