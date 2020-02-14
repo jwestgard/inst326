@@ -1,10 +1,10 @@
-all: index.html slides.pptx exercise.html
+all: index.html slides.pptx exercise_dir
+
+exercise_dir:
+	cd exercises && $(MAKE)
 
 index.html: slides.md
 	pandoc --to revealjs --standalone --output index.html slides.md
-
-exercise.html: exercise.md
-	pandoc exercise.md -o exercise.html --standalone
 
 slides.pptx: slides.md
 	pandoc --from markdown -o slides.pptx slides.md
