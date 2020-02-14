@@ -1,7 +1,7 @@
 ---
 title: "Module 3 Exercise"
 permalink: index.html
-css:
+css: ../../css/page.css
 ---
 
 ## Practice Exercises
@@ -17,13 +17,3 @@ css:
 
 3. Download [energy.py](energy.py) and modify it to report the states with the    
    largest wind and solar generation.
-
-## Friday Lab Activity
-
-The following activities are designed to give you some practice with basic 
-Python data structures, and to start thinking about combining individual 
-components into a larger program.
-
-1. Grouped-Frequency Word Counter: 
-
-2. Hangman Game:
