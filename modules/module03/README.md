@@ -1,7 +1,7 @@
 ---
 title: INST 326 Module 3
-css: ../../css/page.css
 permalink: index.html
+css: ../css/page.css
 ---
 
 ## Topics

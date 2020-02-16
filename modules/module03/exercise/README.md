@@ -1,7 +1,10 @@
 ---
 title: "Module 3 Exercise"
+permalink: index.html
 css: ../../css/page.css
 ---
+
+## Practice Exercises
 
 1. Write a program that will let you enter in a word or sentence in lower case 
    and will print it out with the first letter capitalized. Hint, all 
@@ -12,6 +15,5 @@ css: ../../css/page.css
    **split** function together with what you know about **for loops** and
    **lists**.
 
-3. **Extra Credit**: Download the energy.py file from the Files area of ELMS
-   site and modify it to report the states with the largest wind and solar
-   generation.
+3. Download [energy.py](energy.py) and modify it to report the states with the    
+   largest wind and solar generation.

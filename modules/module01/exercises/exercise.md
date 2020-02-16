@@ -1,9 +1,5 @@
 ---
 title: "Module 1 Lab Exercise"
-<<<<<<< HEAD
-permalink: index.html
-=======
->>>>>>> ddd140df3e471ee5673794b92185c387ea91ad89
 css: ../../css/page.css
 ---
  
