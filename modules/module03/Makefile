@@ -1,4 +1,4 @@
-all: index slides exercises_dir lab_dir
+all: index slides exercises lab
 
 index: README.md ../../includes/navigation.html
 	pandoc -s README.md \
@@ -10,8 +10,8 @@ slides: slides.md
 	pandoc --to revealjs --standalone --output slides.html slides.md
 	pandoc --from markdown --to pptx --output slides.pptx slides.md
 
-exercises_dir:
+exercises:
 	cd exercises && $(MAKE)
 
-lab_dir:
+lab:
 	cd lab && $(MAKE)
