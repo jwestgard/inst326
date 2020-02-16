@@ -1,7 +1,7 @@
 ---
 title: "Module 1 Lab Exercise"
 permalink: index.html
-css: ../../css/page.css
+css: ../../../css/page.css
 ---
  
 ## Learning Outcomes
