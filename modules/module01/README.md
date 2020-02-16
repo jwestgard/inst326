@@ -6,10 +6,7 @@ css: ../../css/page.css
 
 ## Topics
 
-- Variables
-- Expressions
-- Statements
-- Conditionals
+This module covers four fundamental concepts in programming: Variables, Expressions, Statements, and Conditionals
 
 ## Learning Outcomes
 
@@ -26,3 +23,8 @@ After completing this module, students should understand:
 - _OOP in Python_, "[Python Basics](https://python-textbok.readthedocs.io/en/1.0/Python_Basics.html)"
 - _OOP in Python_, "[Variables and Scope](https://python-textbok.readthedocs.io/en/1.0/Variables_and_Scope.html)"
 - _OOP in Python_, "[Section Control Statements](https://python-textbok.readthedocs.io/en/1.0/Selection_Control_Statements.html)"
+
+## Links
+
+* [Slides](slides.html)
+* [Exercises](exercises)
