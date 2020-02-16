@@ -1,4 +1,4 @@
-all: index.html slides.pptx
+all: index slides.pptx
 
 index.html: slides.md
 	pandoc --incremental --to revealjs --standalone --output index.html slides.md

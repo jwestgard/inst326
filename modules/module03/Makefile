@@ -1,11 +1,17 @@
-all: index.html slides.pptx
+all: index slides exercises lab
 
-index.html: slides.md
-	pandoc --to revealjs --standalone --output index.html slides.md
+index: README.md ../../includes/navigation.html
+	pandoc -s README.md \
+	       --template=Github.html5 \
+	       -B ../../includes/navigation.html \
+	       -o index.html
 
-slides.pptx: slides.md
+slides: slides.md
+	pandoc --to revealjs --standalone --output slides.html slides.md
 	pandoc --from markdown --to pptx --output slides.pptx slides.md
 
-exercise.html: exercise.md
-	pandoc --output exercise.html --standalone exercise.md
+exercises:
+	cd exercises && $(MAKE)
 
+lab:
+	cd lab && $(MAKE)

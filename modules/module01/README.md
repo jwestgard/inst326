@@ -21,3 +21,5 @@ After completing this module, students should understand:
 - Conditional execution and branching logic
 - if ... elif ... else
 - the role of indentation in conditional blocks
+
+## Readings
