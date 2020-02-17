@@ -1,6 +1,7 @@
 ---
-title: "Module 2 Lab Exercise (Turtle)"
-css: ../../css/page.css
+title: Module 2 Lab Worksheet
+permalink: index.html
+css: ../../../css/page.css
 ---
  
 ## Learning Outcomes

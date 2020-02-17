@@ -48,8 +48,6 @@ Save your program in a text file and upload it to ELMS.
 
 An additional task for those who complete the above questions and want to challenge themselves:
 
-Write a function called is_prime() that takes an integer as an input parameter and returns True if the integer is a prime number, False if it is not. 
-
-Hint: a prime number is defined as a number greater than 1 that is evenly divisible by only itself and one.  
-
-Use your function inside a loop to find the 1000th prime number in the series of all primes.
+- Write a function called "is_prime()" that takes an integer as an input parameter and returns True if the integer is a prime number, False if it is not. 
+- **Hint**: a prime number is defined as an integer greater than 1 that is evenly divisible by only itself and one.
+- Use your function inside a loop to find the 1000th prime number in the series of all primes.
