@@ -1,7 +1,7 @@
 ---
 title: Module 3 Exercises
 permalink: index.html
-css: ../../css/page.css
+css: ../../../css/page.css
 ---
 
 ## Practice Exercises

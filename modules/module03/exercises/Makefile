@@ -1,6 +1,6 @@
-all: index.html
+all: index
 	
-index.html: README.md ../../../includes/navigation.html
+index: README.md ../../../includes/navigation.html
 	pandoc -s README.md \
 	       --template=Github.html5 \
 	       -B ../../../includes/navigation.html \

@@ -1,7 +1,7 @@
 ---
 title: Module 3 Lab Worksheet
 permalink: index.html
-css: ../../css/page.css
+css: ../../../css/page.css
 ---
 
 The following activities are designed to give you some practice with basic 
