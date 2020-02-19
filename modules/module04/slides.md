@@ -86,8 +86,7 @@ inst326/slides.pdf
 
 ::: left
 
-[speech.txt](speech.txt) is an example of a text file. Here are a few things to
-notice about text files:
+[speech.txt](exercises/speech.txt) is an example of a text file. Here are a few things to notice about text files:
 
 :::
 
@@ -246,7 +245,7 @@ The interests can have one to many values.
 
 ::: left
 Python comes with a [json module](https://docs.python.org/3.7/library/json.html)
-which makes it easy to read JSON using the [json.load](https://docs.python.org/3.7/library/json.html#json.load) function. We'll use it to load this JSON file of tweet data: [aoc.json](aoc.json).
+which makes it easy to read JSON using the [json.load](https://docs.python.org/3.7/library/json.html#json.load) function. We'll use it to load this JSON file of tweet data: [aoc.json](exercises/aoc.json).
 :::
 
 ``` {.python .numberLines}
@@ -269,7 +268,7 @@ You can also use the [json.dump](https://docs.python.org/3.7/library/json.html#j
 import json
 
 people = [
-  {"name": "Val", "interests": ["astronomy", "hocky"]},
+  {"name": "Val", "interests": ["astronomy", "hockey"]},
   {"name": "Rick", "interests": ["karaoke"]}
 ]
 
