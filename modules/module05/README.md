@@ -16,7 +16,10 @@ Module 5 introduces a useful toolkit for all sorts of text processing, parsing, 
 
 ## Links
 
-- [Regex Cheat Sheet](cheatsheet.pdf) -- a handy downloadable PDF;
-- [Regular Expressions 101: Online regex tester and debugger](https://regex101.com) -- this site is super useful for developing and debugging regex patterns, since it allows you to test against sample text and see how the pattern works in practice;
-- [Programming Historian: Understanding Regular Expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions), an introductory tutorial by Doug Knox;
-- "[Regular expression](https://en.wikipedia.org/wiki/Regular_expression)", an overview from _Wikipedia: The Free Encyclopedia_.
+- [Slides](slides.html)
+- [Exercises](exercises)
+- [Lab](lab)
+- [Regex Cheat Sheet](cheatsheet.pdf) (downloadable PDF)
+- [Regular Expressions 101: Online regex tester and debugger](https://regex101.com) -- this site is super useful for developing and debugging regex patterns, since it allows you to test against sample text and see how the pattern works in practice
+- [Programming Historian: Understanding Regular Expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions), an introductory tutorial by Doug Knox
+- "[Regular expression](https://en.wikipedia.org/wiki/Regular_expression)", an overview from _Wikipedia: The Free Encyclopedia_
