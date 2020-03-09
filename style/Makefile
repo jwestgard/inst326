@@ -7,7 +7,7 @@ index.html: README.md
 	    --template=Github.html5
 
 style-guide.html: style-guide.md
-	pandoc style-guide.md -o index.html --standalone --template=Github.html5
+	pandoc style-guide.md -o style-guide.html --standalone --template=Github.html5
 
 style-guide.pdf: style-guide.md
 	pandoc style-guide.md -o style-guide.pdf
