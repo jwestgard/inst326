@@ -19,17 +19,24 @@ After completing this module, students should understand:
 
 ## Readings
 
-- Severance, _Python for Everybody_, [Chapter 12, "Networked Programs"](https://www.py4e.com/html3/12-network) and [Chapter 13, "Python and Web Services"](https://www.py4e.com/html3/13-web)
+- Severance, _Python for Everybody_:
+    - [Chapter 12, "Networked Programs"](https://www.py4e.com/html3/12-network)
+    - [Chapter 13, "Using Web Services"](https://www.py4e.com/html3/13-web)
 - [The documentation for the Requests library](http://docs.python-requests.org/en/master)
 
 You may also wish to watch the videos and/or read the slide decks provided on the Py4e website.
 
 [**Note**: Unlike most of the other modules we have been using in this course, requests is not part of the standard library and may need to be installed. If you receive an error message when importing requests, please refer to the documentation for installation instructions.]
 
-## Links
+## Additional Resources
 
 As a member of the University community you have free access to LinkedIn Learning courses and videos. The following courses are some examples of content that is directly relevant to what we are covering in this module:
 
 - [HTTP Essential Training](https://www.linkedin.com/learning-login/share?forceAccount=false&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fhttp-essential-training%3Ftrk%3Dshare_ent_url&account=41910388)
 - [Learning REST APIs](https://www.linkedin.com/learning-login/share?forceAccount=false&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Flearning-rest-apis%3Ftrk%3Dshare_ent_url&account=41910388)
 - [Python: XML, JSON, and the Web](https://www.linkedin.com/learning-login/share?forceAccount=false&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fpython-xml-json-and-the-web%3Ftrk%3Dshare_ent_url&account=41910388)
+
+## Links
+
+- [Slides](slides.html)
+- [Exercises](exercises)

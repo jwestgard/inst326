@@ -17,7 +17,7 @@ After completing this module, students should understand:
 
 ## Readings
 
-- - "Plotting" (Chapter 14) in [_Programming in Python 3_ (zyBook)](https://learn.zybooks.com/zybook/UMDINST326Spring2020)
+- "Plotting" (Chapter 14) in [_Programming in Python 3_ (zyBook)](https://learn.zybooks.com/zybook/UMDINST326Spring2020)
 
 ## Additional Readings (optional, as needed)
 
@@ -26,5 +26,5 @@ After completing this module, students should understand:
 
 ## Links
 
-- [Slides](slides.html)
+- Slides (forthcoming)
 - [Exercises](exercises)

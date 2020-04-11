@@ -19,16 +19,16 @@ After completing this module, students should understand:
 
 ## Readings
 
-- [Severance, Chapter 15](https://www.py4e.com/html3/15-database)
+- Severance, _Python for Everybody_,  [Chapter 15: "Using Databases and SQL"](https://www.py4e.com/html3/15-database)
 - [Python documentation for sqlite3](https://docs.python.org/3/library/sqlite3.html)
 
 ## Additional Readings (optional, as needed)
 
 ### Historical Background
-- [Codd, E. F. (1970). “A Relational Model of Data for Large Shared Data Banks,” Communications of the ACM 13.6, 377-87.](https://dl.acm.org/doi/10.1145/362384.362685)
+- Codd, E. F. (1970). "[A Relational Model of Data for Large Shared Data Banks](https://dl.acm.org/doi/10.1145/362384.362685)," Communications of the ACM 13.6, 377-87.
 
 ### Python Resources
-- [PEP 249: Python Database API Specification, v2.0](https://www.python.org/dev/peps/pep-0249)
+- PEP 249: [Python Database API Specification](https://www.python.org/dev/peps/pep-0249), v2.0]
 - Tutorials (all of these cover much the same ground):
   - [https://www.pythoncentral.io/introduction-to-sqlite-in-python](https://www.pythoncentral.io/introduction-to-sqlite-in-python)
   - [https://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html](https://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html)
