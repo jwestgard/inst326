@@ -8,6 +8,15 @@ css: ../../css/page.css
 
 Module 5 introduces a useful toolkit for all sorts of text processing, parsing, and searching. Regular Expressions, or regex, is a language for defining patterns of text that can be used to find one or more matches in a target string. Libraries exist for working with regular expressions in the context of many different programming environments, including in Python (the 're' module).
 
+## Learning Outcomes
+
+After completing this module, students should understand:
+
+- The basics of writing regular expressions.
+- How to test regexes using sites such as [Regex 101](https://regex101.com).
+- How to use regexes in Python programs through the re module.
+- The main functions for applying regexes in Python: search(), match(), and findall().
+
 ## Readings
 
 - Severance, _Python for Everybody_, [Chapter 11: Regular Expressions](https://www.py4e.com/html3/11-regex)

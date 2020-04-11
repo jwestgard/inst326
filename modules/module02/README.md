@@ -6,7 +6,16 @@ css: ../../css/page.css
 
 ## Topics
 
-This module covers the use of conditionals and loops to do branching and repetition in Python programs.
+This module covers the use of loops and functions to perform repeated actions in Python programs.
+
+## Learning Outcomes
+
+After completing this module, students should understand:
+
+- The difference between definite and indefinite loops.
+- Different patterns for breaking out of loops.
+- How to define and call functions.
+- How to get data into and out of functions.
 
 ## Readings
 

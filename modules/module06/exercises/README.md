@@ -1,6 +1,7 @@
 ---
 title: "Module 6 Exercises"
 css: ../../../css/page.css
+permalink: index.html
 ---
 
 ## Background

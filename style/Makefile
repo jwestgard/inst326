@@ -1,16 +1,16 @@
-all: index.html style-guide.html style-guide.pdf
+all: index guide pdf
 
-index.html: README.md
+index: README.md
 	pandoc README.md \
 	    -o index.html \
 	    -B ../includes/navigation.html \
 	    --template=Github.html5
 
-style-guide.html: style-guide.md
-	pandoc ./style-guide.md \
-	    -o ./style-guide.html \ 
+guide: style-guide.md
+	pandoc style-guide.md \
+	    -o style-guide.html \
 	    -B ../includes/navigation.html \
 	    --template=Github.html5
 
-style-guide.pdf: style-guide.md
+pdf: style-guide.md
 	pandoc style-guide.md -o style-guide.pdf

@@ -1,5 +1,5 @@
 ---
-title: "Module Exercise"
+title: "Module 7 Lab"
 css: ../../../css/page.css
 permalink: index.html
 ---

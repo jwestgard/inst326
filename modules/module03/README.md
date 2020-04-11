@@ -8,6 +8,15 @@ css: ../../css/page.css
 
 Module 3 is a review of the most important basic data structures in the Python language, including strings, lists, dictionaries, and tuples.
 
+## Learning Outcomes
+
+After completing this module, students should understand:
+
+- The fundamental data types in Python.
+- How to create instances of data types, and where applicable, how to update them.
+- How Python implements data types as objects.
+- How to find out more about these types and their methods using the built-in documentation.
+
 ## Readings
 
 - Severance, _Python for Everybody_, [Chapter 6: Strings](https://www.py4e.com/html3/06-strings).

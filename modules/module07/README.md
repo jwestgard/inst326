@@ -6,11 +6,13 @@ css: ../../css/page.css
 
 ## Topics
 
-This module will cover two important Object-Oriented __patterns__, "inheritance" and "composition". Inheritance is a way to make objects share functionality by relating them to one another in something like a parent-child relationship.  Composition, on the other hand, is a pattern for making objects relate to one another by a process of containment. A good example of this might be a "book" object being made up of "page" objects.
+This module will cover two important Object-Oriented _patterns_, "inheritance" and "composition". Inheritance is a way to make objects share functionality by relating them to one another in something like a parent-child relationship.  Composition, on the other hand, is a pattern for making objects relate to one another by a process of containment. A good example of this might be a "book" object being made up of "page" objects.
+
+## 
 
 ## Readings
 
-- __Programming in Python 3__ (zyBook), [Chapter 10: "Classes"](https://learn.zybooks.com/zybook/UMDINST326Spring2020)
+- _Programming in Python 3_ (zyBook), [Chapter 10: "Classes"](https://learn.zybooks.com/zybook/UMDINST326Spring2020)
 
 ## Additional Readings (Optional, as needed)
 
@@ -21,4 +23,4 @@ This module will cover two important Object-Oriented __patterns__, "inheritance"
 
 - [Slides](slides.html)
 - [Exercises](exercises)
-- Lab -- No Lab
+- There is no lab this week
