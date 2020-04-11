@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Module 9: Web Data</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../css/page.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Module 9: Web Data</h1>
+</header>
+<p>In this exercise we will use the Python <a href="http://docs.python-requests.org/">requests</a> library to interact with the <a href="https://www.propublica.org/datastore/api/propublica-congress-api">ProPublica Congress API</a>. Web APIs are specialized websites that make data available for many purposes, often for use in mobile applications, and business-to-business data workflows.</p>
+<ol type="1">
+<li>Install the <a href="http://docs.python-requests.org/">requests</a> Python library with pip.</li>
+<li>Obtain the ProPublica Congress API key (from ELMS or register for your own)</li>
+<li>Write a program that uses the <a href="https://projects.propublica.org/api-docs/congress-api/members/#get-current-members-by-statedistrict">Get Current Members by State/District</a> to get the members of the House of Representatives for the state of Maryland.</li>
+<li>For each representative use the <a href="https://projects.propublica.org/api-docs/congress-api/bills/#get-recent-bills-by-a-specific-member">Get Recent Bills by a Specific Member</a> to get the bills they have introduced.</li>
+<li>List only the bills from the current Congress (116) that they have introduced.</li>
+</ol>
+</body>
+</html>
