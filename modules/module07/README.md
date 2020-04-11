@@ -12,7 +12,7 @@ This module will cover two important Object-Oriented _patterns_, "inheritance" a
 
 ## Readings
 
-- _Programming in Python 3_ (zyBook), [Chapter 10: "Classes"](https://learn.zybooks.com/zybook/UMDINST326Spring2020)
+- "Classes" (Chapter 10) in [_Programming in Python 3_ (zyBook)](https://learn.zybooks.com/zybook/UMDINST326Spring2020)
 
 ## Additional Readings (Optional, as needed)
 
@@ -23,4 +23,3 @@ This module will cover two important Object-Oriented _patterns_, "inheritance" a
 
 - [Slides](slides.html)
 - [Exercises](exercises)
-- There is no lab this week

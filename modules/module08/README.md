@@ -8,7 +8,6 @@ css: ../../css/page.css
 
 This module covers some important aspects of how Python code is organized, maintained, and distributed for others to use.  We will start by looking at modules and packages, and then move to exceptions and testing. 
 
-
 ## Learning Outcomes
 
 After completing this module, students should understand:
@@ -19,8 +18,15 @@ After completing this module, students should understand:
 
 ## Readings
 
-- _Programming in Python 3_ (zyBook), [Chapters 12: "Exceptions", and 13: "Modules"](https://learn.zybooks.com/zybook/UMDINST326Spring2020)
+- "Exceptions" (Chapter 12) and "Modules" (Chapter 13) in [_Programming in Python 3_ (zyBook)](https://learn.zybooks.com/zybook/UMDINST326Spring2020)
 
 ## Additional Readings (optional, as needed)
-- [Object-Oriented Programming in Python, "Packaging and testing"](https://python-textbok.readthedocs.io/en/1.0/Packaging_and_Testing.html)
+- ["Packaging and testing", _Object-Oriented Programming in Python_](https://python-textbok.readthedocs.io/en/1.0/Packaging_and_Testing.html)
 - [Python Packaging User Guide](https://packaging.python.org)
+- [Pytest: Installation and Getting Started](https://docs.pytest.org/en/latest/getting-started.html)
+- Mark Lutz, "Module Coding Basics," Chapter 22 of _Learning Python_ ([available as an Ebook through UMD Libraries](https://ebookcentral.proquest.com/lib/umdcp/detail.action?docID=3027321))
+
+## Links
+
+- [Slides](slides.html)
+- [Exercises](exercises)

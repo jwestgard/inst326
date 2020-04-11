@@ -22,7 +22,7 @@ After completing this module, students should understand:
 - [Severance, Chapter 15](https://www.py4e.com/html3/15-database)
 - [Python documentation for sqlite3](https://docs.python.org/3/library/sqlite3.html)
 
-## Additional Resources (optional, as needed)
+## Additional Readings (optional, as needed)
 
 ### Historical Background
 - [Codd, E. F. (1970). “A Relational Model of Data for Large Shared Data Banks,” Communications of the ACM 13.6, 377-87.](https://dl.acm.org/doi/10.1145/362384.362685)
@@ -38,3 +38,8 @@ After completing this module, students should understand:
 - [MariaDB, a community fork of MySQL](https://mariadb.org)
 - [PostgreSQL](https://www.postgresql.org)
 - [Overview of Python on NoSQL (i.e. non-relational) databases](https://www.fullstackpython.com/no-sql-datastore.html)
+
+## Links
+
+- [Slides](slides.html)
+- [Exercises](exercises)
